@@ -1,0 +1,37 @@
+html,body {
+    font-family: sans-serif;
+}
+table {
+    border-collapse: collapse;
+}
+th,td {
+    font-size: 12px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+th {
+    text-align: left;
+}
+.border th,.border td {
+    border: 1px solid #cccccc;
+}
+.compact td {
+    padding: 0;
+}
+.subtable td {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+a, a:link, a:visited {
+    color: #0000FF;
+}
+p {
+    font-size: 12px;
+}
+.small {
+    font-size: 14px;
+    font-weight: bold;
+}
+.highlight {
+    background-color: #ffffcc;
+}

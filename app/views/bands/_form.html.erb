@@ -1,0 +1,65 @@
+<%= form_for(@band, :html => { :multipart => true }) do |f| %>
+  <% if @band.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@band.errors.count, "error") %> prohibited this band from being saved:</h2>
+
+      <ul>
+      <% @band.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label t(:name) %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label t(:contact_name) %><br />
+    <%= f.text_field :contact_name %>
+  </div>
+  <div class="field">
+    <%= f.label t(:email) %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label t(:phone) %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label t(:address) %><br />
+    <%= f.text_area :address, :size => "30x4" %>
+  </div>
+  <div class="field">
+    <%= f.label t(:description) %><br />
+    <%= f.text_area :description, :size => "50x15" %>
+  </div>
+  <div class="field">
+    <%= f.label t(:song_title) %><br />
+    <%= f.text_field :song_title %>
+  </div>
+  <div class="field">
+    <%= f.label t(:song_composer) %><br />
+    <%= f.text_field :song_composer %>
+  </div>
+  <div class="field">
+    <%= f.label t(:song_lyrics) %><br />
+    <%= f.text_area :song_lyrics, :size => "50x20" %>
+  </div>
+  <div class="field">
+    <%= f.label t(:playtime_wish) %><br />
+    <%= f.text_field :playtime_wish %>
+  </div>
+  <div class="field">
+    <%= f.label t(:playtime_wish_alt) %><br />
+    <%= f.text_field :playtime_wish_alt %>
+  </div>
+  <div class="field">
+    <%= f.label t(:image) %><br />
+    <%= f.file_field :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit t(:submit) %>
+  </div>
+<% end %>
