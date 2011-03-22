@@ -48,10 +48,7 @@ FestivalAdmin::Application.configure do
   config.active_support.deprecation = :notify
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "mail.rockmotrus.no",
-    :port                 => 25,
-    :domain               => 'rockmotrus.no',
-    :user_name            => 'festival@rockmotrus.no',
-    :password             => 'willy666',
+    :address              => "localhost",
+    :port                 => 25
   }
 end
