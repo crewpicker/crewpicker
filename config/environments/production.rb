@@ -55,4 +55,5 @@ FestivalAdmin::Application.configure do
     :password             => 'willy666',
     :authentication       => 'plain',
     :enable_starttls_auto => false
+  }
 end
