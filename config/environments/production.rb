@@ -55,4 +55,5 @@ FestivalAdmin::Application.configure do
     :password             => '***REMOVED***',
     :authentication       => 'plain',
     :enable_starttls_auto => false
+  }
 end
