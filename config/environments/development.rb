@@ -22,5 +22,15 @@ FestivalAdmin::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "mail.rockmotrus.no",
+    :port                 => 25,
+    :domain               => 'rockmotrus.no',
+    :user_name            => 'festival@rockmotrus.no',
+    :password             => '***REMOVED***',
+    :authentication       => 'plain',
+    :enable_starttls_auto => false
+  }
 end
 

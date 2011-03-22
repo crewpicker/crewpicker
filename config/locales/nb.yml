@@ -26,6 +26,6 @@ nb:
   confirm: "Er du sikker?"
   band: "Band"
   band_members: "Bandmedlemmer"
-  band_members_count: "Antall bandmedlemmer"
+  band_members_count: "Ant. medlemmer"
   band_list: "Bandliste"
   edit_band_member: "Rediger bandmedlem"
