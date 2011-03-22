@@ -1,1 +1,3 @@
 public/system/images/*
+log/*.log
+tmp/*
