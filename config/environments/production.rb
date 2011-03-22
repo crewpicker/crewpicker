@@ -53,6 +53,5 @@ FestivalAdmin::Application.configure do
     :domain               => 'rockmotrus.no',
     :user_name            => 'festival@rockmotrus.no',
     :password             => 'willy666',
-    :authentication       => 'login',
   }
 end
