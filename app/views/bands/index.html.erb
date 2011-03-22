@@ -1,0 +1,32 @@
+<h1><%= t(:band_list) %></h1>
+<p><%= link_to t(:new_band), new_band_path %></p>
+<table class="border">
+  <tr>
+    <th><%= t(:name) %></th>
+    <th><%= t(:contact_name) %></th>
+    <th><%= t(:email) %></th>
+    <th><%= t(:phone) %></th>
+    <th><%= t(:address) %></th>
+    <th><%= t(:playtime_wish) %></th>
+    <th><%= t(:playtime_wish_alt) %></th>
+    <th><%= t(:band_members_count) %></th>
+    <th><%= t(:image) %></th>
+    <th></th>
+  </tr>
+
+<% @bands.each do |band| %>
+  <tr>
+    <td><%= band.name %></td>
+    <td><%= band.contact_name %></td>
+    <td><%= band.email %></td>
+    <td><%= band.phone %></td>
+    <td><%= nl2br(band.address) %></td>
+    <td><%= band.playtime_wish %></td>
+    <td><%= band.playtime_wish_alt %></td>
+    <td><%= band.band_members.count %></td>
+    <td><%= image_tag band.image.url(:thumb) %></td>
+    <td><%= link_to t(:show), band %> | <%= link_to t(:edit), edit_band_path(band) %> | <%= link_to t(:delete), band, :confirm => t(:confirm), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<p><%= link_to t(:new_band), new_band_path %></p>

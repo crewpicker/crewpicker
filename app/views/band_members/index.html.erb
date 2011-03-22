@@ -1,0 +1,27 @@
+<h1>Listing band_members</h1>
+
+<table>
+  <tr>
+    <th>Band</th>
+    <th>Name</th>
+    <th>Role</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @band_members.each do |band_member| %>
+  <tr>
+    <td><%= band_member.band_id %></td>
+    <td><%= band_member.name %></td>
+    <td><%= band_member.role %></td>
+    <td><%= link_to 'Show', band_member %></td>
+    <td><%= link_to 'Edit', edit_band_member_path(band_member) %></td>
+    <td><%= link_to 'Destroy', band_member, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Band member', new_band_member_path %>

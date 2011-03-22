@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @band.name %></h1>
+<table class="border">
+  <tr>
+    <th><%= t(:name) %></th>
+    <td><%= @band.contact_name %></td>
+  </tr>
+  <tr>
+    <th><%= t(:email) %></th>
+    <td><%= @band.email %></td>
+  </tr>
+  <tr>
+    <th><%= t(:phone) %></th>
+    <td><%= @band.phone %></td>
+  </tr>
+  <tr>
+    <th><%= t(:address) %></th>
+    <td><%= nl2br(@band.address) %></td>
+  </tr>
+  <tr>
+    <th><%= t(:description) %></th>
+    <td><%= nl2br(@band.description) %></td>
+  </tr>
+  <tr>
+    <th><%= t(:song_title) %></th>
+    <td><%= @band.song_title %></td>
+  </tr>
+  <tr>
+    <th><%= t(:song_composer) %></th>
+    <td><%= @band.song_composer %></td>
+  </tr>
+  <tr>
+    <th><%= t(:song_lyrics) %></th>
+    <td><%= nl2br(@band.song_lyrics) %></td>
+  </tr>
+  <tr>
+    <th><%= t(:playtime_wish) %></th>
+    <td><%= @band.playtime_wish %></td>
+  </tr>
+  <tr>
+    <th><%= t(:playtime_wish_alt) %></th>
+    <td><%= @band.playtime_wish_alt %></td>
+  </tr>
+  <tr>
+    <th><%= t(:image) %></th>
+    <td><%= image_tag @band.image.url(:medium) %></td>
+  </tr>
+</table>
+<p>
+<%= link_to t(:edit), edit_band_path(@band) %> |
+<%= link_to t(:back), bands_path %>
+</p>
+<h2><%= t(:band_members) %></h2>
+<p><%= link_to t(:new_band_member), bands_new_band_member_path(@band) %></p>
+<table class="border">
+  <tr>
+    <th><%= t(:name) %></th>
+    <th><%= t(:role) %></th>
+    <th></th>
+  </tr>
+<% @band.band_members.each do |band_member| %>
+  <tr>
+    <td><%= band_member.name %></td>
+    <td><%= band_member.role %></td>
+    <td><%= link_to t(:edit), edit_band_member_path(band_member) %> | <%= link_to t(:delete), band_member, :confirm => t(:confirm), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<p><%= link_to t(:new_band_member), bands_new_band_member_path(@band) %></p>
