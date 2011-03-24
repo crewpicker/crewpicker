@@ -29,3 +29,164 @@ nb:
   band_members_count: "Ant. medlemmer"
   band_list: "Bandliste"
   edit_band_member: "Rediger bandmedlem"
+
+  support:
+    array:
+      # sentence_connector: "and"
+      sentence_connector: "og"
+
+  date:
+    formats:
+      # default: "%Y-%m-%d"
+      default: "%d.%m.%Y"
+      # short: "%b %d"
+      short: "%e. %b"
+      # long: "%B %d, %Y"
+      long: "%e. %B %Y"
+    # day_names: Date::DAYNAMES
+    day_names: [s&oslash;ndag, mandag, tirsdag, onsdag, torsdag, fredag, l&oslash;rdag]
+    # abbr_day_names: Date::ABBR_DAYNAMES
+    abbr_day_names: [s&oslash;n, man, tir, ons, tor, fre, l&oslash;r]
+    # month_names: Date::MONTHNAMES
+    month_names: [~, januar, februar, mars, april, mai, juni, juli, august, september, oktober, november, desember]
+    # abbr_month_names: Date::ABBR_MONTHNAMES
+    abbr_month_names: [~, jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des]
+    # order: [:year, :month, :day]
+    order: [:day, :month, :year]
+
+  time:
+    formats:
+      # default: "%a, %d %b %Y %H:%M:%S %z"
+      default: "%A, %e. %B %Y, %H:%M"
+      # time: "%H:%M"
+      time: "%H:%M"
+      # short: "%d %b %H:%M"
+      short: "%e. %B, %H:%M"
+      # long: "%B %d, %Y %H:%M"
+      long: "%A, %e. %B %Y, %H:%M"
+
+  datetime:
+    distance_in_words:
+      # half_a_minute: "half a minute"
+      half_a_minute: "et halvt minutt"
+      less_than_x_seconds:
+        # zero: "less than 1 second"
+        zero: "mindre enn 1 sekund"
+        # one: "1 second"
+        one: "1 sekund"
+        # other: "{{count}} seconds"
+        other: "{{count}} sekunder"
+      x_seconds:
+        # one: "1 second"
+        one: "1 sekund"
+        # other: "{{count}} seconds"
+        other: "{{count}} sekunder"
+      less_than_x_minutes:
+        # zero: "less than 1 minute"
+        zero: "mindre enn 1 minutt"
+        # one: "1 minute"
+        one: "1 minutt"
+        # other: "{{count}} minutes"
+        other: "{{count}} minutter"
+      x_minutes:
+        # one: "1 minute"
+        one: "1 minutt"
+        # other: "{{count}} minutes"
+        other: "{{count}} minutter"
+      about_x_hours:
+        # one: "about 1 hour"
+        one: "for ca 1 time"
+        # other: "{{count}} hours"
+        other: "for ca {{count}} timer"
+      x_days:
+        # one: "1 day"
+        one: "1 dag"
+        # other: "{{count}} days"
+        other: "{{count}} dager"
+      about_x_months:
+        # one: "about 1 month"
+        one: "for ca 1 m&aring;ned"
+        # other: "{{count}} months"
+        other: "for ca {{count}} m&aring;neder"
+      x_months:
+        # one: "1 month"
+        one: "1 m&aring;ned"
+        # other: "{{count}} months"
+        other: "{{count}} m&aring;neder"
+      about_x_years:
+        # one: "about 1 year"
+        one: "for ca 1 &aring;r"
+        # other: "{{count}} years"
+        other: "for ca {{count}} &aring;r"
+      over_x_years:
+        # one: "over 1 year"
+        one: "over 1 &aring;r"
+        # other: "{{count}} years"
+        other: "over {{count}} &aring;r"
+
+  number:
+    format:
+      # precision: 3
+      precision: 2
+      # separator: "."
+      separator: "."
+      # delimiter: ","
+      delimiter: ","
+    currency:
+      format:
+        # unit: "$"
+        unit: "kr"
+        # precision: 2
+        precision: 2
+        # format: "%u%n"
+        format: "%n %u"
+
+  activerecord:
+    errors:
+      template:
+        header:
+          # one: "1 error prohibited this {{model}} from being saved"
+          one: "kunne ikke lagre {{model}} p&aring; grunn av {{count}} feil"
+          # other: "{{count}} errors prohibited this {{model}} from being saved"
+          other: "kunne ikke lagre {{model}} p&aring; grunn av {{count}} feil"
+        # body: "there were problems with the following fields:"
+        body: "det oppstod problemer i f&oslash;lgende felt:"
+      messages:
+        # inclusion: "is not included in the list"
+        inclusion: "er ikke inkludert i listen"
+        # exclusion: "is reserved"
+        exclusion: "er reservert"
+        # invalid: "is invalid"
+        invalid: "er ugyldig"
+        # confirmation: "doesn't match confirmation"
+        confirmation: "passer ikke bekreftelsen"
+        # accepted: "must be accepted"
+        accepted: "m&aring; v&aelig;re akseptert"
+        # empty: "can't be empty"
+        empty: "kan ikke v&aelig;re tom"
+        # blank: "can't be blank"
+        blank: "kan ikke v&aelig;re blank"
+        # too_long: "is too long (maximum {{count}} characters)"
+        too_long: "er for lang (maksimum {{count}} tegn)"
+        # too_short: "is too short (minimum {{count}} characters)"
+        too_short: "er for kort (minimum {{count}} tegn)"
+        # wrong_length: "is the wrong length (should be {{count}} characters)"
+        wrong_length: "er av feil lengde (bør være {{count}} tegn)"
+        # taken: "is already taken"
+        taken: "er allerede tatt"
+        # not_a_number: "is not a number"
+        not_a_number: "er ikke et tall"
+        # greater_than: "must be greater than {{count}}"
+        greater_than: "m&aring; v&aelig;re st&oslash;rre enn {{count}}"
+        # greater_than_or_equal_to: "must be greater than or equal to {{count}}"
+        greater_than_or_equal_to: "m&aring; v&aelig;re st&oslash;rre enn eller lik {{count}}"
+        # equal_to: "must be equal to {{count}}"
+        equal_to: "m&aring; v&aelig;re lik {{count}}"
+        # less_than: "must be less than {{count}}"
+        less_than: "m&aring; v&aelig;re mindre enn {{count}}"
+        # less_than_or_equal_to: "must be less than or equal to {{count}}"
+        less_than_or_equal_to: "m&aring; v&aelig;re mindre enn eller lik {{count}}"
+        # odd: "must be odd"
+        odd: "m&aring; v&aelig;re oddetall"
+        # even: "must be even"
+        even: "m&aring; v&aelig;re partall"

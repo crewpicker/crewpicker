@@ -1,4 +1,6 @@
 FestivalAdmin::Application.routes.draw do
+  resources :stages
+
   resources :bands
 
   resources :band_members
@@ -6,6 +8,11 @@ FestivalAdmin::Application.routes.draw do
   get "home/index"
   root :to => "home#index"
   match 'bands/:id/new_band_member' => 'band_members#new', :as => :bands_new_band_member
+
+  match 'stages/:id/schedule' => 'stage_schedules#show_schedule', :as => :stage_schedule_show
+  match 'stages/:id/schedule/create' => 'stage_schedules#create', :as => :stage_schedule_create
+  match 'stages/:id/schedule/move' => 'stage_schedules#move', :as => :stage_schedule_move
+  match 'stages/:id/schedule/get_events' => 'stage_schedules#get_events', :as => :stage_schedule_get_events
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
