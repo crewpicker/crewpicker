@@ -2,12 +2,12 @@
 <html>
 <head>
   <title>FestivalAdmin</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag 'main' %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-
+  <p><a href="http://crew.rockmotrus.no/">Forside</a> | <a href="http://crew.rockmotrus.no/public/2011/brannvakt.php">Brannvakter</a> | <a href="http://crew.rockmotrus.no/public/2011/brannvakt_schedule.php">Tidsskjema brannvakter</a> | <a href="http://crew.rockmotrus.no/public/2011/avis_annonse.php">Avisannonser</a> | <a href="http://crew.rockmotrus.no/public/2011/klubbliste.php">Klubbliste</a> | <a href="/bands">Påmeldte band</a> | <a href="/stages/1/schedule">Tidsskjema band</a> | <a href="http://crew.rockmotrus.no/crew/application/picker">Jobbsøknader</a></p>
 <%= yield %>
 
 </body>
