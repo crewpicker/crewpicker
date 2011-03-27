@@ -13713,3 +13713,517 @@ Started GET "/stages/1/schedule/get_events?start=1302912000&end=1302998400&_=130
  ORDER BY a.attnum
 Rendered text template (0.0ms)
 Completed 200 OK in 39ms (Views: 0.9ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Mar 27 08:44:58 +0200 2011
+  [1m[36mSQL (31.3ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (0.6ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 16ms (Views: 15.9ms | ActiveRecord: 32.2ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 08:45:01 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[36mBand Load (103.5ms)[0m  [1mSELECT "bands".* FROM "bands"[0m
+  [1m[35mSQL (121.1ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (1.2ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (21.2ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f2e11926-5415-11e0-b4d9-0021851a652a')
+Rendered bands/index.html.erb within layouts/application (191.5ms)
+Completed 200 OK in 546ms (Views: 107.4ms | ActiveRecord: 247.0ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 08:48:22 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands"[0m
+  [1m[35mSQL (1.2ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f2e11926-5415-11e0-b4d9-0021851a652a')
+ERROR: compiling _app_views_layouts_application_html_erb___1374553707_70279627242200_0 RAISED compile error
+/home/tg90nor/Projects/Linted/rails/FestivalAdmin/app/views/layouts/application.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting kTHEN or ':' or '\n' or ';'
+  <title>'); if @title concat(@title) else concat('Festival...
+                             ^
+/home/tg90nor/Projects/Linted/rails/FestivalAdmin/app/views/layouts/application.html.erb:16: syntax error, unexpected kENSURE, expecting $end
+Function body:           def _app_views_layouts_application_html_erb___1374553707_70279627242200_0(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "layouts/application";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<!DOCTYPE html>
+<html>
+<head>
+  <title>'); if @title concat(@title) else concat('FestivalAdmin') end ;@output_buffer.safe_concat('</title>
+  ');@output_buffer.append= ( stylesheet_link_tag 'main' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( javascript_include_tag :defaults );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( csrf_meta_tag );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</head>
+<body>
+  <p><a href="http://crew.rockmotrus.no/">Forside</a> | <a href="http://crew.rockmotrus.no/public/2011/brannvakt.php">Brannvakter</a> | <a href="http://crew.rockmotrus.no/public/2011/brannvakt_schedule.php">Tidsskjema brannvakter</a> | <a href="http://crew.rockmotrus.no/public/2011/avis_annonse.php">Avisannonser</a> | <a href="http://crew.rockmotrus.no/public/2011/klubbliste.php">Klubbliste</a> | <a href="/bands">Påmeldte band</a> | <a href="/stages/1/schedule">Tidsskjema band</a> | <a href="http://crew.rockmotrus.no/crew/application/picker">Jobbsøknader</a></p>
+');@output_buffer.append= ( yield );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+</body>
+</html>
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /home/tg90nor/Projects/Linted/rails/FestivalAdmin/app/views/layouts/application.html.erb:16:in `compile'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_view/template.rb:134:in `render'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/notifications.rb:54:in `instrument'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_view/template.rb:127:in `render'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_view/render/layouts.rb:80:in `_render_layout'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_view/render/rendering.rb:62:in `_render_template'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_view/render/rendering.rb:56:in `_render_template'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_view/render/rendering.rb:26:in `render'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/abstract_controller/rendering.rb:115:in `_render_template'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/abstract_controller/rendering.rb:93:in `render'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/rendering.rb:17:in `render'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/usr/lib64/ruby/1.8/benchmark.rb:308:in `realtime'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/usr/local/lib64/ruby/gems/1.8/gems/activerecord-3.0.5/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/mime_responds.rb:261:in `retrieve_response_from_mimes'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/mime_responds.rb:192:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+/home/tg90nor/Projects/Linted/rails/FestivalAdmin/app/controllers/bands_controller.rb:9:in `index'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/abstract_controller/base.rb:150:in `process_action'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/abstract_controller/callbacks.rb:18:in `process_action'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/callbacks.rb:435:in `_run__2101132348__process_action__199225275__callbacks'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/callbacks.rb:409:in `send'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/callbacks.rb:93:in `send'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/callbacks.rb:93:in `run_callbacks'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/notifications.rb:52:in `instrument'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/abstract_controller/base.rb:119:in `process'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/abstract_controller/rendering.rb:41:in `process'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal.rb:138:in `dispatch'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_controller/metal.rb:178:in `action'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/routing/route_set.rb:62:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/routing/route_set.rb:27:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:148:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:93:in `recognize'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:68:in `optimized_each'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:92:in `recognize'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:139:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/routing/route_set.rb:492:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/head.rb:14:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-1.2.2/lib/rack/methodoverride.rb:24:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/activerecord-3.0.5/lib/active_record/query_cache.rb:32:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/activerecord-3.0.5/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/usr/local/lib64/ruby/gems/1.8/gems/activerecord-3.0.5/lib/active_record/query_cache.rb:12:in `cache'
+/usr/local/lib64/ruby/gems/1.8/gems/activerecord-3.0.5/lib/active_record/query_cache.rb:31:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/activerecord-3.0.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-1.2.2/lib/rack/sendfile.rb:107:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/railties-3.0.5/lib/rails/rack/logger.rb:13:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-1.2.2/lib/rack/runtime.rb:17:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/activesupport-3.0.5/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-1.2.2/lib/rack/lock.rb:11:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-1.2.2/lib/rack/lock.rb:11:in `synchronize'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-1.2.2/lib/rack/lock.rb:11:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/static.rb:30:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/railties-3.0.5/lib/rails/application.rb:168:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/railties-3.0.5/lib/rails/application.rb:77:in `send'
+/usr/local/lib64/ruby/gems/1.8/gems/railties-3.0.5/lib/rails/application.rb:77:in `method_missing'
+/usr/local/lib64/ruby/gems/1.8/gems/railties-3.0.5/lib/rails/rack/log_tailer.rb:14:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-1.2.2/lib/rack/content_length.rb:13:in `call'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-1.2.2/lib/rack/handler/webrick.rb:52:in `service'
+/usr/lib64/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/usr/lib64/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/usr/lib64/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/usr/lib64/ruby/1.8/webrick/server.rb:162:in `start'
+/usr/lib64/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/usr/lib64/ruby/1.8/webrick/server.rb:95:in `start'
+/usr/lib64/ruby/1.8/webrick/server.rb:92:in `each'
+/usr/lib64/ruby/1.8/webrick/server.rb:92:in `start'
+/usr/lib64/ruby/1.8/webrick/server.rb:23:in `start'
+/usr/lib64/ruby/1.8/webrick/server.rb:82:in `start'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-1.2.2/lib/rack/handler/webrick.rb:13:in `run'
+/usr/local/lib64/ruby/gems/1.8/gems/rack-1.2.2/lib/rack/server.rb:213:in `start'
+/usr/local/lib64/ruby/gems/1.8/gems/railties-3.0.5/lib/rails/commands/server.rb:65:in `start'
+/usr/local/lib64/ruby/gems/1.8/gems/railties-3.0.5/lib/rails/commands.rb:30
+/usr/local/lib64/ruby/gems/1.8/gems/railties-3.0.5/lib/rails/commands.rb:27:in `tap'
+/usr/local/lib64/ruby/gems/1.8/gems/railties-3.0.5/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered bands/index.html.erb within layouts/application (21.6ms)
+Completed   in 33ms
+
+ActionView::Template::Error (compile error
+/home/tg90nor/Projects/Linted/rails/FestivalAdmin/app/views/layouts/application.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting kTHEN or ':' or '\n' or ';'
+  <title>'); if @title concat(@title) else concat('Festival...
+                             ^
+/home/tg90nor/Projects/Linted/rails/FestivalAdmin/app/views/layouts/application.html.erb:16: syntax error, unexpected kENSURE, expecting $end):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: <head>
+    4:   <title><% if @title concat(@title) else concat('FestivalAdmin') end %></title>
+    5:   <%= stylesheet_link_tag 'main' %>
+    6:   <%= javascript_include_tag :defaults %>
+    7:   <%= csrf_meta_tag %>
+  app/views/layouts/application.html.erb:16:in `compile'
+  app/controllers/bands_controller.rb:9:in `index'
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.8ms)
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.3ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 08:49:47 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands"[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f2e11926-5415-11e0-b4d9-0021851a652a')
+Rendered bands/index.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 110ms (Views: 25.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Mar 27 08:49:56 +0200 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 08:49:57 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands"[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f2e11926-5415-11e0-b4d9-0021851a652a')
+Rendered bands/index.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 31ms (Views: 21.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/bands/f2e11926-5415-11e0-b4d9-0021851a652a" for 127.0.0.1 at Sun Mar 27 08:50:00 +0200 2011
+  Processing by BandsController#show as HTML
+  Parameters: {"id"=>"f2e11926-5415-11e0-b4d9-0021851a652a"}
+  [1m[36mSQL (58.3ms)[0m  [1m SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'f2e11926-5415-11e0-b4d9-0021851a652a' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mBandMember Load (0.3ms)[0m  [1mSELECT "band_members".* FROM "band_members" WHERE ("band_members".band_id = 'f2e11926-5415-11e0-b4d9-0021851a652a')[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+Rendered bands/show.html.erb within layouts/application (121.0ms)
+Completed 200 OK in 192ms (Views: 122.3ms | ActiveRecord: 61.5ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 08:50:08 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands"[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f2e11926-5415-11e0-b4d9-0021851a652a')
+Rendered bands/index.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 36ms (Views: 22.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 08:50:16 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands"[0m
+  [1m[35mSQL (1.1ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f2e11926-5415-11e0-b4d9-0021851a652a')
+Rendered bands/index.html.erb within layouts/application (113.6ms)
+Completed 200 OK in 127ms (Views: 115.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 09:22:54 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[36mBand Load (2.8ms)[0m  [1mSELECT "bands".* FROM "bands"[0m
+  [1m[35mSQL (2.1ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f2e11926-5415-11e0-b4d9-0021851a652a')
+Rendered bands/index.html.erb within layouts/application (38.4ms)
+Completed 200 OK in 64ms (Views: 41.9ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/bands/new" for 127.0.0.1 at Sun Mar 27 09:22:57 +0200 2011
+  Processing by BandsController#new as HTML
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendered bands/_form.html.erb (14.4ms)
+Rendered bands/new.html.erb within layouts/application (21.8ms)
+Completed 200 OK in 47ms (Views: 37.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bands/new" for 127.0.0.1 at Sun Mar 27 09:23:49 +0200 2011
+  Processing by BandsController#new as HTML
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+Rendered bands/_form.html.erb (12.6ms)
+Rendered bands/new.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 27ms (Views: 18.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/bands/new" for 127.0.0.1 at Sun Mar 27 09:24:09 +0200 2011
+  Processing by BandsController#new as HTML
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendered bands/_form.html.erb (15.7ms)
+Rendered bands/new.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 31ms (Views: 21.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bands/new" for 127.0.0.1 at Sun Mar 27 09:24:10 +0200 2011
+  Processing by BandsController#new as HTML
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+Rendered bands/_form.html.erb (13.7ms)
+Rendered bands/new.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 31ms (Views: 20.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bands/new" for 127.0.0.1 at Sun Mar 27 09:24:31 +0200 2011
+  Processing by BandsController#new as HTML
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendered bands/_form.html.erb (95.3ms)
+Rendered bands/new.html.erb within layouts/application (99.8ms)
+Completed 200 OK in 111ms (Views: 102.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bands/new" for 127.0.0.1 at Sun Mar 27 09:24:33 +0200 2011
+  Processing by BandsController#new as HTML
+  [1m[35mSQL (1.1ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+Rendered bands/_form.html.erb (13.9ms)
+Rendered bands/new.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 31ms (Views: 21.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/bands/new" for 127.0.0.1 at Sun Mar 27 09:24:51 +0200 2011
+  Processing by BandsController#new as HTML
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendered bands/_form.html.erb (13.8ms)
+Rendered bands/new.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 130ms (Views: 20.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 09:24:53 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands"
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f2e11926-5415-11e0-b4d9-0021851a652a')[0m
+Rendered bands/index.html.erb within layouts/application (101.2ms)
+Completed 200 OK in 112ms (Views: 102.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 09:24:59 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands"
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f2e11926-5415-11e0-b4d9-0021851a652a')[0m
+Rendered bands/index.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 30ms (Views: 20.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/bands/new" for 127.0.0.1 at Sun Mar 27 09:25:01 +0200 2011
+  Processing by BandsController#new as HTML
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+Rendered bands/_form.html.erb (14.3ms)
+Rendered bands/new.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 30ms (Views: 21.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bands/new" for 127.0.0.1 at Sun Mar 27 09:25:03 +0200 2011
+  Processing by BandsController#new as HTML
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendered bands/_form.html.erb (97.0ms)
+Rendered bands/new.html.erb within layouts/application (100.0ms)
+Completed 200 OK in 111ms (Views: 103.0ms | ActiveRecord: 0.8ms)
