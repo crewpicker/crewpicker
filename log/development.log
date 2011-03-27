@@ -14227,3 +14227,1371 @@ Started GET "/bands/new" for 127.0.0.1 at Sun Mar 27 09:25:03 +0200 2011
 Rendered bands/_form.html.erb (97.0ms)
 Rendered bands/new.html.erb within layouts/application (100.0ms)
 Completed 200 OK in 111ms (Views: 103.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 17:39:06 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[35mBand Load (2.9ms)[0m  SELECT "bands".* FROM "bands"
+  [1m[36mSQL (1.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f2e11926-5415-11e0-b4d9-0021851a652a')[0m
+Rendered bands/index.html.erb within layouts/application (20.9ms)
+Completed 200 OK in 35ms (Views: 22.1ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 17:44:45 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[35mBand Load (1.2ms)[0m  SELECT "bands".* FROM "bands"
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (1.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (1.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '017d2798-549f-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '0530f5a6-5498-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '097d17e2-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '0de21d44-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '112f6110-549a-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '11acd8aa-549c-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (4.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '244951be-5497-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '256713c2-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '283888f4-54a0-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '2a7eac36-549d-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '2b126b2e-54a2-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '30eb98f8-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3306c43c-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '333c73d0-548e-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '33bc9712-5499-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3851dd6c-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '393a496a-5498-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a5dc478-54a4-11e0-9a56-5254f074b6ae')
+  [1m[36mSQL (7.9ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a629da4-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a7e7848-54a0-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3cd5483e-549a-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '461cf106-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '467fbbde-5491-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '46b1de08-5495-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '4d73d9b2-5495-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '50e17aee-549c-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.8ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '57bf77ce-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '58eedcb8-54a1-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '5c45254a-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '60b9c956-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '61232dec-5499-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '621bacfc-5498-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '641d1b46-548c-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '980f1b22-5499-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6707d8c2-548d-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6803c250-5496-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6928595c-549b-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6f4677fc-549f-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7a4b6692-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7ba73496-549a-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7fdb05f8-5498-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '80e38f1a-54a2-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '82c1f4e8-549d-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '84f36216-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '8da1e486-54a2-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (1.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '93a1aefa-5490-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '93b8c90e-54a0-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '98b7464e-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '99386ad0-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a02add6c-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a50977de-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a52cdc5c-5491-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'af80b808-54a1-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'b0e667c8-548e-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c06501da-549a-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c210aef0-549d-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c406a434-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c676c194-549f-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c783c9b8-5497-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ca29d11c-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ccc46550-549b-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ce273844-54a2-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd0842aec-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd203180e-5496-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (27.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd758d41c-5499-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd9718e0c-5493-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'da742f88-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (1.2ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'dbc522b8-54a2-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'dbc79d82-5497-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'df62206a-5498-11e0-81cd-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e0c2256e-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e1a0269a-5495-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e23b0a7e-54a0-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e5fd4e7e-548c-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e8649e12-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e8a08230-548d-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'eb9a59b0-5498-11e0-81cd-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'edacc6c6-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.8ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'eebb1e2a-5490-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f0fd3532-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f87d540e-54a0-11e0-a3f7-5254f074b6ae')[0m
+Rendered bands/index.html.erb within layouts/application (741.7ms)
+Completed 200 OK in 761ms (Views: 655.8ms | ActiveRecord: 91.4ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 17:44:46 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 17:44:46 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 17:49:37 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[35mBand Load (1.7ms)[0m  SELECT "bands".* FROM "bands"
+  [1m[36mSQL (1.2ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '017d2798-549f-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '0530f5a6-5498-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '097d17e2-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (2.0ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '0de21d44-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (2.2ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '112f6110-549a-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '11acd8aa-549c-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '244951be-5497-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '256713c2-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '283888f4-54a0-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '2a7eac36-549d-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '2b126b2e-54a2-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '30eb98f8-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3306c43c-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '333c73d0-548e-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '33bc9712-5499-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3851dd6c-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '393a496a-5498-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a5dc478-54a4-11e0-9a56-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a629da4-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (1.2ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a7e7848-54a0-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3cd5483e-549a-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '461cf106-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '467fbbde-5491-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '46b1de08-5495-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '4d73d9b2-5495-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '50e17aee-549c-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '57bf77ce-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '58eedcb8-54a1-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '5c45254a-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '60b9c956-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '61232dec-5499-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '621bacfc-5498-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (4.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '641d1b46-548c-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '980f1b22-5499-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6707d8c2-548d-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6803c250-5496-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6928595c-549b-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6f4677fc-549f-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7a4b6692-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7ba73496-549a-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7fdb05f8-5498-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '80e38f1a-54a2-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '82c1f4e8-549d-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '84f36216-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '8da1e486-54a2-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (1.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '93a1aefa-5490-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (1.1ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '93b8c90e-54a0-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '98b7464e-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '99386ad0-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a02add6c-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a50977de-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a52cdc5c-5491-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'af80b808-54a1-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'b0e667c8-548e-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c06501da-549a-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c210aef0-549d-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c406a434-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c676c194-549f-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c783c9b8-5497-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ca29d11c-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ccc46550-549b-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ce273844-54a2-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd0842aec-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd203180e-5496-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd758d41c-5499-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd9718e0c-5493-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'da742f88-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'dbc522b8-54a2-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'dbc79d82-5497-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (1.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'df62206a-5498-11e0-81cd-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e0c2256e-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e1a0269a-5495-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e23b0a7e-54a0-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e5fd4e7e-548c-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e8649e12-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e8a08230-548d-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'eb9a59b0-5498-11e0-81cd-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'edacc6c6-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'eebb1e2a-5490-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f0fd3532-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (1.1ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f87d540e-54a0-11e0-a3f7-5254f074b6ae')[0m
+Rendered bands/index.html.erb within layouts/application (794.3ms)
+Completed 200 OK in 818ms (Views: 738.2ms | ActiveRecord: 61.6ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 17:49:39 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 17:49:39 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 17:51:40 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[35mBand Load (1.1ms)[0m  SELECT "bands".* FROM "bands"
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (1.3ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '017d2798-549f-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '0530f5a6-5498-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '097d17e2-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '0de21d44-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '112f6110-549a-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '11acd8aa-549c-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '244951be-5497-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '256713c2-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '283888f4-54a0-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '2a7eac36-549d-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '2b126b2e-54a2-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '30eb98f8-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3306c43c-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '333c73d0-548e-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (1.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '33bc9712-5499-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (1.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3851dd6c-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '393a496a-5498-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a5dc478-54a4-11e0-9a56-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a629da4-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a7e7848-54a0-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3cd5483e-549a-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '461cf106-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '467fbbde-5491-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '46b1de08-5495-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (1.1ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '4d73d9b2-5495-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '50e17aee-549c-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '57bf77ce-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '58eedcb8-54a1-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '5c45254a-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '60b9c956-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '61232dec-5499-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '621bacfc-5498-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '641d1b46-548c-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '980f1b22-5499-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6707d8c2-548d-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6803c250-5496-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6928595c-549b-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6f4677fc-549f-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7a4b6692-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (1.1ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7ba73496-549a-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7fdb05f8-5498-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '80e38f1a-54a2-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '82c1f4e8-549d-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '84f36216-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '8da1e486-54a2-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '93a1aefa-5490-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.8ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '93b8c90e-54a0-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '98b7464e-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '99386ad0-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a02add6c-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a50977de-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a52cdc5c-5491-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'af80b808-54a1-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'b0e667c8-548e-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c06501da-549a-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c210aef0-549d-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (1.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c406a434-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (2.8ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c676c194-549f-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c783c9b8-5497-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ca29d11c-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ccc46550-549b-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ce273844-54a2-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd0842aec-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd203180e-5496-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd758d41c-5499-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd9718e0c-5493-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'da742f88-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'dbc522b8-54a2-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'dbc79d82-5497-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'df62206a-5498-11e0-81cd-5254f074b6ae')
+  [1m[36mSQL (0.8ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e0c2256e-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e1a0269a-5495-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e23b0a7e-54a0-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e5fd4e7e-548c-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e8649e12-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e8a08230-548d-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'eb9a59b0-5498-11e0-81cd-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'edacc6c6-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'eebb1e2a-5490-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f0fd3532-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f87d540e-54a0-11e0-a3f7-5254f074b6ae')[0m
+Rendered bands/index.html.erb within layouts/application (744.9ms)
+Completed 200 OK in 764ms (Views: 692.0ms | ActiveRecord: 57.3ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 17:51:42 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 17:51:42 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 17:52:00 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[35mBand Load (0.8ms)[0m  SELECT "bands".* FROM "bands"
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendered bands/index.html.erb within layouts/application (265.9ms)
+Completed 200 OK in 286ms (Views: 268.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 17:52:01 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 17:52:01 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.7ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 17:55:49 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[35mBand Load (1.0ms)[0m  SELECT "bands".* FROM "bands"
+  [1m[36mSQL (2.3ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendered bands/index.html.erb within layouts/application (366.8ms)
+Completed 200 OK in 389ms (Views: 371.0ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 17:55:50 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (9.2ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 17:55:50 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (26.1ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 17:55:57 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[35mBand Load (1.8ms)[0m  SELECT "bands".* FROM "bands"
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendered bands/index.html.erb within layouts/application (445.6ms)
+Completed 200 OK in 473ms (Views: 454.5ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 17:55:58 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (7.0ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 17:55:58 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 17:56:26 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[35mBand Load (0.8ms)[0m  SELECT "bands".* FROM "bands"
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendered bands/index.html.erb within layouts/application (203.5ms)
+Completed 200 OK in 335ms (Views: 206.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 17:59:40 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[35mBand Load (1.0ms)[0m  SELECT "bands".* FROM "bands"
+Rendered bands/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 131ms (Views: 7.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 18:00:34 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[36mBand Load (1.6ms)[0m  [1mSELECT "bands".* FROM "bands"[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '017d2798-549f-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '0530f5a6-5498-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (5.8ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '097d17e2-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '0de21d44-549b-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '112f6110-549a-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '11acd8aa-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '244951be-5497-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '256713c2-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '283888f4-54a0-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '2a7eac36-549d-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (1.3ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '2b126b2e-54a2-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '30eb98f8-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3306c43c-549e-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '333c73d0-548e-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '33bc9712-5499-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3851dd6c-549b-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '393a496a-5498-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a5dc478-54a4-11e0-9a56-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a629da4-549f-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a7e7848-54a0-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3cd5483e-549a-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '461cf106-54a1-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '467fbbde-5491-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '46b1de08-5495-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '4d73d9b2-5495-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '50e17aee-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (1.1ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '57bf77ce-549e-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '58eedcb8-54a1-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '5c45254a-549f-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '60b9c956-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (1.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '61232dec-5499-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '621bacfc-5498-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '641d1b46-548c-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '980f1b22-5499-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6707d8c2-548d-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6803c250-5496-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6928595c-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6f4677fc-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7a4b6692-549c-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7ba73496-549a-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7fdb05f8-5498-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '80e38f1a-54a2-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '82c1f4e8-549d-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '84f36216-54a1-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '8da1e486-54a2-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '93a1aefa-5490-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '93b8c90e-54a0-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.8ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '98b7464e-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '99386ad0-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a02add6c-549b-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a50977de-549c-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (1.1ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a52cdc5c-5491-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'af80b808-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'b0e667c8-548e-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c06501da-549a-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c210aef0-549d-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c406a434-549e-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c676c194-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c783c9b8-5497-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ca29d11c-54a1-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (1.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ccc46550-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ce273844-54a2-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd0842aec-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd203180e-5496-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd758d41c-5499-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd9718e0c-5493-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'da742f88-549f-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'dbc522b8-54a2-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'dbc79d82-5497-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'df62206a-5498-11e0-81cd-5254f074b6ae')[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e0c2256e-549c-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e1a0269a-5495-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (1.2ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e23b0a7e-54a0-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e5fd4e7e-548c-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e8649e12-549e-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e8a08230-548d-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'eb9a59b0-5498-11e0-81cd-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'edacc6c6-54a1-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'eebb1e2a-5490-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f0fd3532-549b-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f87d540e-54a0-11e0-a3f7-5254f074b6ae')
+Rendered bands/index.html.erb within layouts/application (866.7ms)
+Completed 200 OK in 897ms (Views: 816.8ms | ActiveRecord: 60.0ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 18:00:35 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 18:00:35 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/bands/017d2798-549f-11e0-9701-5254f074b6ae" for 127.0.0.1 at Sun Mar 27 18:00:47 +0200 2011
+  Processing by BandsController#show as HTML
+  Parameters: {"id"=>"017d2798-549f-11e0-9701-5254f074b6ae"}
+  [1m[36mSQL (2.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '017d2798-549f-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mSQL (4.1ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mBandMember Load (0.6ms)[0m  SELECT "band_members".* FROM "band_members" WHERE ("band_members".band_id = '017d2798-549f-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendered bands/show.html.erb within layouts/application (40.8ms)
+Completed 200 OK in 90ms (Views: 73.2ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/images/medium/missing.png" for 127.0.0.1 at Sun Mar 27 18:00:47 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/medium/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/stages/1/schedule" for 127.0.0.1 at Sun Mar 27 18:00:56 +0200 2011
+  Processing by StageSchedulesController#show_schedule as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBand Load (0.9ms)[0m  SELECT "bands".* FROM "bands"
+  [1m[36mSQL (2.2ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mStageSchedule Load (0.7ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '017d2798-549f-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.6ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '0530f5a6-5498-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.5ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '097d17e2-54a3-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '0de21d44-549b-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '112f6110-549a-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '11acd8aa-549c-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '244951be-5497-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '256713c2-54a3-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '283888f4-54a0-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '2a7eac36-549d-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.4ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '2b126b2e-54a2-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '30eb98f8-54a3-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.4ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '3306c43c-549e-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '333c73d0-548e-11e0-bcfe-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '33bc9712-5499-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '3851dd6c-549b-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '393a496a-5498-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '3a5dc478-54a4-11e0-9a56-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '3a629da4-549f-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '3a7e7848-54a0-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '3cd5483e-549a-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '461cf106-54a1-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '467fbbde-5491-11e0-bcfe-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '46b1de08-5495-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.7ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '4d73d9b2-5495-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '50e17aee-549c-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '57bf77ce-549e-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.1ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '58eedcb8-54a1-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '5c45254a-549f-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.1ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '60b9c956-54a3-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.1ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '61232dec-5499-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.1ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '621bacfc-5498-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.1ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '641d1b46-548c-11e0-bcfe-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.1ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '980f1b22-5499-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.1ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '6707d8c2-548d-11e0-bcfe-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '6803c250-5496-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '6928595c-549b-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '6f4677fc-549f-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.7ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '7a4b6692-549c-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.7ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '7ba73496-549a-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.7ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '7fdb05f8-5498-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.6ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '80e38f1a-54a2-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '82c1f4e8-549d-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '84f36216-54a1-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '8da1e486-54a2-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.6ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '93a1aefa-5490-11e0-bcfe-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.7ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '93b8c90e-54a0-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '98b7464e-54a3-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '99386ad0-54a3-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'a02add6c-549b-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'a50977de-549c-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.1ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'a52cdc5c-5491-11e0-bcfe-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'af80b808-54a1-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'b0e667c8-548e-11e0-bcfe-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.4ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'c06501da-549a-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'c210aef0-549d-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.4ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'c406a434-549e-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'c676c194-549f-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.5ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'c783c9b8-5497-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (3.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'ca29d11c-54a1-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (1.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'ccc46550-549b-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (1.1ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'ce273844-54a2-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.5ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'd0842aec-54a3-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'd203180e-5496-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'd758d41c-5499-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'd9718e0c-5493-11e0-bcfe-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'da742f88-549f-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.7ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'dbc522b8-54a2-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.4ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'dbc79d82-5497-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.8ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'df62206a-5498-11e0-81cd-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.5ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'e0c2256e-549c-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'e1a0269a-5495-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'e23b0a7e-54a0-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'e5fd4e7e-548c-11e0-bcfe-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (1.1ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'e8649e12-549e-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'e8a08230-548d-11e0-bcfe-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.5ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'eb9a59b0-5498-11e0-81cd-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'edacc6c6-54a1-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.8ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'eebb1e2a-5490-11e0-bcfe-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'f0fd3532-549b-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'f87d540e-54a0-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"stages"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mStage Load (0.4ms)[0m  SELECT "stages".* FROM "stages" WHERE "stages"."id" = 1 LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"stages"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendered stage_schedules/show_schedule.html.erb within layouts/calendar (8.0ms)
+Completed 200 OK in 199ms (Views: 44.6ms | ActiveRecord: 39.2ms)
+
+
+Started GET "/stages/1/schedule/get_events?start=1302912000&end=1302998400&_=1301241657217" for 127.0.0.1 at Sun Mar 27 18:00:57 +0200 2011
+  Processing by StageSchedulesController#get_events as JSON
+  Parameters: {"end"=>"1302998400", "id"=>"1", "start"=>"1302912000", "_"=>"1301241657217"}
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"stages"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mStage Load (0.4ms)[0m  [1mSELECT "stages".* FROM "stages" WHERE "stages"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"stages"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mStageSchedule Load (1.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".stage_id = 1)[0m
+  [1m[35mSQL (2.3ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"stage_schedules"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (1.2ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mBand Load (0.9ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'a52cdc5c-5491-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mSQL (1.3ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mBand Load (0.9ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '641d1b46-548c-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e5fd4e7e-548c-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '6707d8c2-548d-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '333c73d0-548e-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'b0e667c8-548e-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '93a1aefa-5490-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'eebb1e2a-5490-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'd9718e0c-5493-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'dbc79d82-5497-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '621bacfc-5498-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'df62206a-5498-11e0-81cd-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '57bf77ce-549e-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e8649e12-549e-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c676c194-549f-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3a7e7848-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e23b0a7e-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '58eedcb8-54a1-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '8da1e486-54a2-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'dbc522b8-54a2-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '256713c2-54a3-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.8ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '99386ad0-54a3-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.6ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3a5dc478-54a4-11e0-9a56-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.6ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '98b7464e-54a3-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '60b9c956-54a3-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '30eb98f8-54a3-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '097d17e2-54a3-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'ce273844-54a2-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c210aef0-549d-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'edacc6c6-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.9ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'ca29d11c-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '84f36216-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.6ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'f87d540e-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '93b8c90e-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (10.2ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'da742f88-549f-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '6f4677fc-549f-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '017d2798-549f-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (2.6ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3306c43c-549e-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (6.2ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '980f1b22-5499-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '2a7eac36-549d-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.6ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'a50977de-549c-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '11acd8aa-549c-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (5.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'f0fd3532-549b-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'a02add6c-549b-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3851dd6c-549b-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'd758d41c-5499-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '0de21d44-549b-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (2.7ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '7ba73496-549a-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.6ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3cd5483e-549a-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (1.0ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '61232dec-5499-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.7ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '33bc9712-5499-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (1.8ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'eb9a59b0-5498-11e0-81cd-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (4.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '393a496a-5498-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '0530f5a6-5498-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.7ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c783c9b8-5497-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'd203180e-5496-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.9ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '6803c250-5496-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.6ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e1a0269a-5495-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (5.2ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '82c1f4e8-549d-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e8a08230-548d-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '467fbbde-5491-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '46b1de08-5495-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (3.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '5c45254a-549f-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (2.7ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'af80b808-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (1.0ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'd0842aec-54a3-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '2b126b2e-54a2-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '283888f4-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c406a434-549e-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e0c2256e-549c-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '7a4b6692-549c-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (1.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'ccc46550-549b-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (1.2ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '461cf106-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '80e38f1a-54a2-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '6928595c-549b-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (1.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '50e17aee-549c-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c06501da-549a-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (1.1ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '112f6110-549a-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (1.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '7fdb05f8-5498-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.6ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '244951be-5497-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (1.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '4d73d9b2-5495-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (1.2ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3a629da4-549f-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+Rendered text template (0.0ms)
+Completed 200 OK in 365ms (Views: 14.1ms | ActiveRecord: 92.4ms)
+
+
+Started GET "/stages/1/schedule/get_events?start=1302912000&end=1302998400&_=1301242500648" for 127.0.0.1 at Sun Mar 27 18:15:00 +0200 2011
+  Processing by StageSchedulesController#get_events as JSON
+  Parameters: {"end"=>"1302998400", "id"=>"1", "start"=>"1302912000", "_"=>"1301242500648"}
+  [1m[35mSQL (2.3ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"stages"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mStage Load (0.4ms)[0m  [1mSELECT "stages".* FROM "stages" WHERE "stages"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (5.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"stages"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mStageSchedule Load (2.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".stage_id = 1)[0m
+  [1m[35mSQL (1.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"stage_schedules"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'a52cdc5c-5491-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mBand Load (0.6ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '641d1b46-548c-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e5fd4e7e-548c-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '6707d8c2-548d-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '333c73d0-548e-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'b0e667c8-548e-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '93a1aefa-5490-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'eebb1e2a-5490-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'd9718e0c-5493-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'dbc79d82-5497-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.2ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '621bacfc-5498-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'df62206a-5498-11e0-81cd-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '57bf77ce-549e-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e8649e12-549e-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c676c194-549f-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3a7e7848-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e23b0a7e-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '58eedcb8-54a1-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '8da1e486-54a2-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'dbc522b8-54a2-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '256713c2-54a3-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '99386ad0-54a3-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3a5dc478-54a4-11e0-9a56-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '98b7464e-54a3-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '60b9c956-54a3-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '30eb98f8-54a3-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '097d17e2-54a3-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'ce273844-54a2-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c210aef0-549d-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'edacc6c6-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'ca29d11c-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '84f36216-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'f87d540e-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '93b8c90e-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.7ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'da742f88-549f-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '6f4677fc-549f-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.2ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '017d2798-549f-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.2ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3306c43c-549e-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '980f1b22-5499-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '2a7eac36-549d-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'a50977de-549c-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '11acd8aa-549c-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.2ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'f0fd3532-549b-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.2ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'a02add6c-549b-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.2ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3851dd6c-549b-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'd758d41c-5499-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.2ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '0de21d44-549b-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '7ba73496-549a-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.2ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3cd5483e-549a-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '61232dec-5499-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.9ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '33bc9712-5499-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.6ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'eb9a59b0-5498-11e0-81cd-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (1.7ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '393a496a-5498-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (1.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '0530f5a6-5498-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.6ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c783c9b8-5497-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'd203180e-5496-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '6803c250-5496-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e1a0269a-5495-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '82c1f4e8-549d-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e8a08230-548d-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '467fbbde-5491-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '46b1de08-5495-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '5c45254a-549f-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'af80b808-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'd0842aec-54a3-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '2b126b2e-54a2-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '283888f4-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c406a434-549e-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (1.8ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e0c2256e-549c-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.7ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '7a4b6692-549c-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.6ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'ccc46550-549b-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '461cf106-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.9ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '80e38f1a-54a2-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '6928595c-549b-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.2ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '50e17aee-549c-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c06501da-549a-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (1.2ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '112f6110-549a-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.9ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '7fdb05f8-5498-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.8ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '244951be-5497-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.7ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '4d73d9b2-5495-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3a629da4-549f-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+Rendered text template (0.0ms)
+Completed 200 OK in 266ms (Views: 1.6ms | ActiveRecord: 52.7ms)
+
+
+Started GET "/bands" for 127.0.0.1 at Sun Mar 27 18:15:03 +0200 2011
+  Processing by BandsController#index as HTML
+  [1m[35mBand Load (1.3ms)[0m  SELECT "bands".* FROM "bands"
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '017d2798-549f-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '0530f5a6-5498-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '097d17e2-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '0de21d44-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '112f6110-549a-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '11acd8aa-549c-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '244951be-5497-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '256713c2-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '283888f4-54a0-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '2a7eac36-549d-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '2b126b2e-54a2-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '30eb98f8-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3306c43c-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '333c73d0-548e-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '33bc9712-5499-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3851dd6c-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '393a496a-5498-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a5dc478-54a4-11e0-9a56-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a629da4-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3a7e7848-54a0-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '3cd5483e-549a-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '461cf106-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.8ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '467fbbde-5491-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '46b1de08-5495-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '4d73d9b2-5495-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '50e17aee-549c-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '57bf77ce-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '58eedcb8-54a1-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '5c45254a-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '60b9c956-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '61232dec-5499-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '621bacfc-5498-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '641d1b46-548c-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '980f1b22-5499-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6707d8c2-548d-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6803c250-5496-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6928595c-549b-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '6f4677fc-549f-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.8ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7a4b6692-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7ba73496-549a-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '7fdb05f8-5498-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '80e38f1a-54a2-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '82c1f4e8-549d-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '84f36216-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '8da1e486-54a2-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '93a1aefa-5490-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '93b8c90e-54a0-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (2.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '98b7464e-54a3-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = '99386ad0-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a02add6c-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a50977de-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'a52cdc5c-5491-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'af80b808-54a1-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'b0e667c8-548e-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c06501da-549a-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c210aef0-549d-11e0-9701-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c406a434-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c676c194-549f-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'c783c9b8-5497-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (2.2ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ca29d11c-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ccc46550-549b-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'ce273844-54a2-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd0842aec-54a3-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd203180e-5496-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd758d41c-5499-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'd9718e0c-5493-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'da742f88-549f-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'dbc522b8-54a2-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'dbc79d82-5497-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'df62206a-5498-11e0-81cd-5254f074b6ae')
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e0c2256e-549c-11e0-8d4d-5254f074b6ae')[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e1a0269a-5495-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e23b0a7e-54a0-11e0-a3f7-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e5fd4e7e-548c-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e8649e12-549e-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'e8a08230-548d-11e0-bcfe-5254f074b6ae')
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'eb9a59b0-5498-11e0-81cd-5254f074b6ae')[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'edacc6c6-54a1-11e0-a3f7-5254f074b6ae')
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'eebb1e2a-5490-11e0-bcfe-5254f074b6ae')[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f0fd3532-549b-11e0-8d4d-5254f074b6ae')
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "band_members" WHERE ("band_members".band_id = 'f87d540e-54a0-11e0-a3f7-5254f074b6ae')[0m
+Rendered bands/index.html.erb within layouts/application (707.5ms)
+Completed 200 OK in 735ms (Views: 665.6ms | ActiveRecord: 52.2ms)
+
+
+Started GET "/images/thumb/missing.png" for 127.0.0.1 at Sun Mar 27 18:15:04 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/thumb/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/bands/017d2798-549f-11e0-9701-5254f074b6ae" for 127.0.0.1 at Sun Mar 27 18:15:06 +0200 2011
+  Processing by BandsController#show as HTML
+  Parameters: {"id"=>"017d2798-549f-11e0-9701-5254f074b6ae"}
+  [1m[35mSQL (1.1ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mBand Load (0.7ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '017d2798-549f-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mSQL (1.4ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mBandMember Load (0.7ms)[0m  [1mSELECT "band_members".* FROM "band_members" WHERE ("band_members".band_id = '017d2798-549f-11e0-9701-5254f074b6ae')[0m
+  [1m[35mSQL (7.3ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"band_members"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+Rendered bands/show.html.erb within layouts/application (174.1ms)
+Completed 200 OK in 194ms (Views: 170.1ms | ActiveRecord: 11.2ms)
+
+
+Started GET "/images/medium/missing.png" for 127.0.0.1 at Sun Mar 27 18:15:06 +0200 2011
+
+ActionController::RoutingError (No route matches "/images/medium/missing.png"):
+  
+
+Rendered /usr/local/lib64/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/stages/1/schedule" for 127.0.0.1 at Sun Mar 27 18:15:09 +0200 2011
+  Processing by StageSchedulesController#show_schedule as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.8ms)[0m  [1mSELECT "bands".* FROM "bands"[0m
+  [1m[35mSQL (1.3ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mStageSchedule Load (0.6ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '017d2798-549f-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.4ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '0530f5a6-5498-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '097d17e2-54a3-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.4ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '0de21d44-549b-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.5ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '112f6110-549a-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '11acd8aa-549c-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '244951be-5497-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '256713c2-54a3-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '283888f4-54a0-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '2a7eac36-549d-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '2b126b2e-54a2-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.5ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '30eb98f8-54a3-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '3306c43c-549e-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '333c73d0-548e-11e0-bcfe-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '33bc9712-5499-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.4ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '3851dd6c-549b-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '393a496a-5498-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '3a5dc478-54a4-11e0-9a56-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '3a629da4-549f-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.5ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '3a7e7848-54a0-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.5ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '3cd5483e-549a-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.6ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '461cf106-54a1-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '467fbbde-5491-11e0-bcfe-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.4ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '46b1de08-5495-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '4d73d9b2-5495-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.4ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '50e17aee-549c-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '57bf77ce-549e-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '58eedcb8-54a1-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '5c45254a-549f-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '60b9c956-54a3-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '61232dec-5499-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '621bacfc-5498-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.1ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '641d1b46-548c-11e0-bcfe-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '980f1b22-5499-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.1ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '6707d8c2-548d-11e0-bcfe-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '6803c250-5496-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '6928595c-549b-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '6f4677fc-549f-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '7a4b6692-549c-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '7ba73496-549a-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '7fdb05f8-5498-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '80e38f1a-54a2-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '82c1f4e8-549d-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '84f36216-54a1-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '8da1e486-54a2-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '93a1aefa-5490-11e0-bcfe-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '93b8c90e-54a0-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '98b7464e-54a3-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = '99386ad0-54a3-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.2ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'a02add6c-549b-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'a50977de-549c-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.6ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'a52cdc5c-5491-11e0-bcfe-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.7ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'af80b808-54a1-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.6ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'b0e667c8-548e-11e0-bcfe-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.6ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'c06501da-549a-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.7ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'c210aef0-549d-11e0-9701-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.6ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'c406a434-549e-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'c676c194-549f-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'c783c9b8-5497-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'ca29d11c-54a1-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'ccc46550-549b-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.8ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'ce273844-54a2-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.5ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'd0842aec-54a3-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'd203180e-5496-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (1.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'd758d41c-5499-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.8ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'd9718e0c-5493-11e0-bcfe-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.5ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'da742f88-549f-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (1.1ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'dbc522b8-54a2-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'dbc79d82-5497-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.4ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'df62206a-5498-11e0-81cd-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'e0c2256e-549c-11e0-8d4d-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (5.7ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'e1a0269a-5495-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.6ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'e23b0a7e-54a0-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.5ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'e5fd4e7e-548c-11e0-bcfe-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'e8649e12-549e-11e0-9701-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.4ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'e8a08230-548d-11e0-bcfe-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.4ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'eb9a59b0-5498-11e0-81cd-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.3ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'edacc6c6-54a1-11e0-a3f7-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.2ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'eebb1e2a-5490-11e0-bcfe-5254f074b6ae') LIMIT 1[0m
+  [1m[35mStageSchedule Load (0.5ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'f0fd3532-549b-11e0-8d4d-5254f074b6ae') LIMIT 1
+  [1m[36mStageSchedule Load (0.3ms)[0m  [1mSELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".band_id = 'f87d540e-54a0-11e0-a3f7-5254f074b6ae') LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"stages"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mStage Load (0.3ms)[0m  [1mSELECT "stages".* FROM "stages" WHERE "stages"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"stages"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+Rendered stage_schedules/show_schedule.html.erb within layouts/calendar (6.5ms)
+Completed 200 OK in 168ms (Views: 8.5ms | ActiveRecord: 40.4ms)
+
+
+Started GET "/stages/1/schedule/get_events?start=1302912000&end=1302998400&_=1301242509920" for 127.0.0.1 at Sun Mar 27 18:15:10 +0200 2011
+  Processing by StageSchedulesController#get_events as JSON
+  Parameters: {"end"=>"1302998400", "id"=>"1", "start"=>"1302912000", "_"=>"1301242509920"}
+  [1m[36mSQL (3.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"stages"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mStage Load (0.4ms)[0m  SELECT "stages".* FROM "stages" WHERE "stages"."id" = 1 LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"stages"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mStageSchedule Load (1.6ms)[0m  SELECT "stage_schedules".* FROM "stage_schedules" WHERE ("stage_schedules".stage_id = 1)
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"stage_schedules"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (1.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'a52cdc5c-5491-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mSQL (1.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"bands"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mBand Load (0.7ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '641d1b46-548c-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e5fd4e7e-548c-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.7ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '6707d8c2-548d-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (8.2ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '333c73d0-548e-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.6ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'b0e667c8-548e-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '93a1aefa-5490-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.6ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'eebb1e2a-5490-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'd9718e0c-5493-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'dbc79d82-5497-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '621bacfc-5498-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'df62206a-5498-11e0-81cd-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '57bf77ce-549e-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e8649e12-549e-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c676c194-549f-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.8ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3a7e7848-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.7ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e23b0a7e-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.7ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '58eedcb8-54a1-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.9ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '8da1e486-54a2-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (1.1ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'dbc522b8-54a2-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (1.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '256713c2-54a3-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '99386ad0-54a3-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3a5dc478-54a4-11e0-9a56-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.7ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '98b7464e-54a3-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '60b9c956-54a3-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '30eb98f8-54a3-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '097d17e2-54a3-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'ce273844-54a2-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c210aef0-549d-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'edacc6c6-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'ca29d11c-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '84f36216-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'f87d540e-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '93b8c90e-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'da742f88-549f-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '6f4677fc-549f-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '017d2798-549f-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3306c43c-549e-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '980f1b22-5499-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '2a7eac36-549d-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'a50977de-549c-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '11acd8aa-549c-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'f0fd3532-549b-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'a02add6c-549b-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3851dd6c-549b-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'd758d41c-5499-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.7ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '0de21d44-549b-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.7ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '7ba73496-549a-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.2ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3cd5483e-549a-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '61232dec-5499-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (1.1ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '33bc9712-5499-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'eb9a59b0-5498-11e0-81cd-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '393a496a-5498-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '0530f5a6-5498-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.6ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c783c9b8-5497-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (1.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'd203180e-5496-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.9ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '6803c250-5496-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e1a0269a-5495-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.6ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '82c1f4e8-549d-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (1.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e8a08230-548d-11e0-bcfe-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.8ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '467fbbde-5491-11e0-bcfe-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '46b1de08-5495-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '5c45254a-549f-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'af80b808-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'd0842aec-54a3-11e0-9701-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.3ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '2b126b2e-54a2-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '283888f4-54a0-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c406a434-549e-11e0-9701-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'e0c2256e-549c-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '7a4b6692-549c-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'ccc46550-549b-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.5ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '461cf106-54a1-11e0-a3f7-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '80e38f1a-54a2-11e0-a3f7-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '6928595c-549b-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '50e17aee-549c-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = 'c06501da-549a-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.4ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '112f6110-549a-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '7fdb05f8-5498-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.5ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '244951be-5497-11e0-8d4d-5254f074b6ae' LIMIT 1
+  [1m[36mBand Load (0.4ms)[0m  [1mSELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '4d73d9b2-5495-11e0-8d4d-5254f074b6ae' LIMIT 1[0m
+  [1m[35mBand Load (0.3ms)[0m  SELECT "bands".* FROM "bands" WHERE "bands"."uuid" = '3a629da4-549f-11e0-a3f7-5254f074b6ae' LIMIT 1
+Rendered text template (0.0ms)
+Completed 200 OK in 266ms (Views: 5.1ms | ActiveRecord: 59.2ms)
