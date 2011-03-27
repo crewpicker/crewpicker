@@ -1,4 +1,6 @@
 FestivalAdmin::Application.routes.draw do
+  resources :locations
+
   resources :stages
 
   resources :bands
