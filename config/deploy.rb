@@ -2,14 +2,13 @@ set :application, "FestivalAdmin"
 set :repository,  "git@github.com:tg90nor/FestivalAdmin.git"
 
 set :scm, :git
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
 set :deploy_to, "/home/tg90nor/Linted/#{application}"
 set :use_sudo, false
 
-role :web, "linted.net"                          # Your HTTP server, Apache/etc
-role :app, "linted.net"                          # This may be the same as your `Web` server
-role :db,  "linted.net", :primary => true # This is where Rails migrations will run
+role :web, "linted.net"
+role :app, "linted.net"
+role :db,  "linted.net", :primary => true
 
 namespace :deploy do
   task :start do ; end
@@ -40,3 +39,7 @@ end
 
 after "deploy:rollback:revision", "bundler:install"
 after "deploy:update_code", "bundler:bundle_new_release"
+
+task :after_update_code do
+run "ln -nfs #{deploy_to}/#{shared_dir}/config/database.yml #{release_path}/config/database.yml"
+end
