@@ -29,6 +29,14 @@ nb:
   band_members_count: "Ant. medlemmer"
   band_list: "Bandliste"
   edit_band_member: "Rediger bandmedlem"
+  fireguards: "Brannvakter"
+  age: "Alder"
+  notes: "Notater"
+  mobile: "Mobil"
+  new_fireguard: "Ny brannvakt"
+  fireguard_active: "Kan stille opp"
+  edit_fireguard: "Endre brannvakt"
+  schedule: "Tidsskjema"
 
   support:
     array:
