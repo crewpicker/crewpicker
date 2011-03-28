@@ -2,7 +2,7 @@
 <% content_for :headerextra do %>
   <%= stylesheet_link_tag 'fullcalendar' %>
   <%= stylesheet_link_tag 'main', 'fullcalendar.print', :media => 'print' %>
-  <%= javascript_include_tag 'jquery-1.5.min', 'jquery-ui-1.8.9.custom.min', 'fullcalendar.min' %>
+  <%= javascript_include_tag 'jquery-1.5.min', 'jquery-ui-1.8.9.custom.min', 'fullcalendar' %>
   <style type='text/css'>
 
 	#wrap {
@@ -56,7 +56,6 @@
   </style>
 <% end %>
 <script type='text/javascript'>
-
 	$(document).ready(function() {
 
 
@@ -92,21 +91,26 @@
 			header: {
 				left: 'prev,next',
 				center: 'title',
-				right: ''
+				right: 'agendaWeek,agendaDay'
 			},
-			defaultView: 'agendaDay',
-			slotMinutes: 15,
+			defaultView: 'agendaWeekend',
+			slotMinutes: 60,
 			year: 2011,
 			month: 03,
 			date: 16,
 			axisFormat: 'H:mm',
 			timeFormat: 'H:mm',
 			height: 3500,
-			defaultEventMinutes: 15,
+			defaultEventMinutes: 60,
 			disableResizing: true,
 			editable: true,
 			droppable: true, // this allows things to be dropped onto the calendar !!!
                         events: '/stages/<%= @stage.id %>/schedule/get_events',
+                        firstDay: 5,
+                        weekends: false,
+                        viewDisplay: function(view) {
+                          ;
+                        },
 			drop: function(date, allDay) {
                           var originalEventObject = $(this).data('eventObject');
                           var copiedEventObject = $.extend({}, originalEventObject);

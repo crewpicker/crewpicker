@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110323145755) do
+ActiveRecord::Schema.define(:version => 20110327233047) do
 
   create_table "band_members", :force => true do |t|
     t.string   "band_id",    :limit => 36
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20110323145755) do
   end
 
   create_table "bands", :id => false, :force => true do |t|
-    t.string   "uuid",               :limit => 36
+    t.string   "uuid",               :limit => 36, :null => false
     t.string   "name"
     t.string   "contact_name"
     t.string   "email"
@@ -37,6 +37,36 @@ ActiveRecord::Schema.define(:version => 20110323145755) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fireguards", :force => true do |t|
+    t.string   "name"
+    t.integer  "age"
+    t.text     "address"
+    t.string   "phone"
+    t.string   "mobile"
+    t.string   "email"
+    t.text     "notes"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "location_schedules", :force => true do |t|
+    t.integer  "location_id"
+    t.integer  "volunteer_id"
+    t.integer  "slot"
+    t.datetime "from"
+    t.datetime "to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.integer  "slots"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= yield(:title) %></title>
-  <%= stylesheet_link_tag 'main' %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
-  <p><a href="http://crew.rockmotrus.no/">Forside</a> | <a href="http://crew.rockmotrus.no/public/2011/brannvakt.php">Brannvakter</a> | <a href="http://crew.rockmotrus.no/public/2011/brannvakt_schedule.php">Tidsskjema brannvakter</a> | <a href="http://crew.rockmotrus.no/public/2011/avis_annonse.php">Avisannonser</a> | <a href="http://crew.rockmotrus.no/public/2011/klubbliste.php">Klubbliste</a> | <a href="/bands">Påmeldte band</a> | <a href="/stages/1/schedule">Tidsskjema band</a> | <a href="http://crew.rockmotrus.no/crew/application/picker">Jobbsøknader</a></p>
+  <head>
+    <title><%= yield(:title) %></title>
+    <%= stylesheet_link_tag 'main' %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+    <%= yield(:headerextra) %>
+  </head>
+  <body>
+    <p>
+      <a href="http://crew.rockmotrus.no/">Forside</a> |
+      <%= link_to t(:fireguards), fireguards_path %> |
+      <%= link_to t(:locations), locations_path %> |
+      <%= link_to t(:location_schedule), location_schedules_path %> |
+      <a href="http://crew.rockmotrus.no/public/2011/avis_annonse.php">Avisannonser</a> |
+      <a href="http://crew.rockmotrus.no/public/2011/klubbliste.php">Klubbliste</a> |
+      <%= link_to t(:band_list), bands_path %> |
+      <a href="/stages/1/schedule">Tidsskjema band</a> |
+      <a href="http://crew.rockmotrus.no/crew/application/picker">Jobbsøknader</a>
+    </p>
 <%= yield %>
-
-</body>
+  </body>
 </html>

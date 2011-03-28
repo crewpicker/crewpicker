@@ -1,4 +1,4 @@
-class StageSchedulesController < ApplicationController
+class LocationSchedulesController < ApplicationController
   def get_events
     stage_schedules = Stage.find(params[:id]).stage_schedules
     events = []

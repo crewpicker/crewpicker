@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  location_id: 1
+  volunteer_id: 1
+  slot: 1
+  from: 2011-03-27 19:42:14
+  to: 2011-03-27 19:42:14
+
+two:
+  location_id: 1
+  volunteer_id: 1
+  slot: 1
+  from: 2011-03-27 19:42:14
+  to: 2011-03-27 19:42:14
