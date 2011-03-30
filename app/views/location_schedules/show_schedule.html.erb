@@ -1,156 +1,154 @@
-<% title(t(:schedule) + ' ' + @stage.name) %>
+<% title(t(:schedule) + ' ' + @location.name) %>
 <% content_for :headerextra do %>
   <%= stylesheet_link_tag 'fullcalendar' %>
   <%= stylesheet_link_tag 'main', 'fullcalendar.print', :media => 'print' %>
   <%= javascript_include_tag 'jquery-1.5.min', 'jquery-ui-1.8.9.custom.min', 'fullcalendar' %>
   <style type='text/css'>
-
-	#wrap {
-		width: 700px;
-		text-align: center;
-		font-size: 14px;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-                margin-left: 20px;
-		}
-
-	#external-events {
-		float: left;
-		width: 150px;
-		padding: 0 10px;
-		border: 1px solid #ccc;
-		background: #eee;
-		text-align: left;
-		}
-
-	#external-events h4 {
-		font-size: 16px;
-		margin-top: 0;
-		padding-top: 1em;
-		}
-
-	.external-event { /* try to mimick the look of a real event */
-		margin: 10px 0;
-		padding: 2px 4px;
-		background: #3366CC;
-		color: #fff;
-		font-size: .85em;
-		cursor: pointer;
-		}
-
-	#external-events p {
-		margin: 1.5em 0;
-		font-size: 11px;
-		color: #666;
-		}
-
-	#external-events p input {
-		margin: 0;
-		vertical-align: middle;
-		}
-
-	#calendar {
-		float: right;
-		width: 500px;
-		}
-
+    #wrap {
+      width: <%= 200 + (@location.slots * 515) %>px;
+      text-align: center;
+      font-size: 14px;
+      font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+      margin-left: 20px;
+    }
+    #external-events {
+      float: left;
+      width: 150px;
+      padding: 0 10px;
+      border: 1px solid #ccc;
+      background: #eee;
+      text-align: left;
+    }
+    #external-events h4 {
+      font-size: 16px;
+      margin-top: 0;
+      padding-top: 1em;
+    }
+    .external-event { /* try to mimick the look of a real event */
+      margin: 10px 0;
+      padding: 2px 4px;
+      background: #3366CC;
+      color: #fff;
+      font-size: .85em;
+      cursor: pointer;
+    }
+    #external-events p {
+      margin: 1.5em 0;
+      font-size: 11px;
+      color: #666;
+    }
+    #external-events p input {
+      margin: 0;
+      vertical-align: middle;
+    }
+    #calendars {
+      float: right;
+      width: <%= @location.slots * 510 %>px;
+    }
+    .calendar {
+      width: 500px;
+      margin-right: 10px;
+    }
+    h1 {
+      text-align: center;
+      margin-left: 200px;
+      width: <%= @location.slots * 515 %>px;
+    }
   </style>
 <% end %>
 <script type='text/javascript'>
-	$(document).ready(function() {
-
-
-		/* initialize the external events
-		-----------------------------------------------------------------*/
-
-		$('#external-events div.external-event').each(function() {
-
-			// create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-			// it doesn't need to have a start or end
-			var eventObject = {
-                          id: $.trim($(this).attr('id')),
-			  title: $.trim($(this).text()) // use the element's text as the event title
-			};
-
-			// store the Event Object in the DOM element so we can get to it later
-			$(this).data('eventObject', eventObject);
-
-			// make the event draggable using jQuery UI
-			$(this).draggable({
-				zIndex: 999,
-				revert: true,      // will cause the event to go back to its
-				revertDuration: 0  //  original position after the drag
-			});
-
-		});
-
-
-		/* initialize the calendar
-		-----------------------------------------------------------------*/
-
-		$('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next',
-				center: 'title',
-				right: 'agendaWeek,agendaDay'
-			},
-			defaultView: 'agendaWeekend',
-			slotMinutes: 60,
-			year: 2011,
-			month: 03,
-			date: 16,
-			axisFormat: 'H:mm',
-			timeFormat: 'H:mm',
-			height: 3500,
-			defaultEventMinutes: 60,
-			disableResizing: true,
-			editable: true,
-			droppable: true, // this allows things to be dropped onto the calendar !!!
-                        events: '/stages/<%= @stage.id %>/schedule/get_events',
-                        firstDay: 5,
-                        weekends: false,
-                        viewDisplay: function(view) {
-                          ;
-                        },
-			drop: function(date, allDay) {
-                          var originalEventObject = $(this).data('eventObject');
-                          var copiedEventObject = $.extend({}, originalEventObject);
-                          copiedEventObject.start = date;
-                          copiedEventObject.allDay = allDay;
-                          $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-                          jQuery.ajax({
-                            data: 'band_id=' + copiedEventObject.id + '&year=' + date.getFullYear() + '&month=' + (date.getMonth()+1) + '&day=' + date.getDate() + '&hour=' + date.getHours() + '&minute=' + date.getMinutes(),
-                            dataType: 'script',
-                            type: 'post',
-                            url: '/stages/<%= @stage.id %>/schedule/create'
-                          });
-                          $(this).remove();
-			},
-                        eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
-                          jQuery.ajax({
-                            data: 'band_id=' + event.id + '&day_delta=' + dayDelta + '&minute_delta=' + minuteDelta,
-                            dataType: 'script',
-                            type: 'post',
-                            url: '/stages/<%= @stage.id %>/schedule/move'
-                          });
-                        }
-		});
-
-
-	});
-
+  $(document).ready(function() {
+    $('#external-events div.external-event').each(function() {
+      var eventObject = {
+        id: $.trim($(this).attr('id')),
+        title: $.trim($(this).text())
+      };
+      $(this).data('eventObject', eventObject);
+      $(this).draggable({
+        zIndex: 999,
+        revert: true,
+        revertDuration: 0
+      });
+    });
+<% @location.slots.times do |slot| %>
+    $('#calendar-<%= slot+1 %>').fullCalendar({
+      header: {
+        left: '',
+        center: 'title',
+        right: ''
+      },
+      defaultView: 'agendaWeekend',
+      slotMinutes: 60,
+      year: 2011,
+      month: 03,
+      date: 16,
+      axisFormat: 'H:mm',
+      timeFormat: 'H:mm',
+      height: 3500,
+      defaultEventMinutes: 120,
+      dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fre','Lør'],
+      dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
+      titleFormat: {
+        month: 'MMMM yyyy',
+        week: "d[ yyyy]{ '&#8212;'[ MMM] d MMMM yyyy} 'slot <%= slot+1 %>'",
+        day: 'dddd, MMM d, yyyy'
+      },
+      columnFormat: {
+        month: 'ddd',
+        week: 'dddd d/M',
+        day: 'dddd M/d'
+      },
+      disableResizing: true,
+      editable: true,
+      droppable: true, // this allows things to be dropped onto the calendar !!!
+      events: '/locations/<%= @location.id %>/schedule/get_events/<%= slot+1 %>',
+      firstDay: 5,
+      weekends: false,
+      drop: function(date, allDay) {
+        var originalEventObject = $(this).data('eventObject');
+        var copiedEventObject = $.extend({}, originalEventObject);
+        copiedEventObject.start = date;
+        copiedEventObject.allDay = allDay;
+        jQuery.ajax({
+          data: 'fireguard_id=' + copiedEventObject.id + '&year=' + date.getFullYear() + '&month=' + (date.getMonth()+1) + '&day=' + date.getDate() + '&hour=' + date.getHours() + '&minute=' + date.getMinutes(),
+          dataType: 'json',
+          type: 'post',
+          url: '/locations/<%= @location.id %>/schedule/create/<%= slot+1 %>',
+          success: function(data) {
+            copiedEventObject.id = data.id;
+          }
+        });
+        $('#calendar-<%= slot+1 %>').fullCalendar('renderEvent', copiedEventObject, true);
+      },
+      eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
+        jQuery.ajax({
+          data: 'event_id=' + event.id + '&day_delta=' + dayDelta + '&minute_delta=' + minuteDelta,
+          dataType: 'json',
+          type: 'post',
+          url: '/locations/<%= @location.id %>/schedule/move/<%= slot+1 %>'
+        });
+      }
+    });
+<% end %>
+  });
 </script>
 <div id='wrap'>
-  <h1>Tidsskjema <%= @stage.name %></h1>
+  <h1>Tidsskjema <%= @location.name %></h1>
 <div id='external-events'>
-<h4>Band uten spilletid</h4>
+<h4>Brannvakter</h4>
 <p>Dra dem dit du vil ha dem på kalenderen</p>
 <% @events.each do |event| %>
-<div class='external-event' id="<%= event.uuid %>"><%= event.name %></div>
+<div class='external-event' id="<%= event.id %>"><%= event.name %></div>
 <% end %>
 </div>
+<table id="calendars">
+  <tr>
 
-<div id='calendar'></div>
-
+<% @location.slots.times do |slot| %>
+    <td><div class="calendar" id='calendar-<%= slot+1 %>'></div></td>
+<% end %>
+  </tr>
+</table>
 <div style='clear:both'></div>
 </div>
 </body>
