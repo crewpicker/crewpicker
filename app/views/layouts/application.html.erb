@@ -10,13 +10,12 @@
   <body>
     <p>
       <a href="http://crew.rockmotrus.no/">Forside</a> |
+      <%= link_to t(:band_list), bands_path %> |
+      <%= link_to "Program Idrettshallen", stage_schedule_program_path("Idrettshallen") %> |
       <%= link_to t(:fireguards), fireguards_path %> |
       <%= link_to t(:locations), locations_path %> |
-      <%= link_to t(:location_schedule), location_schedules_path %> |
       <a href="http://crew.rockmotrus.no/public/2011/avis_annonse.php">Avisannonser</a> |
       <a href="http://crew.rockmotrus.no/public/2011/klubbliste.php">Klubbliste</a> |
-      <%= link_to t(:band_list), bands_path %> |
-      <a href="/stages/1/schedule">Tidsskjema band</a> |
       <a href="http://crew.rockmotrus.no/crew/application/picker">Jobbsøknader</a>
     </p>
 <%= yield %>

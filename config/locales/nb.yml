@@ -37,6 +37,11 @@ nb:
   fireguard_active: "Kan stille opp"
   edit_fireguard: "Endre brannvakt"
   schedule: "Tidsskjema"
+  locations: "Overnatting"
+  location_list: "Overnattingssteder"
+  slots: "Ant. brannvakter"
+  fireguard_list: "Vaktliste"
+  new_location: "Nytt overnattinssted"
 
   support:
     array:
