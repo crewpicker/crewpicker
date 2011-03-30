@@ -15,7 +15,12 @@ class StageSchedulesController < ApplicationController
         @events << band
       end
     end
-    @stage = Stage.find(params[:id])
+    if params[:id]
+      @stage = Stage.find(params[:id])
+    end
+    else if params[:name]
+      @stage = Stage.find_by_name(params[:name].capitalize)
+    end
   end
   def create
     band = Band.find(params[:band_id])

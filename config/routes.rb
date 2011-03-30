@@ -15,15 +15,17 @@ FestivalAdmin::Application.routes.draw do
   root :to => "home#index"
   match 'bands/:id/new_band_member' => 'band_members#new', :as => :bands_new_band_member
 
+  match 'program/:name' => 'stage_schedules#show_schedule', :as => :stage_schedule_program
   match 'stages/:id/schedule' => 'stage_schedules#show_schedule', :as => :stage_schedule_show
   match 'stages/:id/schedule/create' => 'stage_schedules#create', :as => :stage_schedule_create
   match 'stages/:id/schedule/move' => 'stage_schedules#move', :as => :stage_schedule_move
   match 'stages/:id/schedule/get_events' => 'stage_schedules#get_events', :as => :stage_schedule_get_events
 
+  match 'vaktliste/:name' => 'location_schedules#show_schedule', :as => :location_schedule_program
   match 'locations/:id/schedule' => 'location_schedules#show_schedule', :as => :location_schedule_show
-  match 'locations/:id/schedule/create' => 'location_schedules#create', :as => :location_schedule_create
-  match 'locations/:id/schedule/move' => 'location_schedules#move', :as => :location_schedule_move
-  match 'locations/:id/schedule/get_events' => 'location_schedules#get_events', :as => :location_schedule_get_events
+  match 'locations/:id/schedule/create/:slot' => 'location_schedules#create', :as => :location_schedule_create
+  match 'locations/:id/schedule/move/:slot' => 'location_schedules#move', :as => :location_schedule_move
+  match 'locations/:id/schedule/get_events/:slot' => 'location_schedules#get_events', :as => :location_schedule_get_events
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

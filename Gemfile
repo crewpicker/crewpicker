@@ -8,9 +8,10 @@ gem 'rails', '3.0.5'
 gem 'pg'
 gem 'mysql2'
 
-gem "paperclip", "~> 2.3"
-gem "uuidtools"
-gem "capistrano"
+gem 'paperclip', '~> 2.3'
+gem 'uuidtools'
+gem 'capistrano'
+gem 'prawn'
 
 # Use unicorn as the web server
 # gem 'unicorn'

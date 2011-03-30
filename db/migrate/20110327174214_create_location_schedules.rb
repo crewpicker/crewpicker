@@ -2,7 +2,7 @@ class CreateLocationSchedules < ActiveRecord::Migration
   def self.up
     create_table :location_schedules do |t|
       t.integer :location_id
-      t.integer :volunteer_id
+      t.integer :fireguard_id
       t.integer :slot
       t.datetime :from
       t.datetime :to

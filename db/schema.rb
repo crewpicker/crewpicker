@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20110327233047) do
 
   create_table "location_schedules", :force => true do |t|
     t.integer  "location_id"
-    t.integer  "volunteer_id"
+    t.integer  "fireguard_id"
     t.integer  "slot"
     t.datetime "from"
     t.datetime "to"
