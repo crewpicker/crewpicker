@@ -40,4 +40,12 @@ class StageSchedulesController < ApplicationController
     stage_schedule.to = stage_schedule.to.advance(:days => params[:day_delta].to_i, :minutes => params[:minute_delta].to_i)
     stage_schedule.save
   end
+  def delete
+    band = Band.find(params[:event_id])
+    stage_schedule = band.stage_schedule
+    stage_schedule.destroy
+    render :update do |page|
+      page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
+    end
+  end
 end

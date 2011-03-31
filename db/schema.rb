@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110327233047) do
+ActiveRecord::Schema.define(:version => 20110331115935) do
 
   create_table "band_members", :force => true do |t|
     t.string   "band_id",    :limit => 36
@@ -54,6 +54,12 @@ ActiveRecord::Schema.define(:version => 20110327233047) do
     t.datetime "updated_at"
   end
 
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "location_schedules", :force => true do |t|
     t.integer  "location_id"
     t.integer  "fireguard_id"
@@ -84,6 +90,18 @@ ActiveRecord::Schema.define(:version => 20110327233047) do
     t.string   "name"
     t.datetime "from"
     t.datetime "to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "volunteers", :force => true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.date     "birthday"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "group_id"
+    t.string   "access_level"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

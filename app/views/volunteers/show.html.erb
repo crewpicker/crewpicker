@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @volunteer.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @volunteer.address %>
+</p>
+
+<p>
+  <b>Birthday:</b>
+  <%= @volunteer.birthday %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @volunteer.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @volunteer.phone %>
+</p>
+
+<p>
+  <b>Group:</b>
+  <%= @volunteer.group_id %>
+</p>
+
+<p>
+  <b>Access level:</b>
+  <%= @volunteer.access_level %>
+</p>
+
+
+<%= link_to 'Edit', edit_volunteer_path(@volunteer) %> |
+<%= link_to 'Back', volunteers_path %>
