@@ -19,8 +19,8 @@ class BandMailer < ActionMailer::Base
     end
   end
   def bandrekkefolge_email
-    mail(:to => "tg90nor@gmail.com", :subject => 'Musikkvideo-konkurranse').deliver
-    mail(:to => "cato@rockmotrus.no", :subject => 'Musikkvideo-konkurranse').deliver
+    mail(:to => "tg90nor@gmail.com", :subject => 'Bandrekkefølgen').deliver
+    mail(:to => "cato@rockmotrus.no", :subject => 'Bandrekkefølgen').deliver
     bands = Band.all
     bands.each do |band|
       @band = band
