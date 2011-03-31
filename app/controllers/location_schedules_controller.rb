@@ -7,7 +7,7 @@ class LocationSchedulesController < ApplicationController
     render :json => events.to_json
   end
   def show_schedule
-    @events = Fireguard.all
+    @events = Fireguard.find(:all, :order => "name")
     if params[:id]
       @location = Location.find(params[:id])
     end
@@ -34,5 +34,13 @@ class LocationSchedulesController < ApplicationController
     location_schedule.to = location_schedule.to.advance(:days => params[:day_delta].to_i, :minutes => params[:minute_delta].to_i)
     location_schedule.slot = params[:slot]
     location_schedule.save
+  end
+  def delete
+    location_schedule = LocationSchedule.find(params[:event_id])
+    location_schedule.destroy
+    slot = params[:slot]
+    render :update do |page|
+      page<<"$('#calendar-#{slot}').fullCalendar( 'refetchEvents' )"
+    end
   end
 end

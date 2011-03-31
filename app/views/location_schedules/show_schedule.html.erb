@@ -1,8 +1,8 @@
 <% title(t(:schedule) + ' ' + @location.name) %>
 <% content_for :headerextra do %>
-  <%= stylesheet_link_tag 'fullcalendar' %>
+  <%= stylesheet_link_tag 'fullcalendar', 'jquery.qtip.min' %>
   <%= stylesheet_link_tag 'main', 'fullcalendar.print', :media => 'print' %>
-  <%= javascript_include_tag 'jquery-1.5.min', 'jquery-ui-1.8.9.custom.min', 'fullcalendar' %>
+  <%= javascript_include_tag 'jquery-1.5.min', 'jquery-ui-1.8.9.custom.min', 'fullcalendar', 'jquery.qtip.min' %>
   <style type='text/css'>
     #wrap {
       width: <%= 200 + (@location.slots * 515) %>px;
@@ -57,6 +57,9 @@
   </style>
 <% end %>
 <script type='text/javascript'>
+  function delete_event() {
+    alert('bull');
+  };
   $(document).ready(function() {
     $('#external-events div.external-event').each(function() {
       var eventObject = {
@@ -69,6 +72,12 @@
         revert: true,
         revertDuration: 0
       });
+    });
+    $('.calendar a').bind('click',function(event) {
+      event.preventDefault();
+      $.get(this.href,{},function(response) {
+       $('#response').html(response)
+      })
     });
 <% @location.slots.times do |slot| %>
     $('#calendar-<%= slot+1 %>').fullCalendar({
@@ -126,6 +135,26 @@
           dataType: 'json',
           type: 'post',
           url: '/locations/<%= @location.id %>/schedule/move/<%= slot+1 %>'
+        });
+      },
+      eventRender: function(event, element) {
+        element.qtip({
+          show: {
+            event: 'click'
+          },
+          hide: {
+            event: false
+          },
+          content: {
+            title: {
+              text: event.title,
+              button: 'Close'
+            },
+            text: '<a href="#" onclick="jQuery.ajax({data: \'event_id=' + event.id + '\', dataType: \'script\', type: \'post\',url: \'/locations/<%= @location.id %>/schedule/delete/<%= slot+1 %>\'})">Slett</a>'
+          },
+          style: {
+            classes: "ui-tooltip-light"
+          }
         });
       }
     });

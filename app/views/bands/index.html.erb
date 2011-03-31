@@ -12,6 +12,7 @@
     <th><%= t(:playtime_wish_alt) %></th>
     <th><%= t(:band_members_count) %></th>
     <th><%= t(:image) %></th>
+    <th><%= t(:have_playtime) %>
     <th></th>
   </tr>
 
@@ -26,6 +27,7 @@
     <td><%= band.playtime_wish_alt %></td>
     <td><%= band.band_members.count %></td>
     <td><%= link_to image_tag(band.image.url(:thumb)), band.image.url %></td>
+    <td><%= band.stage_schedule ? 'Ja' : 'Nei' %>
     <td><%= link_to t(:show), band %> | <%= link_to t(:edit), edit_band_path(band) %> | <%= link_to t(:delete), band, :confirm => t(:confirm), :method => :delete %></td>
   </tr>
 <% end %>
