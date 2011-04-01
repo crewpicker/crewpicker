@@ -1,4 +1,5 @@
 FestivalAdmin::Application.routes.draw do
+  match 'access_levels/:id/access_cards' => 'access_levels#access_cards', :as => :access_level_cards
   resources :access_levels
 
   match 'volunteers/migrate_data' => 'volunteers#migrate_data'
