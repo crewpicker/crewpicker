@@ -1,5 +1,5 @@
-<h1>Listing access_levels</h1>
-
+<% title t(:access_level) %>
+<h1><%= t(:access_level) %></h1>
 <table>
   <tr>
     <th>Name</th>
@@ -11,7 +11,7 @@
 <% @access_levels.each do |access_level| %>
   <tr>
     <td><%= access_level.name %></td>
-    <td><%= link_to 'Show', access_level %></td>
+    <td><%= link_to 'Generer crewkort', access_level_cards_path(access_level.id, :format => 'pdf') %></td>
     <td><%= link_to 'Edit', edit_access_level_path(access_level) %></td>
     <td><%= link_to 'Destroy', access_level, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

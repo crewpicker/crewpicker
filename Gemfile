@@ -12,6 +12,7 @@ gem 'paperclip', '~> 2.3'
 gem 'uuidtools'
 gem 'capistrano'
 gem 'prawn'
+gem "pdfkit", :git => "https://github.com/huerlisi/PDFKit.git"
 
 # Use unicorn as the web server
 # gem 'unicorn'

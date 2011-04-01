@@ -80,4 +80,8 @@ class AccessLevelsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  def access_cards
+    @access_level = AccessLevel.find(params[:id])
+    render :layout => false
+  end
 end
