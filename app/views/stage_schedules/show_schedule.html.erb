@@ -56,82 +56,75 @@
   </style>
 <% end %>
 <script type='text/javascript'>
-
-	$(document).ready(function() {
-
-
-		/* initialize the external events
-		-----------------------------------------------------------------*/
-
-		$('#external-events div.external-event').each(function() {
-
-			// create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-			// it doesn't need to have a start or end
-			var eventObject = {
-                          id: $.trim($(this).attr('id')),
-			  title: $.trim($(this).text()) // use the element's text as the event title
-			};
-
-			// store the Event Object in the DOM element so we can get to it later
-			$(this).data('eventObject', eventObject);
-
-			// make the event draggable using jQuery UI
-			$(this).draggable({
-				zIndex: 999,
-				revert: true,      // will cause the event to go back to its
-				revertDuration: 0  //  original position after the drag
-			});
-
-		});
-
-
-		/* initialize the calendar
-		-----------------------------------------------------------------*/
-
-		$('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next',
-				center: 'title',
-				right: ''
-			},
-                        firstDay: 5,
-                        weekends: false,
-			defaultView: 'agendaWeekend',
-			slotMinutes: 15,
-			year: 2011,
-			month: 03,
-			date: 16,
-			axisFormat: 'H:mm',
-			timeFormat: 'H:mm',
-			height: 3500,
-			defaultEventMinutes: 15,
-			disableResizing: true,
-			editable: true,
-			droppable: true, // this allows things to be dropped onto the calendar !!!
-                        events: '/stages/<%= @stage.id %>/schedule/get_events',
-			drop: function(date, allDay) {
-                          var originalEventObject = $(this).data('eventObject');
-                          var copiedEventObject = $.extend({}, originalEventObject);
-                          copiedEventObject.start = date;
-                          copiedEventObject.allDay = allDay;
-                          $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-                          jQuery.ajax({
-                            data: 'band_id=' + copiedEventObject.id + '&year=' + date.getFullYear() + '&month=' + (date.getMonth()+1) + '&day=' + date.getDate() + '&hour=' + date.getHours() + '&minute=' + date.getMinutes(),
-                            dataType: 'script',
-                            type: 'post',
-                            url: '/stages/<%= @stage.id %>/schedule/create'
-                          });
-                          $(this).remove();
-			},
-                        eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
-                          jQuery.ajax({
-                            data: 'band_id=' + event.id + '&day_delta=' + dayDelta + '&minute_delta=' + minuteDelta,
-                            dataType: 'script',
-                            type: 'post',
-                            url: '/stages/<%= @stage.id %>/schedule/move'
-                          });
-                        },
-                        eventRender: function(event, element) {
+  $(document).ready(function() {
+    $('#external-events div.external-event').each(function() {
+      var eventObject = {
+        id: $.trim($(this).attr('id')),
+        title: $.trim($(this).text())
+      };
+      $(this).data('eventObject', eventObject);
+      $(this).draggable({
+        zIndex: 999,
+        revert: true,
+        revertDuration: 0
+      });
+    });
+    $('#calendar').fullCalendar({
+      header: {
+        left: '',
+        center: 'title',
+        right: ''
+      },
+      defaultView: 'agendaWeekend',
+      year: 2011,
+      month: 03,
+      date: 16,
+      axisFormat: 'H:mm',
+      timeFormat: 'H:mm',
+      height: 3500,
+      dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fre','Lør'],
+      dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
+      titleFormat: {
+        month: 'MMMM yyyy',
+        week: "d[ yyyy]{ '&#8212;'[ MMM] d MMMM yyyy}",
+        day: 'dddd, MMM d, yyyy'
+      },
+      columnFormat: {
+        month: 'ddd',
+        week: 'dddd d/M',
+        day: 'dddd M/d'
+      },
+      disableResizing: true,
+      editable: true,
+      droppable: true,
+      firstDay: 5,
+      weekends: false,
+      slotMinutes: 15,
+      defaultEventMinutes: 15,
+      events: '/stages/<%= @stage.id %>/schedule/get_events',
+      drop: function(date, allDay) {
+        var originalEventObject = $(this).data('eventObject');
+        var copiedEventObject = $.extend({}, originalEventObject);
+        copiedEventObject.start = date;
+        copiedEventObject.allDay = allDay;
+        $('#calendar').fullCalendar('renderEvent', copiedEventObject, false);
+        jQuery.ajax({
+          data: 'band_id=' + copiedEventObject.id + '&year=' + date.getFullYear() + '&month=' + (date.getMonth()+1) + '&day=' + date.getDate() + '&hour=' + date.getHours() + '&minute=' + date.getMinutes(),
+          dataType: 'script',
+          type: 'post',
+          url: '/stages/<%= @stage.id %>/schedule/create'
+        });
+        $(this).remove();
+      },
+      eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
+        jQuery.ajax({
+          data: 'band_id=' + event.id + '&day_delta=' + dayDelta + '&minute_delta=' + minuteDelta,
+          dataType: 'script',
+          type: 'post',
+          url: '/stages/<%= @stage.id %>/schedule/move'
+        });
+      },
+      eventRender: function(event, element) {
         element.qtip({
           show: {
             event: 'click'
@@ -151,11 +144,8 @@
           }
         });
       }
-		});
-
-
-	});
-
+    });
+  });
 </script>
 <div id='wrap'>
   <h1>Tidsskjema <%= @stage.name %></h1>

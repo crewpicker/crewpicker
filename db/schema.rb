@@ -10,7 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110331115935) do
+ActiveRecord::Schema.define(:version => 20110331234009) do
+
+  create_table "access_levels", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "band_members", :force => true do |t|
     t.string   "band_id",    :limit => 36
@@ -41,6 +47,23 @@ ActiveRecord::Schema.define(:version => 20110331115935) do
     t.datetime "updated_at"
   end
 
+  create_table "contacts", :force => true do |t|
+    t.string   "name",            :limit => 64,                :null => false
+    t.text     "address",                                      :null => false
+    t.date     "birthday"
+    t.string   "email",           :limit => 64,                :null => false
+    t.string   "phone",           :limit => 32,                :null => false
+    t.integer  "is_groupleader",                :default => 0, :null => false
+    t.integer  "contact_type_id",                              :null => false
+    t.integer  "group_id"
+    t.integer  "creator_id",                                   :null => false
+    t.datetime "time_created"
+  end
+
+  add_index "contacts", ["contact_type_id"], :name => "fk_contact_contact_type1"
+  add_index "contacts", ["creator_id"], :name => "fk_contact_user1"
+  add_index "contacts", ["group_id"], :name => "fk_contact_group1"
+
   create_table "fireguards", :force => true do |t|
     t.string   "name"
     t.integer  "age"
@@ -56,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20110331115935) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
+    t.boolean  "internal"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,6 +99,11 @@ ActiveRecord::Schema.define(:version => 20110331115935) do
     t.integer  "slots"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "old_groups", :force => true do |t|
+    t.string "name",                :limit => 64, :null => false
+    t.text   "show_on_application",               :null => false
   end
 
   create_table "stage_schedules", :force => true do |t|
