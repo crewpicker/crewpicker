@@ -54,6 +54,7 @@ nb:
   count: "Antall"
   birthday: "Fødselsdato"
   access_level: "Crewkort"
+  front_page: "Forside"
 
   support:
     array:
