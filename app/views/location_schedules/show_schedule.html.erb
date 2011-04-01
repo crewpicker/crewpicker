@@ -87,14 +87,12 @@
         right: ''
       },
       defaultView: 'agendaWeekend',
-      slotMinutes: 60,
       year: 2011,
       month: 03,
       date: 16,
       axisFormat: 'H:mm',
       timeFormat: 'H:mm',
       height: 3500,
-      defaultEventMinutes: 120,
       dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fre','Lør'],
       dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
       titleFormat: {
@@ -109,10 +107,12 @@
       },
       disableResizing: true,
       editable: true,
-      droppable: true, // this allows things to be dropped onto the calendar !!!
-      events: '/locations/<%= @location.id %>/schedule/get_events/<%= slot+1 %>',
+      droppable: true,
       firstDay: 5,
       weekends: false,
+      slotMinutes: 60,
+      defaultEventMinutes: 120,
+      events: '/locations/<%= @location.id %>/schedule/get_events/<%= slot+1 %>',
       drop: function(date, allDay) {
         var originalEventObject = $(this).data('eventObject');
         var copiedEventObject = $.extend({}, originalEventObject);
@@ -125,9 +125,9 @@
           url: '/locations/<%= @location.id %>/schedule/create/<%= slot+1 %>',
           success: function(data) {
             copiedEventObject.id = data.id;
+            $('#calendar-<%= slot+1 %>').fullCalendar('renderEvent', copiedEventObject, false);
           }
         });
-        $('#calendar-<%= slot+1 %>').fullCalendar('renderEvent', copiedEventObject, true);
       },
       eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
         jQuery.ajax({
@@ -150,7 +150,7 @@
               text: event.title,
               button: 'Close'
             },
-            text: '<a href="#" onclick="jQuery.ajax({data: \'event_id=' + event.id + '\', dataType: \'script\', type: \'post\',url: \'/locations/<%= @location.id %>/schedule/delete/<%= slot+1 %>\'})">Slett</a>'
+            text: event.id + '<a href="#" onclick="jQuery.ajax({data: \'event_id=' + event.id + '\', dataType: \'script\', type: \'post\',url: \'/locations/<%= @location.id %>/schedule/delete/<%= slot+1 %>\'})">Slett</a>'
           },
           style: {
             classes: "ui-tooltip-light"

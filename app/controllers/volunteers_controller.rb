@@ -2,7 +2,7 @@ class VolunteersController < ApplicationController
   # GET /volunteers
   # GET /volunteers.xml
   def index
-    @volunteers = Volunteer.all
+    @groups = Group.find(:all, :include => :volunteers, :conditions => "volunteers.id IS NOT NULL", :order => "volunteers.name")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -60,7 +60,7 @@ class VolunteersController < ApplicationController
 
     respond_to do |format|
       if @volunteer.update_attributes(params[:volunteer])
-        format.html { redirect_to(@volunteer, :notice => 'Volunteer was successfully updated.') }
+        format.html { redirect_to(volunteers_path, :notice => "#{@volunteer.name} ble oppdatert.") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -79,5 +79,19 @@ class VolunteersController < ApplicationController
       format.html { redirect_to(volunteers_url) }
       format.xml  { head :ok }
     end
+  end
+  def migrate_data
+    Contact.all.each do |contact|
+      volunteer = Volunteer.new
+      volunteer.id = contact.id
+      volunteer.name = contact.name
+      volunteer.address = contact.address
+      volunteer.birthday = contact.birthday
+      volunteer.email = contact.email
+      volunteer.phone = contact.phone
+      volunteer.group_id = contact.group_id
+      volunteer.save
+    end
+    redirect_to(volunteers_path)
   end
 end

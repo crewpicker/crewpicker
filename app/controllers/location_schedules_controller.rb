@@ -10,8 +10,7 @@ class LocationSchedulesController < ApplicationController
     @events = Fireguard.find(:all, :order => "name")
     if params[:id]
       @location = Location.find(params[:id])
-    end
-    else if params[:name]
+    elsif params[:name]
       @location = Location.find_by_name(params[:name].capitalize)
     end
   end

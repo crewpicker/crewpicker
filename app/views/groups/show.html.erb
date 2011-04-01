@@ -1,10 +1,31 @@
+<% title @group.name %>
+<h1><%= @group.name %></h1>
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @group.name %>
-</p>
-
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<table class="border">
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Birthday</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Access level</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @group.volunteers.each do |volunteer| %>
+  <tr>
+    <td><%= volunteer.name %></td>
+    <td><%= volunteer.address %></td>
+    <td><%= volunteer.birthday %></td>
+    <td><%= volunteer.email %></td>
+    <td><%= volunteer.phone %></td>
+    <td><%= volunteer.access_level %></td>
+    <td><%= link_to 'Show', volunteer %></td>
+    <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
+    <td><%= link_to 'Destroy', volunteer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<p><%= t(:count) %>: <%= @group.volunteers.count %></p>
+<p><%= link_to t(:back), groups_path %></p>

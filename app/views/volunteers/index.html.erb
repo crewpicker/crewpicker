@@ -1,35 +1,31 @@
-<h1>Listing volunteers</h1>
-
-<table>
+<% title t(:volunteers_list) %>
+<h1><%= t(:volunteers_list) %></h1>
+<p id="notice"><%= notice %></p>
+<p><%= link_to t(:new_volunteer), new_volunteer_path %></p>
+<table class="border">
+<% @groups.each do |group| %>
+  <tr><th colspan="7"><h2><%= group.name %></h2></th></tr>
   <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Birthday</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Group</th>
-    <th>Access level</th>
-    <th></th>
-    <th></th>
+    <th><%= t(:name) %></th>
+    <th><%= t(:address) %></th>
+    <th><%= t(:birthday) %></th>
+    <th><%= t(:email) %></th>
+    <th><%= t(:phone) %></th>
+    <th><%= t(:access_level) %></th>
     <th></th>
   </tr>
-
-<% @volunteers.each do |volunteer| %>
+<% group.volunteers.each do |volunteer| %>
   <tr>
     <td><%= volunteer.name %></td>
-    <td><%= volunteer.address %></td>
+    <td><%= nl2br(volunteer.address) %></td>
     <td><%= volunteer.birthday %></td>
     <td><%= volunteer.email %></td>
     <td><%= volunteer.phone %></td>
-    <td><%= volunteer.group_id %></td>
     <td><%= volunteer.access_level %></td>
-    <td><%= link_to 'Show', volunteer %></td>
-    <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
-    <td><%= link_to 'Destroy', volunteer, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t(:show), volunteer %> | <%= link_to t(:edit), edit_volunteer_path(volunteer) %> | <%= link_to t(:delete), volunteer, :confirm => t(:confirm), :method => :delete %></td>
   </tr>
 <% end %>
+  <tr><th colspan="7"><%= t(:count) %>: <%= group.volunteers.count %></p></th></tr>
+<% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Volunteer', new_volunteer_path %>
+<p><%= link_to t(:new_volunteer), new_volunteer_path %></p>

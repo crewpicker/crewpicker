@@ -80,4 +80,14 @@ class GroupsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  def migrate_data
+    OldGroup.all.each do |old_group|
+      group = Group.new
+      group.id = old_group.id
+      group.name = old_group.name
+      group.internal = old_group.show_on_application == '0' ? true : false
+      group.save
+    end
+    redirect_to(groups_path)
+  end
 end
