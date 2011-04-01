@@ -17,8 +17,7 @@ class StageSchedulesController < ApplicationController
     end
     if params[:id]
       @stage = Stage.find(params[:id])
-    end
-    else if params[:name]
+    elsif params[:name]
       @stage = Stage.find_by_name(params[:name].capitalize)
     end
   end

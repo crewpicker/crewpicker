@@ -1,6 +1,10 @@
 FestivalAdmin::Application.routes.draw do
+  resources :access_levels
+
+  match 'volunteers/migrate_data' => 'volunteers#migrate_data'
   resources :volunteers
 
+  match 'groups/migrate_data' => 'groups#migrate_data'
   resources :groups
 
   resources :location_schedules

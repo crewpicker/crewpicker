@@ -42,6 +42,18 @@ nb:
   slots: "Ant. brannvakter"
   fireguard_list: "Vaktliste"
   new_location: "Nytt overnattinssted"
+  have_playtime: "Har spilletid?"
+  internal_group: "Intern gruppe?"
+  answer_yes: "Ja"
+  answer_no: "Nei"
+  groups: "Grupper"
+  group: "Gruppe"
+  new_group: "Ny gruppe"
+  volunteers_list: "Crewliste"
+  new_volunteer: "Nytt crewmedlem"
+  count: "Antall"
+  birthday: "Fødselsdato"
+  access_level: "Crewkort"
 
   support:
     array:
