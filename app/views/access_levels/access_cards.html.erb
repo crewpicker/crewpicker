@@ -51,10 +51,16 @@
       <tr>
 <%
 counter = 0
+case @access_level.name
+when "VIP", "VIB", "Retard"
+  imagefile = 'rmr-kortVIP.png'
+else
+  imagefile = 'ID2.png'
+end
 @access_level.volunteers.each do |volunteer|
 %>
         <td>
-          <%= image_tag 'ID2.png', :width => "100%" %>
+          <%= image_tag imagefile, :width => "100%" %>
           <div>
             <span class="al"><%= volunteer.access_level.upcase %><br></span>
             <span class="name"><%= volunteer.name %></span>
