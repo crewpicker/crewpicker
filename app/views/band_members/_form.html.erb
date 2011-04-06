@@ -1,4 +1,4 @@
-<%= form_for(@band_member) do |f| %>
+<%= form_for([@band, @band_member]) do |f| %>
   <% if @band_member.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@band_member.errors.count, "error") %> prohibited this band_member from being saved:</h2>

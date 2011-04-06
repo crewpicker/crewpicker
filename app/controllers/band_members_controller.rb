@@ -14,6 +14,7 @@ class BandMembersController < ApplicationController
   # GET /band_members/1.xml
   def show
     @band_member = BandMember.find(params[:id])
+    @band = Band.find(params[:band_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +26,7 @@ class BandMembersController < ApplicationController
   # GET /band_members/new.xml
   def new
     @band_member = BandMember.new
-    @band = Band.find(params[:id])
+    @band = Band.find(params[:band_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +37,7 @@ class BandMembersController < ApplicationController
   # GET /band_members/1/edit
   def edit
     @band_member = BandMember.find(params[:id])
+    @band = Band.find(params[:band_id])
   end
 
   # POST /band_members

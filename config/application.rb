@@ -38,6 +38,7 @@ module FestivalAdmin
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-    config.middleware.use "PDFKit::Middleware", :orientation => "Landscape"
+    config.middleware.use "PDFKit::Middleware"
+    config.festival_start = Date.civil(2011,4,15)
   end
 end

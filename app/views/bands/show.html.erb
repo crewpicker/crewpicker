@@ -52,7 +52,7 @@
 <%= link_to t(:back), bands_path %>
 </p>
 <h2><%= t(:band_members) %></h2>
-<p><%= link_to t(:new_band_member), bands_new_band_member_path(@band) %></p>
+<p><%= link_to t(:new_band_member), new_band_band_member_path(@band) %></p>
 <table class="border">
   <tr>
     <th><%= t(:name) %></th>
@@ -63,8 +63,8 @@
   <tr>
     <td><%= band_member.name %></td>
     <td><%= band_member.role %></td>
-    <td><%= link_to t(:edit), edit_band_member_path(band_member) %> | <%= link_to t(:delete), band_member, :confirm => t(:confirm), :method => :delete %></td>
+    <td><%= link_to t(:edit), edit_band_band_member_path(@band, band_member) %> | <%= link_to t(:delete), [@band, band_member], :confirm => t(:confirm), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-<p><%= link_to t(:new_band_member), bands_new_band_member_path(@band) %></p>
+<p><%= link_to t(:new_band_member), new_band_band_member_path(@band) %></p>
