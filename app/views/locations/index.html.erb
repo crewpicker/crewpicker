@@ -12,7 +12,7 @@
   <tr>
     <td><%= location.name %></td>
     <td><%= location.slots %></td>
-    <td><%= link_to t(:fireguard_list), location_schedule_program_path(location.name) %></td>
+    <td><%= link_to t(:fireguard_list), location_location_schedules_path(location.id) %></td>
     <td><%= link_to t(:edit), edit_location_path(location) %></td>
     <td><%= link_to t(:delete), location, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
