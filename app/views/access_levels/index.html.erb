@@ -13,9 +13,10 @@
   <tr>
     <td><%= access_level.name %></td>
     <td><%= access_level.volunteers.count %></td>
-    <td><%= link_to 'Generer crewkort', access_level_cards_path(access_level.id, :format => 'pdf') %></td>
-    <td><%= link_to 'Edit', edit_access_level_path(access_level) %></td>
-    <td><%= link_to 'Destroy', access_level, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Generer crewkort', access_card_path(access_level.id, :format => 'pdf') %></td>
+    <td><%= link_to 'Generer blanke crewkort', blank_access_card_path(access_level.id, :format => 'pdf') %></td>
+    <td><%= link_to t(:edit), edit_access_level_path(access_level) %></td>
+    <td><%= link_to t(:delete), access_level, :confirm => t(:confirm), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
