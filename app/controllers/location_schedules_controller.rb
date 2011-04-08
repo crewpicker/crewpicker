@@ -7,7 +7,7 @@ class LocationSchedulesController < ApplicationController
     render :json => events.to_json
   end
   def index
-    @events = Fireguard.find(:all, :order => "name")
+    @events = Fireguard.active
     @location = Location.find(params[:location_id])
   end
   def create

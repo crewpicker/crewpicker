@@ -1,4 +1,5 @@
 class Fireguard < ActiveRecord::Base
   has_many :location_schedules
-  scope :without_location_schedules, where("fireguards.id NOT IN (SELECT fireguard_id FROM location_schedules)")
+  scope :active, :conditions => "fireguards.active = TRUE", :order => "fireguards.name"
+  default_scope :order => "fireguards.name"
 end
