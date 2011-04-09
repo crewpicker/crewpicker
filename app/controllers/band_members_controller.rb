@@ -26,6 +26,7 @@ class BandMembersController < ApplicationController
   # GET /band_members/new.xml
   def new
     @band_member = BandMember.new
+    @band_member.build_person
     @band = Band.find(params[:band_id])
 
     respond_to do |format|
@@ -37,6 +38,9 @@ class BandMembersController < ApplicationController
   # GET /band_members/1/edit
   def edit
     @band_member = BandMember.find(params[:id])
+    if !@band_member.person
+      @band_member.build_person
+    end
     @band = Band.find(params[:band_id])
   end
 
@@ -44,8 +48,11 @@ class BandMembersController < ApplicationController
   # POST /band_members.xml
   def create
     @band_member = BandMember.new(params[:band_member])
-    @band = Band.find(params[:id])
+    @band = Band.find(params[:band_id])
     @band.band_members << @band_member
+    if person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
+      @band_member.person = person
+    end
 
     respond_to do |format|
       if @band_member.save

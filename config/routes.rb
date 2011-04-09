@@ -28,6 +28,8 @@ FestivalAdmin::Application.routes.draw do
     resources :band_members
   end
 
+  resources :band_members
+
   get "home/index"
   root :to => "home#index"
 
