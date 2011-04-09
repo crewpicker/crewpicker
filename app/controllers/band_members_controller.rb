@@ -53,6 +53,7 @@ class BandMembersController < ApplicationController
     if person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
       person.address = @band_member.person.address
       person.email = @band_member.person.email
+      @band_member.person.destroy
       @band_member.person = person
     end
 
@@ -77,6 +78,7 @@ class BandMembersController < ApplicationController
         if person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
           person.address = @band_member.person.address
           person.email = @band_member.person.email
+          @band_member.person.destroy
           @band_member.person = person
           @band_member.save
         end
