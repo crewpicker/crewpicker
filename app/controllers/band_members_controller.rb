@@ -75,7 +75,8 @@ class BandMembersController < ApplicationController
 
     respond_to do |format|
       if @band_member.update_attributes(params[:band_member])
-        if person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
+        person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
+        if person
           person.address = @band_member.person.address
           person.email = @band_member.person.email
           @band_member.person.destroy
