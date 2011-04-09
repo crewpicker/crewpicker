@@ -13,11 +13,29 @@
 
   <%= hidden_field_tag :id, params[:id] %>
   <div class="field">
-    <%= f.label t(:name) %><br />
+    <%= f.label :name, t(:name) %><br>
     <%= f.text_field :name %>
   </div>
+  <%= f.fields_for :person do |p| %>
   <div class="field">
-    <%= f.label t(:role) %><br />
+    <%= p.label :name, t(:name) %><br>
+    <%= p.text_field :name %>
+  </div>
+  <div class="field">
+    <%= p.label :address, t(:address) %><br>
+    <%= p.text_area :address, :size => '30x4' %>
+  </div>
+  <div class="field">
+    <%= p.label :email, t(:email) %><br>
+    <%= p.text_field :email %>
+  </div>
+  <div class="field">
+    <%= p.label :phone, t(:phone) %><br>
+    <%= p.text_field :phone %>
+  </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :role, t(:role) %><br>
     <%= f.text_field :role %>
   </div>
   <div class="actions">

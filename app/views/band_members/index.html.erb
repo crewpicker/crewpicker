@@ -1,23 +1,24 @@
 <h1>Listing band_members</h1>
 
-<table>
+<table class="border">
   <tr>
+    <th><%= t(:name) %></th>
     <th>Band</th>
-    <th>Name</th>
     <th>Role</th>
-    <th></th>
-    <th></th>
+    <th><%= t(:name) %></th>
     <th></th>
   </tr>
-
 <% @band_members.each do |band_member| %>
   <tr>
-    <td><%= band_member.band_id %></td>
     <td><%= band_member.name %></td>
+    <td><%= if band_member.band then band_member.band.name end %></td>
     <td><%= band_member.role %></td>
-    <td><%= link_to 'Show', band_member %></td>
-    <td><%= link_to 'Edit', edit_band_member_path(band_member) %></td>
-    <td><%= link_to 'Destroy', band_member, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= if band_member.person then band_member.person.id.to_s + ": " + band_member.person.name end %></td>
+    <td>
+      <%= link_to t(:show), band_member %> |
+      <%= link_to t(:edit), edit_band_member_path(band_member) %> |
+      <%= link_to t(:delete), band_member, :confirm => t(:confirm), :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>

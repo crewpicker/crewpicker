@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110331234009) do
+ActiveRecord::Schema.define(:version => 20110408125146) do
 
   create_table "access_levels", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20110331234009) do
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "person_id"
   end
 
   create_table "bands", :id => false, :force => true do |t|
@@ -104,6 +105,15 @@ ActiveRecord::Schema.define(:version => 20110331234009) do
   create_table "old_groups", :force => true do |t|
     t.string "name",                :limit => 64, :null => false
     t.text   "show_on_application",               :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.string   "email"
+    t.string   "phone",      :limit => 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "stage_schedules", :force => true do |t|
