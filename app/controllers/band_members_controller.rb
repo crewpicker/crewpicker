@@ -50,7 +50,8 @@ class BandMembersController < ApplicationController
     @band_member = BandMember.new(params[:band_member])
     @band = Band.find(params[:band_id])
     @band.band_members << @band_member
-    if person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
+    person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
+    if person.id != @band_member.person.id
       person.address = @band_member.person.address
       person.email = @band_member.person.email
       @band_member.person.destroy
@@ -76,7 +77,7 @@ class BandMembersController < ApplicationController
     respond_to do |format|
       if @band_member.update_attributes(params[:band_member])
         person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
-        if person
+        if person.id != @band_member.person.id
           person.address = @band_member.person.address
           person.email = @band_member.person.email
           @band_member.person.destroy
