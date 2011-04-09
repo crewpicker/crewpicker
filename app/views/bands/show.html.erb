@@ -57,12 +57,18 @@
   <tr>
     <th><%= t(:name) %></th>
     <th><%= t(:role) %></th>
+    <th><%= t(:address) %></th>
+    <th><%= t(:email) %></th>
+    <th><%= t(:phone) %></th>
     <th></th>
   </tr>
 <% @band.band_members.each do |band_member| %>
   <tr>
-    <td><%= band_member.name %></td>
+    <td><%= if band_member.person then band_member.person.name end %></td>
     <td><%= band_member.role %></td>
+    <td><%= if band_member.person then nl2br(band_member.person.address) end %></td>
+    <td><%= if band_member.person then band_member.person.email end %></td>
+    <td><%= if band_member.person then band_member.person.phone end %></td>
     <td><%= link_to t(:edit), edit_band_band_member_path(@band, band_member) %> | <%= link_to t(:delete), [@band, band_member], :confirm => t(:confirm), :method => :delete %></td>
   </tr>
 <% end %>
