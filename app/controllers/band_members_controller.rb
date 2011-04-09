@@ -51,6 +51,8 @@ class BandMembersController < ApplicationController
     @band = Band.find(params[:band_id])
     @band.band_members << @band_member
     if person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
+      person.address = @band_member.person.address
+      person.email = @band_member.person.email
       @band_member.person = person
     end
 
@@ -69,6 +71,11 @@ class BandMembersController < ApplicationController
   # PUT /band_members/1.xml
   def update
     @band_member = BandMember.find(params[:id])
+    if person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
+      person.address = @band_member.person.address
+      person.email = @band_member.person.email
+      @band_member.person = person
+    end
 
     respond_to do |format|
       if @band_member.update_attributes(params[:band_member])
