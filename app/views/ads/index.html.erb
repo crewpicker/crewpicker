@@ -1,6 +1,6 @@
 <h1>Listing ads</h1>
 
-<table>
+<table class="border">
   <tr>
     <th>Name</th>
     <th>Contact</th>
@@ -21,8 +21,8 @@
     <td><%= ad.phone %></td>
     <td><%= ad.email %></td>
     <td><%= ad.ad_type.name %></td>
-    <td><%= ad.address %></td>
-    <td><%= ad.notes %></td>
+    <td><%= nl2br(ad.address) %></td>
+    <td><%= nl2br(ad.notes) %></td>
     <td><%= link_to 'Show', ad %></td>
     <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
     <td><%= link_to 'Destroy', ad, :confirm => 'Are you sure?', :method => :delete %></td>
