@@ -1,4 +1,8 @@
 FestivalAdmin::Application.routes.draw do
+  resources :ads
+
+  resources :ad_types
+
   get "statistics/index"
 
   resources :access_cards do
