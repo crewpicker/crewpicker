@@ -1,6 +1,6 @@
 class StatisticsController < ApplicationController
   def index
-    volunteers = Volunteer.all
+    @ad_types = AdType.all
   end
 
 end
