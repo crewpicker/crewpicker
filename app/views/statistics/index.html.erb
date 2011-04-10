@@ -11,7 +11,7 @@
   <tr>
     <td><%= ad_type.name %></td>
     <td><%= ad_type.ads.count %></td>
-    <td><%= ad_type.ads.sum(:value) %></td>
+    <td><%= ad_type.value * ad_type.ads.count %></td>
   </tr>
 <% end %>
 </table>

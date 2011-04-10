@@ -3,7 +3,7 @@ FestivalAdmin::Application.routes.draw do
 
   resources :ad_types
 
-  get "statistics/index"
+  resources :statistics
 
   resources :access_cards do
     get 'blank', :on => :member
