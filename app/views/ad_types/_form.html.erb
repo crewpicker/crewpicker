@@ -1,0 +1,29 @@
+<%= form_for(@ad_type) do |f| %>
+  <% if @ad_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ad_type.errors.count, "error") %> prohibited this ad_type from being saved:</h2>
+
+      <ul>
+      <% @ad_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :invoice_name %><br />
+    <%= f.text_field :invoice_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
