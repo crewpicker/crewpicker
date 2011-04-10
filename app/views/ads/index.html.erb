@@ -15,7 +15,11 @@
   </tr>
 
 <% @ads.each do |ad| %>
-  <tr>
+  <tr<%
+if ad.ad_type.name == "Nei"
+  concat ' style="color: #999999"'.html_safe
+end
+%>>
     <td><%= ad.name %></td>
     <td><%= ad.contact %></td>
     <td><%= ad.phone %></td>
