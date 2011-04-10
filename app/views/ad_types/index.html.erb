@@ -1,0 +1,27 @@
+<h1>Listing ad_types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Value</th>
+    <th>Invoice name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ad_types.each do |ad_type| %>
+  <tr>
+    <td><%= ad_type.name %></td>
+    <td><%= ad_type.value %></td>
+    <td><%= ad_type.invoice_name %></td>
+    <td><%= link_to 'Show', ad_type %></td>
+    <td><%= link_to 'Edit', edit_ad_type_path(ad_type) %></td>
+    <td><%= link_to 'Destroy', ad_type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Ad type', new_ad_type_path %>

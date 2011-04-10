@@ -55,6 +55,8 @@ nb:
   birthday: "Fødselsdato"
   access_level: "Crewkort"
   front_page: "Forside"
+  ads: "Annonser"
+  ad_types: "Annonsetyper"
 
   support:
     array:
