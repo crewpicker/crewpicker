@@ -57,7 +57,28 @@ when "VIP", "VIB", "Retard"
 else
   imagefile = 'ID2.png'
 end
-@access_level.volunteers.each do |volunteer|
+if @access_level.name == "Band"
+  @people.each do |person|
+%>
+        <td>
+          <%= image_tag imagefile, :width => "100%" %>
+          <div>
+            <span class="al"><%= @access_level.name.upcase %><br></span>
+            <span class="name"><%= person.name %></span>
+          </div>
+        </td>
+<%
+    counter+=1
+    if counter == 4
+%>
+      </tr>
+      <tr>
+<%
+      counter = 0
+    end
+  end
+elsif
+  @access_level.volunteers.each do |volunteer|
 %>
         <td>
           <%= image_tag imagefile, :width => "100%" %>
@@ -67,13 +88,14 @@ end
           </div>
         </td>
 <%
-  counter+=1
-  if counter == 4
+    counter+=1
+    if counter == 4
 %>
       </tr>
       <tr>
 <%
-    counter = 0
+      counter = 0
+    end
   end
 end
 %>
