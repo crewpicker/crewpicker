@@ -12,7 +12,11 @@
 <% @access_levels.each do |access_level| %>
   <tr>
     <td><%= access_level.name %></td>
+<% if access_level.name == "Band" %>
+    <td><%= Person.all.count %></td>
+<% elsif %>
     <td><%= access_level.volunteers.count %></td>
+<% end %>
     <td><%= link_to 'Generer crewkort', access_card_path(access_level.id, :format => 'pdf') %></td>
     <td><%= link_to 'Generer blanke crewkort', blank_access_card_path(access_level.id, :format => 'pdf') %></td>
     <td><%= link_to t(:edit), edit_access_level_path(access_level) %></td>
