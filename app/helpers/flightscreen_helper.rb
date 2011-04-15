@@ -1,0 +1,2 @@
+module FlightscreenHelper
+end
