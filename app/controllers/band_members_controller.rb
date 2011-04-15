@@ -2,7 +2,7 @@ class BandMembersController < ApplicationController
   # GET /band_members
   # GET /band_members.xml
   def index
-    @band_members = BandMember.all
+    @band_members = BandMember.find(:all, :include => {:person, :band}, :order => {"bands.name", "people.name"})
 
     respond_to do |format|
       format.html # index.html.erb
