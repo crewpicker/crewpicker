@@ -1,4 +1,5 @@
 FestivalAdmin::Application.routes.draw do
+  resource :flightscreen
   resources :ads
 
   resources :ad_types
