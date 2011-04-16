@@ -6,7 +6,7 @@ img.floatLeft {
     margin: 15px; 
 }
 
-#wrap {width:965px; padding:120px; margin:auto;}
+#wrap {width:805px; padding:120px; margin:auto;}
 
 ul {list-style:none;}
 
@@ -19,8 +19,8 @@ ul {list-style:none;}
 
 
 
-h2 {color: #ffff; font:bold 26px "Trebuchet MS", Arial, Helvetica, sans-serif; text-shadow:#000 1px 1px 1px; display:block; margin-bottom:10px;}
-h3 {color: #999; font:bold 22px "Trebuchet MS", Arial, Helvetica, sans-serif; text-shadow:#000 1px 1px 1px; display:block; margin-bottom:10px;}
+h2 {color: #ffff; font:bold 50px "Trebuchet MS", Arial, Helvetica, sans-serif; text-shadow:#000 1px 1px 1px; display:block; margin-bottom:10px;}
+h3 {color: #999; font:bold 42px "Trebuchet MS", Arial, Helvetica, sans-serif; text-shadow:#000 1px 1px 1px; display:block; margin-bottom:10px;}
 h4 {color: #ccc; font:bold 18px "Trebuchet MS", Arial, Helvetica, sans-serif; text-shadow:#000 1px 1px 1px; display:block; margin-bottom:10px;}
 #header h2#desc {display:block; padding:52px 10px 0 15px; font-size:18px!important; text-shadow:#1a68ae 1px 1px 1px!important;}
 #menu {display:block; list-style:none; float:right; width:600px; font:bold 16px "Trebuchet MS", Arial, Helvetica, sans-serif;}
