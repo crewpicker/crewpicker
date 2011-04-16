@@ -1,5 +1,10 @@
 FestivalAdmin::Application.routes.draw do
   resource :flightscreen
+
+  resources :stage_schedules do
+    get 'list'
+  end
+
   resources :ads
 
   resources :ad_types

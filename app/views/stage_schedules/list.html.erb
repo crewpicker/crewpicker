@@ -1,0 +1,15 @@
+<% title "Bandprogram" %>
+<h1>Bandprogram</h1>
+<table class="border">
+  <tr>
+    <th>Spilletid</th>
+    <th>Navn</th>
+  </tr>
+
+<% @stage_schedules.each do |stage_schedule| %>
+  <tr>
+    <td><%= stage_schedule.from %></td>
+    <td><%= stage_schedule.band.name %></td>
+  </tr>
+<% end %>
+</table>
