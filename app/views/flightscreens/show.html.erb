@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Rock Mot Rus - ON STAGE</title>
+<%= stylesheet_link_tag 'flightscreen' %>
+</head>
+
+
+<img src="/images/ons.png" class="floatLeft"></img>
+<div id="wrap">
+
+<div id="content">
+<div id="left">
+<div class="post">
+
+<% first = 1
+@stage_schedules.each do |stage_schedule|
+  if first == 1
+	first = 0 %>
+<h2><%= stage_schedule.from.to_formatted_s(:time) %> - <%= stage_schedule.band.name %></h2>
+<% elsif %>
+<h3><%= stage_schedule.from.to_formatted_s(:time) %> - <%= stage_schedule.band.name %></h3>
+<% end
+end %>
+<div class="clear"></div>
+</div>
+</div>
+
+  
+  <div class="clear"></div>
+</div>
+<div id="footerlinks">
+
+
+</div>
+
+</div>
+</body>
+</html>
