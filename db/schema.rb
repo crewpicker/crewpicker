@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110410161442) do
+ActiveRecord::Schema.define(:version => 20110628031323) do
 
   create_table "access_levels", :force => true do |t|
     t.string   "name"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20110410161442) do
   end
 
   create_table "bands", :id => false, :force => true do |t|
-    t.string   "uuid",               :limit => 36, :null => false
+    t.string   "uuid",               :limit => 36
     t.string   "name"
     t.string   "contact_name"
     t.string   "email"
@@ -67,23 +67,6 @@ ActiveRecord::Schema.define(:version => 20110410161442) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "contacts", :force => true do |t|
-    t.string   "name",            :limit => 64,                :null => false
-    t.text     "address",                                      :null => false
-    t.date     "birthday"
-    t.string   "email",           :limit => 64,                :null => false
-    t.string   "phone",           :limit => 32,                :null => false
-    t.integer  "is_groupleader",                :default => 0, :null => false
-    t.integer  "contact_type_id",                              :null => false
-    t.integer  "group_id"
-    t.integer  "creator_id",                                   :null => false
-    t.datetime "time_created"
-  end
-
-  add_index "contacts", ["contact_type_id"], :name => "fk_contact_contact_type1"
-  add_index "contacts", ["creator_id"], :name => "fk_contact_user1"
-  add_index "contacts", ["group_id"], :name => "fk_contact_group1"
 
   create_table "fireguards", :force => true do |t|
     t.string   "name"
@@ -122,11 +105,6 @@ ActiveRecord::Schema.define(:version => 20110410161442) do
     t.datetime "updated_at"
   end
 
-  create_table "old_groups", :force => true do |t|
-    t.string "name",                :limit => 64, :null => false
-    t.text   "show_on_application",               :null => false
-  end
-
   create_table "people", :force => true do |t|
     t.string   "name"
     t.text     "address"
@@ -139,8 +117,8 @@ ActiveRecord::Schema.define(:version => 20110410161442) do
   create_table "stage_schedules", :force => true do |t|
     t.integer  "stage_id"
     t.string   "band_id",    :limit => 36
-    t.datetime "from"
-    t.datetime "to"
+    t.datetime "start"
+    t.datetime "end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

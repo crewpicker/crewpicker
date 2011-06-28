@@ -1,24 +1,15 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.7'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
-gem 'mysql2'
-
-gem 'paperclip', '~> 2.3'
-gem 'uuidtools'
-gem 'capistrano'
-gem 'prawn'
-gem "pdfkit", :git => "https://github.com/huerlisi/PDFKit.git"
-
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
@@ -33,6 +24,15 @@ gem "pdfkit", :git => "https://github.com/huerlisi/PDFKit.git"
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+group :development, :test do
+  gem 'sqlite3-ruby'
+end
+
+# Nifty little gems
+
+gem 'pg'
+
+gem 'paperclip', '~> 2.3'
+gem 'uuidtools'
+gem 'prawn'
+gem "pdfkit", :git => "https://github.com/huerlisi/PDFKit.git"
