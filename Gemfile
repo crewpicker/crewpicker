@@ -35,4 +35,4 @@ gem 'pg'
 gem 'paperclip', '~> 2.3'
 gem 'uuidtools'
 gem 'prawn'
-gem "pdfkit", :git => "https://github.com/huerlisi/PDFKit.git"
+gem "pdfkit", :git => "git://github.com/huerlisi/PDFKit.git"
