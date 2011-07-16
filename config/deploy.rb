@@ -1,9 +1,11 @@
 set :application, "FestivalAdmin"
+set :domain, "rockmotrus.no"
+set :subdomain, "crew"
 set :repository,  "git@github.com:tg90nor/FestivalAdmin.git"
 
 set :scm, :git
 
-set :deploy_to, "/home/tg90nor/Linted/#{application}"
+set :deploy_to, "/srv/#{domain}/#{subdomain}/#{application}"
 set :use_sudo, false
 
 role :web, "linted.net"
