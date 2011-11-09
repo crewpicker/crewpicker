@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class BandMailer < ActionMailer::Base
   default :from => "***REMOVED***"
   def extrainfo_email
