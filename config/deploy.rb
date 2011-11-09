@@ -1,24 +1,16 @@
+set :stages, %w(rmr-2011crew rmr-2012crew)
+set :default_stage, "rmr-2012crew"
+require 'capistrano/ext/multistage'
+
+server 'linted.net', :app, :web, :primary => true
+
 set :application, "FestivalAdmin"
-set :domain, "rockmotrus.no"
-set :subdomain, "crew"
-set :repository,  "git@github.com:tg90nor/FestivalAdmin.git"
 
 set :scm, :git
-
+set :repository, "git@github.com:tg90nor/FestivalAdmin.git"
 set :deploy_to, "/srv/#{domain}/#{subdomain}/#{application}"
-set :use_sudo, false
-
-role :web, "linted.net"
-role :app, "linted.net"
-role :db,  "linted.net", :primary => true
-
-namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
-end
+set :deploy_via, :remote_cache
+set :deploy_env, 'production'
 
 namespace :bundler do
   task :install, :roles => :app do
