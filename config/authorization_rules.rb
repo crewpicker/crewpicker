@@ -1,7 +1,7 @@
 authorization do
   role :admin do
     includes :groupleader
-    #has_permission_on [:users, :crew_applications], :to => [:manage]
+    has_permission_on [:users, :crew_applications], :to => [:manage]
   end
 
   role :groupleader do
