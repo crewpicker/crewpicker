@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111109005017) do
+ActiveRecord::Schema.define(:version => 20111109192413) do
 
   create_table "access_levels", :force => true do |t|
     t.string   "name"
@@ -77,6 +77,27 @@ ActiveRecord::Schema.define(:version => 20111109005017) do
     t.datetime "updated_at"
   end
 
+  create_table "crew_applications", :force => true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.date     "birthday"
+    t.string   "email"
+    t.string   "phone"
+    t.text     "experience"
+    t.integer  "volunteer_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "crew_wishes", :force => true do |t|
+    t.integer  "crew_application_id"
+    t.integer  "group_id"
+    t.integer  "priority"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "fireguards", :force => true do |t|
     t.string   "name"
     t.integer  "age"
@@ -123,6 +144,11 @@ ActiveRecord::Schema.define(:version => 20111109005017) do
     t.datetime "updated_at"
   end
 
+  create_table "roles", :force => true do |t|
+    t.string  "title"
+    t.integer "user_id"
+  end
+
   create_table "stage_schedules", :force => true do |t|
     t.integer  "stage_id"
     t.string   "band_id",    :limit => 36
@@ -152,6 +178,7 @@ ActiveRecord::Schema.define(:version => 20111109005017) do
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
+    t.string   "name"
   end
 
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"

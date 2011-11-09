@@ -1,13 +1,14 @@
 <%= form_tag user_sessions_path, :method => :post do %>
+  <%= hidden_field_tag :referer, @referer.to_s %>
   <div class="field">
-    <%= label_tag :username %><br />
+    <%= label_tag t(:username) %><br />
     <%= text_field_tag :username %>
   </div>
   <div class="field">
-    <%= label_tag :password %><br />
+    <%= label_tag t(:password) %><br />
     <%= password_field_tag :password %>
   </div>
   <div class="actions">
-    <%= submit_tag "Login" %>
+    <%= submit_tag "Logg inn" %>
   </div>
 <% end %>

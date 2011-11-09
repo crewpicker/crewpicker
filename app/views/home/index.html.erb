@@ -1,4 +1,8 @@
 <% title 'FestivalAdmin' %>
 <h1>FestivalAdmin</h1>
-<p>Det er ikke kult å mase på Thomas!
-<br>Men du kan godt mase på Magnus</p>
+<% if current_user.crew_application && !(current_user.crew_application.volunteer_id) %>
+<p><%= link_to 'Endre crewsøknad', edit_crew_application_path(current_user.crew_application) %><br/>
+<%= link_to 'Slett crewsøknad', crew_application_path(current_user.crew_application), :method => :delete %><br/></p>
+<% else %>
+<p><%= link_to 'Legg inn crewsøknad', :new_crew_application %></p>
+<% end %>

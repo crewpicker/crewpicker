@@ -1,0 +1,29 @@
+<%= form_for(@crew_wish) do |f| %>
+  <% if @crew_wish.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@crew_wish.errors.count, "error") %> prohibited this crew_wish from being saved:</h2>
+
+      <ul>
+      <% @crew_wish.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :crew_application_id %><br />
+    <%= f.text_field :crew_application_id %>
+  </div>
+  <div class="field">
+    <%= f.label :group_id %><br />
+    <%= f.text_field :group_id %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br />
+    <%= f.text_field :priority %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

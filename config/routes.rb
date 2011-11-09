@@ -1,4 +1,10 @@
 FestivalAdmin::Application.routes.draw do
+  resources :crew_wishes
+
+  resources :crew_applications
+
+  match 'crewskjema' => 'crew_applications#new'
+
   resources :user_sessions
   resources :users
 

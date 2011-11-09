@@ -1,0 +1,37 @@
+<h1>Listing crew_applications</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Birthday</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Experience</th>
+    <th>Volunteer</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @crew_applications.each do |crew_application| %>
+  <tr>
+    <td><%= crew_application.name %></td>
+    <td><%= crew_application.address %></td>
+    <td><%= crew_application.birthday %></td>
+    <td><%= crew_application.email %></td>
+    <td><%= crew_application.phone %></td>
+    <td><%= crew_application.experience %></td>
+    <td><%= crew_application.volunteer_id %></td>
+    <td><%= crew_application.user_id %></td>
+    <td><%= link_to 'Show', crew_application %></td>
+    <td><%= link_to 'Edit', edit_crew_application_path(crew_application) %></td>
+    <td><%= link_to 'Destroy', crew_application, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Crew application', new_crew_application_path %>

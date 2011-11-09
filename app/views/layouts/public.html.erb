@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <title><%= yield(:title) %></title>
+    <%= stylesheet_link_tag 'public' %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+    <%= yield(:headerextra) %>
+  </head>
+  <body>
+    <div id="content">
+      <p style="text-align: right;">
+      <% if current_user %>
+        Logget inn som <%= current_user.username %> |
+        <%= link_to "Logg ut", logout_path %>
+      <% else %>
+        <%= link_to "Logg inn", login_path %>
+      <% end %>
+      </p>
+      <div id="notice"><%= notice %></div>
+<%= yield %>
+    </div>
+  </body>
+</html>

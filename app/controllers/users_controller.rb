@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
+  filter_resource_access
   def index
     @users = User.all
 
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
     @user = User.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :layout => 'public' }
       format.xml  { render :xml => @user }
     end
   end
@@ -41,10 +42,15 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
+    role = Role.new(:title => 'user')
+    @user.roles << role
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+        if @user.id == 1
+          @user.roles.create(:title => 'admin')
+        end
+        format.html { redirect_to(:root, :notice => 'Registreringen var vellykket') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
