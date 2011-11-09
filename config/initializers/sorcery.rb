@@ -36,21 +36,21 @@ Rails.application.config.sorcery.configure do |config|
   # config.register_last_activity_time = true                         # will register the time of last user action, every action.
 
   # -- external --
-  config.external_providers = [:facebook]                                    # What providers are supported by this app,
+  config.external_providers = [:twitter, :facebook]                                    # What providers are supported by this app,
                                                                       # i.e. [:twitter, :facebook, :github] .
   # config.ca_file = 'path/to/ca_file'                                # Path to ca_file. By default use a internal ca-bundle.crt.
                                                                       # You can change it by your local ca_file.
                                                                       # i.e. '/etc/pki/tls/certs/ca-bundle.crt'
 
-  # config.twitter.key = "eYVNBjBDi33aa9GkA3w"
-  # config.twitter.secret = "XpbeSdCoaKSmQGSeokz5qcUATClRW5u08QWNfv71N8"
-  # config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
-  # config.twitter.user_info_mapping = {:email => "screen_name"}
+  config.twitter.key = "PzbVFWba4kmoXVrVE9OMUQ"
+  config.twitter.secret = "Uj8s8OKzQlDQmFc2YBrPIkXSiwYwsbBCw1UcZVJJQJ4"
+  config.twitter.callback_url = "http://2012crew.rockmotrus.no/oauth/callback?provider=twitter"
+  config.twitter.user_info_mapping = {:username => "screen_name", :name => "name"}
   #
   config.facebook.key = "183131118439639"
   config.facebook.secret = "8651602fc692eb26e3166326a9108e21"
   config.facebook.callback_url = "http://2012crew.rockmotrus.no/oauth/callback?provider=facebook"
-  config.facebook.user_info_mapping = {:username => "username"}
+  config.facebook.user_info_mapping = {:username => "username", :name => "name"}
   #
   # config.github.key = ""
   # config.github.secret = ""
@@ -194,6 +194,6 @@ Rails.application.config.sorcery.configure do |config|
   end
 
   # This line must come after the 'user config' block.
-  config.user_class = "User"                                       # define which model authenticates
+  config.user_class = "User"                                                          # define which model authenticates
                                                                                       # with sorcery.
 end

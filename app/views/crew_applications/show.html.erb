@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%= t(:name) %></b><br/>
+  <%= @crew_application.name %>
+</p>
+
+<p>
+  <b><%= t(:address) %></b><br/>
+  <%= @crew_application.address %>
+</p>
+
+<p>
+  <b><%= t(:birthday) %></b><br/>
+  <%= @crew_application.birthday %>
+</p>
+
+<p>
+  <b><%= t(:email) %></b><br/>
+  <%= @crew_application.email %>
+</p>
+
+<p>
+  <b><%= t(:phone) %></b><br/>
+  <%= @crew_application.phone %>
+</p>
+
+<p>
+  <b><%= t(:relevant_experience) %></b><br/>
+  <%= @crew_application.experience %>
+</p>
+
+<% @crew_application.crew_wishes.each do |crew_wish| %>
+<% if crew_wish.group_id %>
+<p>
+  <b><%= crew_wish.priority.to_s + '. ' + t(:option) %></b><br/>
+  <%= crew_wish.group_id %>
+</p>
+<% end %>
+<% end %>
+
+<p><%= link_to 'Endre', edit_crew_application_path(@crew_application) %> |
+<%= link_to 'Slett', @crew_application, :method => :delete %> |
+<%= link_to 'Tilbake til forsiden', :root %></p>
