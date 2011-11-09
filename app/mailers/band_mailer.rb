@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class BandMailer < ActionMailer::Base
   default :from => "Rock Mot Rus <festival@rockmotrus.no>"
   def extrainfo_email
