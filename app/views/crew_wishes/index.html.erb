@@ -1,0 +1,27 @@
+<h1>Listing crew_wishes</h1>
+
+<table>
+  <tr>
+    <th>Crew application</th>
+    <th>Group</th>
+    <th>Priority</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @crew_wishes.each do |crew_wish| %>
+  <tr>
+    <td><%= crew_wish.crew_application_id %></td>
+    <td><%= crew_wish.group_id %></td>
+    <td><%= crew_wish.priority %></td>
+    <td><%= link_to 'Show', crew_wish %></td>
+    <td><%= link_to 'Edit', edit_crew_wish_path(crew_wish) %></td>
+    <td><%= link_to 'Destroy', crew_wish, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Crew wish', new_crew_wish_path %>
