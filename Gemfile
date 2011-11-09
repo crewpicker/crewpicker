@@ -12,6 +12,7 @@ end
 
 group :production do
   gem 'mysql'
+  gem 'pg'
 end
 
 gem 'paperclip', '~> 2.3'
