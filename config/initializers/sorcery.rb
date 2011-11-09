@@ -49,7 +49,7 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.facebook.key = "***REMOVED***"
   config.facebook.secret = "***REMOVED***"
-  config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
+  config.facebook.callback_url = "http://2012crew.rockmotrus.no/oauth/callback?provider=facebook"
   config.facebook.user_info_mapping = {:username => "username"}
   #
   # config.github.key = ""
