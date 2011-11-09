@@ -178,7 +178,7 @@ Rails.application.config.sorcery.configure do |config|
                                                                                       # the user defined logged out?
 
     # -- external --
-    # user.authentications_class = nil                                                # class which holds the various
+    user.authentications_class = Authentication                                       # class which holds the various
                                                                                       # external provider data for this
                                                                                       # user.
 
