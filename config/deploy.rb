@@ -32,7 +32,9 @@ end
 
 after "deploy:rollback:revision", "bundler:install"
 after "deploy:update_code", "bundler:bundle_new_release"
+after "deploy:update_code", ":localconfig"
 
-task :after_update_code do
-run "ln -nfs #{deploy_to}/#{shared_dir}/config/database.yml #{release_path}/config/database.yml"
+task :localconfig do
+  run "ln -nfs #{deploy_to}/#{shared_dir}/config/database.yml #{release_path}/config/database.yml"
+  run "ln -nfs #{deploy_to}/#{shared_dir}/config/unicorn.rb #{release_path}/config/unicorn.rb"
 end
