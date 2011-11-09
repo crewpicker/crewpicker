@@ -8,7 +8,6 @@ set :application, "FestivalAdmin"
 
 set :scm, :git
 set :repository, "git@github.com:tg90nor/FestivalAdmin.git"
-set :deploy_to, "/srv/#{domain}/#{subdomain}/#{application}"
 set :deploy_via, :remote_cache
 set :deploy_env, 'production'
 
