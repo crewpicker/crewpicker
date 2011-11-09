@@ -2,8 +2,6 @@ set :stages, %w(rmr-2011crew rmr-2012crew)
 set :default_stage, "rmr-2012crew"
 require 'capistrano/ext/multistage'
 
-server 'linted.net', :app, :web, :primary => true
-
 set :application, "FestivalAdmin"
 
 set :scm, :git
