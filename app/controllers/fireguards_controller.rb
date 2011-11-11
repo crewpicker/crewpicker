@@ -1,4 +1,7 @@
 class FireguardsController < ApplicationController
+  filter_resource_access
+  layout :check_layout
+
   # GET /fireguards
   # GET /fireguards.xml
   def index

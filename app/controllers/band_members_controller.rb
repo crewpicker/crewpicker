@@ -1,4 +1,7 @@
 class BandMembersController < ApplicationController
+  filter_resource_access
+  layout :check_layout
+
   # GET /band_members
   # GET /band_members.xml
   def index

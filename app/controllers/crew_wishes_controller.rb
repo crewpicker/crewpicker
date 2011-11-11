@@ -1,5 +1,7 @@
 class CrewWishesController < ApplicationController
   filter_resource_access
+  layout :check_layout
+
   # GET /crew_wishes
   # GET /crew_wishes.xml
   def index

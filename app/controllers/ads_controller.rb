@@ -1,4 +1,7 @@
 class AdsController < ApplicationController
+  filter_resource_access
+  layout :check_layout
+
   # GET /ads
   # GET /ads.xml
   def index
