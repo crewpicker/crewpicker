@@ -1,12 +1,14 @@
 class CrewApplicationsController < ApplicationController
+  filter_resource_access
+  layout :check_layout
+
   # GET /crew_applications
   # GET /crew_applications.xml
-  filter_resource_access
   def index
     @crew_applications = CrewApplication.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render }
       format.xml  { render :xml => @crew_applications }
     end
   end
@@ -17,7 +19,7 @@ class CrewApplicationsController < ApplicationController
     @crew_application = CrewApplication.find(params[:id])
 
     respond_to do |format|
-      format.html { render :layout => 'public' }
+      format.html
       format.xml  { render :xml => @crew_application }
     end
   end
@@ -31,7 +33,7 @@ class CrewApplicationsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { render :layout => 'public' }
+      format.html
       format.xml  { render :xml => @crew_application }
     end
   end
@@ -39,7 +41,6 @@ class CrewApplicationsController < ApplicationController
   # GET /crew_applications/1/edit
   def edit
     @crew_application = CrewApplication.find(params[:id])
-    render :layout => 'public'
   end
 
   # POST /crew_applications

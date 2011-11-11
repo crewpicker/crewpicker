@@ -1,4 +1,7 @@
 class AccessLevelsController < ApplicationController
+  filter_resource_access
+  layout :check_layout
+
   # GET /access_levels
   # GET /access_levels.xml
   def index

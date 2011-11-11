@@ -1,4 +1,7 @@
 class GroupsController < ApplicationController
+  filter_resource_access
+  layout :check_layout
+
   # GET /groups
   # GET /groups.xml
   def index
