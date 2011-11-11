@@ -1,5 +1,8 @@
 require 'uuidtools'
 class BandsController < ApplicationController
+  filter_resource_access
+  layout :check_layout
+
   # GET /bands
   # GET /bands.xml
   def index

@@ -61,3 +61,4 @@ nb:
   username: "Brukernavn"
   password: "Passord"
   password_confirmation: "Bekreft passord"
+  crew_applications: "Crewsøknader"

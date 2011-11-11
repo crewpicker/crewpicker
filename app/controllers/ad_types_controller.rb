@@ -1,4 +1,7 @@
 class AdTypesController < ApplicationController
+  filter_resource_access
+  layout :check_layout
+
   # GET /ad_types
   # GET /ad_types.xml
   def index

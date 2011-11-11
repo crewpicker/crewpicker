@@ -1,6 +1,7 @@
 class VolunteersController < ApplicationController
-  # GET /volunteers
-  # GET /volunteers.xml
+  filter_resource_access
+  layout :check_layout
+
   def index
     @groups = Group.find(:all, :include => :volunteers, :conditions => "volunteers.id IS NOT NULL", :order => "volunteers.name")
 

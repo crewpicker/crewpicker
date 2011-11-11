@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+  filter_resource_access
+  layout :check_layout
+
   # GET /users
   # GET /users.xml
-  filter_resource_access
   def index
     @users = User.all
 
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.new
 
     respond_to do |format|
-      format.html { render :layout => 'public' }
+      format.html
       format.xml  { render :xml => @user }
     end
   end

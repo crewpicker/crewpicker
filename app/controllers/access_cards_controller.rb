@@ -1,4 +1,6 @@
 class AccessCardsController < ApplicationController
+  filter_resource_access
+
   def show
     @access_level = AccessLevel.find(params[:id])
     if @access_level.name == "Band"
