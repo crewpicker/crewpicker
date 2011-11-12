@@ -18,4 +18,13 @@ class User < ActiveRecord::Base
   def role_symbols
     (roles || []).map {|r| r.title.to_sym}
   end
+  def highest_role
+    if roles.find_by_title('admin')
+      return 'Admin'
+    elsif roles.find_by_title('groupleader')
+      return 'Crewleder'
+    else
+      return 'Bruker'
+    end
+  end
 end

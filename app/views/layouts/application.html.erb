@@ -18,7 +18,11 @@
       <%= link_to t(:fireguards), fireguards_path %> |
       <%= link_to t(:locations), locations_path %> |
       <%= link_to t(:ads), ads_path %> |
-      <%= link_to t(:ad_types), ad_types_path %>
+      <%= link_to t(:ad_types), ad_types_path %> |
+      <%= link_to t(:crew_applications), crew_applications_path %> |
+      <%= link_to t(:users), users_path %> |
+      Logget inn som <%= current_user.username %> |
+      <%= link_to "Logg ut", logout_path %>
     </p>
 <%= yield %>
   </body>

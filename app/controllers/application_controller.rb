@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_layout
-    if !current_user.nil? and (current_user.roles.find_by_title('crewleader') or current_user.roles.find_by_title('admin'))
+    if !current_user.nil? and (current_user.roles.find_by_title('groupleader') or current_user.roles.find_by_title('admin'))
       return 'application'
     else
       return 'public'
