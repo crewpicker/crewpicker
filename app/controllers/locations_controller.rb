@@ -1,4 +1,7 @@
 class LocationsController < ApplicationController
+  filter_resource_access
+  layout :check_layout
+
   # GET /locations
   # GET /locations.xml
   def index

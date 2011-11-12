@@ -1,4 +1,7 @@
 class LocationSchedulesController < ApplicationController
+  filter_resource_access
+  layout :check_layout
+
   def show
     events = []
     LocationSchedule.all(:conditions => [ "location_id = ? AND slot = ?", params[:location_id], params[:id]]).each do |location_schedule|
