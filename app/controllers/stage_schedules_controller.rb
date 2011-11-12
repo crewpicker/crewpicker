@@ -1,4 +1,7 @@
 class StageSchedulesController < ApplicationController
+  filter_resource_access
+  layout :check_layout
+
   def get_events
     stage_schedules = Stage.find(params[:id]).stage_schedules
     events = []
