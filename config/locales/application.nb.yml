@@ -62,3 +62,8 @@ nb:
   password: "Passord"
   password_confirmation: "Bekreft passord"
   crew_applications: "Crewsøknader"
+  users: "brukere"
+  user: "bruker"
+  listing: "liste over"
+  new: "ny"
+  roles: "roller"

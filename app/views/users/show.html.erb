@@ -1,25 +1,24 @@
-<p id="notice"><%= notice %></p>
-
+<% title t(:user).capitalize + ': ' + @user.username %>
+<h1><%= t(:user).capitalize + ': ' + @user.username %></h1>
+<table class="border">
+  <tr>
+    <th><%= t(:username) %>:</th>
+    <td><%= @user.username %></td>
+  </tr>
+  <tr>
+    <th><%= t(:name) %>:</th>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <th><%= t(:email) %>:</th>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <th><%= t(:roles).capitalize %>:</th>
+    <td><%= @user.roles.map(&:title).to_sentence.capitalize %></td>
+  </tr>
+</table>
 <p>
-  <b>Username:</b>
-  <%= @user.username %>
+<%= link_to t(:edit), edit_user_path(@user) %> |
+<%= link_to t(:back), users_path %>
 </p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Crypted password:</b>
-  <%= @user.crypted_password %>
-</p>
-
-<p>
-  <b>Salt:</b>
-  <%= @user.salt %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
