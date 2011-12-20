@@ -5,6 +5,7 @@ gem 'rails', '3.0.10'
 gem 'unicorn'
 
 gem 'capistrano'
+gem 'capistrano-ext'
 
 gem 'sqlite3-ruby'
 
