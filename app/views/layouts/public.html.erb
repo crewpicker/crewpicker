@@ -8,17 +8,20 @@
     <%= yield(:headerextra) %>
   </head>
   <body>
-    <div id="content">
-      <p style="text-align: right;">
-      <% if current_user %>
-        Logget inn som <%= current_user.username %> |
-        <%= link_to "Logg ut", logout_path %>
-      <% else %>
-        <%= link_to "Logg inn", login_path %>
-      <% end %>
-      </p>
-      <div id="notice"><%= notice %></div>
+    <p style="text-align: right;">
+    <% if current_user %>
+      Logget inn som <%= current_user.username %> |
+      <%= link_to "Logg ut", logout_path %>
+    <% else %>
+      <%= link_to "Logg inn", login_path %>
+    <% end %>
+    </p>
+    <% if flash[:alert] %>
+      <p class="flash-error"><%= flash[:alert] %></p>
+    <% end %>
+    <% if flash[:notice] %>
+      <p class="flash-notice"><%= flash[:notice] %></p>
+    <% end %>
 <%= yield %>
-    </div>
   </body>
 </html>
