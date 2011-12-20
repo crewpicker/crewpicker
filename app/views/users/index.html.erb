@@ -1,11 +1,14 @@
-<h1>Listing users</h1>
+<% title t(:listing).capitalize + ' ' + t(:users) %>
+<h1><%= t(:listing).capitalize + ' ' + t(:users) %></h1>
 
-<table>
+<table class="border">
   <tr>
     <th><%= t(:username) %></th>
     <th><%= t(:name) %></th>
     <th><%= t(:email) %></th>
-    <th>Tilgang</th>
+    <th><%= t(:roles).capitalize %></th>
+    <th></th>
+    <th></th>
     <th></th>
   </tr>
 
@@ -14,16 +17,11 @@
     <td><%= user.username %></td>
     <td><%= user.name %></td>
     <td><%= user.email %></td>
-    <td><%= user.highest_role %></td>
-    <td>
-      <%= link_to 'Show', user %> |
-      <%= link_to 'Edit', edit_user_path(user) %> |
-      <%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %>
-    </td>
+    <td><%= user.roles.map(&:title).to_sentence.capitalize %></td>
+    <td><%= link_to t(:show), user %></td>
+    <td><%= link_to t(:edit), edit_user_path(user) %></td>
+    <td><%= link_to t(:delete), user, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New User', new_user_path %>
+<p><%= link_to t(:new).capitalize + ' ' + t(:user), new_user_path %></p>

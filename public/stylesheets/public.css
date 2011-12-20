@@ -6,7 +6,7 @@ html {
   background-image: url(http://rockmotrus.no/filarkiv/grafikk/grafikk-logo-rmr-vinge.png);
   background-repeat: no-repeat;
 }
-#content {
+body {
   background-color: white;
   margin-left: auto;
   margin-right: auto;
@@ -54,4 +54,9 @@ h1 {
 }
 h2 {
   font-size: 14px;
+}
+.flash-error {
+  font-weight: bold;
+  font-size: 14px;
+  color: red;
 }

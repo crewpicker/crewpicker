@@ -31,6 +31,12 @@
     <%= f.label t(:password_confirmation) %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  <% permitted_to? :manage, :roles do %>
+    <div class="field">
+      <%= f.label t(:roles).capitalize %><br />
+      <%= f.password_field :password_confirmation %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit 'Registrer brukerkonto' %>
   </div>

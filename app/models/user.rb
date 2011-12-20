@@ -15,16 +15,8 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
+  validates_uniqueness_of :username
   def role_symbols
     (roles || []).map {|r| r.title.to_sym}
-  end
-  def highest_role
-    if roles.find_by_title('admin')
-      return 'Admin'
-    elsif roles.find_by_title('groupleader')
-      return 'Crewleder'
-    else
-      return 'Bruker'
-    end
   end
 end

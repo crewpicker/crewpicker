@@ -6,14 +6,12 @@ gem 'unicorn'
 
 gem 'capistrano'
 
-group :development, :test do
-  gem 'sqlite3-ruby'
-end
+gem 'sqlite3-ruby'
 
-group :production do
-  gem 'mysql'
-  gem 'pg'
-end
+#group :production do
+#  gem 'mysql'
+#  gem 'pg'
+#end
 
 gem 'paperclip', '~> 2.3'
 gem 'uuidtools'
