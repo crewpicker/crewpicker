@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111109192413) do
+ActiveRecord::Schema.define(:version => 20120104165311) do
 
   create_table "access_levels", :force => true do |t|
     t.string   "name"
@@ -145,8 +145,9 @@ ActiveRecord::Schema.define(:version => 20111109192413) do
   end
 
   create_table "roles", :force => true do |t|
-    t.string  "title"
-    t.integer "user_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "stage_schedules", :force => true do |t|
@@ -164,6 +165,12 @@ ActiveRecord::Schema.define(:version => 20111109192413) do
     t.datetime "to"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "user_roles", :force => true do |t|
+    t.string  "title"
+    t.integer "user_id"
+    t.integer "role_id"
   end
 
   create_table "users", :force => true do |t|

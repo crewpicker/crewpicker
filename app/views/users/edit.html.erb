@@ -1,6 +1,5 @@
-<h1>Editing user</h1>
-
+<% title t(:edit) + ' ' + t(:user) %>
+<h1><%= t(:edit) + ' ' + t(:user) %></h1>
 <%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<p><%= link_to t(:show), @user %> |
+<%= link_to t(:back), users_path %></p>
