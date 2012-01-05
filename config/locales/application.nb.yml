@@ -67,3 +67,7 @@ nb:
   listing: "liste over"
   new: "ny"
   roles: "roller"
+
+  activerecord:
+    models:
+      user: bruker

@@ -6,17 +6,20 @@ class User < ActiveRecord::Base
   end
 
   has_many :authentications, :dependent => :destroy
-  has_many :roles
+  has_many :user_roles
+  has_many :roles, :through => :user_roles
   has_one :crew_application
   accepts_nested_attributes_for :authentications
 
-  validates_length_of :password, :minimum => 5, :if => :password
+  validates_length_of :password, :minimum => 5, :on => :create
+  validates_length_of :password, :minimum => 5, :on => :update, :allow_blank => true
   validates_confirmation_of :password, :if => :password
   validates_presence_of :password, :on => :create
   validates_presence_of :email
+  validates_presence_of :username
   validates_uniqueness_of :email
   validates_uniqueness_of :username
   def role_symbols
-    (roles || []).map {|r| r.title.to_sym}
+    (roles || []).map {|r| r.name.to_sym}
   end
 end

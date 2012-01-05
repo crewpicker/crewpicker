@@ -1,4 +1,6 @@
 FestivalAdmin::Application.routes.draw do
+  resources :roles
+
   resources :crew_wishes
 
   resources :crew_applications

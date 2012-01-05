@@ -175,7 +175,7 @@ nb:
       prompt: "Vennligst velg"
 
     submit:
-      create: "Lag %{model}"
+      create: "Opprett %{model}"
       update: "Oppdater %{model}"
       submit: "Lagre %{model}"
 

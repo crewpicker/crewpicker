@@ -44,13 +44,13 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-    role = Role.new(:title => 'user')
+    role = Role.find_or_create_by_name('user')
     @user.roles << role
 
     respond_to do |format|
       if @user.save
         if @user.id == 1
-          @user.roles.create(:title => 'admin')
+          @user.roles.find_or_create_by_name('admin')
         end
         format.html { redirect_to(:root, :notice => 'Registreringen var vellykket') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }

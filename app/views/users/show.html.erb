@@ -15,7 +15,7 @@
   </tr>
   <tr>
     <th><%= t(:roles).capitalize %>:</th>
-    <td><%= @user.roles.map(&:title).to_sentence.capitalize %></td>
+    <td><%= @user.roles.map(&:name).to_sentence.capitalize %></td>
   </tr>
 </table>
 <p>

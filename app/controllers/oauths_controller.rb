@@ -14,7 +14,7 @@ class OauthsController < ApplicationController
     else
       begin
         @user = create_from(provider)
-        role = Role.new(:title => 'user')
+        role = Role.find_or_create_by_name('user')
         @user.roles << role
 
         # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule

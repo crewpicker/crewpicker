@@ -42,15 +42,23 @@ Rails.application.config.sorcery.configure do |config|
                                                                       # You can change it by your local ca_file.
                                                                       # i.e. '/etc/pki/tls/certs/ca-bundle.crt'
 
-  config.twitter.key = "***REMOVED***"
-  config.twitter.secret = "***REMOVED***"
-  config.twitter.callback_url = "http://2012crew.rockmotrus.no/oauth/callback?provider=twitter"
-  config.twitter.user_info_mapping = {:username => "screen_name", :name => "name"}
-  #
-  config.facebook.key = "***REMOVED***"
-  config.facebook.secret = "***REMOVED***"
-  config.facebook.callback_url = "http://2012crew.rockmotrus.no/oauth/callback?provider=facebook"
-  config.facebook.user_info_mapping = {:username => "username", :name => "name"}
+  if Rails.env == "development"
+    config.twitter.key = "***REMOVED***"
+    config.twitter.secret = "***REMOVED***"
+    config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
+    config.facebook.key = "***REMOVED***"
+    config.facebook.secret = "***REMOVED***"
+    config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
+  else
+    config.twitter.key = "***REMOVED***"
+    config.twitter.secret = "***REMOVED***"
+    config.twitter.callback_url = "http://2012crew.rockmotrus.no/oauth/callback?provider=twitter"
+    config.facebook.key = "***REMOVED***"
+    config.facebook.secret = "***REMOVED***"
+    config.facebook.callback_url = "http://2012crew.rockmotrus.no/oauth/callback?provider=facebook"
+  end
+  config.twitter.user_info_mapping = {:username => "screen_name", :name => "name", :email => "email"}
+  config.facebook.user_info_mapping = {:username => "Provider", :name => "name", :email => "email"}
   #
   # config.github.key = ""
   # config.github.secret = ""
