@@ -42,15 +42,23 @@ Rails.application.config.sorcery.configure do |config|
                                                                       # You can change it by your local ca_file.
                                                                       # i.e. '/etc/pki/tls/certs/ca-bundle.crt'
 
-  config.twitter.key = "PzbVFWba4kmoXVrVE9OMUQ"
-  config.twitter.secret = "Uj8s8OKzQlDQmFc2YBrPIkXSiwYwsbBCw1UcZVJJQJ4"
-  config.twitter.callback_url = "http://2012crew.rockmotrus.no/oauth/callback?provider=twitter"
-  config.twitter.user_info_mapping = {:username => "screen_name", :name => "name"}
-  #
-  config.facebook.key = "183131118439639"
-  config.facebook.secret = "8651602fc692eb26e3166326a9108e21"
-  config.facebook.callback_url = "http://2012crew.rockmotrus.no/oauth/callback?provider=facebook"
-  config.facebook.user_info_mapping = {:username => "username", :name => "name"}
+  if Rails.env == "development"
+    config.twitter.key = "uE1qa4UaNepz7ngJ8Tephg"
+    config.twitter.secret = "1IlIYgvgReX9rPtdGWgrDHFZ0Im4wXy1xeiSzLUSSCI"
+    config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
+    config.facebook.key = "169225093179722"
+    config.facebook.secret = "19e23a62adbcd6b8ef5862e36cf9addc"
+    config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
+  else
+    config.twitter.key = "PzbVFWba4kmoXVrVE9OMUQ"
+    config.twitter.secret = "Uj8s8OKzQlDQmFc2YBrPIkXSiwYwsbBCw1UcZVJJQJ4"
+    config.twitter.callback_url = "http://2012crew.rockmotrus.no/oauth/callback?provider=twitter"
+    config.facebook.key = "183131118439639"
+    config.facebook.secret = "8651602fc692eb26e3166326a9108e21"
+    config.facebook.callback_url = "http://2012crew.rockmotrus.no/oauth/callback?provider=facebook"
+  end
+  config.twitter.user_info_mapping = {:username => "screen_name", :name => "name", :email => "email"}
+  config.facebook.user_info_mapping = {:username => "Provider", :name => "name", :email => "email"}
   #
   # config.github.key = ""
   # config.github.secret = ""

@@ -34,10 +34,13 @@
   <% permitted_to? :manage, :roles do %>
     <div class="field">
       <%= f.label t(:roles).capitalize %><br />
-      <%= f.password_field :password_confirmation %>
+      <% for role in Role.all %>
+        <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+        <%=h role.name %><br />
+      <% end %>
     </div>
   <% end %>
   <div class="actions">
-    <%= f.submit 'Registrer brukerkonto' %>
+    <%= f.submit %>
   </div>
 <% end %>
