@@ -1,11 +1,10 @@
 authorization do
   role :admin do
-    includes :groupleader
     has_permission_on [:users, :crew_applications, :volunteers, :groups, :roles], :to => [:manage]
   end
 
   role :groupleader do
-    includes :normal
+    includes :admin
   end
 
   role :user do
