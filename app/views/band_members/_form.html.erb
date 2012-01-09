@@ -12,6 +12,7 @@
   <% end %>
 
   <%= hidden_field_tag :id, params[:id] %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="field">
     <%= f.label :name, t(:name) %><br>
     <%= f.text_field :name %>

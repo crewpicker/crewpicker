@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :user_roles
   has_many :roles, :through => :user_roles
   has_one :crew_application
+  has_many :bands
+  has_many :band_members
   accepts_nested_attributes_for :authentications
 
   validates_length_of :password, :minimum => 5, :on => :create
