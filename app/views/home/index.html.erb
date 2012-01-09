@@ -6,3 +6,7 @@
 <% else %>
 <p><%= link_to 'Legg inn crewsøknad', :new_crew_application %></p>
 <% end %>
+<% current_user.bands.each do |band| %>
+<p><%= band.name %>: <%= link_to 'Endre bandpåmelding', edit_band_path(band) %> | <%= link_to 'Slett bandpåmelding', band_path(band), :method => :delete %></p>
+<% end %>
+<p><%= link_to 'Legg inn bandpåmelding', :new_band %></p>
