@@ -10,6 +10,14 @@ authorization do
 
   role :user do
     includes :guest
+    has_permission_on :bands, :to => [:new, :create]
+    has_permission_on :bands, :to => [:edit, :update, :show, :destroy] do
+      if_attribute :user_id => is { user.id }
+    end
+    has_permission_on :band_members, :to => [:new, :create]
+    has_permission_on :band_members, :to => [:edit, :update, :show, :destroy] do
+      if_attribute :user_id => is { user.id }
+    end
     has_permission_on :crew_applications, :to => [:new, :create]
     has_permission_on :crew_applications, :to => [:edit, :update, :show, :destroy] do
       if_attribute :user_id => is { user.id }

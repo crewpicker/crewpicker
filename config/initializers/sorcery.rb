@@ -58,7 +58,7 @@ Rails.application.config.sorcery.configure do |config|
     config.facebook.callback_url = "http://2012crew.rockmotrus.no/oauth/callback?provider=facebook"
   end
   config.twitter.user_info_mapping = {:username => "screen_name", :name => "name", :email => "email"}
-  config.facebook.user_info_mapping = {:username => "Provider", :name => "name", :email => "email"}
+  config.facebook.user_info_mapping = {:username => "email", :name => "name", :email => "email"}
   #
   # config.github.key = ""
   # config.github.secret = ""
