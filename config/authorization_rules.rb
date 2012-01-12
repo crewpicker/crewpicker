@@ -1,6 +1,6 @@
 authorization do
   role :admin do
-    has_permission_on [:users, :crew_applications, :volunteers, :groups, :roles], :to => [:manage]
+    has_permission_on [:users, :crew_applications, :volunteers, :groups, :roles, :bands, :band_members], :to => [:manage]
   end
 
   role :groupleader do
