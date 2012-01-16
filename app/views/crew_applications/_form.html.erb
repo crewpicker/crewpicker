@@ -22,7 +22,7 @@
   </div>
   <div class="field">
     <%= f.label t(:birthday) %><br />
-    <%= f.date_select :birthday, :include_blank => true, :start_year => 1900, :end_year => Time.now.year %>
+    <%= f.date_select :birthday, :include_blank => true, :start_year => Time.now.year, :end_year => Time.now.year - 100 %>
   </div>
   <div class="field">
     <%= f.label t(:email) %><br />
