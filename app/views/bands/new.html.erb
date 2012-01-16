@@ -1,5 +1,9 @@
 <h1><%= t(:new_band) %></h1>
 
+<% if not current_user %>
+<p style="font-weight:bold"><span style="color:red">Advarsel: Du er ikke innlogget, og kan derfor ikke endre disse opplysningene i ettertid. </span><%= link_to 'Logg inn', login_path %></p>
+<% end %>
+
 <%= render 'form' %>
 
-<%= link_to t(:back), bands_path %>
+<p><%= link_to t(:back), root_path %></p>
