@@ -23,7 +23,7 @@
     <td><%= crew_application.email %></td>
     <td><%= crew_application.phone %></td>
     <td><%= crew_application.experience %></td>
-    <td><%= crew_application.user.username %></td>
+    <td><%= crew_application.user.username if crew_application.user %></td>
     <% crew_application.crew_wishes.each do |crew_wish| %>
     <% if crew_wish.group_id %>
     <td><%= crew_wish.group.name %></td>
