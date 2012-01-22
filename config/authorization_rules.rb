@@ -32,8 +32,8 @@ authorization do
   end
 
   role :guest do
-    has_permission_on :bands, :to => [:new, :create]
-    has_permission_on :band_members, :to => [:new, :create]
+    has_permission_on :bands, :to => [:new, :create, :show]
+    has_permission_on :band_members, :to => [:new, :create, :edit, :update, :destroy]
     has_permission_on :crew_applications, :to => [:new, :create]
     has_permission_on :crew_wishes, :to => [:new, :create]
     has_permission_on :home, :to => :index
