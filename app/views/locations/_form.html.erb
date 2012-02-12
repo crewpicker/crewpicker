@@ -12,13 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label t(:name) %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :slots %><br />
-    <%= f.text_field :slots %>
-  </div>
+  <%= f.hidden_field :slots, :value => params[:slots] or 2 %>
   <div class="actions">
     <%= f.submit %>
   </div>

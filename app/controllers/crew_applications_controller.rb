@@ -92,4 +92,28 @@ class CrewApplicationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  def choose
+    crew_application = CrewApplication.find(params[:id])
+    @volunteer = Volunteer.new
+    @volunteer.name = crew_application.name
+    @volunteer.address = crew_application.address
+    @volunteer.birthday = crew_application.birthday
+    @volunteer.email = crew_application.email
+    @volunteer.phone = crew_application.phone
+    @volunteer.group_id = params[:group_id]
+    @volunteer.user_id = crew_application.user_id
+    @volunteer.access_level = 'Crew'
+    crew_application.chosen = true
+    crew_application.save
+
+    respond_to do |format|
+      if @volunteer.save
+        format.html { redirect_to(@volunteer.group, :notice => 'Volunteer was successfully created.') }
+        format.xml  { render :xml => @volunteer, :status => :created, :location => @volunteer }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @volunteer.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
 end

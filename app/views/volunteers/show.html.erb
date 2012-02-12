@@ -1,40 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @volunteer.name %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @volunteer.address %>
-</p>
-
-<p>
-  <b>Birthday:</b>
-  <%= @volunteer.birthday %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @volunteer.email %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= @volunteer.phone %>
-</p>
-
-<p>
-  <b>Group:</b>
-  <%= @volunteer.group_id %>
-</p>
-
-<p>
-  <b>Access level:</b>
-  <%= @volunteer.access_level %>
-</p>
-
+<h1><%= @volunteer.name %></h1>
+<table class="border">
+  <tr>
+    <th>Adresse</th>
+    <td><%= @volunteer.address %></td>
+  </tr>
+  <tr>
+    <th>Birthday:</th>
+    <td><%= @volunteer.birthday %></td>
+  </tr>
+  <tr>
+    <th>Email:</th>
+    <td><%= @volunteer.email %></td>
+  </tr>
+  <tr>
+    <th>Phone:</th>
+    <td><%= @volunteer.phone %></td>
+  </tr>
+  <tr>
+    <th>Group:</th>
+    <td><%= @volunteer.group.name %></td>
+  </tr>
+  <tr>
+    <th>Crewkort</th>
+    <td><%= @volunteer.access_level %></td>
+  </tr>
+</table>
 
 <%= link_to 'Edit', edit_volunteer_path(@volunteer) %> |
 <%= link_to 'Back', volunteers_path %>

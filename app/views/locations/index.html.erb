@@ -1,20 +1,18 @@
 <% title t(:locations) %>
 <h1><%= t(:locations) %></h1>
-<table>
+<table class="border">
   <tr>
     <th><%= t(:name) %></th>
-    <th><%= t(:slots) %></th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 <% @locations.each do |location| %>
   <tr>
     <td><%= location.name %></td>
-    <td><%= location.slots %></td>
-    <td><%= link_to t(:fireguard_list), location_location_schedules_path(location.id) %></td>
-    <td><%= link_to t(:edit), edit_location_path(location) %></td>
-    <td><%= link_to t(:delete), location, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <%= link_to t(:fireguard_list), location_location_schedules_path(location.id) %> |
+      <%= link_to t(:edit), edit_location_path(location) %> |
+      <%= link_to t(:delete), location, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>
