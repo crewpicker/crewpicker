@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label t(:name) %><br />
     <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label t(:description) %><br />
+    <%= f.text_area :description, :size => "50x10" %>
   </div>
   <div class="field">
     <%= f.label t(:internal_group) %><br />
