@@ -3,6 +3,7 @@
 <table class="border">
   <tr>
     <th><%= t(:name) %></th>
+    <th><%= t(:description) %></th>
     <th><%= t(:internal_group) %></th>
     <th></th>
   </tr>
@@ -10,6 +11,7 @@
 <% @groups.each do |group| %>
   <tr>
     <td><%= group.name %></td>
+    <th><%= nl2br(group.description) if group.description %></td>
     <td><%= group.internal ? t(:answer_yes) : t(:answer_no) %>
     <td><%= link_to t(:show), group %> | <%= link_to t(:edit), edit_group_path(group) %> | <%= link_to t(:delete), group, :confirm => t(:confirm), :method => :delete %></td>
   </tr>

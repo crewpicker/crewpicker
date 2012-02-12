@@ -1,11 +1,9 @@
 <% title t(:access_level) %>
 <h1><%= t(:access_level) %></h1>
-<table>
+<table class="border">
   <tr>
     <th><%= t(:name) %></th>
     <th><%= t(:count) %></th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
@@ -17,14 +15,13 @@
 <% elsif %>
     <td><%= access_level.volunteers.count %></td>
 <% end %>
-    <td><%= link_to 'Generer crewkort', access_card_path(access_level.id, :format => 'pdf') %></td>
-    <td><%= link_to 'Generer blanke crewkort', blank_access_card_path(access_level.id, :format => 'pdf') %></td>
-    <td><%= link_to t(:edit), edit_access_level_path(access_level) %></td>
-    <td><%= link_to t(:delete), access_level, :confirm => t(:confirm), :method => :delete %></td>
+    <td>
+      <%= link_to 'Generer crewkort', access_card_path(access_level.id, :format => 'pdf') %> |
+      <%= link_to 'Generer blanke crewkort', blank_access_card_path(access_level.id, :format => 'pdf') %> |
+      <%= link_to t(:edit), edit_access_level_path(access_level) %> |
+      <%= link_to t(:delete), access_level, :confirm => t(:confirm), :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Access level', new_access_level_path %>
+<p><%= link_to 'Nytt crewkort', new_access_level_path %></p>

@@ -1,16 +1,14 @@
 <% title @group.name %>
 <h1><%= @group.name %></h1>
-<p id="notice"><%= notice %></p>
+<p><%= nl2br(@group.description) if @group.description %></p>
 <table class="border">
   <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Birthday</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Access level</th>
-    <th></th>
-    <th></th>
+    <th>Navn</th>
+    <th>Adresse</th>
+    <th>Fødselsdato</th>
+    <th>Epost</th>
+    <th>Telefon</th>
+    <th>Crewkort</th>
     <th></th>
   </tr>
 <% @group.volunteers.each do |volunteer| %>
@@ -21,11 +19,58 @@
     <td><%= volunteer.email %></td>
     <td><%= volunteer.phone %></td>
     <td><%= volunteer.access_level %></td>
-    <td><%= link_to 'Show', volunteer %></td>
-    <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
-    <td><%= link_to 'Destroy', volunteer, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <%= link_to t(:show), volunteer %> |
+      <%= link_to t(:edit), edit_volunteer_path(volunteer) %> |
+      <%= link_to t(:delete), volunteer, :confirm => t(:confirm), :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>
+<p><%= link_to 'Nytt crewmedlem', new_group_volunteer_path(@group) %></p>
 <p><%= t(:count) %>: <%= @group.volunteers.count %></p>
+<h2>Crewsøkere</h2>
+<% 4.times do |c| %>
+<h3><%= c+1 %>. valg</h3>
+<table class="border">
+  <tr>
+    <th>Navn</th>
+    <th>Adresse</th>
+    <th>Fødselsdato</th>
+    <th>Epost</th>
+    <th>Telefon</th>
+    <th>Relevant erfaring</th>
+    <th>Brukernavn</th>
+    <% 4.times do |i| %>
+    <th><%= i+1 %>. valg</th>
+    <% end %>
+    <th></th>
+  </tr>
+  <% @group.crew_wishes.where(:priority => c+1).each do |crew_wish| crew_application = crew_wish.crew_application %>
+  <% if crew_application %>
+  <tr>
+    <td><%= crew_application.name %></td>
+    <td><%= crew_application.address %></td>
+    <td><%= crew_application.birthday %></td>
+    <td><%= crew_application.email %></td>
+    <td><%= crew_application.phone %></td>
+    <td><%= crew_application.experience %></td>
+    <td><%= crew_application.user.username if crew_application.user %></td>
+    <% crew_application.crew_wishes.each do |crew_wish| %>
+    <% if crew_wish.group_id %>
+    <td<% if crew_wish.group == @group %> style="font-weight: bold;"<% end %>><%= crew_wish.group.name %></td>
+    <% else %>
+    <td>Ikke valgt</td>
+    <% end %>
+    <% end %>
+    <td>
+      <%= link_to 'Velg', choose_group_crew_application_path(@group, crew_application) %> |
+      <%= link_to t(:edit), edit_group_crew_application_path(@group, crew_application) %> |
+      <%= link_to t(:delete), crew_application, :confirm => t(:confirm), :method => :delete %>
+    </td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>
+<% end %>
 <p><%= link_to t(:back), groups_path %></p>

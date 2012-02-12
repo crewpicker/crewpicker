@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120108233842) do
+ActiveRecord::Schema.define(:version => 20120211155048) do
 
   create_table "access_levels", :force => true do |t|
     t.string   "name"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20120108233842) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "chosen"
   end
 
   create_table "crew_wishes", :force => true do |t|
@@ -118,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20120108233842) do
     t.boolean  "internal"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "location_schedules", :force => true do |t|
@@ -203,6 +205,7 @@ ActiveRecord::Schema.define(:version => 20120108233842) do
     t.string   "access_level"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
 end

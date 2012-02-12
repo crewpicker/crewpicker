@@ -39,7 +39,12 @@ FestivalAdmin::Application.routes.draw do
   resources :volunteers
 
   match 'groups/migrate_data' => 'groups#migrate_data'
-  resources :groups
+  resources :groups do
+    resources :volunteers
+    resources :crew_applications do
+      get 'choose', :on => :member
+    end
+  end
 
   resources :location_schedules
 
