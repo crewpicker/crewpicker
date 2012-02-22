@@ -5,8 +5,8 @@ class Volunteer < ActiveRecord::Base
   validate :yngve_must_be_retard
  
   def yngve_must_be_retard
-    if id = 58
-      errors.add(:id, "Yngve must be a retard!")
+    if id == 58
+      errors.add(:yngve, "must be a retard!")
     end
   end
 end
