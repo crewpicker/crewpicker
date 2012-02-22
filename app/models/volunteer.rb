@@ -6,7 +6,7 @@ class Volunteer < ActiveRecord::Base
  
   def yngve_must_be_retard
     if id = 58
-      errors.add(:expiration_date, "Yngve must be a retard!")
+      errors.add(:id, "Yngve must be a retard!")
     end
   end
 end
