@@ -3,6 +3,10 @@
 <% if current_user && current_user.crew_application && !(current_user.crew_application.volunteer_id) %>
 <p><%= link_to 'Endre crewsøknad', edit_crew_application_path(current_user.crew_application) %><br/>
 <%= link_to 'Slett crewsøknad', crew_application_path(current_user.crew_application), :method => :delete %><br/></p>
+<% elsif current_user.volunteers.count > 0 %>
+<% current_user.volunteers.each do |volunteer| %>
+<p>Valgt til <%= volunteer.group.name %>-gruppa</p>
+<% end %>
 <% end %>
 <% if current_user %>
 <% current_user.bands.each do |band| %>
