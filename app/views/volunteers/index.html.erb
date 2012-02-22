@@ -4,7 +4,7 @@
 <p><%= link_to t(:new_volunteer), new_volunteer_path %></p>
 <table class="border">
 <% @groups.each do |group| %>
-  <tr><th colspan="8"><h2><%= group.name %></h2></th></tr>
+  <tr><th colspan="9"><h2><%= group.name %></h2></th></tr>
   <tr>
     <th><%= t(:name) %></th>
     <th><%= t(:address) %></th>
@@ -25,11 +25,11 @@
     <td><%= volunteer.email %></td>
     <td><%= volunteer.phone %></td>
     <td><%= volunteer.access_level %></td>
-    <td><%= volunteer.user.name if volunteer.user %></td>
+    <td><%= volunteer.user.username if volunteer.user %></td>
     <td><%= link_to t(:show), volunteer %> | <%= link_to t(:edit), edit_volunteer_path(volunteer) %> | <%= link_to t(:delete), volunteer, :confirm => t(:confirm), :method => :delete %></td>
   </tr>
 <% end %>
-  <tr><th colspan="8"><%= t(:count) %>: <%= group.volunteers.count %></p></th></tr>
+  <tr><th colspan="9"><%= t(:count) %>: <%= group.volunteers.count %></p></th></tr>
 <% end %>
 </table>
 <p><%= link_to t(:new_volunteer), new_volunteer_path %></p>
