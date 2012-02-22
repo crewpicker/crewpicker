@@ -4,8 +4,24 @@
 <p><%= link_to 'Endre crewsøknad', edit_crew_application_path(current_user.crew_application) %><br/>
 <%= link_to 'Slett crewsøknad', crew_application_path(current_user.crew_application), :method => :delete %><br/></p>
 <% elsif current_user.volunteers.count > 0 %>
-<% current_user.volunteers.each do |volunteer| %>
-<p>Valgt til <%= volunteer.group.name %>-gruppa</p>
+<% current_user.volunteers.each do |volunteer_me| %>
+<p>Valgt til <%= volunteer_me.group.name %>-gruppa</p>
+<table class="border">
+  <tr>
+    <th>Navn</th>
+    <th>Epost</th>
+    <th>Telefon</th>
+    <th>Crewkort</th>
+  </tr>
+<% volunteer_me.group.volunteers.each do |volunteer| %>
+  <tr>
+    <td><%= volunteer.name %></td>
+    <td><%= volunteer.email %></td>
+    <td><%= volunteer.phone %></td>
+    <td><%= volunteer.access_level %></td>
+  </tr>
+<% end %>
+</table>
 <% end %>
 <% end %>
 <% if current_user %>

@@ -14,7 +14,7 @@
 <% @group.volunteers.each do |volunteer| %>
   <tr>
     <td><%= volunteer.name %></td>
-    <td><%= volunteer.address %></td>
+    <td><%= nl2br(volunteer.address) %></td>
     <td><%= volunteer.birthday %></td>
     <td><%= volunteer.email %></td>
     <td><%= volunteer.phone %></td>
