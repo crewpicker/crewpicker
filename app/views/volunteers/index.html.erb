@@ -13,6 +13,7 @@
     <th><%= t(:email) %></th>
     <th><%= t(:phone) %></th>
     <th><%= t(:access_level) %></th>
+    <th>Brukernavn</th>
     <th></th>
   </tr>
 <% group.volunteers.each do |volunteer| %>
@@ -20,10 +21,11 @@
     <td><%= volunteer.name %></td>
     <td><%= nl2br(volunteer.address) %></td>
     <td><%= volunteer.birthday %></td>
-    <td><% if volunteer.birthday then concat(age_at(Date.civil(2011,4,15), volunteer.birthday)) end %></td>
+    <td><% if volunteer.birthday then concat(age_at(Date.civil(2012,3,30), volunteer.birthday)) end %></td>
     <td><%= volunteer.email %></td>
     <td><%= volunteer.phone %></td>
     <td><%= volunteer.access_level %></td>
+    <td><%= volunteer.user.name if volunteer.user %></td>
     <td><%= link_to t(:show), volunteer %> | <%= link_to t(:edit), edit_volunteer_path(volunteer) %> | <%= link_to t(:delete), volunteer, :confirm => t(:confirm), :method => :delete %></td>
   </tr>
 <% end %>
