@@ -49,16 +49,12 @@
     <%= f.text_area :song_lyrics, :size => "50x20" %>
   </div>
   <div class="field">
-    <%= f.label t(:playtime_wish) %><br />
+    <%= f.label t(:playtime_wish) %> (klokkeslett fra 00:00 til 14:00)<br />
     <%= f.text_field :playtime_wish %>
   </div>
   <div class="field">
-    <%= f.label t(:playtime_wish_alt) %><br />
+    <%= f.label t(:playtime_wish_alt) %> (klokkeslett fra 00:00 til 14:00)<br />
     <%= f.text_field :playtime_wish_alt %>
-  </div>
-  <div class="field">
-    <%= f.label t(:image) %><br />
-    <%= f.file_field :image %>
   </div>
   <div class="actions">
     <%= f.submit t(:submit) %>
