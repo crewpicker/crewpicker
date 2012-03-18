@@ -3,7 +3,8 @@
 <% if current_user && current_user.crew_application && !(current_user.crew_application.volunteer_id) %>
 <p><%= link_to 'Endre crewsøknad', edit_crew_application_path(current_user.crew_application) %><br/>
 <%= link_to 'Slett crewsøknad', crew_application_path(current_user.crew_application), :method => :delete %><br/></p>
-<% elsif current_user && current_user.volunteers.count > 0 %>
+<% end %>
+<% if current_user && current_user.volunteers.count > 0 %>
 <% current_user.volunteers.each do |volunteer_me| %>
 <p>Valgt til <%= volunteer_me.group.name %>-gruppa</p>
 <table class="border">
@@ -29,4 +30,3 @@
 <p><%= band.name %>: <%= link_to 'Endre bandpåmelding', edit_band_path(band) %> | <%= link_to 'Slett bandpåmelding', band_path(band), :method => :delete %></p>
 <% end %>
 <% end %>
-<p><%= link_to 'Legg inn bandpåmelding', :new_band %></p>
