@@ -1,6 +1,6 @@
 authorization do
   role :admin do
-    has_permission_on [:users, :crew_applications, :volunteers, :groups, :roles, :bands, :band_members, :access_levels, :access_cards, :fireguards, :locations], :to => [:manage]
+    has_permission_on [:users, :crew_applications, :volunteers, :groups, :roles, :bands, :band_members, :access_levels, :access_cards, :fireguards, :locations, :location_schedules, :stages, :stage_schedules, :ads, :ad_types], :to => [:manage]
   end
 
   role :groupleader do
@@ -38,6 +38,7 @@ authorization do
     has_permission_on :crew_wishes, :to => [:new, :create]
     has_permission_on :home, :to => :index
     has_permission_on :users, :to => [:new, :create]
+    has_permission_on :location_schedules, :to => [:create]
   end
 end
 privileges do
