@@ -74,6 +74,19 @@ class VolunteersController < ApplicationController
   # DELETE /volunteers/1.xml
   def destroy
     @volunteer = Volunteer.find(params[:id])
+    CrewApplication.unscoped {
+      if CrewApplication.exists?(:volunteer_id => @volunteer.id)
+        crew_application = CrewApplication.find_by_volunteer_id(@volunteer.id)
+        crew_application.volunteer = nil
+        crew_application.chosen = false
+        crew_application.save
+      elsif CrewApplication.exists?(:name => @volunteer.name, :email => @volunteer.email)
+        crew_application = CrewApplication.find_by_name_and_email(@volunteer.name, @volunteer.email)
+        crew_application.volunteer = nil
+        crew_application.chosen = false
+        crew_application.save
+      end
+    }
     @volunteer.destroy
 
     respond_to do |format|

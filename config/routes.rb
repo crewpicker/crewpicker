@@ -3,7 +3,10 @@ FestivalAdmin::Application.routes.draw do
 
   resources :crew_wishes
 
-  resources :crew_applications
+  resources :crew_applications do
+    get 'hidden', :on => :collection
+    get 'unhide', :on => :member
+  end
 
   match 'crewskjema' => 'crew_applications#new'
 

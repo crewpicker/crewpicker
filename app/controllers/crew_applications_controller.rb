@@ -103,17 +103,43 @@ class CrewApplicationsController < ApplicationController
     @volunteer.group_id = params[:group_id]
     @volunteer.user_id = crew_application.user_id
     @volunteer.access_level = 'Crew'
-    crew_application.chosen = true
-    crew_application.save
 
     respond_to do |format|
       if @volunteer.save
+        crew_application.chosen = true
+        crew_application.volunteer = @volunteer
+        crew_application.save
         format.html { redirect_to(@volunteer.group, :notice => 'Volunteer was successfully created.') }
         format.xml  { render :xml => @volunteer, :status => :created, :location => @volunteer }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @volunteer.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+  filter_access_to :hidden, :require => :index
+  def hidden
+    CrewApplication.unscoped {
+      @crew_applications = CrewApplication.hidden
+    }
+    render 'index'
+  end
+  filter_access_to :unhide, :require => :update
+  def unhide
+    CrewApplication.unscoped {
+      @crew_application = CrewApplication.find(params[:id])
+      @crew_application.chosen = nil
+      @crew_application.volunteer_id = nil
+      @crew_application.save
+    }
+
+    respond_to do |format|
+      format.html {
+        redirect_to :crew_applications_hidden
+      }
+      format.xml {
+        head :ok
+      }
     end
   end
 end
