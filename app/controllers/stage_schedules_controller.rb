@@ -1,5 +1,4 @@
 class StageSchedulesController < ApplicationController
-  filter_resource_access
   layout :check_layout
 
   def get_events
