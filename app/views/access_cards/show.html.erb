@@ -55,6 +55,9 @@ end
       .spacer {
         height: 34px;
       }
+      .card {
+        height: 340px;
+      }
       @font-face {
         font-family: Impact;
         src: url(<%= File.expand_path(Rails.root) + '/public/stylesheets/impact.ttf' %>);
@@ -104,8 +107,8 @@ people.each do |person|
   end
 %>
 
-          <td>
-            <br><br><br><br>
+          <td class="card">
+            <br><br><br><br><br><br><br><br><br>
             <span class="al"><%= @access_level.name %></span>
             <br><span class="name"><%= person.name %></span>
           </td>
