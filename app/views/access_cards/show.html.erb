@@ -1,8 +1,19 @@
+<%
+if @access_level == "VIP"
+  background_image = "kort-vip2012.png"
+else
+  background_image = "kort-crew2012.png"
+end
+%>
 <html>
   <head>
     <title>Crewkort</title>
     <meta name="pdfkit-page_size" content="A4">
     <meta name="pdfkit-orientation" content="Landscape">
+    <meta name="pdfkit-margin_top" content="0">
+    <meta name="pdfkit-margin_bottom" content="0">
+    <meta name="pdfkit-margin_right" content="0">
+    <meta name="pdfkit-margin_left" content="0">
     <style>
       body {
         padding: 0;
@@ -15,22 +26,16 @@
       table {
         padding: 0;
         margin: 0;
+        height: 100%;
+        text-align: center;
+        color: red;
+        margin: 0 auto;
       }
       td {
         padding: 0;
         margin: 0;
-        width: 209px;
-      }
-      td div {
-        height: 0px;
-        padding: 0;
-        margin: 0 5px;
-        position: relative;
-        left: 0px;
-        top: -140px;
+        width: 237px;
         font-family: Impact, sans-serif;
-        text-align: center;
-        color: #231f20;
       }
       .al {
         font-size: 42px;
@@ -40,66 +45,92 @@
         font-size: 26px;
         color: #231f20;
       }
+      .page {
+        height: 774px;
+        width: 100%;
+        background-image: url(<%= File.expand_path(Rails.root) + '/public/images/' + background_image %>);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .spacer {
+        height: 34px;
+      }
       @font-face {
-	font-family: Impact;
-	src: url(<%= File.expand_path(Rails.root) + '/public/stylesheets/impact.ttf' %>);
+        font-family: Impact;
+        src: url(<%= File.expand_path(Rails.root) + '/public/stylesheets/impact.ttf' %>);
       }
     </style>
   </head>
   <body>
-    <table>
-      <tr>
+    <div class="page">
+      <table>
+        <tr>
+          <td class="spacer" colspan="4"></td>
+        </tr>
+        <tr>
 <%
-counter = 0
-case @access_level.name
-when "VIP", "VIB", "Retard"
-  imagefile = 'rmr-kortVIP.png'
-else
-  imagefile = 'ID2.png'
-end
+rcounter = 0
+ccounter = 0
 if @access_level.name == "Band"
-  @people.each do |person|
+  people = @people
+else
+  people = @access_level.volunteers
+end
+people.each do |person|
+  if ccounter == 3
+    rcounter += 1
 %>
-        <td>
-          <%= image_tag imagefile, :width => "100%" %>
-          <div>
-            <span class="al"><%= @access_level.name.upcase %><br></span>
-            <span class="name"><%= person.name %></span>
-          </div>
-        </td>
+        </tr>
 <%
-    counter+=1
-    if counter == 4
+    if rcounter == 2
 %>
-      </tr>
-      <tr>
+        <tr>
+          <td class="spacer" colspan="4"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="page">
+      <table>
+        <tr>
+          <td class="spacer" colspan="4"></td>
+        </tr>
 <%
-      counter = 0
+      rcounter = 0
     end
-  end
-elsif
-  @access_level.volunteers.each do |volunteer|
 %>
-        <td>
-          <%= image_tag imagefile, :width => "100%" %>
-          <div>
-            <span class="al"><%= volunteer.access_level.upcase %><br></span>
-            <span class="name"><%= volunteer.name %></span>
-          </div>
-        </td>
+        <tr>
 <%
-    counter+=1
-    if counter == 4
-%>
-      </tr>
-      <tr>
-<%
-      counter = 0
-    end
+    ccounter = 0
   end
+%>
+
+          <td>
+            <br><br><br><br>
+            <span class="al"><%= @access_level.name %></span>
+            <br><span class="name"><%= person.name %></span>
+          </td>
+<%
+  ccounter += 1 
+end
+
+while ccounter != 4
+%>
+          <td></td>
+<%
+  ccounter += 1
+end
+if rcounter != 1
+%>
+        </tr>
+        <tr>
+<%
 end
 %>
-      </tr>
-    </table>
+        </tr>
+        <tr>
+          <td class="spacer" colspan="4"></td>
+        </tr>
+      </table>
+    </div>
   </body>
 </html>
