@@ -16,7 +16,7 @@ gem 'sqlite3-ruby'
 
 gem 'paperclip', '~> 2.3'
 gem 'uuidtools'
-gem 'prawn'
+gem 'wkhtmltopdf'
 gem "pdfkit", :git => "git://github.com/huerlisi/PDFKit.git"
 gem 'sorcery', '0.7.5'
 gem 'declarative_authorization'
