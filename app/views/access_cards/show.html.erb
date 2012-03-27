@@ -42,7 +42,7 @@ end
         color: #231f20;
       }
       .name {
-        font-size: 26px;
+        font-size: 28px;
         color: #231f20;
       }
       .page {
@@ -56,7 +56,17 @@ end
         height: 34px;
       }
       .card {
-        height: 340px;
+        height: 170px;
+        vertical-align: top;
+      }
+      .card div {
+        padding-top: 40px;
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+      .artist {
+        font-size: 28px;
+        color: #231f20;
       }
       @font-face {
         font-family: Impact;
@@ -67,9 +77,8 @@ end
   <body>
     <div class="page">
       <table>
-        <tr>
-          <td class="spacer" colspan="4"></td>
-        </tr>
+        <tr><td class="spacer" colspan="4"></td></tr>
+        <tr><td class="card" colspan="4"></td></tr>
         <tr>
 <%
 rcounter = 0
@@ -101,6 +110,7 @@ people.each do |person|
       rcounter = 0
     end
 %>
+        <tr><td class="card" colspan="4"></td></tr>
         <tr>
 <%
     ccounter = 0
@@ -108,9 +118,11 @@ people.each do |person|
 %>
 
           <td class="card">
-            <br><br><br><br><br><br><br><br><br>
-            <span class="al"><%= @access_level.name %></span>
-            <br><span class="name"><%= person.name %></span>
+            <div>
+              <span class="al"><%= @access_level.name.upcase %></span>
+              <br><span class="name"><%= person.name %></span>
+              <% if @access_level.name == "Artist" %><br><span class="artist"><%= person.group.name %></span><% end %>
+            </div>
           </td>
 <%
   ccounter += 1 
