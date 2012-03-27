@@ -18,9 +18,9 @@
 @stage_schedules.each do |stage_schedule|
   if first == 1
 	first = 0 %>
-<h2><%= stage_schedule.from.advance(:minutes => 75).to_formatted_s(:time) %> - <%= stage_schedule.band.name %></h2>
+<h2><%= stage_schedule.start.advance(:minutes => 75).to_formatted_s(:time) %> - <%= stage_schedule.band.name %></h2>
 <% elsif %>
-<h3><%= stage_schedule.from.advance(:minutes => 75).to_formatted_s(:time) %> - <%= stage_schedule.band.name %></h3>
+<h3><%= stage_schedule.start.advance(:minutes => 75).to_formatted_s(:time) %> - <%= stage_schedule.band.name %></h3>
 <% end
 end %>
 <div class="clear"></div>
