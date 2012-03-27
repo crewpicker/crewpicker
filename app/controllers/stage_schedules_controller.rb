@@ -5,7 +5,11 @@ class StageSchedulesController < ApplicationController
     stage_schedules = Stage.find(params[:id]).stage_schedules
     events = []
     stage_schedules.each do |stage_schedule|
-      events << {:id => stage_schedule.band.uuid, :title => stage_schedule.band.name, :start => "#{stage_schedule.start.iso8601}", :end => "#{stage_schedule.end.iso8601}", :allDay => false, :recurring => false}
+      if band = Band.find(stage_schedule.band_id)
+        events << {:id => band.uuid, :title => band.name, :start => "#{stage_schedule.start.iso8601}", :end => "#{stage_schedule.end.iso8601}", :allDay => false, :recurring => false}
+      else
+        stage_schedule.destroy
+      end
     end
     render :text => events.to_json
   end
