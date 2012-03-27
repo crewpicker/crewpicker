@@ -21,5 +21,5 @@ gem 'sorcery', '0.7.5'
 gem 'declarative_authorization'
 
 group :production do
-  gem 'wkhtmltopdf'
+  gem 'wkhtmltopdf' if RUBY_PLATFORM.include?('linux') 
 end
