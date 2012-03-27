@@ -42,7 +42,7 @@ end
         color: #231f20;
       }
       .name {
-        font-size: 28px;
+        font-size: 26px;
         color: #231f20;
       }
       .page {
@@ -60,12 +60,16 @@ end
         vertical-align: top;
       }
       .card div {
+<% if @access_level.name == "VIP" %>
         padding-top: 40px;
+<% else %>
+        padding-top: 10px;
+<% end %>
         padding-right: 5px;
         padding-left: 5px;
       }
       .artist {
-        font-size: 28px;
+        font-size: 26px;
         color: #231f20;
       }
       @font-face {
@@ -121,7 +125,7 @@ people.each do |person|
             <div>
               <span class="al"><%= @access_level.name.upcase %></span>
               <br><span class="name"><%= person.name %></span>
-              <% if @access_level.name == "Artist" %><br><span class="artist"><%= person.group.name %></span><% end %>
+              <% if @access_level.name == "Artist" %><hr><span class="artist"><%= person.group.name %></span><% end %>
             </div>
           </td>
 <%
