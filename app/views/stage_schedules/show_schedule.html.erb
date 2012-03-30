@@ -149,6 +149,9 @@
 </script>
 <div id='wrap'>
   <h1>Tidsskjema <%= @stage.name %></h1>
+  <p>Forsink alle band med: 
+<%= link_to("15 min.", delay_band_orders_path(:delay => 15)) %>
+| <%= link_to("30 min.", delay_band_orders_path(:delay => 30)) %></p>
 <div id='external-events'>
 <h4>Band uten spilletid</h4>
 <p>Dra dem dit du vil ha dem på kalenderen</p>
