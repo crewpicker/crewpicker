@@ -39,7 +39,9 @@ FestivalAdmin::Application.routes.draw do
   resources :access_levels
 
   match 'volunteers/migrate_data' => 'volunteers#migrate_data'
-  resources :volunteers
+  resources :volunteers do
+    get 'compact', :on => :collection
+  end
 
   match 'groups/migrate_data' => 'groups#migrate_data'
   resources :groups do
