@@ -67,7 +67,9 @@ FestivalAdmin::Application.routes.draw do
   end
 
   resources :band_members
-  resources :band_orders
+  resources :band_orders do
+    get 'delay', :on => :collection
+  end
 
   get "home/index"
   root :to => "home#index"

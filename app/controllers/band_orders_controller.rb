@@ -80,4 +80,17 @@ class BandOrdersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def delay
+    stage_schedules = StageSchedule.find(:all, :conditions => ["stage_schedules.start > ?", DateTime.now.to_formatted_s(:db)])
+    stage_schedules.each do |stage_schedule|
+      stage_schedule.start = stage_schedule.start.advance(:minutes => params[:delay].to_i)
+      stage_schedule.end = stage_schedule.end.advance(:minutes => params[:delay].to_i)
+      stage_schedule.save
+    end
+
+    respond_to do |format|
+      format.html { redirect_to(stage_schedule_program_url('Idrettshallen')) }
+    end
+  end
 end
