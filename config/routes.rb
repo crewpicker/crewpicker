@@ -22,7 +22,8 @@ FestivalAdmin::Application.routes.draw do
   resource :flightscreen
 
   resources :stage_schedules do
-    get 'list'
+    get 'list', :on => :collection
+    get 'update', :on => :collection
   end
 
   resources :ads
@@ -66,6 +67,7 @@ FestivalAdmin::Application.routes.draw do
   end
 
   resources :band_members
+  resources :band_orders
 
   get "home/index"
   root :to => "home#index"
