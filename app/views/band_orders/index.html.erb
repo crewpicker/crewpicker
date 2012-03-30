@@ -1,5 +1,7 @@
 <h1>Listing band_orders</h1>
-
+<p>Forsink alle band med: <%= link_to("5 min.", delay_band_orders_path(:delay => 5)) %>
+| <%= link_to("15 min.", delay_band_orders_path(:delay => 15)) %>
+| <%= link_to("30 min.", delay_band_orders_path(:delay => 30)) %></p>
 <table class="border">
   <tr>
     <th>Name</th>
