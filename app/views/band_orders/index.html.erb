@@ -1,0 +1,27 @@
+<h1>Listing band_orders</h1>
+
+<table class="border">
+  <tr>
+    <th>Name</th>
+    <th>Start</th>
+    <th>End</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @band_orders.each do |band_order| %>
+  <tr>
+    <td><%= band_order.band.name %></td>
+    <td><%= band_order.start %></td>
+    <td><%= band_order.end %></td>
+    <td><%= link_to 'Show', band_order %></td>
+    <td><%= link_to 'Edit', edit_band_order_path(band_order) %></td>
+    <td><%= link_to 'Destroy', band_order, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Band order', new_band_order_path %>

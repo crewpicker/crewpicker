@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @band_order.name %>
+</p>
+
+<p>
+  <b>Start:</b>
+  <%= @band_order.start %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%= @band_order.end %>
+</p>
+
+
+<%= link_to 'Edit', edit_band_order_path(@band_order) %> |
+<%= link_to 'Back', band_orders_path %>
