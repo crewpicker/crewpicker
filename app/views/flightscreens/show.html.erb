@@ -1,40 +1,106 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Rock Mot Rus - ON STAGE</title>
-<%= stylesheet_link_tag 'flightscreen' %>
+
+       <title>RMR Flightscreen</title>
+
+       <link href='http://fonts.googleapis.com/css?family=Share'
+rel='stylesheet' type='text/css'>
+
 </head>
 
+<body onload="updateClock(); setInterval('updateClock()', 1000 )">
 
-<img src="/images/ons.png" class="floatLeft"></img>
-<div id="wrap">
+<style>
 
-<div id="content">
-<div id="left">
-<div class="post">
+html {
+       background: url(/images/flight_screen_background.jpg) no-repeat center center fixed;
+       -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;
+}
+
+
+.ramme {
+
+       background: url(/images/bakgrunn.png);
+       -webkit-border-radius: 20px;
+       -moz-border-radius: 20px;
+       border-radius: 20px;
+       padding: 40px 30px 30px 30px;
+       width: 80%;
+
+       margin-left: auto; margin-right: auto;
+       margin-top: -30px;
+
+
+}
+
+h2 { font-family: 'Share', cursive; color: #fff; font-size: 65px; }
+h3 { font-family: 'Share', cursive; color: #fff; font-size: 35px;  }
+#clock { font-family: 'Share', cursive; color: #fff; font-size: 65px;
+float: right; padding: 30px 100px 0; }
+
+
+</style>
+<script type="text/javascript">
+<!--
+
+function updateClock ( )
+{
+ var currentTime = new Date ( );
+
+ var currentHours = currentTime.getHours ( );
+ var currentMinutes = currentTime.getMinutes ( );
+ var currentSeconds = currentTime.getSeconds ( );
+
+ // Pad the minutes and seconds with leading zeros, if required
+ currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+ currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
+
+ // Choose either "AM" or "PM" as appropriate
+ var timeOfDay = ( currentHours < 24 ) ? "AM" : "PM";
+
+ // Convert the hours component to 12-hour format if needed
+ currentHours = ( currentHours > 24 ) ? currentHours - 24 : currentHours;
+
+ // Convert an hours component of "0" to "12"
+ currentHours = ( currentHours == 0 ) ? 24 : currentHours;
+
+ // Compose the string for display
+ var currentTimeString = currentHours + ":" + currentMinutes + "";
+
+ // Update the time display
+ document.getElementById("clock").firstChild.nodeValue = currentTimeString;
+}
+
+// -->
+</script>
+
+<img src="/images/rmr_logo.png" style="width: 50%; height: 50%;">
+
+<div id="clock">&nbsp;</div>
+
+<div class="ramme">
 
 <% first = 1
 @stage_schedules.each do |stage_schedule|
-  if first == 1
-	first = 0 %>
-<h2><%= stage_schedule.start.advance(:minutes => 75).to_formatted_s(:time) %> - <%= stage_schedule.band.name %></h2>
+ if first == 1
+      first = 0 %>
+<h2><%= stage_schedule.start.to_formatted_s(:time) %> - <%=
+stage_schedule.band.name %></h2>
 <% elsif %>
-<h3><%= stage_schedule.start.advance(:minutes => 75).to_formatted_s(:time) %> - <%= stage_schedule.band.name %></h3>
+<h3><%= stage_schedule.start.to_formatted_s(:time) %> - <%=
+stage_schedule.band.name %></h3>
 <% end
 end %>
-<div class="clear"></div>
-</div>
-</div>
-
-  
-  <div class="clear"></div>
-</div>
-<div id="footerlinks">
 
 
 </div>
 
-</div>
+
+
 </body>
 </html>
