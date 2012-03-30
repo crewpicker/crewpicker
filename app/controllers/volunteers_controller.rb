@@ -108,4 +108,13 @@ class VolunteersController < ApplicationController
     end
     redirect_to(volunteers_path)
   end
+  filter_access_to :compact, :require => :index
+  def compact
+    @groups = Group.find(:all, :include => :volunteers, :conditions => "volunteers.id IS NOT NULL", :order => "volunteers.name")
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @volunteers }
+    end
+  end
 end
