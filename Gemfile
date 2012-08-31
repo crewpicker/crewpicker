@@ -2,17 +2,25 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.10'
 
-gem 'unicorn'
-
 gem 'capistrano'
 gem 'capistrano-ext'
 
-gem 'sqlite3-ruby'
+platforms :ruby do
+  gem 'mysql'
+end
 
-#group :production do
-#  gem 'mysql'
-#  gem 'pg'
-#end
+platforms :jruby do
+  gem 'jruby-openssl'
+  gem 'activerecord-jdbcmysql-adapter'
+end
+
+group :test, :production do
+  gem 'warbler'
+end
+
+group :development do
+  gem 'trinidad'
+end
 
 gem 'paperclip', '~> 2.3'
 gem 'uuidtools'
@@ -23,3 +31,5 @@ gem 'declarative_authorization'
 group :production do
   gem 'wkhtmltopdf' if RUBY_PLATFORM.include?('linux') 
 end
+
+gem 'newrelic_rpm'
