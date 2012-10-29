@@ -1,5 +1,5 @@
-set :stages, %w(rmr-2011crew rmr-2012crew)
-set :default_stage, "rmr-2012crew"
+set :stages, %w(rmr-2012crew rmr-2013crew)
+set :default_stage, "rmr-2013crew"
 require 'capistrano/ext/multistage'
 
 set :application, "FestivalAdmin"
@@ -34,5 +34,4 @@ after "deploy:update_code", "localconfig"
 
 task :localconfig do
   run "ln -nfs #{deploy_to}/#{shared_dir}/config/database.yml #{release_path}/config/database.yml"
-  run "ln -nfs #{deploy_to}/#{shared_dir}/config/unicorn.rb #{release_path}/config/unicorn.rb"
 end
