@@ -14,13 +14,7 @@ platforms :jruby do
   gem 'activerecord-jdbcmysql-adapter'
 end
 
-group :test, :production do
-  gem 'warbler'
-end
-
-group :development do
-  gem 'trinidad'
-end
+gem 'trinidad'
 
 gem 'paperclip', '~> 2.3'
 gem 'uuidtools'
