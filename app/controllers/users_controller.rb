@@ -52,7 +52,7 @@ class UsersController < ApplicationController
         if @user.id == 1
           @user.roles.find_or_create_by_name('admin')
         end
-        format.html { redirect_to(:root, :notice => 'Registreringen var vellykket') }
+        format.html { redirect_to(:root, :notice => 'Registreringen var vellykket. Du kan nå logge inn.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
