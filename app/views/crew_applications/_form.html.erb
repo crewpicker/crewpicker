@@ -40,7 +40,7 @@
   <%= f.fields_for :crew_wishes, crew_wish do |fsub| %>
   <div class="field">
     <%= fsub.label (index + 1).to_s + '. ' + t(:option) %><br />
-    <%= fsub.collection_select :group_id, Group.all, :id, :name, {:include_blank => 'Ikke valgt'} %>
+    <%= fsub.collection_select :group_id, Group.where(:internal => false), :id, :name, {:include_blank => 'Ikke valgt'} %>
     <%= fsub.hidden_field :priority, :value => (index + 1) %>
   </div>
   <% end %>
