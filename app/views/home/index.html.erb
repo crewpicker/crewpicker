@@ -1,8 +1,43 @@
 <% title 'FestivalAdmin' %>
 <h1>FestivalAdmin</h1>
 <% if current_user %>
+<h2>Crewsøknad</h2>
 <% if current_user.crew_application && !(current_user.crew_application.volunteer_id) %>
 <% crew_application = current_user.crew_application %>
+<table class="border">
+  <tr>
+    <th><%= t(:name) %></th>
+    <td><%= crew_application.name %></td>
+  </tr>
+  <tr>
+    <th><%= t(:address) %></th>
+    <td><%= nl2br(crew_application.address) %></td>
+  </tr>
+  <tr>
+    <th><%= t(:birthday) %></th>
+    <td><%= crew_application.birthday %></td>
+  </tr>
+  <tr>
+    <th><%= t(:email) %></th>
+    <td><%= crew_application.email %></td>
+  </tr>
+  <tr>
+    <th><%= t(:phone) %></th>
+    <td><%= crew_application.phone %></td>
+  </tr>
+  <tr>
+    <th><%= t(:relevant_experience) %></th>
+    <td><%= nl2br(crew_application.experience) %></td>
+  </tr>
+<% crew_application.crew_wishes.each do |crew_wish| %>
+<% if crew_wish.group_id %>
+  <tr>
+    <th><%= crew_wish.priority.to_s + '. ' + t(:option) %></th>
+    <td><%= crew_wish.group.name %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>
 <p><%= link_to 'Endre crewsøknad', edit_crew_application_path(current_user.crew_application) %><br/>
 <%= link_to 'Slett crewsøknad', crew_application_path(current_user.crew_application), :method => :delete %><br/></p>
 <% else %>
@@ -27,6 +62,7 @@
 <% end %>
 </table>
 <% end %>
+<h2>Bandpåmelding</h2>
 <p><%= link_to 'Legg inn bandpåmelding', new_band_path %></p>
 <% current_user.bands.each do |band| %>
 <p><%= band.name %>: <%= link_to 'Endre bandpåmelding', edit_band_path(band) %> | <%= link_to 'Slett bandpåmelding', band_path(band), :method => :delete %></p>
