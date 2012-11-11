@@ -1,29 +1,31 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.10'
+gem 'rails', '3.2.8'
 
 gem 'capistrano'
 gem 'capistrano-ext'
 
-platforms :ruby do
-  gem 'mysql'
-end
+gem 'jruby-openssl'
+gem 'activerecord-jdbcmysql-adapter'
 
-platforms :jruby do
-  gem 'jruby-openssl'
-  gem 'activerecord-jdbcmysql-adapter'
-end
+gem 'warbler'
 
-gem 'trinidad'
-
-gem 'paperclip', '~> 2.3'
+gem 'paperclip', '~> 3.0'
 gem 'uuidtools'
 gem 'pdfkit', :git => "git://github.com/huerlisi/PDFKit.git"
-gem 'sorcery', '0.7.5'
+gem 'sorcery'
 gem 'declarative_authorization'
 
 group :production do
-  gem 'wkhtmltopdf' if RUBY_PLATFORM.include?('linux') 
+  gem 'wkhtmltopdf'
 end
 
 gem 'newrelic_rpm'
+
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier',     '>= 1.0.3'
+end
+
+gem 'jquery-rails'
