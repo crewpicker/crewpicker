@@ -40,5 +40,7 @@ module FestivalAdmin
     config.filter_parameters += [:password]
     config.middleware.use "PDFKit::Middleware"
     config.festival_start = Date.civil(2011,4,15)
+    config.assets.enabled = true
+    config.assets.version = '1.0'
   end
 end
