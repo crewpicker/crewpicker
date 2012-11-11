@@ -1,43 +1,39 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b><%= t(:name) %></b><br/>
-  <%= @crew_application.name %>
-</p>
-
-<p>
-  <b><%= t(:address) %></b><br/>
-  <%= @crew_application.address %>
-</p>
-
-<p>
-  <b><%= t(:birthday) %></b><br/>
-  <%= @crew_application.birthday %>
-</p>
-
-<p>
-  <b><%= t(:email) %></b><br/>
-  <%= @crew_application.email %>
-</p>
-
-<p>
-  <b><%= t(:phone) %></b><br/>
-  <%= @crew_application.phone %>
-</p>
-
-<p>
-  <b><%= t(:relevant_experience) %></b><br/>
-  <%= @crew_application.experience %>
-</p>
-
-<% @crew_application.crew_wishes.each do |crew_wish| %>
-<% if crew_wish.group_id %>
-<p>
-  <b><%= crew_wish.priority.to_s + '. ' + t(:option) %></b><br/>
-  <%= crew_wish.group_id %>
-</p>
-<% end %>
-<% end %>
+<% title t(:crew_application) %>
+<h1><%= t(:crew_application) %></h1>
+<table class="border">
+  <tr>
+    <th><%= t(:name) %></th>
+    <td><%= @crew_application.name %></td>
+  </tr>
+  <tr>
+    <th><%= t(:address) %></th>
+    <td><%= nl2br(@crew_application.address) %></td>
+  </tr>
+  <tr>
+    <th><%= t(:birthday) %></th>
+    <td><%= @crew_application.birthday %></td>
+  </tr>
+  <tr>
+    <th><%= t(:email) %></th>
+    <td><%= @crew_application.email %></td>
+  </tr>
+  <tr>
+    <th><%= t(:phone) %></th>
+    <td><%= @crew_application.phone %></td>
+  </tr>
+  <tr>
+    <th><%= t(:relevant_experience) %></th>
+    <td><%= nl2br(@crew_application.experience) %></td>
+  </tr>
+  <% @crew_application.crew_wishes.each do |crew_wish| %>
+  <% if crew_wish.group_id %>
+  <tr>
+    <th><%= crew_wish.priority.to_s + '. ' + t(:option) %></th>
+    <td><%= crew_wish.group.name %></td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>
 
 <p><%= link_to 'Endre', edit_crew_application_path(@crew_application) %> |
 <%= link_to 'Slett', @crew_application, :method => :delete %> |
