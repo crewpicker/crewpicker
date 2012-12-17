@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class StagesController < ApplicationController
   # GET /stages
   # GET /stages.xml

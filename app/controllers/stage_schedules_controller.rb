@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class StageSchedulesController < ApplicationController
   layout :check_layout
 
