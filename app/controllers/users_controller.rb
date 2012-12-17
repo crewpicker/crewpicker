@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class UsersController < ApplicationController
   filter_resource_access
   layout :check_layout
