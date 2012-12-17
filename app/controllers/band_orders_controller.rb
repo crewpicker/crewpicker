@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class BandOrdersController < ApplicationController
   # GET /band_orders
   # GET /band_orders.xml

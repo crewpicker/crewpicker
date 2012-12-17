@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class AccessCardsController < ApplicationController
   filter_access_to :all
 

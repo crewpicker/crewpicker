@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'uuidtools'
 class BandsController < ApplicationController
   filter_resource_access
