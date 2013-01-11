@@ -4,6 +4,7 @@ gem 'rails', '3.2.11'
 
 gem 'capistrano'
 gem 'capistrano-ext'
+gem 'rvm-capistrano'
 
 gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcmysql-adapter'
