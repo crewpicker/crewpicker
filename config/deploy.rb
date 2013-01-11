@@ -6,7 +6,7 @@ set :application, "FestivalAdmin"
 
 set :scm, :git
 set :repository, "git@github.com:tg90nor/FestivalAdmin.git"
-set :deploy_via, :remote_cache
+set :local_repository, "/home/tg90nor/proj/FestivalAdmin"
 set :deploy_env, 'production'
 
 namespace :bundler do
