@@ -66,7 +66,3 @@ FestivalAdmin::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 end
-FestivalAdmin::Application.config.middleware.use ExceptionNotifier,
-  :email_prefix => "[FestivalAdmin] ",
-  :sender_address => %{"notifier" <notifier@linted.net>},
-  :exception_recipients => %w{thomas@linted.net}
