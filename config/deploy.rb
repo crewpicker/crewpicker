@@ -4,6 +4,7 @@ set :default_stage, "rmr-2013crew"
 require 'capistrano/ext/multistage'
 
 set :rvm_ruby_string, 'jruby'
+set :rvm_type, :system
 require 'rvm/capistrano'
 
 set :application, "FestivalAdmin"
