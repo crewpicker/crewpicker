@@ -1,6 +1,10 @@
 set :stages, %w(rmr-2012crew rmr-2013crew)
 set :default_stage, "rmr-2013crew"
+
 require 'capistrano/ext/multistage'
+
+set :rvm_ruby_string, 'jruby'
+require 'rvm/capistrano'
 
 set :application, "FestivalAdmin"
 
@@ -8,6 +12,8 @@ set :scm, :git
 set :repository, "git@github.com:tg90nor/FestivalAdmin.git"
 set :local_repository, "/home/tg90nor/proj/FestivalAdmin"
 set :deploy_env, 'production'
+
+set :normalize_asset_timestamps, false
 
 namespace :bundler do
   task :install, :roles => :app do
