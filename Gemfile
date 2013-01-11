@@ -5,7 +5,7 @@ gem 'rails', '3.2.11'
 gem 'capistrano'
 gem 'capistrano-ext'
 
-gem 'jruby-openssl'
+gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcmysql-adapter'
 
 gem 'paperclip', '~> 3.0'
@@ -24,6 +24,7 @@ group :development do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier',     '>= 1.0.3'
+  gem 'therubyrhino'
 end
 
 gem 'jquery-rails'
