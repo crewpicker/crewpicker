@@ -6,5 +6,6 @@ tmp/
 .sass-cache/
 config/database.yml
 config/initializers/sorcery.rb
+config/config.yml
 Gemfile.lock
 .DS_Store
