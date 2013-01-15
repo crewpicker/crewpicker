@@ -26,7 +26,7 @@
     </p>
     <p><%= notice %></p>
 <%= yield %>
-<% if APP_CONFIG[:use_google_analytics] is true do %>
+<% if APP_CONFIG[:use_google_analytics] == true do %>
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
