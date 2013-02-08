@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class CrewApplication < ActiveRecord::Base
   has_many :crew_wishes
   belongs_to :user

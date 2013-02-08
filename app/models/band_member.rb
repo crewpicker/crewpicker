@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class BandMember < ActiveRecord::Base
   belongs_to :band
   belongs_to :person

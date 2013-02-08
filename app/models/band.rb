@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Band < ActiveRecord::Base
   set_primary_key "uuid"
   include UuidHelper
