@@ -3,7 +3,9 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
   def nl2br(s)
-    s.gsub(/\n/, "<br>").html_safe
+    if !s.nil?
+      s.gsub(/\n/, "<br>").html_safe
+    end
   end
   def pdf_image_path(image)
     return File.expand_path(Rails.root) + '/public/images/' + image
