@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Volunteer < ActiveRecord::Base
   belongs_to :group
   belongs_to :user
