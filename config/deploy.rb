@@ -12,7 +12,7 @@ set :application, "FestivalAdmin"
 
 set :scm, :git
 set :repository, "git@github.com:tg90nor/FestivalAdmin.git"
-set :local_repository, "/home/tg90nor/proj/FestivalAdmin"
+set :local_repository, "~/proj/FestivalAdmin"
 set :deploy_env, 'production'
 
 set :normalize_asset_timestamps, false
