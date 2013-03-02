@@ -3,7 +3,7 @@ set :default_stage, "rmr-2013crew"
 
 require 'capistrano/ext/multistage'
 
-set :rvm_ruby_string, 'jruby'
+set :rvm_ruby_string, 'jruby-1.7.3'
 set :rvm_type, :system
 require 'rvm/capistrano'
 require "bundler/capistrano"
