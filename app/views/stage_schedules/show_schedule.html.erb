@@ -76,9 +76,9 @@
         right: ''
       },
       defaultView: 'agendaWeekend',
-      year: 2012,
-      month: 02,
-      date: 30,
+      year: <%= @stage.from.strftime("%Y") %>,
+      month: <%= @stage.from.strftime("%m") %>,
+      date: <%= @stage.from.strftime("%d") %>,
       axisFormat: 'H:mm',
       timeFormat: 'H:mm',
       height: 3500,
