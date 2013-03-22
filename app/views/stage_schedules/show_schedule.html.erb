@@ -77,7 +77,7 @@
       },
       defaultView: 'agendaWeekend',
       year: <%= @stage.from.strftime("%Y") %>,
-      month: <%= @stage.from.strftime("%m") %>,
+      month: <%= @stage.from.strftime("%m")-1 %>,
       date: <%= @stage.from.strftime("%d") %>,
       axisFormat: 'H:mm',
       timeFormat: 'H:mm',
