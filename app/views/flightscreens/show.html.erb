@@ -1,101 +1,61 @@
-<!DOCTYPE html>
-
+<%= image_path("flight_screen_background.jpg") %>
 <html>
 <head>
 
-       <title>RMR Flightscreen</title>
-
-       <link href='http://fonts.googleapis.com/css?family=Share'
+       <title>RMR Flightscreen 2013</title>
+<link href='http://fonts.googleapis.com/css?family=Share'
 rel='stylesheet' type='text/css'>
 
 </head>
 
-<body onload="updateClock(); setInterval('updateClock()', 1000 )">
-
 <style>
 
 html {
-       background: url(<%= image_path("flight_screen_background.jpg") %>) no-repeat center center fixed;
+       background: url(<%= image_path("fs13.jpg") %>) no-repeat center center fixed;
+     height: 100%;
        -webkit-background-size: cover;
        -moz-background-size: cover;
        -o-background-size: cover;
        background-size: cover;
        padding-top: 50px;
-}
+  }
 
-
-.ramme {
-
-       background: url(<%= image_path("bakgrunn.png") %>);
-       -webkit-border-radius: 20px;
+.clock {
+       background: url(<%= image_path("bakgrunn.png") %>);right:2px;
+top:150px;
+     width: 15%;
+       margin-top: 0;
+     -webkit-border-radius: 20px;
        -moz-border-radius: 20px;
        border-radius: 20px;
-       padding: 40px 30px 30px 30px;
-       width: 80%;
+     
+     font-family: 'Share', cursive; color: #000; font-size: 115px;
+     text-align:center;
 
-       margin-left: auto; margin-right: auto;
-       margin-top: -30px;
+  }
 
+.ramme {
+      width: 50%;
+      position:absolute;
+      right:2px;
+      top:150px;
+  }
 
-}
-
-h2 { font-family: 'Share', cursive; color: #fff; font-size: 90px; }
-h3 { font-family: 'Share', cursive; color: #fff; font-size: 65px;  }
-#clock { font-family: 'Share', cursive; color: #fff; font-size: 120px;
-float: right; padding: 30px 100px 0; }
-
+h1 { font-family: 'Share', cursive; color: #000; font-size: 70px;  }
+h2 { font-family: 'Share', cursive; color: #000; font-size: 85px; }
+h3 { font-family: 'Share', cursive; color: #000; font-size: 100px;  }
 
 </style>
-<script type="text/javascript">
-<!--
 
-function updateClock ( )
-{
- var currentTime = new Date ( );
-
- var currentHours = currentTime.getHours ( );
- var currentMinutes = currentTime.getMinutes ( );
- var currentSeconds = currentTime.getSeconds ( );
-
- // Pad the minutes and seconds with leading zeros, if required
- currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
- currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
-
- // Choose either "AM" or "PM" as appropriate
- var timeOfDay = ( currentHours < 24 ) ? "AM" : "PM";
-
- // Convert the hours component to 12-hour format if needed
- currentHours = ( currentHours > 24 ) ? currentHours - 24 : currentHours;
-
- // Convert an hours component of "0" to "12"
- currentHours = ( currentHours == 0 ) ? 24 : currentHours;
-
- // Compose the string for display
- var currentTimeString = currentHours + ":" + currentMinutes + "";
-
- // Update the time display
- document.getElementById("clock").firstChild.nodeValue = currentTimeString;
-}
-
-// -->
-</script>
-
-<img src="/images/rmr_logo.png" style="width: 50%; height: 50%;">
-
-<div id="clock">&nbsp;</div>
-
+<!-- <div class="clock">15:21</div> -->
 <div class="ramme">
 
-<% first = 1
+
+<% counter = 3
 @stage_schedules.each do |stage_schedule|
- if first == 1
-      first = 0 %>
-<h2><%= stage_schedule.start.to_formatted_s(:time) %> - <%=
-stage_schedule.band.name %></h2>
-<% elsif %>
-<h3><%= stage_schedule.start.to_formatted_s(:time) %> - <%=
-stage_schedule.band.name %></h3>
-<% end
+%>
+<h<%= counter %>><%= stage_schedule.start.to_formatted_s(:time) %> - <%= stage_schedule.band.name %></h<%= counter %>>
+<% counter -= 1
 end %>
 
 
