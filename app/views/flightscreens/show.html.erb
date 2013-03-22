@@ -15,7 +15,7 @@ rel='stylesheet' type='text/css'>
 <style>
 
 html {
-       background: url(/images/flight_screen_background.jpg) no-repeat center center fixed;
+       background: url(<%= image_path("flight_screen_background.jpg") %>) no-repeat center center fixed;
        -webkit-background-size: cover;
        -moz-background-size: cover;
        -o-background-size: cover;
@@ -26,7 +26,7 @@ html {
 
 .ramme {
 
-       background: url(/images/bakgrunn.png);
+       background: url(<%= image_path("bakgrunn.png") %>);
        -webkit-border-radius: 20px;
        -moz-border-radius: 20px;
        border-radius: 20px;
