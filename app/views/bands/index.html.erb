@@ -22,7 +22,10 @@
     <td><%= band.contact_name %></td>
     <td><%= band.email %></td>
     <td><%= band.phone %></td>
-    <td><%= nl2br(band.address) %></td>
+    <td>
+      <%= nl2br(band.address) %>
+      <br><%= band.postal_code %> <%= band.city %>
+    </td>
     <td><%= band.playtime_wish %></td>
     <td><%= band.playtime_wish_alt %></td>
     <td><%= band.band_members.count %></td>

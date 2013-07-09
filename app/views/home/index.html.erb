@@ -63,10 +63,10 @@
 </table>
 <% end %>
 <h2>Bandpåmelding</h2>
-<p><%= link_to 'Legg inn bandpåmelding', new_band_path %></p>
 <% current_user.bands.each do |band| %>
-<p><%= band.name %>: <%= link_to 'Endre bandpåmelding', edit_band_path(band) %> | <%= link_to 'Slett bandpåmelding', band_path(band), :method => :delete %></p>
+<p>&gt; <%= link_to band.name, band %> | <%= link_to 'Slett', band_path(band), :method => :delete %></p>
 <% end %>
+<p><%= link_to 'Legg inn bandpåmelding', new_band_path %></p>
 <% else %>
 <p>Du må være innlogget for å legge inn crewsøknad og bandpåmelding. Vi anbefaler facebook-innloggingen.</p>
 <% end %>
