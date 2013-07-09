@@ -1,5 +1,4 @@
 # encoding: UTF-8
-require 'uuidtools'
 class BandsController < ApplicationController
   filter_resource_access
   layout :check_layout
@@ -46,11 +45,10 @@ class BandsController < ApplicationController
   # POST /bands.xml
   def create
     @band = Band.new(params[:band])
-    @band.uuid = UUIDTools::UUID.timestamp_create().to_s
 
     respond_to do |format|
       if @band.save
-        format.html { redirect_to(@band, :notice => 'Band was successfully created.') }
+        format.html { redirect_to(@band, :notice => 'Bandet er registrert.') }
         format.xml  { render :xml => @band, :status => :created, :location => @band }
       else
         format.html { render :action => "new" }
@@ -66,7 +64,7 @@ class BandsController < ApplicationController
 
     respond_to do |format|
       if @band.update_attributes(params[:band])
-        format.html { redirect_to(@band, :notice => 'Band was successfully updated.') }
+        format.html { redirect_to(@band, :notice => 'Bandopplysningene er oppdatert.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

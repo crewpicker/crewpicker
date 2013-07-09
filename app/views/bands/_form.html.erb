@@ -13,7 +13,7 @@
 
   <%= f.hidden_field :user_id, :value => current_user.id if current_user %>
   <div class="field">
-    <%= f.label t(:name) %><br />
+    <%= f.label "Bandnavn" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
@@ -30,12 +30,25 @@
   </div>
   <div class="field">
     <%= f.label t(:address) %><br />
-    <%= f.text_area :address, :size => "30x4" %>
+    <%= f.text_area :address, :size => "25x3" %>
   </div>
   <div class="field">
-    <%= f.label t(:description) %><br />
+    <%= f.label :postal_code, "Postnr." %> / <%= f.label :city, "Sted" %><br />
+    <%= f.text_field :postal_code, :size => 4, :maxlength => 4 %> / <%= f.text_field :city, :size => 20 %>
+  </div>
+  <hr>
+  <h2>Fortell om bandet</h2>
+  <div class="field">
+    <%= f.label "Beskrivelse av bandet" %><br />
     <%= f.text_area :description, :size => "50x15" %>
   </div>
+  <div class="field">
+    <%= f.label t(:image) %><br />
+    <%= f.file_field :image %>
+  </div>
+  <hr>
+  <h2>Deltakerlåt</h2>
+  <p>(dere får spille flere)</p>
   <div class="field">
     <%= f.label t(:song_title) %><br />
     <%= f.text_field :song_title %>
