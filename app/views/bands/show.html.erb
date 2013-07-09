@@ -1,6 +1,8 @@
-<p id="notice"><%= notice %></p>
-
+<% title @band.name %>
 <h1><%= @band.name %></h1>
+<% if @band.band_members.count == 0 %>
+<h2 style="color: red">NB! Bandet må ha minst ett påmeldt bandmedlem!</h2>
+<% end %>
 <table class="border">
   <tr>
     <th><%= t(:contact_name) %></th>
@@ -17,6 +19,14 @@
   <tr>
     <th><%= t(:address) %></th>
     <td><%= nl2br(@band.address) %></td>
+  </tr>
+    <tr>
+    <th>Postnummer</th>
+    <td><%= @band.postal_code %></td>
+  </tr>
+    <tr>
+    <th>Sted</th>
+    <td><%= @band.city %></td>
   </tr>
   <tr>
     <th><%= t(:description) %></th>
@@ -49,7 +59,7 @@
 </table>
 <p>
 <%= link_to t(:edit), edit_band_path(@band) %> |
-<%= link_to t(:back), bands_path %>
+<%= link_to t(:back), root_path %>
 </p>
 <h2><%= t(:band_members) %></h2>
 <p><%= link_to t(:new_band_member), new_band_band_member_path(@band) %></p>

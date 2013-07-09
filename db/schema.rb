@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120211155048) do
+ActiveRecord::Schema.define(:version => 20130505200958) do
 
   create_table "access_levels", :force => true do |t|
     t.string   "name"
@@ -57,13 +57,14 @@ ActiveRecord::Schema.define(:version => 20120211155048) do
     t.integer  "user_id"
   end
 
-  create_table "bands", :id => false, :force => true do |t|
-    t.string   "uuid",               :limit => 36
+  create_table "bands", :force => true do |t|
     t.string   "name"
     t.string   "contact_name"
     t.string   "email"
     t.string   "phone"
     t.text     "address"
+    t.string   "postal_code"
+    t.string   "city"
     t.text     "description"
     t.string   "song_title"
     t.string   "song_composer"
@@ -74,9 +75,10 @@ ActiveRecord::Schema.define(:version => 20120211155048) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
     t.integer  "user_id"
+    t.boolean  "completed"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "crew_applications", :force => true do |t|
