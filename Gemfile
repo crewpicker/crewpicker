@@ -1,17 +1,15 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '4.0.0'
 
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'rvm-capistrano'
 
-gem 'activerecord-jdbc-adapter'
-gem 'activerecord-jdbcmysql-adapter'
+gem 'mysql2'
 
-gem 'paperclip', '~> 3.0'
-gem 'uuidtools'
-gem 'pdfkit', :git => "git://github.com/huerlisi/PDFKit.git"
+gem 'paperclip', '~> 3.4.2'
+gem 'pdfkit', :git => "https://github.com/pdfkit/pdfkit.git"
 gem 'sorcery'
 gem 'declarative_authorization'
 
@@ -21,11 +19,19 @@ end
 
 gem 'newrelic_rpm'
 
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier',     '>= 1.0.3'
-  gem 'therubyrhino'
-end
+gem 'sass-rails',   '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier',     '>= 1.3.0'
 
 gem 'jquery-rails'
+
+group :test, :development do
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
+end
