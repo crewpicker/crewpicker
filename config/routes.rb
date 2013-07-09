@@ -8,16 +8,16 @@ FestivalAdmin::Application.routes.draw do
     get 'unhide', :on => :member
   end
 
-  match 'crewskjema' => 'crew_applications#new'
+  match 'crewskjema' => 'crew_applications#new', via: :get
 
   resources :user_sessions
   resources :users
 
-  match 'login' => 'user_sessions#new', :as => :login
-  match 'logout' => 'user_sessions#destroy', :as => :logout
+  match 'login' => 'user_sessions#new', :as => :login, via: :get
+  match 'logout' => 'user_sessions#destroy', :as => :logout, via: :get
 
-  match "oauth/callback" => "oauths#callback"
-  match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+  match "oauth/callback" => "oauths#callback", via: :get
+  match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider, via: :get
 
   resource :flightscreen
 
@@ -36,15 +36,15 @@ FestivalAdmin::Application.routes.draw do
     get 'blank', :on => :member
   end
 
-  match 'access_levels/:id/access_cards' => 'access_levels#access_cards', :as => :access_level_cards
+  match 'access_levels/:id/access_cards' => 'access_levels#access_cards', :as => :access_level_cards, via: :get
   resources :access_levels
 
-  match 'volunteers/migrate_data' => 'volunteers#migrate_data'
+  match 'volunteers/migrate_data' => 'volunteers#migrate_data', via: :get
   resources :volunteers do
     get 'compact', :on => :collection
   end
 
-  match 'groups/migrate_data' => 'groups#migrate_data'
+  match 'groups/migrate_data' => 'groups#migrate_data', via: :get
   resources :groups do
     resources :volunteers
     resources :crew_applications do
@@ -74,12 +74,12 @@ FestivalAdmin::Application.routes.draw do
   get "home/index"
   root :to => "home#index"
 
-  match 'program/:name' => 'stage_schedules#show_schedule', :as => :stage_schedule_program
-  match 'stages/:id/schedule' => 'stage_schedules#show_schedule', :as => :stage_schedule_show
-  match 'stages/:id/schedule/create' => 'stage_schedules#create', :as => :stage_schedule_create
-  match 'stages/:id/schedule/move' => 'stage_schedules#move', :as => :stage_schedule_move
-  match 'stages/:id/schedule/delete' => 'stage_schedules#delete', :as => :stage_schedule_delete
-  match 'stages/:id/schedule/get_events' => 'stage_schedules#get_events', :as => :stage_schedule_get_events
+  match 'program/:name' => 'stage_schedules#show_schedule', :as => :stage_schedule_program, via: :get
+  match 'stages/:id/schedule' => 'stage_schedules#show_schedule', :as => :stage_schedule_show, via: :get
+  match 'stages/:id/schedule/create' => 'stage_schedules#create', :as => :stage_schedule_create, via: :post
+  match 'stages/:id/schedule/move' => 'stage_schedules#move', :as => :stage_schedule_move, via: :patch
+  match 'stages/:id/schedule/delete' => 'stage_schedules#delete', :as => :stage_schedule_delete, via: :delete
+  match 'stages/:id/schedule/get_events' => 'stage_schedules#get_events', :as => :stage_schedule_get_events, via: :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
