@@ -8,3 +8,4 @@ config/database.yml
 config/initializers/sorcery.rb
 config/config.yml
 .DS_Store
+public/system/*
