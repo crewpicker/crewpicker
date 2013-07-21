@@ -41,7 +41,7 @@ class StagesController < ApplicationController
   # POST /stages
   # POST /stages.xml
   def create
-    @stage = Stage.new(params[:stage])
+    @stage = Stage.new(stage_params)
 
     respond_to do |format|
       if @stage.save
@@ -60,7 +60,7 @@ class StagesController < ApplicationController
     @stage = Stage.find(params[:id])
 
     respond_to do |format|
-      if @stage.update_attributes(params[:stage])
+      if @stage.update_attributes(stage_params)
         format.html { redirect_to(@stage, :notice => 'Stage was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -80,5 +80,11 @@ class StagesController < ApplicationController
       format.html { redirect_to(stages_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def stage_params
+    params.require(:stage).permit(:name, :from, :to)
   end
 end

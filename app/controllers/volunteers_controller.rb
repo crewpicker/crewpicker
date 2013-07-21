@@ -42,7 +42,7 @@ class VolunteersController < ApplicationController
   # POST /volunteers
   # POST /volunteers.xml
   def create
-    @volunteer = Volunteer.new(params[:volunteer])
+    @volunteer = Volunteer.new(volunteer_params)
 
     respond_to do |format|
       if @volunteer.save
@@ -61,7 +61,7 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.find(params[:id])
 
     respond_to do |format|
-      if @volunteer.update_attributes(params[:volunteer])
+      if @volunteer.update_attributes(volunteer_params)
         format.html { redirect_to(volunteers_path, :notice => "#{@volunteer.name} ble oppdatert.") }
         format.xml  { head :ok }
       else
@@ -117,5 +117,11 @@ class VolunteersController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @volunteers }
     end
+  end
+
+  private
+
+  def volunteer_params
+    params.require(:volunteer).permit(:id, :name, :address, :birthday, :email, :phone, :group_id, :access_level, :user_id)
   end
 end

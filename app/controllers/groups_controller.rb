@@ -44,7 +44,7 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.xml
   def create
-    @group = Group.new(params[:group])
+    @group = Group.new(group_params)
 
     respond_to do |format|
       if @group.save
@@ -63,7 +63,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
 
     respond_to do |format|
-      if @group.update_attributes(params[:group])
+      if @group.update_attributes(group_params)
         format.html { redirect_to(@group, :notice => 'Group was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -93,5 +93,11 @@ class GroupsController < ApplicationController
       group.save
     end
     redirect_to(groups_path)
+  end
+
+  private
+
+  def group_params
+    params.require(:group).permit(:id, :name, :description, :internal)
   end
 end
