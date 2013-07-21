@@ -31,7 +31,7 @@
     <td><%= band.band_members.count %></td>
     <td><%= link_to image_tag(band.image.url(:thumb)), band.image.url %></td>
     <td><%= band.stage_schedule ? 'Ja' : 'Nei' %>
-    <td><%= link_to t(:show), band %> | <%= link_to t(:edit), edit_band_path(band) %> | <%= link_to t(:delete), band, :confirm => t(:confirm), :method => :delete %></td>
+    <td><%= link_to t(:show), band %> | <%= link_to t(:edit), edit_band_path(band) %> | <%= link_to t(:delete), band, data: { confirm: t(:confirm) }, :method => :delete %></td>
   </tr>
 <% end %>
 </table>
