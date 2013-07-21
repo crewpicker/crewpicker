@@ -4,6 +4,6 @@ class CrewApplication < ActiveRecord::Base
   belongs_to :user
   belongs_to :volunteer
   accepts_nested_attributes_for :crew_wishes
-  default_scope :conditions => ("chosen IS NULL OR chosen = 'f'")
-  scope :hidden, :conditions => ("chosen = 't'")
+  default_scope -> { where("chosen IS NULL OR chosen = 'f'") }
+  scope :hidden, -> { where("chosen = 1") }
 end
