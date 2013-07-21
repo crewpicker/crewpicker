@@ -44,7 +44,7 @@ class AdTypesController < ApplicationController
   # POST /ad_types
   # POST /ad_types.xml
   def create
-    @ad_type = AdType.new(params[:ad_type])
+    @ad_type = AdType.new(ad_type_params)
 
     respond_to do |format|
       if @ad_type.save
@@ -63,7 +63,7 @@ class AdTypesController < ApplicationController
     @ad_type = AdType.find(params[:id])
 
     respond_to do |format|
-      if @ad_type.update_attributes(params[:ad_type])
+      if @ad_type.update_attributes(ad_type_params)
         format.html { redirect_to(@ad_type, :notice => 'Ad type was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -83,5 +83,11 @@ class AdTypesController < ApplicationController
       format.html { redirect_to(ad_types_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def ad_type_params
+    params.require(:ad_type).permit(:id, :name, :value, :invoice_name)
   end
 end

@@ -44,7 +44,7 @@ class AccessLevelsController < ApplicationController
   # POST /access_levels
   # POST /access_levels.xml
   def create
-    @access_level = AccessLevel.new(params[:access_level])
+    @access_level = AccessLevel.new(access_level_params)
 
     respond_to do |format|
       if @access_level.save
@@ -63,7 +63,7 @@ class AccessLevelsController < ApplicationController
     @access_level = AccessLevel.find(params[:id])
 
     respond_to do |format|
-      if @access_level.update_attributes(params[:access_level])
+      if @access_level.update_attributes(access_level_params)
         format.html { redirect_to(@access_level, :notice => 'Access level was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -84,8 +84,15 @@ class AccessLevelsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
   def access_cards
     @access_level = AccessLevel.find(params[:id])
     render :layout => false
+  end
+
+  private
+
+  def access_level_params
+    params.require(:access_level).permit(:id, :name)
   end
 end

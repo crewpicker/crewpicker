@@ -29,6 +29,9 @@ class BandsController < ApplicationController
   # GET /bands/new.xml
   def new
     @band = Band.new
+    @band.user_id = current_user.id
+    @band.contact_name = current_user.name
+    @band.email = current_user.email
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +47,7 @@ class BandsController < ApplicationController
   # POST /bands
   # POST /bands.xml
   def create
-    @band = Band.new(params[:band])
+    @band = Band.new(band_params)
 
     respond_to do |format|
       if @band.save
@@ -63,7 +66,7 @@ class BandsController < ApplicationController
     @band = Band.find(params[:id])
 
     respond_to do |format|
-      if @band.update_attributes(params[:band])
+      if @band.update_attributes(band_params)
         format.html { redirect_to(@band, :notice => 'Bandopplysningene er oppdatert.') }
         format.xml  { head :ok }
       else
@@ -83,5 +86,14 @@ class BandsController < ApplicationController
       format.html { redirect_to(bands_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def band_params
+    params.require(:band).permit(
+      :id, :name, :contact_name, :email, :phone, :address, :postal_code, :city,
+      :description, :song_title, :song_composer, :song_lyrics, :playtime_wish,
+      :playtime_wish_alt, :image, :user_id)
   end
 end

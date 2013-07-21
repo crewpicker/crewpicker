@@ -51,7 +51,7 @@ class BandMembersController < ApplicationController
   # POST /band_members
   # POST /band_members.xml
   def create
-    @band_member = BandMember.new(params[:band_member])
+    @band_member = BandMember.new(band_member_params)
     @band = Band.find(params[:band_id])
     @band.band_members << @band_member
     person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
@@ -79,7 +79,7 @@ class BandMembersController < ApplicationController
     @band_member = BandMember.find(params[:id])
 
     respond_to do |format|
-      if @band_member.update_attributes(params[:band_member])
+      if @band_member.update_attributes(band_member_params)
         person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
         if person.id != @band_member.person.id
           person.address = @band_member.person.address
@@ -107,5 +107,11 @@ class BandMembersController < ApplicationController
       format.html { redirect_to(band_members_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def band_member_params
+    params.require(:band_member).permit(:id, :role, :user_id, person_attributes: [:name, :address, :email, :phone])
   end
 end

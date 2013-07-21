@@ -47,7 +47,7 @@ class CrewApplicationsController < ApplicationController
   # POST /crew_applications
   # POST /crew_applications.xml
   def create
-    @crew_application = CrewApplication.new(params[:crew_application])
+    @crew_application = CrewApplication.new(crew_application_params)
 
     respond_to do |format|
       if @crew_application.save
@@ -66,7 +66,7 @@ class CrewApplicationsController < ApplicationController
     @crew_application = CrewApplication.find(params[:id])
 
     respond_to do |format|
-      if @crew_application.update_attributes(params[:crew_application])
+      if @crew_application.update_attributes(crew_application_params)
         format.html { redirect_to(@crew_application, :notice => 'Crew application was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -142,5 +142,11 @@ class CrewApplicationsController < ApplicationController
         head :ok
       }
     end
+  end
+
+  private
+
+  def crew_application_params
+    params.require(:crew_application).permit(:id, :name, :address, :birthday, :email, :phone, :experience, crew_wishes_attributes: [:group_id, :priority])
   end
 end

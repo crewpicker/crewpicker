@@ -2,7 +2,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter { |c| Authorization.current_user = c.current_user }
+  before_filter do |c|
+    Authorization.current_user = c.current_user
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
 
   def permission_denied
     if !current_user
