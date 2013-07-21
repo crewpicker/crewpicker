@@ -11,18 +11,18 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :user_id, :value => current_user.id if current_user %>
+  <%= f.hidden_field :user_id %>
   <div class="field">
     <%= f.label "Bandnavn" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label t(:contact_name) %><br />
-    <%= f.text_field :contact_name, :value => ( current_user.name if current_user ) %>
+    <%= f.text_field :contact_name %>
   </div>
   <div class="field">
     <%= f.label t(:email) %><br />
-    <%= f.text_field :email, :value => ( current_user.email if current_user ) %>
+    <%= f.text_field :email %>
   </div>
   <div class="field">
     <%= f.label t(:phone) %><br />
