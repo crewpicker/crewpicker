@@ -6,8 +6,8 @@ class StageSchedulesController < ApplicationController
     stage_schedules = Stage.find(params[:id]).stage_schedules
     events = []
     stage_schedules.each do |stage_schedule|
-      if band = Band.find_by_uuid(stage_schedule.band_id)
-        events << {:id => band.uuid, :title => band.name, :start => "#{stage_schedule.start.iso8601}", :end => "#{stage_schedule.end.iso8601}", :allDay => false, :recurring => false}
+      if band = Band.find(stage_schedule.band_id)
+        events << {:id => band.id, :title => band.name, :start => "#{stage_schedule.start.iso8601}", :end => "#{stage_schedule.end.iso8601}", :allDay => false, :recurring => false}
       else
         stage_schedule.destroy
       end
@@ -50,8 +50,8 @@ class StageSchedulesController < ApplicationController
     band = Band.find(params[:event_id])
     stage_schedule = band.stage_schedule
     stage_schedule.destroy
-    render :update do |page|
-      page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
+    respond_to do |format|
+      format.js
     end
   end
 end
