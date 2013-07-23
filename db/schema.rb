@@ -9,25 +9,25 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130505200958) do
+ActiveRecord::Schema.define(version: 20130723210800) do
 
-  create_table "access_levels", :force => true do |t|
+  create_table "access_levels", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "ad_types", :force => true do |t|
+  create_table "ad_types", force: true do |t|
     t.string   "name"
     t.integer  "value"
     t.string   "invoice_name"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
-  create_table "ads", :force => true do |t|
+  create_table "ads", force: true do |t|
     t.string   "name"
     t.string   "contact"
     t.string   "phone"
@@ -35,29 +35,29 @@ ActiveRecord::Schema.define(:version => 20130505200958) do
     t.integer  "ad_type_id"
     t.text     "address"
     t.text     "notes"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "authentications", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.string   "provider",   :null => false
-    t.string   "uid",        :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "authentications", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.string   "provider",   null: false
+    t.string   "uid",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "band_members", :force => true do |t|
-    t.string   "band_id",    :limit => 36
+  create_table "band_members", force: true do |t|
+    t.string   "band_id",    limit: 36
     t.string   "name"
     t.string   "role"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.integer  "person_id"
     t.integer  "user_id"
   end
 
-  create_table "bands", :force => true do |t|
+  create_table "bands", force: true do |t|
     t.string   "name"
     t.string   "contact_name"
     t.string   "email"
@@ -77,11 +77,11 @@ ActiveRecord::Schema.define(:version => 20130505200958) do
     t.datetime "image_updated_at"
     t.integer  "user_id"
     t.boolean  "completed"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
-  create_table "crew_applications", :force => true do |t|
+  create_table "crew_applications", force: true do |t|
     t.string   "name"
     t.text     "address"
     t.date     "birthday"
@@ -90,20 +90,26 @@ ActiveRecord::Schema.define(:version => 20130505200958) do
     t.text     "experience"
     t.integer  "volunteer_id"
     t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.boolean  "chosen"
   end
 
-  create_table "crew_wishes", :force => true do |t|
+  create_table "crew_wishes", force: true do |t|
     t.integer  "crew_application_id"
     t.integer  "group_id"
     t.integer  "priority"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
-  create_table "fireguards", :force => true do |t|
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fireguards", force: true do |t|
     t.string   "name"
     t.integer  "age"
     t.text     "address"
@@ -112,80 +118,80 @@ ActiveRecord::Schema.define(:version => 20130505200958) do
     t.string   "email"
     t.text     "notes"
     t.boolean  "active"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "groups", :force => true do |t|
+  create_table "groups", force: true do |t|
     t.string   "name"
     t.boolean  "internal"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.text     "description"
   end
 
-  create_table "location_schedules", :force => true do |t|
+  create_table "location_schedules", force: true do |t|
     t.integer  "location_id"
     t.integer  "fireguard_id"
     t.integer  "slot"
     t.datetime "from"
     t.datetime "to"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
-  create_table "locations", :force => true do |t|
+  create_table "locations", force: true do |t|
     t.string   "name"
     t.integer  "slots"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "people", :force => true do |t|
+  create_table "people", force: true do |t|
     t.string   "name"
     t.text     "address"
     t.string   "email"
-    t.string   "phone",      :limit => 8
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.string   "phone",      limit: 8
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
-  create_table "roles", :force => true do |t|
+  create_table "roles", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "stage_schedules", :force => true do |t|
+  create_table "stage_schedules", force: true do |t|
     t.integer  "stage_id"
-    t.string   "band_id",    :limit => 36
+    t.string   "band_id",    limit: 36
     t.datetime "start"
     t.datetime "end"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
-  create_table "stages", :force => true do |t|
+  create_table "stages", force: true do |t|
     t.string   "name"
     t.datetime "from"
     t.datetime "to"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "user_roles", :force => true do |t|
+  create_table "user_roles", force: true do |t|
     t.string  "title"
     t.integer "user_id"
     t.integer "role_id"
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "username",                        :null => false
+  create_table "users", force: true do |t|
+    t.string   "username",                        null: false
     t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string   "reset_password_token"
@@ -194,10 +200,10 @@ ActiveRecord::Schema.define(:version => 20130505200958) do
     t.string   "name"
   end
 
-  add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token"
+  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
 
-  create_table "volunteers", :force => true do |t|
+  create_table "volunteers", force: true do |t|
     t.string   "name"
     t.text     "address"
     t.date     "birthday"
@@ -205,8 +211,8 @@ ActiveRecord::Schema.define(:version => 20130505200958) do
     t.string   "phone"
     t.integer  "group_id"
     t.string   "access_level"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "user_id"
   end
 
