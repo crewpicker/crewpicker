@@ -16,11 +16,11 @@ FactoryGirl.define do
   end
 
   factory :user do
-    username            'test'
-    name                'TTT'
-    password            'haxx44'
+    username              'test'
+    name                  'TTT'
+    password              'haxx44'
     password_confirmation 'haxx44'
-    email               'test@rockmotrus.no'
+    email                 'test@rockmotrus.no'
     factory :user_with_admin_role do
       after(:create) do |user|
         role = FactoryGirl.create(:role, name: 'admin')
@@ -34,7 +34,7 @@ FactoryGirl.define do
   end
 
   factory :role do
-    name                'user'
+    name 'user'
   end
 
   factory :user_role
