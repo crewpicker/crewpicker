@@ -2,11 +2,14 @@ require 'spec_helper'
 
 describe "Bands" do
   before(:each) do
+    create(:user_with_admin_role)
     visit login_path
-    fill_in "username", with: "tg90nor"
-    fill_in "password", with: "frostwood08"
+
+    fill_in "username", with: "test"
+    fill_in "password", with: "haxx44"
     click_on "Logg inn"
   end
+
   describe "index action" do
     before(:each) do
       create(:band, name: "Blast from the Past")
