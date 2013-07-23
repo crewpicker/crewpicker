@@ -20,4 +20,5 @@ describe Band do
 
   it "validates format of email" do
     build(:band, email: "invalid").should have(1).errors_on(:email)
+  end
 end
