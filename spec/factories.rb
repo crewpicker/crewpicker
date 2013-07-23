@@ -14,4 +14,28 @@ FactoryGirl.define do
     playtime_wish     '11:00'
     playtime_wish_alt '12:00'
   end
+
+  factory :user do
+    username            'test'
+    name                'TTT'
+    password            'haxx44'
+    password_confirmation 'haxx44'
+    email               'test@rockmotrus.no'
+    factory :user_with_admin_role do
+      after(:create) do |user|
+        role = FactoryGirl.create(:role, name: 'admin')
+        FactoryGirl.create(:user_role, role_id: role.id, user_id: user.id)
+      end
+    end
+    after(:create) do |user|
+      role = FactoryGirl.create(:role)
+      FactoryGirl.create(:user_role, role_id: role.id, user_id: user.id)
+    end
+  end
+
+  factory :role do
+    name                'user'
+  end
+
+  factory :user_role
 end
