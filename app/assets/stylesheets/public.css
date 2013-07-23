@@ -7,10 +7,10 @@ html {
   background-repeat: no-repeat;
 }
 body {
-  background-color: white;
+  background-color: rgba(255,255,255,0.95);
   margin-left: auto;
   margin-right: auto;
-  width: 600px;
+  width: 700px;
   -moz-border-radius: 15px;
   border-radius: 15px;
   padding: 10px;
@@ -59,4 +59,13 @@ h2 {
   font-weight: bold;
   font-size: 14px;
   color: red;
+}
+form > div:first-child {
+  display: none !important;
+}
+#navmenu {
+  text-align: right;
+}
+#navmenu img {
+  vertical-align: middle;
 }
