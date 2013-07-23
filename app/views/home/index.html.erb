@@ -1,5 +1,5 @@
 <% title 'FestivalAdmin' %>
-<h1>FestivalAdmin</h1>
+<h1><%= @event.name %></h1>
 <% if current_user %>
 <h2>Crewsøknad</h2>
 <% if current_user.crew_application && !(current_user.crew_application.volunteer_id) %>
@@ -70,3 +70,7 @@
 <% else %>
 <p>Du må være innlogget for å legge inn crewsøknad og bandpåmelding. Vi anbefaler facebook-innloggingen.</p>
 <% end %>
+<h2>Om å være frivillig</h2>
+<p>TT</p>
+<h2>Om rockemønstring</h2>
+<p>Putt inn tekst her</p>
