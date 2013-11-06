@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Bands" do
   before(:each) do
     create(:user_with_admin_role)
-    visit login_path
+    visit root_path
 
     fill_in "username", with: "test"
     fill_in "password", with: "haxx44"
