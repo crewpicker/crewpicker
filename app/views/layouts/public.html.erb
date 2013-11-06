@@ -12,16 +12,6 @@
     <% if current_user %>
       Logget inn som <%= current_user.username %> |
       <%= link_to "Logg ut", logout_path %>
-    <% else %>
-      <%= link_to image_tag('facebook_login_button.png', :alt => 'Logg inn med Facebook', :title => 'Logg inn med Facebook'), auth_at_provider_path(:provider => :facebook) %> |
-      <%= link_to image_tag('sign-in-with-twitter-d.png', :alt => 'Logg inn med Twitter', :title => 'Logg inn med Twitter'), auth_at_provider_path(:provider => :twitter) %> |
-      <%= form_tag user_sessions_path, :method => :post, :style => 'display: inline' do %>
-        <%= hidden_field_tag :referer, @referer.to_s %>
-        <%= text_field_tag :username, '', :size => 7, :placeholder => 'Brukernavn' %> /
-        <%= password_field_tag :password, '', :size => 7, :placeholder => 'Passord' %> |
-        <%= submit_tag '', :style => 'position: absolute; left: -9999px; width: 1px; height: 1px;' %>
-        <%= link_to "Ny konto", new_user_path %>
-      <% end %>
     <% end %>
     </div>
     <% if flash[:alert] %>
@@ -31,6 +21,8 @@
       <p class="flash-notice"><%= flash[:notice] %></p>
     <% end %>
 <%= yield %>
+<hr>
+<p style="text-align: right; color: #666">&copy; 2014 FestivalAdmin AS | <a href="mailto: thomas@rockmotrus.no" style="color: #999;">Rapporter problem med siden</a></p>
 <% if APP_CONFIG[:use_google_analytics] == true %>
 <script type="text/javascript">
 
