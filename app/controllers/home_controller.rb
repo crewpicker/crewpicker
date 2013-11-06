@@ -4,7 +4,12 @@ class HomeController < ApplicationController
   layout :check_layout
 
   def index
-    @event = Event.first
+    event = Event.first
+    if event
+      @title = Event.first.name
+    else
+      @title = 'FestivalAdmin'
+    end
   end
 
 end

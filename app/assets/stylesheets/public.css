@@ -10,9 +10,7 @@ body {
   background-color: rgba(255,255,255,0.95);
   margin-left: auto;
   margin-right: auto;
-  width: 700px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
+  width: 98%;
   padding: 10px;
 }
 table {
@@ -53,6 +51,9 @@ h1 {
   text-align: center;
 }
 h2 {
+  font-size: 18px;
+}
+h3 {
   font-size: 14px;
 }
 .flash-error {
@@ -68,4 +69,18 @@ form > div:first-child {
 }
 #navmenu img {
   vertical-align: middle;
+}
+.container {
+  max-width: 802px;
+  //background-color: rgb(255,0,0);
+  margin-left: auto;
+  margin-right: auto;
+}
+.column {
+  //background-color: rgb(0,255,0);
+  float: left;
+  border-left: 1px solid #000000;
+  width: 390px;
+  padding: 5px;
+  text-align: center;
 }
