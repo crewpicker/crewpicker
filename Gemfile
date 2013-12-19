@@ -27,6 +27,8 @@ gem 'therubyracer'
 
 gem 'jquery-rails'
 
+gem 'holder_rails'
+
 group :test, :development do
   gem 'rspec-rails'
 end

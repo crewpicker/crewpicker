@@ -87,7 +87,7 @@ class CrewApplicationsController < ApplicationController
         if permitted_to? :index, :crew_applications
           redirect_to(crew_applications_url)
         else
-          redirect_to :root_path
+          redirect_to :root
         end
       }
       format.xml  { head :ok }
@@ -147,6 +147,6 @@ class CrewApplicationsController < ApplicationController
   private
 
   def crew_application_params
-    params.require(:crew_application).permit(:id, :name, :address, :birthday, :email, :phone, :experience, crew_wishes_attributes: [:group_id, :priority])
+    params.require(:crew_application).permit(:id, :name, :address, :birthday, :email, :phone, :experience, :user_id, crew_wishes_attributes: [:id, :group_id, :priority])
   end
 end

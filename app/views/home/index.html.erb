@@ -1,8 +1,28 @@
 <% title @title %>
-<h1><%= @title %></h1>
+<% has_crew_application = FALSE
+if current_user && current_user.crew_application && !(current_user.crew_application.volunteer_id)
+  has_crew_application = TRUE
+end
+is_volunteer = FALSE
+if current_user && current_user.volunteers.count > 0
+  is_volunteer = TRUE
+end %>
+  <div class="container">
+    <h2>ROCKEMØNSTRING</h2>
 <% if current_user %>
-<h2>Crewsøknad</h2>
-<% if current_user.crew_application && !(current_user.crew_application.volunteer_id) %>
+<% current_user.bands.each do |band| %>
+    <p>&gt; <%= link_to band.name, band %> | <%= link_to 'Slett', band_path(band), :method => :delete, confirm: 'Er du sikker på at du vil slette bandet?' %></p>
+<% end %>
+<% end %>
+    <p>
+      <%= link_to 'Påmelding &raquo;'.html_safe, new_band_path, class: 'btn btn-primary' %>
+      <%= link_to 'Mer informasjon &raquo;'.html_safe, info_bands_path, class: 'btn btn-info' %>
+    </p>
+  </div>
+  <hr>
+  <div class="container">
+    <h2>FRIVILLIG</h2>
+<% if has_crew_application %>
 <% crew_application = current_user.crew_application %>
 <table class="border">
   <tr>
@@ -38,11 +58,9 @@
 <% end %>
 <% end %>
 </table>
-<p><%= link_to 'Endre crewsøknad', edit_crew_application_path(current_user.crew_application) %><br/>
-<%= link_to 'Slett crewsøknad', crew_application_path(current_user.crew_application), :method => :delete %><br/></p>
-<% else %>
-<p><%= link_to 'Legg inn crewsøknad', new_crew_application_path %></p>
-<% end %>
+<p><%= link_to 'Endre crewsøknad', edit_crew_application_path(current_user.crew_application), class: 'btn btn-primary' %>
+<%= link_to 'Slett crewsøknad', crew_application_path(current_user.crew_application), :method => :delete, class: 'btn btn-danger', confirm: 'Er du helt sikker?' %>
+<% elsif is_volunteer %>
 <% current_user.volunteers.each do |volunteer| %>
 <p>Valgt til <%= volunteer.group.name %>-gruppa</p>
 <table class="border">
@@ -62,42 +80,11 @@
 <% end %>
 </table>
 <% end %>
-<h2>Bandpåmelding</h2>
-<% current_user.bands.each do |band| %>
-<p>&gt; <%= link_to band.name, band %> | <%= link_to 'Slett', band_path(band), :method => :delete %></p>
+<% else %>
+    <p>
+      <%= link_to 'Søknadsskjema &raquo;'.html_safe, new_crew_application_path, class: 'btn btn-primary' %>
 <% end %>
-<p><%= link_to 'Legg inn bandpåmelding', new_band_path %></p>
-<% end %>
-<% if !current_user %>
-<h2 style="text-align: center;">INNLOGGING</h2>
-<div class="container" style="max-width: 398px;">
-<div class="column" style="text-align: left; width: 188px;">
-<h3>1: Facebook / Twitter</h3>
-<%= link_to image_tag('facebook_login_button.png', :alt => 'Logg inn med Facebook', :title => 'Logg inn med Facebook'), auth_at_provider_path(:provider => :facebook) %><br>
-<%= link_to image_tag('sign-in-with-twitter-d.png', :alt => 'Logg inn med Twitter', :title => 'Logg inn med Twitter'), auth_at_provider_path(:provider => :twitter) %>
-</div>
-<div class="column" style="text-align: left; width: 188px;">
-<h3>2: RMR-konto</h3>
-<%= form_tag user_sessions_path, :method => :post, :style => 'display: inline' do %>
-  <%= hidden_field_tag :referer, @referer.to_s %>
-  <%= text_field_tag :username, '', :size => 9, :placeholder => 'Brukernavn' %> /
-  <%= password_field_tag :password, '', :size => 7, :placeholder => 'Passord' %><br>
-  <%= submit_tag 'Logg inn'%><br>
-  <span style="font-size: 11px;"><%= link_to "Registrer", new_user_path %></span>
-<% end %>
-</div>
-<div style="clear: both;"></div>
-</div>
-<hr>
-<% end %>
-<div class="container">
-<div class="column">
-<h2>ROCKEMØNSTRING</h2>
-<p>Påmelding rockemønstring</p>
-</div>
-<div class="column">
-<h2>FRIVILLIG</h2>
-<p>Søknadsskjema frivillig</p>
-</div>
-<div style="clear: both;"></div>
-</div>
+      <%= link_to 'Mer informasjon &raquo;'.html_safe, info_volunteers_path, class: 'btn btn-info' %>
+    </p>
+  </div>
+
