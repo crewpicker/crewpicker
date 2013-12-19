@@ -9,7 +9,7 @@ authorization do
 
   role :user do
     includes :guest
-    has_permission_on :bands, :to => [:new, :create]
+    has_permission_on :bands, :to => [:new, :create, :info]
     has_permission_on :bands, :to => [:edit, :update, :show, :destroy] do
       if_attribute :user_id => is { user.id }
     end
@@ -29,13 +29,10 @@ authorization do
       if_attribute :id => is { user.id }
     end
     has_permission_on :home, :to => :index
+    has_permission_on :volunteers, :to => :info
   end
 
   role :guest do
-    has_permission_on :bands, :to => [:new, :create, :show]
-    has_permission_on :band_members, :to => [:new, :create, :edit, :update, :destroy]
-    has_permission_on :crew_applications, :to => [:new, :create]
-    has_permission_on :crew_wishes, :to => [:new, :create]
     has_permission_on :home, :to => :index
     has_permission_on :users, :to => [:new, :create]
     has_permission_on :location_schedules, :to => [:create]

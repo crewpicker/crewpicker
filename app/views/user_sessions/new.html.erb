@@ -1,11 +1,25 @@
 <% title 'Innlogging' %>
-<h1>Innlogging</h1>
-
-<h2>Logg inn med Facebook-kontoen din:</h2>
-<p><%= link_to image_tag('facebook_login_button.png', :alt => 'Logg inn med Facebook'), auth_at_provider_path(:provider => :facebook) %></p>
-<h2>Logg inn med Twitter-kontoen din:</h2>
-<p><%= link_to image_tag('sign-in-with-twitter-d.png', :alt => 'Logg inn med Twitter'), auth_at_provider_path(:provider => :twitter) %></p>
-<h2>Logg inn med RMR-kontoen din:</h2>
-<%= render 'form' %>
-<h2>Registrer en ny RMR-konto:</h2>
-<p><%= link_to 'Registrer', :new_user %></p>
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">INNLOGGING</h1>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="form-signin">
+        <h2 class="form-signin-heading">1. Facebook / Twitter</h2>
+        <p><%= link_to '<i class="fa fa-facebook"></i> | Logg inn med Facebook'.html_safe, auth_at_provider_path(:provider => :facebook), class: 'btn btn-lg btn-block btn-facebook' %></p>
+        <p><%= link_to '<i class="fa fa-twitter"></i> | Logg inn med Twitter'.html_safe, auth_at_provider_path(:provider => :twitter), class: 'btn btn-lg btn-block btn-twitter' %></p>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <%= form_tag user_sessions_path, :method => :post, class: 'form-signin' do %>
+        <h2 class="form-signin-heading">2. RMR-konto</h2>
+        <%= hidden_field_tag :referer, @referer.to_s %>
+        <%= text_field_tag :username, '', :placeholder => 'Brukernavn', :required => true, :autofocus => true, class: 'form-control' %>
+        <%= password_field_tag :password, '', :placeholder => 'Passord', :required => true, class: 'form-control' %>
+        <%= submit_tag 'Logg inn', class: 'btn btn-lg btn-primary btn-block' %>
+        <%= link_to "Ny konto", new_user_path %>
+      <% end %>
+    </div>
+  </div>
+</div>

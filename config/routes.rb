@@ -43,7 +43,10 @@ FestivalAdmin::Application.routes.draw do
 
   match 'volunteers/migrate_data' => 'volunteers#migrate_data', via: :get
   resources :volunteers do
-    get 'compact', :on => :collection
+    collection do
+      get 'compact'
+      get 'info'
+    end
   end
 
   match 'groups/migrate_data' => 'groups#migrate_data', via: :get
@@ -65,6 +68,9 @@ FestivalAdmin::Application.routes.draw do
   resources :stages
 
   resources :bands do
+    collection do
+      get 'info'
+    end
     resources :band_members
   end
 

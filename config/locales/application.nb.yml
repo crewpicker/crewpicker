@@ -71,3 +71,8 @@ nb:
   activerecord:
     models:
       user: bruker
+    attributes:
+      band:
+        name: "Bandnavn"
+        contact_name: "Kontaktperson"
+        email: "E-post"
