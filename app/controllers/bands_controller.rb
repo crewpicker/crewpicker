@@ -88,6 +88,10 @@ class BandsController < ApplicationController
     end
   end
 
+  filter_access_to :info
+  def info
+  end
+
   private
 
   def band_params

@@ -1,75 +1,82 @@
-<%= form_for(@band, :html => { :multipart => true }) do |f| %>
+<div style="max-width: 350px;">
+<%= form_for(@band, class: 'form-horizontal', :html => { :multipart => true }) do |f| %>
   <% if @band.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@band.errors.count, "error") %> prohibited this band from being saved:</h2>
-
+      <h2 class="h3"><%= @band.errors.count %> feil hindret bandet fra å bli lagret:</h2>
       <ul>
       <% @band.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li style="color: red;"><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
   <%= f.hidden_field :user_id %>
-  <div class="field">
+  <div class="form-group">
     <%= f.label "Bandnavn" %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:contact_name) %><br />
-    <%= f.text_field :contact_name %>
+    <%= f.text_field :contact_name, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:email) %><br />
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:phone) %><br />
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:address) %><br />
-    <%= f.text_area :address, :size => "25x3" %>
+    <%= f.text_area :address, rows: '3', class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :postal_code, "Postnr." %> / <%= f.label :city, "Sted" %><br />
-    <%= f.text_field :postal_code, :size => 4, :maxlength => 4 %> / <%= f.text_field :city, :size => 20 %>
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <%= f.label :postal_code, "Postnr." %><br />
+      <%= f.text_field :postal_code, :maxlength => 4, class: 'form-control' %>
+    </div>
+    <div class="col-sm-8">
+      <%= f.label :city, "Sted" %><br />
+      <%= f.text_field :city, class: 'form-control' %>
+    </div>
   </div>
   <hr>
   <h2>Fortell om bandet</h2>
-  <div class="field">
+  <div class="form-group">
     <%= f.label "Beskrivelse av bandet" %><br />
-    <%= f.text_area :description, :size => "50x15" %>
+    <%= f.text_area :description, rows: '15', class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:image) %><br />
     <%= f.file_field :image %>
   </div>
   <hr>
   <h2>Deltakerlåt</h2>
-  <p>(dere får spille flere)</p>
-  <div class="field">
+  <p>(dere får spille flere, men det er denne som vurderes av juryen)</p>
+  <div class="form-group">
     <%= f.label t(:song_title) %><br />
-    <%= f.text_field :song_title %>
+    <%= f.text_field :song_title, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:song_composer) %><br />
-    <%= f.text_field :song_composer %>
+    <%= f.text_field :song_composer, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:song_lyrics) %><br />
-    <%= f.text_area :song_lyrics, :size => "50x20" %>
+    <%= f.text_area :song_lyrics, rows: '20', class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:playtime_wish) %> (klokkeslett fra 00:00 til 14:00)<br />
-    <%= f.text_field :playtime_wish %>
+    <%= f.text_field :playtime_wish, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:playtime_wish_alt) %> (klokkeslett fra 00:00 til 14:00)<br />
-    <%= f.text_field :playtime_wish_alt %>
+    <%= f.text_field :playtime_wish_alt, class: 'form-control' %>
   </div>
-  <div class="actions">
-    <%= f.submit t(:submit) %>
+  <div class="form-group">
+    <%= f.submit t(:submit), class: 'btn btn-primary btn-block' %>
   </div>
 <% end %>
+</div>

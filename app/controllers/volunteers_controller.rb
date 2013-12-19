@@ -118,6 +118,9 @@ class VolunteersController < ApplicationController
       format.xml  { render :xml => @volunteers }
     end
   end
+  filter_access_to :info
+  def info
+  end
 
   private
 

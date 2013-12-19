@@ -90,6 +90,8 @@ GEM
       rspec (~> 2.14)
     highline (1.6.20)
     hike (1.2.3)
+    holder_rails (2.2.0)
+      railties (>= 3.1.0)
     httpauth (0.2.0)
     i18n (0.6.5)
     jquery-rails (3.0.4)
@@ -242,6 +244,7 @@ DEPENDENCIES
   declarative_authorization
   factory_girl_rails
   guard-rspec
+  holder_rails
   jquery-rails
   mysql2
   newrelic_rpm

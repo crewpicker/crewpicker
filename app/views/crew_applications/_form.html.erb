@@ -1,3 +1,5 @@
+<div class="row">
+<div class="col-lg-5">
 <%= form_for(@crew_application) do |f| %>
   <% if @crew_application.errors.any? %>
     <div id="error_explanation">
@@ -12,40 +14,51 @@
   <% end %>
 
  <%= f.hidden_field :user_id, :value => current_user.id if current_user %>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:name) %><br />
-    <%= f.text_field :name, :value => ( ( @crew_application.name if @crew_application ) or ( current_user.name if current_user ) ) %>
+    <%= f.text_field :name, :value => ( ( @crew_application.name if @crew_application ) or ( current_user.name if current_user ) ), class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:address) %><br />
-    <%= f.text_area :address, :size => '30x4' %>
+    <%= f.text_area :address, rows: 4, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-inline form-group">
     <%= f.label t(:birthday) %><br />
-    <%= f.date_select :birthday, :include_blank => true, :start_year => Time.now.year, :end_year => Time.now.year - 100 %>
+    <%= f.date_select :birthday, { :start_year => Time.now.year, :end_year => Time.now.year - 100, :prompt => true }, { class: 'form-control', style: 'width: 120px;' } %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:email) %><br />
-    <%= f.text_field :email, :value => ( ( @crew_application.email if @crew_application ) or ( current_user.email if current_user ) ) %>
+    <%= f.text_field :email, :value => ( ( @crew_application.email if @crew_application ) or ( current_user.email if current_user ) ), class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:phone) %><br />
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:relevant_experience) %><br />
-    <%= f.text_area :experience, :size => '30x6' %>
+    <%= f.text_area :experience, rows: 6, class: 'form-control' %>
   </div>
   <% @crew_application.crew_wishes.each.with_index do |crew_wish,index| %>
   <%= f.fields_for :crew_wishes, crew_wish do |fsub| %>
-  <div class="field">
-    <%= fsub.label (index + 1).to_s + '. ' + t(:option) %><br />
-    <%= fsub.collection_select :group_id, Group.where(:internal => false), :id, :name, {:include_blank => 'Ikke valgt'} %>
+  <div class="form-group">
+    <%= fsub.label :group_id, (index+1).to_s + '. ' + t(:option) %><br />
+    <%= fsub.collection_select :group_id, Group.where(:internal => false), :id, :name, {:include_blank => 'Ikke valgt'}, class: 'form-control' %>
     <%= fsub.hidden_field :priority, :value => (index + 1) %>
   </div>
   <% end %>
   <% end %>
-  <div class="actions">
-    <%= f.submit t(:submit_application) %>
+  <div class="form-group">
+    <%= f.submit t(:submit_application), class: 'btn btn-primary btn-block' %>
   </div>
 <% end %>
+</div>
+<div class="col-lg-5 col-lg-offset-1">
+<h2 class="h3">Grupper</h2>
+<dl class="dl-horizontal">
+<% Group.where(:internal => false).each do |group| %>
+  <dt><%= group.name %></dt>
+  <dd><%= group.description.lines.first %></dd>
+<% end %>
+</dl>
+</div>
+</div>

@@ -1,3 +1,4 @@
+<div style="max-width: 350px;">
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -11,28 +12,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:name) %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:username) %><br />
-    <%= f.text_field :username %>
+    <%= f.text_field :username, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:email) %><br />
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:password) %><br />
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label t(:password_confirmation) %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
   </div>
   <% permitted_to? :manage, :roles do %>
-    <div class="field">
+    <div class="form-group">
       <%= f.label t(:roles).capitalize %><br />
       <% for role in Role.all %>
         <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
@@ -41,6 +42,7 @@
     </div>
   <% end %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary btn-block' %>
   </div>
 <% end %>
+</div>

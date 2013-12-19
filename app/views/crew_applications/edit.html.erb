@@ -1,11 +1,13 @@
-<h1>Endre crewsøknad</h1>
+<% title "Endre crewsøknad" %>
+<div class="container">
+  <h1>Endre crewsøknad</h1>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<p><%= link_to 'Vis', @crew_application %> |
-<% if permitted_to? :index, :crew_applications %>
-  <%= link_to 'Tilbake', crew_applications_path %>
-<% else %>
-  <%= link_to 'Tilbake til forsiden', :root %>
-<% end %></p>
-
+  <p><%= link_to 'Vis', @crew_application %> |
+  <% if permitted_to? :index, :crew_applications %>
+    <%= link_to 'Tilbake', crew_applications_path %>
+  <% else %>
+    <%= link_to 'Tilbake til forsiden', :root %>
+  <% end %></p>
+</div>
