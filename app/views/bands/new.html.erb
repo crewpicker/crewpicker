@@ -1,4 +1,5 @@
 <% title t(:new_band) %>
+<div class="container">
 <h1><%= t(:new_band) %></h1>
 
 <% if not current_user %>
@@ -8,3 +9,4 @@
 <%= render 'form' %>
 
 <p><%= link_to t(:back), root_path %></p>
+</div>
