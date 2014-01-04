@@ -52,10 +52,10 @@ Rails.application.config.sorcery.configure do |config|
   else
     config.twitter.key = "***REMOVED***"
     config.twitter.secret = "***REMOVED***"
-    config.twitter.callback_url = "http://2013crew.rockmotrus.no/oauth/callback?provider=twitter"
+    config.twitter.callback_url = "http://2014crew.rockmotrus.no/oauth/callback?provider=twitter"
     config.facebook.key = "***REMOVED***"
     config.facebook.secret = "***REMOVED***"
-    config.facebook.callback_url = "http://2013crew.rockmotrus.no/oauth/callback?provider=facebook"
+    config.facebook.callback_url = "http://2014crew.rockmotrus.no/oauth/callback?provider=facebook"
   end
   config.twitter.user_info_mapping = {:username => "screen_name", :name => "name", :email => "email"}
   config.facebook.user_info_mapping = {:username => "email", :name => "name", :email => "email"}
