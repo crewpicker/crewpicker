@@ -101,10 +101,11 @@ class BandMembersController < ApplicationController
   # DELETE /band_members/1.xml
   def destroy
     @band_member = BandMember.find(params[:id])
+    band = @band_member.band
     @band_member.destroy
 
     respond_to do |format|
-      format.html { redirect_to(band_members_url) }
+      format.html { redirect_to(band) }
       format.xml  { head :ok }
     end
   end
