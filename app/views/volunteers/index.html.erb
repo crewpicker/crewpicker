@@ -1,7 +1,8 @@
 <% title t(:volunteers_list) %>
+<div class="container">
 <h1><%= t(:volunteers_list) %></h1>
 <p id="notice"><%= notice %></p>
-<p><%= link_to t(:new_volunteer), new_volunteer_path %></p>
+<!--<p><%= link_to t(:new_volunteer), new_volunteer_path %></p>-->
 <table class="border">
 <% @groups.each do |group| %>
   <tr><th colspan="9"><h2><%= group.name %></h2></th></tr>
@@ -30,4 +31,4 @@
   <tr><th colspan="9"><%= t(:count) %>: <%= group.volunteers.count %></p></th></tr>
 <% end %>
 </table>
-<p><%= link_to t(:new_volunteer), new_volunteer_path %></p>
+<!--<p><%= link_to t(:new_volunteer), new_volunteer_path %></p>-->
