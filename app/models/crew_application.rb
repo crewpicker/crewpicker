@@ -6,4 +6,5 @@ class CrewApplication < ActiveRecord::Base
   accepts_nested_attributes_for :crew_wishes
   default_scope -> { where("chosen IS NULL OR chosen = 'f'") }
   scope :hidden, -> { where("chosen = 1") }
+  validates :user_id, :uniqueness => true
 end

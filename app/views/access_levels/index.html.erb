@@ -1,27 +1,29 @@
 <% title t(:access_level) %>
-<h1><%= t(:access_level) %></h1>
-<table class="border">
-  <tr>
-    <th><%= t(:name) %></th>
-    <th><%= t(:count) %></th>
-    <th></th>
-  </tr>
+<div class="container">
+  <h1><%= t(:access_level) %></h1>
+  <table class="table table-striped">
+    <tr>
+      <th><%= t(:name) %></th>
+      <th><%= t(:count) %></th>
+      <th></th>
+    </tr>
 
-<% @access_levels.each do |access_level| %>
-  <tr>
-    <td><%= access_level.name %></td>
-<% if access_level.name == "Band" %>
-    <td><%= Person.all.count %></td>
-<% elsif %>
-    <td><%= access_level.volunteers.count %></td>
-<% end %>
-    <td>
-      <%= link_to 'Generer crewkort', access_card_path(access_level.id, :format => 'pdf') %> |
-      <%= link_to 'Generer blanke crewkort', blank_access_card_path(access_level.id, :format => 'pdf') %> |
-      <%= link_to t(:edit), edit_access_level_path(access_level) %> |
-      <%= link_to t(:delete), access_level, :confirm => t(:confirm), :method => :delete %>
-    </td>
-  </tr>
-<% end %>
-</table>
-<p><%= link_to 'Nytt crewkort', new_access_level_path %></p>
+  <% @access_levels.each do |access_level| %>
+    <tr>
+      <td><%= access_level.name %></td>
+  <% if access_level.name == "Band" %>
+      <td><%= Person.all.count %></td>
+  <% elsif %>
+      <td><%= access_level.volunteers.count %></td>
+  <% end %>
+      <td>
+        <%= link_to 'Generer crewkort', access_card_path(access_level.id, :format => 'pdf') %> |
+        <%= link_to 'Generer blanke crewkort', blank_access_card_path(access_level.id, :format => 'pdf') %> |
+        <%= link_to t(:edit), edit_access_level_path(access_level) %> |
+        <%= link_to t(:delete), access_level, :confirm => t(:confirm), :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+  <p><%= link_to 'Nytt crewkort', new_access_level_path %></p>
+</div>
