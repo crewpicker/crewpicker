@@ -15,28 +15,73 @@
     <%= yield(:headerextra) %>
   </head>
   <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to(festival_title, root_path, class: 'navbar-brand') %>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="<%= 'active' if current_page?(volunteers_path) %>"><%= link_to "Crew", volunteers_path %></li>
+            <li class="<%= 'active' if current_page?(groups_path) %>"><%= link_to t(:groups), groups_path %></li>
+            <li class="<%= 'active' if current_page?(access_levels_path) %>"><%= link_to t(:access_level), access_levels_path %></li>
+            <li class="<%= 'active' if current_page?(bands_path) %>"><%= link_to "Band", bands_path %></li>
+            <li class="<%= 'active' if current_page?(stages_path) %>"><%= link_to "Venues", stages_path %></li>
+            <li class="<%= 'active' if current_page?(ads_path) %>"><%= link_to t(:ads), ads_path %></li>
+            <li class="<%= 'active' if current_page?(ad_types_path) %>"><%= link_to t(:ad_types), ad_types_path %></li>
+            <li class="<%= 'active' if current_page?(crew_applications_path) %>"><%= link_to t(:crew_applications), crew_applications_path %></li>
+            <li class="<%= 'active' if current_page?(users_path) %>"><%= link_to t(:users).capitalize, users_path %></li>
+            <% if current_user %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.username %> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Logg ut', logout_path %></li>
+              </ul>
+            </li>
+            <% else %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Innlogging <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to '<i class="fa fa-fw fa-facebook"></i> | Logg inn med Facebook'.html_safe, auth_at_provider_path(:provider => :facebook) %></li>
+                <li><%= link_to '<i class="fa fa-fw fa-twitter"></i> | Logg inn med Twitter'.html_safe, auth_at_provider_path(:provider => :twitter) %></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">RMR-bruker</li>
+                <li>
+                  <%= form_tag user_sessions_path, :method => :post, class: 'form-signin' do %>
+                    <%= hidden_field_tag :referer, @referer.to_s %>
+                    <%= text_field_tag :username, '', :placeholder => 'Brukernavn', :required => true, :autofocus => true, class: 'form-control' %>
+                    <%= password_field_tag :password, '', :placeholder => 'Passord', :required => true, class: 'form-control' %>
+                    <%= submit_tag 'Logg inn', class: 'btn btn-primary btn-block' %>
+                    <%= link_to "Ny konto", new_user_path %>
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+    <% if current_user.id == 1 %>
     <p>
-      <%= link_to t(:front_page), root_path %> |
-      <%= link_to t(:volunteers_list), volunteers_path %> |
-      <%= link_to t(:groups), groups_path %> |
-      <%= link_to t(:access_level), access_levels_path %> |
-      <%= link_to t(:band_list), bands_path %> |
-      <%= link_to "Program Idrettshallen", stage_schedule_program_path("Idrettshallen") %> |
       <%= link_to t(:fireguards), fireguards_path %> |
       <%= link_to t(:locations), locations_path %> |
-      <%= link_to t(:ads), ads_path %> |
-      <%= link_to t(:ad_types), ad_types_path %> |
-      <%= link_to t(:crew_applications), crew_applications_path %> |
-      <%= link_to t(:users).capitalize, users_path %> |
-      Logget inn som <%= current_user.username %> |
-      <%= link_to "Logg ut", logout_path %>
+      <%= link_to "Events", events_path %>
     </p>
+    <% end %>
     <% if flash[:alert] %>
       <p class="flash-error"><%= flash[:alert] %></p>
     <% end %>
     <% if flash[:notice] %>
       <p class="flash-notice"><%= flash[:notice] %></p>
     <% end %>
+    </div>
 <%= yield %>
 <% if APP_CONFIG[:use_google_analytics] == true %>
 <script type="text/javascript">

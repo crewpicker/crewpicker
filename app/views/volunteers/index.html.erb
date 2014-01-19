@@ -1,34 +1,35 @@
 <% title t(:volunteers_list) %>
 <div class="container">
-<h1><%= t(:volunteers_list) %></h1>
-<p id="notice"><%= notice %></p>
-<!--<p><%= link_to t(:new_volunteer), new_volunteer_path %></p>-->
-<table class="border">
-<% @groups.each do |group| %>
-  <tr><th colspan="9"><h2><%= group.name %></h2></th></tr>
-  <tr>
-    <th><%= t(:name) %></th>
-    <th><%= t(:address) %></th>
-    <th><%= t(:birthday) %></th>
-    <th><%= t(:age) %></th>
-    <th><%= t(:email) %></th>
-    <th><%= t(:phone) %></th>
-    <th><%= t(:access_level) %></th>
-    <th></th>
-  </tr>
-<% group.volunteers.each do |volunteer| %>
-  <tr>
-    <td><%= volunteer.name %></td>
-    <td><%= nl2br(volunteer.address) %></td>
-    <td><%= volunteer.birthday %></td>
-    <td><% if volunteer.birthday then concat(age_at(Date.civil(2013,3,22), volunteer.birthday)) end %></td>
-    <td><%= volunteer.email %></td>
-    <td><%= volunteer.phone %></td>
-    <td><%= volunteer.access_level %></td>
-    <td><%= link_to t(:show), volunteer %> | <%= link_to t(:edit), edit_volunteer_path(volunteer) %> | <%= link_to t(:delete), volunteer, :confirm => t(:confirm), :method => :delete %></td>
-  </tr>
-<% end %>
-  <tr><th colspan="9"><%= t(:count) %>: <%= group.volunteers.count %></p></th></tr>
-<% end %>
-</table>
-<!--<p><%= link_to t(:new_volunteer), new_volunteer_path %></p>-->
+  <h1><%= t(:volunteers_list) %></h1>
+  <p id="notice"><%= notice %></p>
+  <!--<p><%= link_to t(:new_volunteer), new_volunteer_path %></p>-->
+  <table class="table table-striped">
+  <% @groups.each do |group| %>
+    <tr><th colspan="9"><h2><%= group.name %></h2></th></tr>
+    <tr>
+      <th><%= t(:name) %></th>
+      <th><%= t(:address) %></th>
+      <th><%= t(:birthday) %></th>
+      <th><%= t(:age) %></th>
+      <th><%= t(:email) %></th>
+      <th><%= t(:phone) %></th>
+      <th><%= t(:access_level) %></th>
+      <th></th>
+    </tr>
+  <% group.volunteers.each do |volunteer| %>
+    <tr>
+      <td><%= volunteer.name %></td>
+      <td><%= nl2br(volunteer.address) %></td>
+      <td><%= volunteer.birthday %></td>
+      <td><% if volunteer.birthday then concat(age_at(Date.civil(2014,4,11), volunteer.birthday)) end %></td>
+      <td><%= volunteer.email %></td>
+      <td><%= volunteer.phone %></td>
+      <td><%= volunteer.access_level %></td>
+      <td><%= link_to t(:show), volunteer %> | <%= link_to t(:edit), edit_volunteer_path(volunteer) %> | <%= link_to t(:delete), volunteer, :confirm => t(:confirm), :method => :delete %></td>
+    </tr>
+  <% end %>
+    <tr><th colspan="9"><%= t(:count) %>: <%= group.volunteers.count %></p></th></tr>
+  <% end %>
+  </table>
+  <!--<p><%= link_to t(:new_volunteer), new_volunteer_path %></p>-->
+</div>
