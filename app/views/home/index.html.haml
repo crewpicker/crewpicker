@@ -1,0 +1,66 @@
+- title @title
+- has_crew_application = FALSE
+- if current_user && current_user.crew_application && !(current_user.crew_application.volunteer_id)
+  - has_crew_application = TRUE
+- is_volunteer = FALSE
+- if current_user && current_user.volunteers.count > 0
+  - is_volunteer = TRUE
+.container
+  %h2 ROCKEMØNSTRING
+  - if current_user
+    - current_user.bands.each do |band|
+      %p
+        \&gt; #{link_to band.name, band} | #{link_to 'Slett', band_path(band), :method => :delete, confirm: 'Er du sikker på at du vil slette bandet?'}
+  %p
+    = link_to 'Påmelding &raquo;'.html_safe, new_band_path, class: 'btn btn-primary'
+%hr/
+.container
+  %h2 FRIVILLIG
+  - if has_crew_application
+    - crew_application = current_user.crew_application
+    %table.border
+      %tr
+        %th= t(:name)
+        %td= crew_application.name
+      %tr
+        %th= t(:address)
+        %td= nl2br(crew_application.address)
+      %tr
+        %th= t(:birthday)
+        %td= crew_application.birthday
+      %tr
+        %th= t(:email)
+        %td= crew_application.email
+      %tr
+        %th= t(:phone)
+        %td= crew_application.phone
+      %tr
+        %th= t(:relevant_experience)
+        %td= nl2br(crew_application.experience)
+      - crew_application.crew_wishes.each do |crew_wish|
+        - if crew_wish.group_id
+          %tr
+            %th= crew_wish.priority.to_s + '. ' + t(:option)
+            %td= crew_wish.group.name
+    %p
+      = link_to 'Endre crewsøknad', edit_crew_application_path(current_user.crew_application), class: 'btn btn-primary'
+      = link_to 'Slett crewsøknad', crew_application_path(current_user.crew_application), :method => :delete, class: 'btn btn-danger', confirm: 'Er du helt sikker?'
+  - elsif is_volunteer
+    - current_user.volunteers.each do |volunteer|
+      %p
+        Valgt til #{volunteer.group.name}-gruppa
+      %table.border
+        %tr
+          %th Navn
+          %th Epost
+          %th Telefon
+          %th Crewkort
+        - volunteer.group.volunteers.each do |group_volunteer|
+          %tr
+            %td= group_volunteer.name
+            %td= group_volunteer.email
+            %td= group_volunteer.phone
+            %td= group_volunteer.access_level
+  - else
+    %p
+      = link_to 'Søknadsskjema &raquo;'.html_safe, new_crew_application_path, class: 'btn btn-primary'

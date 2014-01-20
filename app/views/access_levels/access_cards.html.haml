@@ -1,0 +1,70 @@
+%html
+  %head
+    %title Crewkort
+    %meta{:content => "A4", :name => "pdfkit-page_size"}/
+    %meta{:content => "Landscape", :name => "pdfkit-orientation"}/
+    :css
+      body {
+              padding: 0;
+              margin: 0;
+            }
+            html {
+              padding: 0;
+              margin: 0;
+            }
+            table {
+              padding: 0;
+              margin: 0;
+            }
+            td {
+              padding: 0;
+              margin: 0;
+              width: 209px;
+            }
+            td div {
+              height: 0px;
+              padding: 0;
+              margin: 0 5px;
+              position: relative;
+              left: 0px;
+              top: -140px;
+              font-family: Impact, sans-serif;
+              text-align: center;
+              color: #231f20;
+            }
+            .al {
+              font-size: 42px;
+              color: #231f20;
+            }
+            .name {
+              font-size: 26px;
+              color: #231f20;
+            }
+            @font-face {
+      	font-family: Impact;
+      	src: url(#{File.expand_path(Rails.root) + '/public/stylesheets/impact.ttf'});
+            }
+  %body
+    %table
+      %tr
+        - counter = 0
+        - case @access_level.name
+        - when "VIP", "VIB", "Retard"
+        - imagefile = 'rmr-kortVIP.png'
+        - else
+        - imagefile = 'ID2.png'
+        - end
+        - @access_level.volunteers.each do |volunteer|
+          %td
+            = image_tag imagefile, :width => "100%"
+            %div
+              %span.al
+                = volunteer.access_level.upcase
+                %br/
+              %span.name= volunteer.name
+          - counter+=1
+          - if counter == 4
+      %tr
+        - counter = 0
+        - end
+        - end

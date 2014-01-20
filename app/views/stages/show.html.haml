@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @stage.name
+%p
+  %b From:
+  = @stage.from
+%p
+  %b To:
+  = @stage.to
+= link_to 'Edit', edit_stage_path(@stage)
+|
+\#{link_to 'Back', stages_path}

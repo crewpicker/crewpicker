@@ -1,0 +1,28 @@
+- title t(:fireguards)
+%h1= t(:fireguards)
+%table.border
+  %tr
+    %th= t(:name)
+    %th= t(:age)
+    %th= t(:address)
+    %th= t(:phone)
+    %th= t(:mobile)
+    %th= t(:email)
+    %th= t(:notes)
+    %th
+  - @fireguards.each do |fireguard|
+    %tr{style => "#{fireguard.active ? '' : 'color: #999999'}"}
+      %td= fireguard.name
+      %td= fireguard.age
+      %td= fireguard.address
+      %td= fireguard.phone
+      %td= fireguard.mobile
+      %td= fireguard.email
+      %td= fireguard.notes
+      %td
+        = link_to t(:show), fireguard
+        |
+        = link_to t(:edit), edit_fireguard_path(fireguard)
+        |
+        = link_to t(:delete), fireguard, :confirm => t(:confirm), :method => :delete
+%p= link_to t(:new_fireguard), new_fireguard_path

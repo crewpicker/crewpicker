@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b Band:
+  = @band_member.band_id
+%p
+  %b Name:
+  = @band_member.name
+%p
+  %b Role:
+  = @band_member.role
+= link_to 'Edit', edit_band_band_member_path(@band, @band_member)
+|
+\#{link_to 'Back', @band}

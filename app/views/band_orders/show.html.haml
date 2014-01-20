@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @band_order.name
+%p
+  %b Start:
+  = @band_order.start
+%p
+  %b End:
+  = @band_order.end
+= link_to 'Edit', edit_band_order_path(@band_order)
+|
+\#{link_to 'Back', band_orders_path}

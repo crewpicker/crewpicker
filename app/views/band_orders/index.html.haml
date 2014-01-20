@@ -1,0 +1,23 @@
+%h1 Listing band_orders
+%p
+  Forsink alle band med: #{link_to("5 min.", delay_band_orders_path(:delay => 5))}
+  | #{link_to("15 min.", delay_band_orders_path(:delay => 15))}
+  | #{link_to("30 min.", delay_band_orders_path(:delay => 30))}
+%table.border
+  %tr
+    %th Name
+    %th Start
+    %th End
+    %th
+    %th
+    %th
+  - @band_orders.each do |band_order|
+    %tr
+      %td= band_order.band.name
+      %td= band_order.start
+      %td= band_order.end
+      %td= link_to 'Show', band_order
+      %td= link_to 'Edit', edit_band_order_path(band_order)
+      %td= link_to 'Destroy', band_order, :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'New Band order', new_band_order_path

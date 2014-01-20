@@ -1,0 +1,19 @@
+%h1 Listing crew_wishes
+%table
+  %tr
+    %th Crew application
+    %th Group
+    %th Priority
+    %th
+    %th
+    %th
+  - @crew_wishes.each do |crew_wish|
+    %tr
+      %td= crew_wish.crew_application_id
+      %td= crew_wish.group_id
+      %td= crew_wish.priority
+      %td= link_to 'Show', crew_wish
+      %td= link_to 'Edit', edit_crew_wish_path(crew_wish)
+      %td= link_to 'Destroy', crew_wish, :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'New Crew wish', new_crew_wish_path
