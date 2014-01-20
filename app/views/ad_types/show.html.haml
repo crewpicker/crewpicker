@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @ad_type.name
+%p
+  %b Value:
+  = @ad_type.value
+%p
+  %b Invoice name:
+  = @ad_type.invoice_name
+= link_to 'Edit', edit_ad_type_path(@ad_type)
+|
+\#{link_to 'Back', ad_types_path}

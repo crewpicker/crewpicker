@@ -1,0 +1,29 @@
+- title "Annonser"
+.container
+  %h1 Annonser
+  %table.table.table-striped
+    %tr
+      %th Name
+      %th Contact
+      %th Phone
+      %th Email
+      %th Type
+      %th Address
+      %th Notes
+      %th
+      %th
+      %th
+    - @ads.each do |ad|
+      %tr{:style => "#{ad.ad_type.name == "Nei" ? 'color: #999999' : ''}"}
+        %td= ad.name
+        %td= ad.contact
+        %td= ad.phone
+        %td= ad.email
+        %td= ad.ad_type.name
+        %td= nl2br(ad.address)
+        %td= nl2br(ad.notes)
+        %td= link_to 'Show', ad
+        %td= link_to 'Edit', edit_ad_path(ad)
+        %td= link_to 'Destroy', ad, :confirm => 'Are you sure?', :method => :delete
+  %br
+  = link_to 'New Ad', new_ad_path

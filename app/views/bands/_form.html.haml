@@ -1,0 +1,77 @@
+%div{:style => "max-width: 350px;"}
+  = form_for(@band, class: 'form-horizontal', :html => { :multipart => true }) do |f|
+    - if @band.errors.any?
+      #error_explanation
+        %h2.h3
+          = @band.errors.count
+          feil hindret bandet fra å bli lagret:
+        %ul
+          - @band.errors.full_messages.each do |msg|
+            %li{:style => "color: red;"}= msg
+    = f.hidden_field :user_id
+    .form-group
+      = f.label "Bandnavn"
+      %br/
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label t(:contact_name)
+      %br/
+      = f.text_field :contact_name, class: 'form-control'
+    .form-group
+      = f.label t(:email)
+      %br/
+      = f.text_field :email, class: 'form-control'
+    .form-group
+      = f.label t(:phone)
+      %br/
+      = f.text_field :phone, class: 'form-control'
+    .form-group
+      = f.label t(:address)
+      %br/
+      = f.text_area :address, rows: '3', class: 'form-control'
+    .form-group.row
+      .col-sm-4
+        = f.label :postal_code, "Postnr."
+        %br/
+        = f.text_field :postal_code, :maxlength => 4, class: 'form-control'
+      .col-sm-8
+        = f.label :city, "Sted"
+        %br/
+        = f.text_field :city, class: 'form-control'
+    %hr/
+    %h2 Fortell om bandet
+    .form-group
+      = f.label "Beskrivelse av bandet"
+      %br/
+      = f.text_area :description, rows: '15', class: 'form-control'
+    .form-group
+      = f.label t(:image)
+      %br/
+      = f.file_field :image
+    %hr/
+    %h2 Deltakerlåt
+    %p (dere får spille flere, men det er denne som vurderes av juryen)
+    .form-group
+      = f.label t(:song_title)
+      %br/
+      = f.text_field :song_title, class: 'form-control'
+    .form-group
+      = f.label t(:song_composer)
+      %br/
+      = f.text_field :song_composer, class: 'form-control'
+    .form-group
+      = f.label t(:song_lyrics)
+      %br/
+      = f.text_area :song_lyrics, rows: '20', class: 'form-control'
+    .form-group
+      = f.label t(:playtime_wish)
+      (klokkeslett fra 00:00 til 14:00)
+      %br/
+      = f.text_field :playtime_wish, class: 'form-control'
+    .form-group
+      = f.label t(:playtime_wish_alt)
+      (klokkeslett fra 00:00 til 14:00)
+      %br/
+      = f.text_field :playtime_wish_alt, class: 'form-control'
+    .form-group
+      = f.submit t(:submit), class: 'btn btn-primary btn-block'

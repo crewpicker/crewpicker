@@ -1,0 +1,5 @@
+.container
+  %h1= t(:new_band_member)
+  %h2= @band.name
+  = render 'form'
+  %p= link_to t(:back), @band

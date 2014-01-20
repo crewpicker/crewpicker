@@ -1,0 +1,27 @@
+- title t(:user).capitalize + ': ' + @user.username
+%h1= t(:user).capitalize + ': ' + @user.username
+%table.border
+  %tr
+    %th
+      = t(:username)
+      \:
+    %td= @user.username
+  %tr
+    %th
+      = t(:name)
+      \:
+    %td= @user.name
+  %tr
+    %th
+      = t(:email)
+      \:
+    %td= @user.email
+  %tr
+    %th
+      = t(:roles).capitalize
+      \:
+    %td= @user.roles.map(&:name).to_sentence.capitalize
+%p
+  = link_to t(:edit), edit_user_path(@user)
+  |
+  \#{link_to t(:back), users_path}
