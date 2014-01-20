@@ -1,0 +1,23 @@
+= form_for(@stage) do |f|
+  - if @stage.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@stage.errors.count, "error")
+        prohibited this stage from being saved:
+      %ul
+        - @stage.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :from
+    %br/
+    = f.datetime_select :from
+  .field
+    = f.label :to
+    %br/
+    = f.datetime_select :to
+  .actions
+    = f.submit

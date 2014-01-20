@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b Crew application:
+  = @crew_wish.crew_application_id
+%p
+  %b Group:
+  = @crew_wish.group_id
+%p
+  %b Priority:
+  = @crew_wish.priority
+= link_to 'Edit', edit_crew_wish_path(@crew_wish)
+|
+\#{link_to 'Back', crew_wishes_path}

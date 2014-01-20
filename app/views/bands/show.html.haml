@@ -1,0 +1,70 @@
+- title @band.name
+.container
+  %h1= @band.name
+  - if @band.band_members.count == 0
+    %h2{:style => "color: red"} NB! Bandet må ha minst ett påmeldt bandmedlem!
+  %table.border
+    %tr
+      %th= t(:contact_name)
+      %td= @band.contact_name
+    %tr
+      %th= t(:email)
+      %td= @band.email
+    %tr
+      %th= t(:phone)
+      %td= @band.phone
+    %tr
+      %th= t(:address)
+      %td= nl2br(@band.address)
+    %tr
+      %th Postnummer
+      %td= @band.postal_code
+    %tr
+      %th Sted
+      %td= @band.city
+    %tr
+      %th= t(:description)
+      %td= nl2br(@band.description)
+    %tr
+      %th= t(:song_title)
+      %td= @band.song_title
+    %tr
+      %th= t(:song_composer)
+      %td= @band.song_composer
+    %tr
+      %th= t(:song_lyrics)
+      %td= nl2br(@band.song_lyrics)
+    %tr
+      %th= t(:playtime_wish)
+      %td= @band.playtime_wish
+    %tr
+      %th= t(:playtime_wish_alt)
+      %td= @band.playtime_wish_alt
+    %tr
+      %th= t(:image)
+      %td= image_tag @band.image.url(:medium)
+  %p
+    = link_to t(:edit), edit_band_path(@band)
+    |
+    \#{link_to t(:back), root_path}
+  %h2= t(:band_members)
+  %p= link_to t(:new_band_member), new_band_band_member_path(@band)
+  %table.table
+    %tr
+      %th= t(:name)
+      %th= t(:role)
+      %th= t(:address)
+      %th= t(:email)
+      %th= t(:phone)
+      %th
+    - @band.band_members.each do |band_member|
+      %tr
+        %td= if band_member.person then band_member.person.name end
+        %td= band_member.role
+        %td= if band_member.person then nl2br(band_member.person.address) end
+        %td= if band_member.person then band_member.person.email end
+        %td= if band_member.person then band_member.person.phone end
+        %td
+          = link_to t(:edit), edit_band_band_member_path(@band, band_member)
+          | #{link_to t(:delete), [@band, band_member], :confirm => t(:confirm), :method => :delete}
+  %p= link_to t(:new_band_member), new_band_band_member_path(@band)

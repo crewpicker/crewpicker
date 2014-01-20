@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @fireguard.name
+%p
+  %b Age:
+  = @fireguard.age
+%p
+  %b Address:
+  = @fireguard.address
+%p
+  %b Phone:
+  = @fireguard.phone
+%p
+  %b Mobile:
+  = @fireguard.mobile
+%p
+  %b Email:
+  = @fireguard.email
+%p
+  %b Notes:
+  = @fireguard.notes
+%p
+  %b Active:
+  = @fireguard.active
+= link_to 'Edit', edit_fireguard_path(@fireguard)
+|
+\#{link_to 'Back', fireguards_path}

@@ -1,0 +1,32 @@
+- title t(:crew_application)
+.container
+  %h1= t(:crew_application)
+  %table.border
+    %tr
+      %th= t(:name)
+      %td= @crew_application.name
+    %tr
+      %th= t(:address)
+      %td= nl2br(@crew_application.address)
+    %tr
+      %th= t(:birthday)
+      %td= @crew_application.birthday
+    %tr
+      %th= t(:email)
+      %td= @crew_application.email
+    %tr
+      %th= t(:phone)
+      %td= @crew_application.phone
+    %tr
+      %th= t(:relevant_experience)
+      %td= nl2br(@crew_application.experience)
+    - @crew_application.crew_wishes.each do |crew_wish|
+      - if crew_wish.group_id
+        %tr
+          %th= crew_wish.priority.to_s + '. ' + t(:option)
+          %td= crew_wish.group.name
+  %p
+    = link_to 'Endre', edit_crew_application_path(@crew_application)
+    |
+    \#{link_to 'Slett', @crew_application, :method => :delete} |
+    \#{link_to 'Tilbake til forsiden', :root}

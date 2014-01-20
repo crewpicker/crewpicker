@@ -1,0 +1,21 @@
+- title "Annonsetyper"
+.container
+  %h1 Annonsetyper
+  %table.table.table-striped
+    %tr
+      %th Navn
+      %th Koster
+      %th Navn på faktura
+      %th
+      %th
+      %th
+    - @ad_types.each do |ad_type|
+      %tr
+        %td= ad_type.name
+        %td= ad_type.value
+        %td= ad_type.invoice_name
+        %td= link_to t(:show), ad_type
+        %td= link_to t(:edit), edit_ad_type_path(ad_type)
+        %td= link_to t(:delete), ad_type, :confirm => 'Are you sure?', :method => :delete
+  %br/
+  = link_to 'New Ad type', new_ad_type_path

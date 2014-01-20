@@ -1,0 +1,15 @@
+- title t(:locations)
+%h1= t(:locations)
+%table.border
+  %tr
+    %th= t(:name)
+    %th
+  - @locations.each do |location|
+    %tr
+      %td= location.name
+      %td
+        = link_to t(:fireguard_list), location_location_schedules_path(location.id)
+        |
+        \#{link_to t(:edit), edit_location_path(location)} |
+        \#{link_to t(:delete), location, :confirm => 'Are you sure?', :method => :delete}
+%p= link_to t(:new_location), new_location_path

@@ -1,0 +1,19 @@
+- title t(:groups)
+.container
+  %h1= t(:groups)
+  %table.table.table-striped
+    %tr
+      %th= t(:name)
+      %th= t(:description)
+      %th= t(:internal_group)
+      %th
+    - @groups.each do |group|
+      %tr
+        %td= group.name
+        %th
+          = nl2br(group.description) if group.description
+        %td= group.internal ? t(:answer_yes) : t(:answer_no)
+        %td
+          = link_to t(:show), group
+          | #{link_to t(:edit), edit_group_path(group)} | #{link_to t(:delete), group, :confirm => t(:confirm), :method => :delete}
+  %p= link_to t(:new_group), new_group_path

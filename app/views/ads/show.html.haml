@@ -1,0 +1,23 @@
+- title @ad.name
+%h1= @ad.name
+%p
+  %b Contact:
+  = @ad.contact
+%p
+  %b Phone:
+  = @ad.phone
+%p
+  %b Email:
+  = @ad.email
+%p
+  %b Type:
+  = @ad.ad_type.name
+%p
+  %b Address:
+  = @ad.address
+%p
+  %b Notes:
+  = @ad.notes
+= link_to 'Edit', edit_ad_path(@ad)
+|
+\#{link_to 'Back', ads_path}

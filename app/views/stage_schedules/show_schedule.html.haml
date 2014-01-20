@@ -1,0 +1,159 @@
+- title(t(:schedule) + ' ' + @stage.name)
+- content_for :headerextra do
+  = stylesheet_link_tag 'fullcalendar', 'jquery.qtip.min'
+  = stylesheet_link_tag 'main', 'fullcalendar.print', :media => 'print'
+  = javascript_include_tag 'jquery-1.5.min', 'jquery-ui-1.8.9.custom.min', 'fullcalendar', 'jquery.qtip.min'
+  :css
+    #wrap {
+    		width: 700px;
+    		text-align: center;
+    		font-size: 14px;
+    		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+                    margin-left: 20px;
+    		}
+    
+    	#external-events {
+    		float: left;
+    		width: 150px;
+    		padding: 0 10px;
+    		border: 1px solid #ccc;
+    		background: #eee;
+    		text-align: left;
+    		}
+    
+    	#external-events h4 {
+    		font-size: 16px;
+    		margin-top: 0;
+    		padding-top: 1em;
+    		}
+    
+    	.external-event { /* try to mimick the look of a real event */
+    		margin: 10px 0;
+    		padding: 2px 4px;
+    		background: #3366CC;
+    		color: #fff;
+    		font-size: .85em;
+    		cursor: pointer;
+    		}
+    
+    	#external-events p {
+    		margin: 1.5em 0;
+    		font-size: 11px;
+    		color: #666;
+    		}
+    
+    	#external-events p input {
+    		margin: 0;
+    		vertical-align: middle;
+    		}
+    
+    	#calendar {
+    		float: right;
+    		width: 500px;
+    		}
+:javascript
+  $(document).ready(function() {
+    $('#external-events div.external-event').each(function() {
+      var eventObject = {
+        id: $.trim($(this).attr('id')),
+        title: $.trim($(this).text())
+      };
+      $(this).data('eventObject', eventObject);
+      $(this).draggable({
+        zIndex: 999,
+        revert: true,
+        revertDuration: 0
+      });
+    });
+    $('#calendar').fullCalendar({
+      header: {
+        left: '',
+        center: 'title',
+        right: ''
+      },
+      defaultView: 'agendaWeekend',
+      year: #{@stage.from.strftime("%Y")},
+      month: #{@stage.from.strftime("%m").to_i-1},
+      date: #{@stage.from.strftime("%d")},
+      axisFormat: 'H:mm',
+      timeFormat: 'H:mm',
+      height: 3500,
+      dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fre','Lør'],
+      dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
+      titleFormat: {
+        month: 'MMMM yyyy',
+        week: "d[ yyyy]{ '—'[ MMM] d MMMM yyyy}",
+        day: 'dddd, MMM d, yyyy'
+      },
+      columnFormat: {
+        month: 'ddd',
+        week: 'dddd d/M',
+        day: 'dddd M/d'
+      },
+      disableResizing: true,
+      editable: true,
+      droppable: true,
+      firstDay: 5,
+      weekends: false,
+      slotMinutes: 15,
+      defaultEventMinutes: 15,
+      events: '/stages/#{@stage.id}/schedule/get_events',
+      drop: function(date, allDay) {
+        var originalEventObject = $(this).data('eventObject');
+        var copiedEventObject = $.extend({}, originalEventObject);
+        copiedEventObject.start = date;
+        copiedEventObject.allDay = allDay;
+        $('#calendar').fullCalendar('renderEvent', copiedEventObject, false);
+        jQuery.ajax({
+          data: 'band_id=' + copiedEventObject.id + '&year=' + date.getFullYear() + '&month=' + (date.getMonth()+1) + '&day=' + date.getDate() + '&hour=' + date.getHours() + '&minute=' + date.getMinutes(),
+          dataType: 'script',
+          type: 'post',
+          url: '/stages/#{@stage.id}/schedule/create'
+        });
+        $(this).remove();
+      },
+      eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
+        jQuery.ajax({
+          data: 'band_id=' + event.id + '&day_delta=' + dayDelta + '&minute_delta=' + minuteDelta,
+          dataType: 'script',
+          type: 'post',
+          url: '/stages/#{@stage.id}/schedule/move'
+        });
+      },
+      eventRender: function(event, element) {
+        element.qtip({
+          show: {
+            event: 'click'
+          },
+          hide: {
+            event: false
+          },
+          content: {
+            title: {
+              text: event.title,
+              button: 'Close'
+            },
+            text: '<a href="#" onclick="jQuery.ajax({data: \'event_id=' + event.id + '\', dataType: \'script\', type: \'post\',url: \'/stages/#{@stage.id}/schedule/delete\'})">Slett</a>'
+          },
+          style: {
+            classes: "ui-tooltip-light"
+          }
+        });
+      }
+    });
+  });
+#wrap
+  %h1
+    Tidsskjema #{@stage.name}
+  %p
+    Forsink alle band med:
+    \#{link_to("15 min.", delay_band_orders_path(:delay => 15))}
+    | #{link_to("30 min.", delay_band_orders_path(:delay => 30))}
+    | #{link_to("-15 min.", delay_band_orders_path(:delay => -15))}
+  #external-events
+    %h4 Band uten spilletid
+    %p Dra dem dit du vil ha dem på kalenderen
+    - @events.each do |event|
+      .external-event{:id => event.id}= event.name
+  #calendar
+  %div{:style => "clear:both"}

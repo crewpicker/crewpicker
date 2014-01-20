@@ -1,0 +1,51 @@
+.row
+  .col-lg-5
+    = form_for(@crew_application) do |f|
+      - if @crew_application.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@crew_application.errors.count, "error")
+            prohibited this crew_application from being saved:
+          %ul
+            - @crew_application.errors.full_messages.each do |msg|
+              %li= msg
+      = f.hidden_field :user_id, :value => current_user.id if current_user
+      .form-group
+        = f.label t(:name)
+        %br/
+        = f.text_field :name, :value => ( ( @crew_application.name if @crew_application ) or ( current_user.name if current_user ) ), class: 'form-control'
+      .form-group
+        = f.label t(:address)
+        %br/
+        = f.text_area :address, rows: 4, class: 'form-control'
+      .form-inline.form-group
+        = f.label t(:birthday)
+        %br/
+        = f.date_select :birthday, { :start_year => Time.now.year, :end_year => Time.now.year - 100, :prompt => true }, { class: 'form-control', style: 'width: 120px;' }
+      .form-group
+        = f.label t(:email)
+        %br/
+        = f.text_field :email, :value => ( ( @crew_application.email if @crew_application ) or ( current_user.email if current_user ) ), class: 'form-control'
+      .form-group
+        = f.label t(:phone)
+        %br/
+        = f.text_field :phone, class: 'form-control'
+      .form-group
+        = f.label t(:relevant_experience)
+        %br/
+        = f.text_area :experience, rows: 6, class: 'form-control'
+      - @crew_application.crew_wishes.each.with_index do |crew_wish,index|
+        = f.fields_for :crew_wishes, crew_wish do |fsub|
+          .form-group
+            = fsub.label :group_id, (index+1).to_s + '. ' + t(:option)
+            %br/
+            = fsub.collection_select :group_id, Group.where(:internal => false), :id, :name, {:include_blank => 'Ikke valgt'}, class: 'form-control'
+            = fsub.hidden_field :priority, :value => (index + 1)
+      .form-group
+        = f.submit t(:submit_application), class: 'btn btn-primary btn-block'
+  .col-lg-5.col-lg-offset-1
+    %h2.h3 Grupper
+    %dl.dl-horizontal
+      - Group.where(:internal => false).each do |group|
+        %dt= group.name
+        %dd= group.description.lines.first

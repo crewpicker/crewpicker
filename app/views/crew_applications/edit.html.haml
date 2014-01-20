@@ -1,0 +1,11 @@
+- title "Endre crewsøknad"
+.container
+  %h1 Endre crewsøknad
+  = render 'form'
+  %p
+    = link_to 'Vis', @crew_application
+    |
+    - if permitted_to? :index, :crew_applications
+      = link_to 'Tilbake', crew_applications_path
+    - else
+      = link_to 'Tilbake til forsiden', :root

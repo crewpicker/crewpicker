@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @access_level.name
+= link_to 'Edit', edit_access_level_path(@access_level)
+|
+\#{link_to 'Back', access_levels_path}

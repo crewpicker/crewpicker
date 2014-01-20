@@ -1,0 +1,21 @@
+- title "Venues"
+.container
+  %h1 Venues
+  %table.table.table-striped
+    %tr
+      %th Name
+      %th From
+      %th To
+      %th
+      %th
+      %th
+    - @stages.each do |stage|
+      %tr
+        %td= stage.name
+        %td= stage.from
+        %td= stage.to
+        %td= link_to 'Program', stage_schedules_path(stage)
+        %td= link_to 'Edit', edit_stage_path(stage)
+        %td= link_to 'Destroy', stage, :confirm => 'Are you sure?', :method => :delete
+  %br/
+  = link_to 'New Stage', new_stage_path

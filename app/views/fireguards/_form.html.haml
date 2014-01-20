@@ -1,0 +1,43 @@
+= form_for(@fireguard) do |f|
+  - if @fireguard.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@fireguard.errors.count, "error")
+        prohibited this fireguard from being saved:
+      %ul
+        - @fireguard.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label t(:name)
+    %br/
+    = f.text_field :name
+  .field
+    = f.label t(:age)
+    %br/
+    = f.text_field :age
+  .field
+    = f.label t(:address)
+    %br/
+    = f.text_area :address, :size => "30x4"
+  .field
+    = f.label t(:phone)
+    %br/
+    = f.text_field :phone
+  .field
+    = f.label t(:mobile)
+    %br/
+    = f.text_field :mobile
+  .field
+    = f.label t(:email)
+    %br/
+    = f.text_field :email
+  .field
+    = f.label t(:notes)
+    %br/
+    = f.text_area :notes, :size => "30x5"
+  .field
+    = f.label t(:fireguard_active)
+    %br/
+    = f.check_box :active
+  .actions
+    = f.submit t(:submit)

@@ -1,0 +1,24 @@
+%p#notice= notice
+%h1= @volunteer.name
+%table.border
+  %tr
+    %th Adresse
+    %td= @volunteer.address
+  %tr
+    %th Birthday:
+    %td= @volunteer.birthday
+  %tr
+    %th Email:
+    %td= @volunteer.email
+  %tr
+    %th Phone:
+    %td= @volunteer.phone
+  %tr
+    %th Group:
+    %td= @volunteer.group.name
+  %tr
+    %th Crewkort
+    %td= @volunteer.access_level
+= link_to 'Edit', edit_volunteer_path(@volunteer)
+|
+\#{link_to 'Back', volunteers_path}

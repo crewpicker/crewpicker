@@ -1,0 +1,37 @@
+- title t(:band_list)
+.container
+  %h1= t(:band_list)
+  %p= link_to t(:new_band), new_band_path
+  %table.table.table-striped
+    %tr
+      %th= t(:name)
+      %th= t(:contact_name)
+      %th= t(:email)
+      %th= t(:phone)
+      %th= t(:address)
+      %th= t(:playtime_wish)
+      %th= t(:playtime_wish_alt)
+      %th= t(:band_members_count)
+      %th= t(:image)
+      %th= t(:have_playtime)
+      %th
+    - @bands.each do |band|
+      %tr
+        %td= band.name
+        %td= band.contact_name
+        %td= band.email
+        %td= band.phone
+        %td
+          = nl2br(band.address)
+          %br/
+          = band.postal_code
+          = band.city
+        %td= band.playtime_wish
+        %td= band.playtime_wish_alt
+        %td= band.band_members.count
+        %td= link_to image_tag(band.image.url(:thumb)), band.image.url
+        %td= band.stage_schedule ? 'Ja' : 'Nei'
+        %td
+          = link_to t(:show), band
+          | #{link_to t(:edit), edit_band_path(band)} | #{link_to t(:delete), band, data: { confirm: t(:confirm) }, :method => :delete}
+  %p= link_to t(:new_band), new_band_path

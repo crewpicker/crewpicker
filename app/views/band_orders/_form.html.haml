@@ -1,0 +1,23 @@
+= form_for(@band_order, :url => band_order_path(@band_order)) do |f|
+  - if @band_order.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@band_order.errors.count, "error")
+        prohibited this band_order from being saved:
+      %ul
+        - @band_order.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name
+    %br/
+    = @band_order.band.name
+  .field
+    = f.label :start
+    %br/
+    = f.datetime_select :start
+  .field
+    = f.label :end
+    %br/
+    = f.datetime_select :end
+  .actions
+    = f.submit

@@ -1,0 +1,24 @@
+- title t(:access_level)
+.container
+  %h1= t(:access_level)
+  %table.table.table-striped
+    %tr
+      %th= t(:name)
+      %th= t(:count)
+      %th
+    - @access_levels.each do |access_level|
+      %tr
+        %td= access_level.name
+        - if access_level.name == "Band"
+          %td= Person.all.count
+        - elsif
+          %td= access_level.volunteers.count
+        %td
+          = link_to 'Generer crewkort', access_card_path(access_level.id, :format => 'pdf')
+          |
+          = link_to 'Generer blanke crewkort', blank_access_card_path(access_level.id, :format => 'pdf')
+          |
+          = link_to t(:edit), edit_access_level_path(access_level)
+          |
+          = link_to t(:delete), access_level, :confirm => t(:confirm), :method => :delete
+  %p= link_to 'Nytt crewkort', new_access_level_path
