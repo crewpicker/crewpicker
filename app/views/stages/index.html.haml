@@ -1,11 +1,11 @@
-- title "Venues"
+- title Stage.model_name.human(:count => 2)
 .container
-  %h1 Venues
+  %h1= Stage.model_name.human(:count => 2)
   %table.table.table-striped
     %tr
-      %th Name
-      %th From
-      %th To
+      %th= Stage.human_attribute_name(:name)
+      %th= Stage.human_attribute_name(:from)
+      %th= Stage.human_attribute_name(:to)
       %th
       %th
       %th
@@ -15,7 +15,7 @@
         %td= stage.from
         %td= stage.to
         %td= link_to 'Program', stage_schedules_path(stage)
-        %td= link_to 'Edit', edit_stage_path(stage)
-        %td= link_to 'Destroy', stage, :confirm => 'Are you sure?', :method => :delete
-  %br/
-  = link_to 'New Stage', new_stage_path
+        %td= link_to t(:edit), edit_stage_path(stage)
+        %td= link_to t(:delete), stage, :confirm => 'Er du sikker?', :method => :delete
+  %p
+    = link_to "#{t(:new).camelize} #{Stage.model_name.human.downcase}", new_stage_path
