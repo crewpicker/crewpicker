@@ -70,9 +70,21 @@ nb:
 
   activerecord:
     models:
-      user: bruker
+      ad:
+        one: Annonse
+        other: Annonser
+      user:
+        one: Bruker
+        other: Brukere
+      stage:
+        one: Venue
+        other: Venues
     attributes:
       band:
         name: "Bandnavn"
         contact_name: "Kontaktperson"
         email: "E-post"
+      stage:
+        name: "Navn"
+        from: "Fra"
+        to: "Til"
