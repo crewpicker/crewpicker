@@ -14,7 +14,7 @@
         %td= stage.name
         %td= stage.from
         %td= stage.to
-        %td= link_to 'Program', stage_schedules_path(stage)
+        %td= link_to 'Program', stage_schedule_program_path(stage.name)
         %td= link_to t(:edit), edit_stage_path(stage)
         %td= link_to t(:delete), stage, :confirm => 'Er du sikker?', :method => :delete
   %p
