@@ -40,6 +40,6 @@ authorization do
 end
 privileges do
   privilege :manage do
-    includes :new, :create, :show, :index, :list, :edit, :update, :destroy, :choose
+    includes :new, :create, :show, :index, :list, :edit, :update, :destroy, :choose, :mail
   end
 end

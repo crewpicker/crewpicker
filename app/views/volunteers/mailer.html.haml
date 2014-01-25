@@ -1,0 +1,56 @@
+- title 'Send epost til alle frivillige'
+:css
+  .error {
+    color: red;
+  }
+.container
+  .row
+    .col-lg-6
+      %h1 Send epost til alle frivillige
+      = form_tag mail_volunteers_path, method: "post" do
+        .form-group
+          = label_tag :subject, "Tittel"
+          %br
+          = text_field_tag :subject, params[:subject] ? params[:subject] : nil, class: 'form-control'
+        .form-group
+          = label_tag :content_markdown, "Innhold (markdown)"
+          %br
+          = text_area_tag :content_markdown, params[:content_markdown] ? params[:content_markdown] : nil, rows: 20, class: 'form-control'
+        .form-group
+          = label_tag :content_plain, "Innhold (ren tekst)"
+          %br
+          = text_area_tag :content_plain, params[:content_plain] ? params[:content_plain] : nil, rows: 20, class: 'form-control'
+        .checkbox
+          %label
+            = check_box_tag :send_testmail
+            Send testmail til deg selv
+        .form-group
+          = submit_tag "Send epost", class: 'btn btn-primary btn-block'
+      :javascript
+        $('form').validate({
+          rules: {
+            content_markdown: {
+              required: true
+            },
+            content_plain: {
+              required: true
+            }
+          },
+          highlight: function(element) {
+            $(element).closest('.form-group').addClass('has-error');
+          },
+          unhighlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-error');
+          }
+        });
+    .col-lg-6
+      :markdown
+        ## Veiledning
+
+        For at alle skal kunne se eposten korrekt må du lage både en markdown-versjon og en ren tekstversjon.
+
+        Det er en god ide å sende en testmail til deg selv for å se at formatteringen blir riktig.
+
+        ### Markdown-hjelp
+
+        Se <https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>
