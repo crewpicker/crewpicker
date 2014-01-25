@@ -1,5 +1,8 @@
-%h1 Editing volunteer
-= render 'form'
-= link_to 'Show', @volunteer
-|
-\#{link_to 'Back', volunteers_path}
+- title "#{t(:edit)} #{Volunteer.model_name.human.downcase}"
+.container
+  %h1= "#{t(:edit)} #{Volunteer.model_name.human.downcase}"
+  = render 'form'
+  %p
+    = link_to 'Show', @volunteer
+    |
+    = link_to 'Back', volunteers_path

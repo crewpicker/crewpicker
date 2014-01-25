@@ -79,6 +79,9 @@ nb:
       stage:
         one: Venue
         other: Venues
+      volunteer:
+        one: Crewmedlem
+        other: Crewmedlemmer
     attributes:
       band:
         name: "Bandnavn"

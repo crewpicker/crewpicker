@@ -4,6 +4,7 @@
     %title= yield(:title)
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
+    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"
     = csrf_meta_tag
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -25,12 +26,10 @@
           %ul.nav.navbar-nav
             %li{:class => "#{current_page?(volunteers_path) ? 'active' : ''}"}= link_to "Crew", volunteers_path
             %li{:class => "#{current_page?(groups_path) ? 'active' : ''}"}= link_to t(:groups), groups_path
-            %li{:class => "#{current_page?(access_levels_path) ? 'active' : ''}"}= link_to t(:access_level), access_levels_path
             %li{:class => "#{current_page?(bands_path) ? 'active' : ''}"}= link_to "Band", bands_path
             %li{:class => "#{current_page?(stages_path) ? 'active' : ''}"}= link_to "Venues", stages_path
             %li{:class => "#{current_page?(ads_path) ? 'active' : ''}"}= link_to t(:ads), ads_path
             %li{:class => "#{current_page?(ad_types_path) ? 'active' : ''}"}= link_to t(:ad_types), ad_types_path
-            %li{:class => "#{current_page?(crew_applications_path) ? 'active' : ''}"}= link_to t(:crew_applications), crew_applications_path
             %li{:class => "#{current_page?(users_path) ? 'active' : ''}"}= link_to t(:users).capitalize, users_path
             - if current_user
               %li.dropdown
@@ -64,6 +63,15 @@
           = link_to t(:locations), locations_path
           |
           = link_to "Events", events_path
+      - if controller_name == "volunteers" || controller_name == "crew_applications" || controller_name == "access_levels"
+        %p
+          = link_to 'Crewliste', volunteers_path
+          |
+          = link_to 'Crewsøknader', crew_applications_path
+          |
+          = link_to 'Crewkort', access_levels_path
+          |
+          = link_to 'Send epost til alle frivillige', mailer_volunteers_path
       - if flash[:alert]
         %p.flash-error= flash[:alert]
       - if flash[:notice]
