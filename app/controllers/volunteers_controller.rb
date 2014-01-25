@@ -118,6 +118,34 @@ class VolunteersController < ApplicationController
       format.xml  { render :xml => @volunteers }
     end
   end
+
+  filter_access_to :mailer, :require => :mail
+  def mailer
+  end
+
+  filter_access_to :mail
+  def mail
+    subject = params[:subject] or 'Info fra Rock Mot Rus'
+    content_markdown = params[:content_markdown]
+    content_plain = params[:content_plain]
+    if params[:send_testmail] == '1'
+      recipients = current_user.email
+      VolunteerMailer::custom_email(subject, recipients, content_markdown, content_plain).deliver
+      respond_to do |format|
+        format.html {
+          flash[:notice] = "Testmail sendt"
+          render :action => "mailer"
+        }
+      end
+    else
+      recipients = Volunteer.pluck(:email)
+      VolunteerMailer::custom_email(subject, recipients, content_markdown, content_plain).deliver
+      respond_to do |format|
+        format.html { redirect_to(volunteers_url, :notice => "Epost sendt") }
+      end
+    end
+  end
+
   filter_access_to :info
   def info
   end

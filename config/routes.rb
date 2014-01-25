@@ -46,6 +46,8 @@ FestivalAdmin::Application.routes.draw do
     collection do
       get 'compact'
       get 'info'
+      get 'mailer'
+      post 'mail'
     end
   end
 

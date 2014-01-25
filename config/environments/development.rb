@@ -18,12 +18,12 @@ FestivalAdmin::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "mail.rockmotrus.no",
+    :address              => "smtp.altibox.no",
     :port                 => 25,
-    :domain               => 'rockmotrus.no',
-    :user_name            => 'festival@rockmotrus.no',
-    :password             => 'willy666',
-    :authentication       => 'plain',
+    #:domain               => 'rockmotrus.no',
+    #:user_name            => 'festival@rockmotrus.no',
+    #:password             => 'willy666',
+    #:authentication       => 'plain',
     :enable_starttls_auto => false
   }
  
