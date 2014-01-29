@@ -72,6 +72,8 @@ FestivalAdmin::Application.routes.draw do
   resources :bands do
     collection do
       get 'info'
+      get 'mailer'
+      post 'mail'
     end
     resources :band_members
   end
