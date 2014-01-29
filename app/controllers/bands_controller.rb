@@ -92,6 +92,33 @@ class BandsController < ApplicationController
   def info
   end
 
+  filter_access_to :mailer, :require => :mail
+  def mailer
+  end
+
+  filter_access_to :mail
+  def mail
+    subject = params[:subject]
+    content_markdown = params[:content_markdown]
+    content_plain = params[:content_plain]
+    if params[:send_testmail] == '1'
+      recipients = current_user.email
+      BandMailer::custom_email(subject, recipients, content_markdown, content_plain).deliver
+      respond_to do |format|
+        format.html {
+          flash[:notice] = "Testmail sendt"
+          render :action => "mailer"
+        }
+      end
+    else
+      recipients = Band.pluck(:email)
+      BandMailer::custom_email(subject, recipients, content_markdown, content_plain).deliver
+      respond_to do |format|
+        format.html { redirect_to(bands_url, :notice => "Epost sendt")}
+      end
+    end
+  end
+
   private
 
   def band_params

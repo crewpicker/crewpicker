@@ -25,9 +25,7 @@
         .navbar-collapse.collapse
           %ul.nav.navbar-nav
             %li{:class => "#{current_page?(volunteers_path) ? 'active' : ''}"}= link_to "Crew", volunteers_path
-            %li{:class => "#{current_page?(groups_path) ? 'active' : ''}"}= link_to t(:groups), groups_path
             %li{:class => "#{current_page?(bands_path) ? 'active' : ''}"}= link_to "Band", bands_path
-            %li{:class => "#{current_page?(stages_path) ? 'active' : ''}"}= link_to "Venues", stages_path
             %li{:class => "#{current_page?(ads_path) ? 'active' : ''}"}= link_to t(:ads), ads_path
             %li{:class => "#{current_page?(ad_types_path) ? 'active' : ''}"}= link_to t(:ad_types), ad_types_path
             %li{:class => "#{current_page?(users_path) ? 'active' : ''}"}= link_to t(:users).capitalize, users_path
@@ -63,15 +61,24 @@
           = link_to t(:locations), locations_path
           |
           = link_to "Events", events_path
-      - if controller_name == "volunteers" || controller_name == "crew_applications" || controller_name == "access_levels"
+      - if controller_name == 'volunteers' || controller_name == 'crew_applications' || controller_name == 'access_levels'
         %p
           = link_to 'Crewliste', volunteers_path
+          |
+          = link_to 'Grupper', groups_path
           |
           = link_to 'Crewsøknader', crew_applications_path
           |
           = link_to 'Crewkort', access_levels_path
           |
           = link_to 'Send epost til alle frivillige', mailer_volunteers_path
+      - if controller_name == 'bands' || controller_name == 'stages' || controller_name == 'stage_schedules'
+        %p
+          = link_to 'Band', bands_path
+          |
+          = link_to 'Venues', stages_path
+          |
+          = link_to 'Send epost til alle påmeldte band', mailer_bands_path
       - if flash[:alert]
         %p.flash-error= flash[:alert]
       - if flash[:notice]
