@@ -4,7 +4,7 @@ class Band < ActiveRecord::Base
   has_many :band_members, :dependent => :destroy
   has_one :stage_schedule
   belongs_to :user
-  default_scope -> { order('bands.name DESC') }
+  default_scope -> { order('bands.name ASC') }
   validates :name, :presence => true
   validates :name, :uniqueness => true
   validates :contact_name, :presence => true
