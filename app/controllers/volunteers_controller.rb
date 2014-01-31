@@ -27,6 +27,7 @@ class VolunteersController < ApplicationController
   # GET /volunteers/new.xml
   def new
     @volunteer = Volunteer.new
+    @volunteer.group_id = params[:group_id] if params[:group_id]
 
     respond_to do |format|
       format.html # new.html.erb

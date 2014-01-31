@@ -61,7 +61,7 @@
           = link_to t(:locations), locations_path
           |
           = link_to "Events", events_path
-      - if controller_name == 'volunteers' || controller_name == 'crew_applications' || controller_name == 'access_levels'
+      - if controller_name == 'volunteers' || controller_name == 'crew_applications' || controller_name == 'groups' || controller_name == 'access_levels'
         %p
           = link_to 'Crewliste', volunteers_path
           |
