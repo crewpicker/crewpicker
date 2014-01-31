@@ -24,7 +24,8 @@
           |
           \#{link_to t(:edit), edit_volunteer_path(volunteer)} |
           \#{link_to t(:delete), volunteer, :confirm => t(:confirm), :method => :delete}
-  / <p><haml:loud> link_to &amp;#39;Nytt crewmedlem&amp;#39;, new_group_volunteer_path(@group) </haml:loud></p>
+  - if @group.internal == true
+    %p= link_to 'Nytt crewmedlem', new_group_volunteer_path(@group)
   %p
     = t(:count)
     \: #{@group.volunteers.count}
