@@ -1,41 +1,40 @@
 - title t(:crew_applications)
-.container
-  %h1= t(:crew_applications)
-  %table.table.table-striped
+%h1= t(:crew_applications)
+%table.table.table-striped
+  %tr
+    %th= t(:name)
+    %th= t(:address)
+    %th= t(:birthday)
+    %th= t(:email)
+    %th= t(:phone)
+    %th= t(:relevant_experience)
+    %th= t(:username)
+    %th
+      1. #{t(:option)}
+    %th
+      2. #{t(:option)}
+    %th
+      3. #{t(:option)}
+    %th
+      4. #{t(:option)}
+    %th
+  - @crew_applications.each do |crew_application|
     %tr
-      %th= t(:name)
-      %th= t(:address)
-      %th= t(:birthday)
-      %th= t(:email)
-      %th= t(:phone)
-      %th= t(:relevant_experience)
-      %th= t(:username)
-      %th
-        1. #{t(:option)}
-      %th
-        2. #{t(:option)}
-      %th
-        3. #{t(:option)}
-      %th
-        4. #{t(:option)}
-      %th
-    - @crew_applications.each do |crew_application|
-      %tr
-        %td= crew_application.name
-        %td= crew_application.address
-        %td= crew_application.birthday
-        %td= crew_application.email
-        %td= crew_application.phone
-        %td= crew_application.experience
-        %td= crew_application.user.username if crew_application.user
-        - crew_application.crew_wishes.each do |crew_wish|
-          - if crew_wish.group_id
-            %td= crew_wish.group.name
-          - else
-            %td Ikke valgt
-        %td
-          = link_to t(:show), crew_application
-          |
-          \#{link_to t(:edit), edit_crew_application_path(crew_application)} |
-          \#{link_to t(:delete), crew_application, :confirm => t(:confirm), :method => :delete}
-  %p= link_to 'New Crew application', new_crew_application_path
+      %td= crew_application.name
+      %td= crew_application.address
+      %td= crew_application.birthday
+      %td= crew_application.email
+      %td= crew_application.phone
+      %td= crew_application.experience
+      %td= crew_application.user.username if crew_application.user
+      - crew_application.crew_wishes.each do |crew_wish|
+        - if crew_wish.group_id
+          %td= crew_wish.group.name
+        - else
+          %td Ikke valgt
+      %td
+        = link_to t(:show), crew_application
+        |
+        \#{link_to t(:edit), edit_crew_application_path(crew_application)} |
+        \#{link_to t(:delete), crew_application, :confirm => t(:confirm), :method => :delete}
+%p= link_to 'New Crew application', new_crew_application_path
