@@ -1,35 +1,34 @@
 - title t(:volunteers_list)
-.container
-  %h1= t(:volunteers_list)
-  %p#notice= notice
-  / <p><haml:loud> link_to t(:new_volunteer), new_volunteer_path </haml:loud></p>
-  %table.table.table-striped
-    - @groups.each do |group|
+%h1= t(:volunteers_list)
+%p#notice= notice
+/ <p><haml:loud> link_to t(:new_volunteer), new_volunteer_path </haml:loud></p>
+%table.table.table-striped
+  - @groups.each do |group|
+    %tr
+      %th{:colspan => "9"}
+        %h2= group.name
+    %tr
+      %th= t(:name)
+      %th= t(:address)
+      %th= t(:age)
+      %th= t(:email)
+      %th= t(:phone)
+      %th= t(:access_level)
+      %th
+    - group.volunteers.each do |volunteer|
       %tr
-        %th{:colspan => "9"}
-          %h2= group.name
-      %tr
-        %th= t(:name)
-        %th= t(:address)
-        %th= t(:age)
-        %th= t(:email)
-        %th= t(:phone)
-        %th= t(:access_level)
-        %th
-      - group.volunteers.each do |volunteer|
-        %tr
-          %td= volunteer.name
-          %td= nl2br(volunteer.address)
-          %td
-            - if volunteer.birthday then concat(age_at(Event.first.from, volunteer.birthday)) end
-          %td= volunteer.email
-          %td= volunteer.phone
-          %td= volunteer.access_level
-          %td
-            = link_to t(:show), volunteer
-            | #{link_to t(:edit), edit_volunteer_path(volunteer)} | #{link_to t(:delete), volunteer, :confirm => t(:confirm), :method => :delete}
-      %tr
-        %th{:colspan => "9"}
-          = t(:count)
-          \: #{group.volunteers.count}
-  / <p><haml:loud> link_to t(:new_volunteer), new_volunteer_path </haml:loud></p>
+        %td= volunteer.name
+        %td= nl2br(volunteer.address)
+        %td
+          - if volunteer.birthday then concat(age_at(Event.first.from, volunteer.birthday)) end
+        %td= volunteer.email
+        %td= volunteer.phone
+        %td= volunteer.access_level
+        %td
+          = link_to t(:show), volunteer
+          | #{link_to t(:edit), edit_volunteer_path(volunteer)} | #{link_to t(:delete), volunteer, :confirm => t(:confirm), :method => :delete}
+    %tr
+      %th{:colspan => "9"}
+        = t(:count)
+        \: #{group.volunteers.count}
+/ <p><haml:loud> link_to t(:new_volunteer), new_volunteer_path </haml:loud></p>
