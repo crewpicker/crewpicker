@@ -1,5 +1,8 @@
-%h1 Editing event
-= render 'form'
-= link_to 'Show', @event
-|
-\#{link_to 'Back', events_path}
+- title "Editing event"
+.container
+  %h1 Editing event
+  = render 'form'
+  %p
+    = link_to 'Show', @event
+    |
+    = link_to 'Back', events_path
