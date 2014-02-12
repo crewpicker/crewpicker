@@ -1,17 +1,21 @@
-%h1 Listing events
-%table
-  %thead
+- title 'Events'
+.container
+  %h1 Listing events
+  %table.table.table-striped
     %tr
-      %th Name
+      %th= t(:name)
+      %th= t(:from)
+      %th= t(:to)
       %th
       %th
       %th
-  %tbody
     - @events.each do |event|
       %tr
         %td= event.name
+        %td= event.from
+        %td= event.to
         %td= link_to 'Show', event
         %td= link_to 'Edit', edit_event_path(event)
         %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Event', new_event_path
+  %br/
+  = link_to 'New Event', new_event_path
