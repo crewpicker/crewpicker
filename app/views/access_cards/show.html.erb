@@ -48,7 +48,7 @@ end
       .page {
         height: 774px;
         width: 100%;
-        background-image: url(<%= File.expand_path(Rails.root) + '/public/images/' + background_image %>);
+        background-image: url(<%= ActionController::Base.helpers.asset_path(background_image) %>);
         background-repeat: no-repeat;
         background-position: center;
       }
@@ -74,7 +74,7 @@ end
       }
       @font-face {
         font-family: Impact;
-        src: url(<%= File.expand_path(Rails.root) + '/public/stylesheets/impact.ttf' %>);
+        src: url(<%= ActionController::Base.helpers.asset_path('impact.ttf') %>);
       }
     </style>
   </head>
