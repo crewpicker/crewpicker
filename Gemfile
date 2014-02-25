@@ -13,10 +13,6 @@ gem 'pdfkit', :git => "https://github.com/pdfkit/pdfkit.git"
 gem 'sorcery'
 gem 'declarative_authorization'
 
-group :production do
-  gem 'wkhtmltopdf'
-end
-
 gem 'newrelic_rpm'
 
 gem 'sass-rails',   '~> 4.0.0'
