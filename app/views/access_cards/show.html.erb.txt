@@ -1,0 +1,155 @@
+<%
+if @access_level.name == "VIP"
+  background_image = "kort-vip2012.png"
+else
+  background_image = "kort-crew2012.png"
+end
+%>
+<html>
+  <head>
+    <title>Crewkort</title>
+    <meta name="pdfkit-page_size" content="A4">
+    <meta name="pdfkit-orientation" content="Landscape">
+    <meta name="pdfkit-margin_top" content="0">
+    <meta name="pdfkit-margin_bottom" content="0">
+    <meta name="pdfkit-margin_right" content="0">
+    <meta name="pdfkit-margin_left" content="0">
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      html {
+        padding: 0;
+        margin: 0;
+      }
+      table {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        text-align: center;
+        color: red;
+        margin: 0 auto;
+      }
+      td {
+        padding: 0;
+        margin: 0;
+        width: 237px;
+        font-family: Impact, sans-serif;
+      }
+      .al {
+        font-size: 36px;
+        color: #231f20;
+      }
+      .name {
+        font-size: 26px;
+        color: #231f20;
+      }
+      .page {
+        height: 774px;
+        width: 100%;
+        background-image: url(<%= File.expand_path(Rails.root) + '/public/images/' + background_image %>);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .spacer {
+        height: 34px;
+      }
+      .card {
+        height: 170px;
+        vertical-align: top;
+      }
+      .card div {
+<% if @access_level.name == "VIP" %>
+        padding-top: 40px;
+<% else %>
+        padding-top: 10px;
+<% end %>
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+      .artist {
+        font-size: 26px;
+        color: #231f20;
+      }
+      @font-face {
+        font-family: Impact;
+        src: url(<%= File.expand_path(Rails.root) + '/public/stylesheets/impact.ttf' %>);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <table>
+        <tr><td class="spacer" colspan="4"></td></tr>
+        <tr><td class="card" colspan="4"></td></tr>
+        <tr>
+<%
+rcounter = 0
+ccounter = 0
+if @access_level.name == "Band"
+  people = @people
+else
+  people = @access_level.volunteers
+end
+people.each do |person|
+  if ccounter == 4
+    rcounter += 1
+%>
+        </tr>
+<%
+    if rcounter == 2
+%>
+        <tr>
+          <td class="spacer" colspan="4"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="page">
+      <table>
+        <tr>
+          <td class="spacer" colspan="4"></td>
+        </tr>
+<%
+      rcounter = 0
+    end
+%>
+        <tr><td class="card" colspan="4"></td></tr>
+        <tr>
+<%
+    ccounter = 0
+  end
+%>
+
+          <td class="card">
+            <div>
+              <span class="al"><%= @access_level.name.upcase %></span>
+              <br><span class="name"><%= person.name %></span>
+              <% if @access_level.name == "Artist" %><hr><span class="artist"><%= person.group.name %></span><% end %>
+            </div>
+          </td>
+<%
+  ccounter += 1 
+end
+
+while ccounter != 4
+%>
+          <td></td>
+<%
+  ccounter += 1
+end
+if rcounter != 1
+%>
+        </tr>
+        <tr>
+<%
+end
+%>
+        </tr>
+        <tr>
+          <td class="spacer" colspan="4"></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
