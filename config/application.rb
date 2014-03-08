@@ -39,6 +39,9 @@ module FestivalAdmin
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     config.middleware.use "PDFKit::Middleware"
+    PDFKit.configure do |config|
+      config.wkhtmltopdf = '/opt/wkhtmltox/bin/wkhtmltopdf'
+    end
     config.festival_start = Date.civil(2011,4,15)
     config.assets.version = '1.0'
   end
