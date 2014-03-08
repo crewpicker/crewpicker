@@ -59,6 +59,9 @@ common: &default_settings
   # so it should not impact response times.
   ssl: false
 
+  browser_monitoring:
+    auto_instrument: false
+
   # EXPERIMENTAL: enable verification of the SSL certificate sent by
   # the server. This setting has no effect unless SSL is enabled
   # above. This may block your application. Only enable it if the data
