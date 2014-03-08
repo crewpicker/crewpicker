@@ -22,6 +22,10 @@
           = text_area_tag :content_plain, params[:content_plain] ? params[:content_plain] : nil, rows: 20, class: 'form-control'
         .checkbox
           %label
+            = check_box_tag :public_only
+            Send kun til søkbare grupper
+        .checkbox
+          %label
             = check_box_tag :send_testmail
             Send testmail til deg selv
         .form-group

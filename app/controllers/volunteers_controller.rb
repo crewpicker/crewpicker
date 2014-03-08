@@ -139,7 +139,16 @@ class VolunteersController < ApplicationController
         }
       end
     else
-      recipients = Volunteer.pluck(:email)
+      if params[:public_only] == '1'
+        recipients = Array.new
+        Group.where(internal: false).each do |group|
+          group.volunteers.each do |volunteer|
+            recipients << volunteer.email
+          end
+        end
+      else
+        recipients = Volunteer.pluck(:email)
+      end
       VolunteerMailer::custom_email(subject, recipients, content_markdown, content_plain).deliver
       respond_to do |format|
         format.html { redirect_to(volunteers_url, :notice => "Epost sendt") }
