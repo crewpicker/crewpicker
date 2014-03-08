@@ -87,8 +87,13 @@ end
 <%
 rcounter = 0
 ccounter = 0
+people = Array.new
 if @access_level.name == "Band"
-  people = @people
+  @bands.each do |band|
+    band.band_members.each do |band_member|
+      people << band_member
+    end
+  end
 else
   people = @access_level.volunteers
 end
