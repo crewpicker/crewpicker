@@ -5,7 +5,7 @@ class AccessCardsController < ApplicationController
   def show
     @access_level = AccessLevel.find(params[:id])
     if @access_level.name == "Band"
-      @people = Person.all
+      @people = BandMember.all
     end
     render :layout => false
   end
