@@ -99,11 +99,11 @@ else
 end
 people.each do |person|
   if @access_level.name == "Band"
-    card_title = person.band.name.upcase
+    card_title = person.band.name.mb_chars.upcase
     #person.name = person.person.name
     person.name = ''
   else
-    card_title = @access_level.name.upcase
+    card_title = @access_level.name.mb_chars.upcase
   end
   if ccounter == 4
     rcounter += 1
