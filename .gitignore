@@ -10,4 +10,4 @@ config/config.yml
 .DS_Store
 public/system/*
 public/assets/*
-.swp
+*.swp
