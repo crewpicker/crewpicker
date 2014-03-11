@@ -14,6 +14,7 @@ class OauthsController < ApplicationController
       redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
     else
       begin
+        # FIXME passing block here is dirty filthy terrible hack to allow facebook login without email.
         @user = create_from(provider) do |user|
           if !user.username
             user.username = DateTime.now.to_i
