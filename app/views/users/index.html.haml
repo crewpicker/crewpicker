@@ -27,6 +27,8 @@
         %td
           - if crew_application = CrewApplication.find_by_user_id(user.id)
             = link_to 'Ja', crew_application
+          - elsif user.volunteers.count > 0
+            Valgt
           - else
             Nei
         %td
