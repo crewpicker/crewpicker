@@ -14,7 +14,11 @@ class OauthsController < ApplicationController
       redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
     else
       begin
-        @user = create_from(provider)
+        @user = create_from(provider) do |user|
+          if !user.username
+            user.username = DateTime.now.to_i
+          end
+        end
         role = Role.find_or_create_by_name('user')
         @user.roles << role
 
