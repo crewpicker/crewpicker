@@ -19,6 +19,7 @@ class OauthsController < ApplicationController
           if !user.username
             user.username = DateTime.now.to_i
           end
+          user
         end
         role = Role.find_or_create_by_name('user')
         @user.roles << role
