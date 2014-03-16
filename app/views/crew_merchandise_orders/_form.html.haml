@@ -1,0 +1,15 @@
+= form_for(@crew_merchandise_order) do |f|
+  - if @crew_merchandise_order.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@crew_merchandise_order.errors.count, "error")
+        prohibited this crew_merchandise_order from being saved:
+      %ul
+        - @crew_merchandise_order.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :volunteer
+    %br/
+    = f.collection_select :volunteer_id, Volunteer.all, :id, :name
+  .actions
+    = f.submit

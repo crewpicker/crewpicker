@@ -1,0 +1,29 @@
+<h1>Listing merchandise_article_variants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Merchandise article</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @merchandise_article_variants.each do |merchandise_article_variant| %>
+      <tr>
+        <td><%= merchandise_article_variant.name %></td>
+        <td><%= merchandise_article_variant.merchandise_article.name %></td>
+        <td><%= link_to 'Show', merchandise_article_variant %></td>
+        <td><%= link_to 'Edit', edit_merchandise_article_variant_path(merchandise_article_variant) %></td>
+        <td><%= link_to 'Destroy', merchandise_article_variant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Merchandise article variant', new_merchandise_article_variant_path %>

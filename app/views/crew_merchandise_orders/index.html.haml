@@ -1,0 +1,17 @@
+%h1 Listing crew_merchandise_orders
+%table
+  %thead
+    %tr
+      %th Volunteer
+      %th
+      %th
+      %th
+  %tbody
+    - @crew_merchandise_orders.each do |crew_merchandise_order|
+      %tr
+        %td= crew_merchandise_order.volunteer
+        %td= link_to 'Show', crew_merchandise_order
+        %td= link_to 'Edit', edit_crew_merchandise_order_path(crew_merchandise_order)
+        %td= link_to 'Destroy', crew_merchandise_order, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Crew merchandise order', new_crew_merchandise_order_path
