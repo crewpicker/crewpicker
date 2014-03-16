@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129005736) do
+ActiveRecord::Schema.define(version: 20140316161100) do
 
   create_table "access_levels", force: true do |t|
     t.string   "name"
@@ -95,6 +95,25 @@ ActiveRecord::Schema.define(version: 20140129005736) do
     t.boolean  "chosen"
   end
 
+  create_table "crew_merchandise_order_lines", force: true do |t|
+    t.integer  "crew_merchandise_order_id"
+    t.integer  "quantity"
+    t.integer  "merchandise_article_variant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "crew_merchandise_order_lines", ["crew_merchandise_order_id"], name: "crew_merch_order_lines_crew_merch_order_id", using: :btree
+  add_index "crew_merchandise_order_lines", ["merchandise_article_variant_id"], name: "crew_merch_order_lines_merch_article_variant_id", using: :btree
+
+  create_table "crew_merchandise_orders", force: true do |t|
+    t.integer  "volunteer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "crew_merchandise_orders", ["volunteer_id"], name: "index_crew_merchandise_orders_on_volunteer_id", using: :btree
+
   create_table "crew_wishes", force: true do |t|
     t.integer  "crew_application_id"
     t.integer  "group_id"
@@ -147,6 +166,21 @@ ActiveRecord::Schema.define(version: 20140129005736) do
     t.integer  "slots"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "merchandise_article_variants", force: true do |t|
+    t.string   "name"
+    t.integer  "merchandise_article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "merchandise_article_variants", ["merchandise_article_id"], name: "index_merchandise_article_variants_on_merchandise_article_id", using: :btree
+
+  create_table "merchandise_articles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "people", force: true do |t|

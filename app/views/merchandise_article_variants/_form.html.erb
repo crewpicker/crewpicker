@@ -1,0 +1,25 @@
+<%= form_for(@merchandise_article_variant) do |f| %>
+  <% if @merchandise_article_variant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@merchandise_article_variant.errors.count, "error") %> prohibited this merchandise_article_variant from being saved:</h2>
+
+      <ul>
+      <% @merchandise_article_variant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :merchandise_article %><br>
+    <%= f.collection_select :merchandise_article_id, MerchandiseArticle.all, :id, :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @merchandise_article_variant.name %>
+</p>
+
+<p>
+  <strong>Merchandise article:</strong>
+  <%= @merchandise_article_variant.merchandise_article %>
+</p>
+
+<%= link_to 'Edit', edit_merchandise_article_variant_path(@merchandise_article_variant) %> |
+<%= link_to 'Back', merchandise_article_variants_path %>

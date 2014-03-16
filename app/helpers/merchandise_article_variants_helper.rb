@@ -1,0 +1,2 @@
+module MerchandiseArticleVariantsHelper
+end

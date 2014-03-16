@@ -1,0 +1,29 @@
+<%= form_for(@crew_merchandise_order_line) do |f| %>
+  <% if @crew_merchandise_order_line.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@crew_merchandise_order_line.errors.count, "error") %> prohibited this crew_merchandise_order_line from being saved:</h2>
+
+      <ul>
+      <% @crew_merchandise_order_line.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :crew_merchandise_order_id %><br>
+    <%= f.text_field :crew_merchandise_order_id %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :merchandise_article_variant_id %><br>
+    <%= f.text_field :merchandise_article_variant_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
