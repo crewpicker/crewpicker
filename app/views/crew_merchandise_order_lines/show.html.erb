@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Crew merchandise order:</strong>
+  <%= @crew_merchandise_order_line.crew_merchandise_order %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @crew_merchandise_order_line.quantity %>
+</p>
+
+<p>
+  <strong>Merchandise article variant:</strong>
+  <%= @crew_merchandise_order_line.merchandise_article_variant %>
+</p>
+
+<%= link_to 'Edit', edit_crew_merchandise_order_line_path(@crew_merchandise_order_line) %> |
+<%= link_to 'Back', crew_merchandise_order_lines_path %>

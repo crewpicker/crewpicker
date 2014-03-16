@@ -1,4 +1,12 @@
 FestivalAdmin::Application.routes.draw do
+  resources :crew_merchandise_order_lines
+
+  resources :crew_merchandise_orders
+
+  resources :merchandise_article_variants
+
+  resources :merchandise_articles
+
   resources :events
 
   resources :roles
