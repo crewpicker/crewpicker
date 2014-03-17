@@ -3,3 +3,4 @@ PDFKit.configure do |config|
     :page_size => 'A4',
     :disable_smart_shrinking => true
   }
+end
