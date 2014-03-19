@@ -29,7 +29,11 @@ FestivalAdmin::Application.routes.draw do
   match "oauth/callback" => "oauths#callback", via: :get
   match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider, via: :get
 
-  resource :flightscreen
+  resource :flightscreen do
+    get 'now'
+    get 'next'
+    get 'later'
+  end
 
   resources :stage_schedules do
     get 'list', :on => :collection
