@@ -9,7 +9,7 @@
           %ul
             - @crew_application.errors.full_messages.each do |msg|
               %li= msg
-      = f.hidden_field :user_id, :value => current_user.id if current_user
+      = f.hidden_field :user_id, :value => ( ( @crew_application.user_id if @crew_application ) or ( current_user.id if current_user ) )
       .form-group
         = f.label t(:name)
         %br/
