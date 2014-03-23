@@ -129,7 +129,6 @@ people.each do |person|
             <div>
               <span class="al"><%= card_title %></span>
               <br><span class="name"><%= person.name %></span>
-              <% if @access_level.name == "Artist" %><hr><span class="artist"><%= person.group.name %></span><% end %>
             </div>
           </td>
 <%
