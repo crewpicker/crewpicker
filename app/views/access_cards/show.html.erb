@@ -8,7 +8,7 @@
     <meta name="pdfkit-margin_bottom" content="0">
     <meta name="pdfkit-margin_right" content="0">
     <meta name="pdfkit-margin_left" content="0">
-    <meta name="pdfkit-dpi" content="375">
+    <meta name="pdfkit-dpi" content="400">
     <meta name="pdfkit-zoom" content="0.999">
     <style>
       body {
@@ -94,6 +94,8 @@ people.each do |person|
     card_title = person.band.name.mb_chars.upcase
     #person.name = person.person.name
     person.name = ''
+  elsif @access_level.name == "Lydteamet"
+    card_title = ''
   else
     card_title = @access_level.name.mb_chars.upcase
   end
