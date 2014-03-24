@@ -93,6 +93,6 @@ class AccessLevelsController < ApplicationController
   private
 
   def access_level_params
-    params.require(:access_level).permit(:id, :name)
+    params.require(:access_level).permit(:id, :name, :background)
   end
 end
