@@ -92,10 +92,11 @@ nb:
         from: "Fra"
         to: "Til"
       ad:
-        name: "Navn"
+        name: "Annonsør"
         contact: "Kontaktperson"
         phone: "Telefon"
         email: "Epost"
         type: "Annonsetype"
         address: "Adresse"
         notes: "Notater"
+        salesman: "Selger"

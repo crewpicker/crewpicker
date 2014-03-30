@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319204137) do
+ActiveRecord::Schema.define(version: 20140330150307) do
 
   create_table "access_levels", force: true do |t|
     t.string   "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140319204137) do
     t.text     "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "salesman"
   end
 
   create_table "authentications", force: true do |t|
@@ -188,9 +189,9 @@ ActiveRecord::Schema.define(version: 20140319204137) do
     t.string   "name"
     t.text     "address"
     t.string   "email"
-    t.string   "phone",      limit: 16
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "phone",      limit: 8
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "roles", force: true do |t|
