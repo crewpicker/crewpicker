@@ -91,3 +91,11 @@ nb:
         name: "Navn"
         from: "Fra"
         to: "Til"
+      ad:
+        name: "Navn"
+        contact: "Kontaktperson"
+        phone: "Telefon"
+        email: "Epost"
+        type: "Annonsetype"
+        address: "Adresse"
+        notes: "Notater"
