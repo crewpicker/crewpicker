@@ -88,6 +88,6 @@ class AdsController < ApplicationController
   private
 
   def ad_params
-    params.require(:ad).permit(:id, :name, :contact, :phone, :email, :ad_type_id, :address, :notes)
+    params.require(:ad).permit(:id, :name, :contact, :phone, :email, :ad_type_id, :address, :notes, :salesman)
   end
 end

@@ -12,6 +12,7 @@
       %th Annonsetype
       %th Adresse
       %th Notater
+      %th Selger
       %th
       %th
     - @ads.each do |ad|
@@ -23,6 +24,7 @@
         %td= ad.ad_type.name
         %td= nl2br(ad.address)
         %td= nl2br(ad.notes)
+        %td= ad.salesman
         %td= link_to 'Endre', edit_ad_path(ad)
         %td= link_to 'Slett', ad, :confirm => 'Du vil sannsynligvis ikke gjøre dette.', :method => :delete
   %br
