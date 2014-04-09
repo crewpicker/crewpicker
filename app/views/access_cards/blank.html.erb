@@ -1,8 +1,15 @@
+<% background_image = @access_level.background %>
 <html>
   <head>
     <title>Crewkort</title>
     <meta name="pdfkit-page_size" content="A4">
     <meta name="pdfkit-orientation" content="Landscape">
+    <meta name="pdfkit-margin_top" content="0">
+    <meta name="pdfkit-margin_bottom" content="0">
+    <meta name="pdfkit-margin_right" content="0">
+    <meta name="pdfkit-margin_left" content="0">
+    <meta name="pdfkit-dpi" content="234">
+    <meta name="pdfkit-zoom" content="0.3329">
     <style>
       body {
         padding: 0;
@@ -15,59 +22,133 @@
       table {
         padding: 0;
         margin: 0;
+        height: 100%;
+        text-align: center;
+        color: red;
+        margin: 0 auto;
       }
       td {
         padding: 0;
         margin: 0;
-        width: 209px;
-      }
-      td div {
-        height: 0px;
-        padding: 0;
-        margin: 0 5px;
-        position: relative;
-        left: 0px;
-        top: -140px;
+        width: 600px;
         font-family: Impact, sans-serif;
-        text-align: center;
-        color: #231f20;
       }
       .al {
-        font-size: 42px;
+        font-size: 70px;
+        color: #231f20;
+      }
+      .name {
+        font-size: 52px;
+        color: #231f20;
+      }
+      .page {
+        height: 1935px;
+        width: 100%;
+        background-image: url(<%= Rails.root.join('public', ActionController::Base.helpers.asset_path(background_image).gsub!(/^\//, '')) %>);
+        //background-color: red;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .spacer {
+        height: 73px;
+      }
+      .card {
+        height: 440px;
+        vertical-align: top;
+        //background-color: rgba(0,255,0,0.5);
+      }
+      .card div {
+        padding-top: 10px;
+        padding-right: 28px;
+        padding-left: 28px;
+        //background-color: rgba(255,0,0,0.5);
+      }
+      .artist {
+        font-size: 26px;
         color: #231f20;
       }
       @font-face {
-	font-family: Impact;
-	src: url(<%= File.expand_path(Rails.root) + '/public/stylesheets/impact.ttf' %>);
+        font-family: Impact;
+        src: url(<%= Rails.root.join('public', ActionController::Base.helpers.asset_path('impact.ttf').gsub!(/^\//, '')) %>);
       }
     </style>
   </head>
   <body>
-    <table>
-      <tr>
+    <div class="page">
+      <table>
+        <tr><td class="spacer" colspan="4"></td></tr>
+        <tr><td class="card" colspan="4"></td></tr>
+        <tr>
 <%
-counter = 0
-  imagefile = '2014kort.png'
+rcounter = 0
+ccounter = 0
 8.times do
-%>
-        <td>
-          <%= image_tag imagefile, :width => "100%" %>
-          <div>
-            <span class="al"><%= @access_level.name.upcase %></span>
-          </div>
-        </td>
-<%
-  counter+=1
-  if counter == 4
-%>
-      </tr>
-      <tr>
-<%
-    counter = 0
+  count = ""
+  if @access_level.name == "Band"
+    card_title = "Band"
+    #person.name = count
+    #person.name = ''
+  elsif @access_level.name == "Lydteamet"
+    card_title = ''
+  else
+    card_title = @access_level.name.mb_chars.upcase
   end
+  if ccounter == 4
+    rcounter += 1
+%>
+        </tr>
+<%
+    if rcounter == 2
+%>
+        <tr>
+          <td class="spacer" colspan="4"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="page">
+      <table>
+        <tr>
+          <td class="spacer" colspan="4"></td>
+        </tr>
+<%
+      rcounter = 0
+    end
+%>
+        <tr><td class="card" colspan="4"></td></tr>
+        <tr>
+<%
+    ccounter = 0
+  end
+%>
+
+          <td class="card">
+            <div>
+              <span class="al"><%= card_title %></span>
+              <br><span class="name"><%= count %></span>
+            </div>
+          </td>
+<%
+  ccounter += 1 
+end
+
+while ccounter != 4
+%>
+          <td></td>
+<%
+  ccounter += 1
+end
+if rcounter != 1
+%>
+        </tr>
+        <tr>
+<%
 end
 %>
-      </tr>
-    </table>
+        </tr>
+        <tr>
+          <td class="spacer" colspan="4"></td>
+        </tr>
+      </table>
+    </div>
   </body>
 </html>
