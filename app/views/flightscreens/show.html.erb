@@ -1,0 +1,68 @@
+<html>
+<head>
+
+       <title>RMR Flightscreen 2013</title>
+<link href='http://fonts.googleapis.com/css?family=Share'
+rel='stylesheet' type='text/css'>
+
+</head>
+
+<style>
+
+html {
+       background: url(<%= image_path("fl13v2.jpg") %>) no-repeat center center fixed;
+     height: 100%;
+       -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;
+       background-position: left bottom;
+       background-attachment: fixed;
+       padding-top: 50px;
+  }
+
+.clock {
+       background: url(<%= image_path("bakgrunn.png") %>);right:2px;
+top:150px;
+     width: 15%;
+       margin-top: 0;
+     -webkit-border-radius: 20px;
+       -moz-border-radius: 20px;
+       border-radius: 20px;
+     
+     font-family: 'Share', cursive; color: #000; font-size: 115px;
+     text-align:center;
+
+  }
+
+.ramme {
+      width: 60%;
+      position:absolute;
+      left:100px;
+      top:150px;
+  }
+
+h1 { font-family: 'Share', cursive; color: #FFF; font-size: 70px;  }
+h2 { font-family: 'Share', cursive; color: #FFF; font-size: 85px; }
+h3 { font-family: 'Share', cursive; color: #FFF; font-size: 100px;  }
+
+</style>
+
+<!-- <div class="clock">15:21</div> -->
+<div class="ramme">
+
+
+<% counter = 3
+@stage_schedules.each do |stage_schedule|
+%>
+<h<%= counter %>><%= stage_schedule.start.to_formatted_s(:time) %> - <%= stage_schedule.band.name %></h<%= counter %>>
+<% counter -= 1
+end %>
+
+
+</div>
+
+
+
+</body>
+</html>
