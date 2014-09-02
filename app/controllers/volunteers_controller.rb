@@ -4,7 +4,7 @@ class VolunteersController < ApplicationController
   layout :check_layout
 
   def index
-    @groups = Group.find(:all, :include => :volunteers, :conditions => "volunteers.id IS NOT NULL", :order => "volunteers.name")
+    @groups = Group.includes(:volunteers).where.not(volunteers: { id: nil }).order('volunteers.name ASC')
 
     respond_to do |format|
       format.html # index.html.erb
