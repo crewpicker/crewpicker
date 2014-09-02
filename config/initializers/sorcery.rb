@@ -68,7 +68,7 @@ Rails.application.config.sorcery.configure do |config|
   # --- user config ---
   config.user_config do |user|
     # -- core --
-    # user.username_attribute_names = [:username]                                     # specify username
+    user.username_attribute_names = [:username]                                     # specify username
                                                                                       # attributes, for example:
                                                                                       # [:username, :email].
 

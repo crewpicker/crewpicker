@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.0.1'
+gem 'rails', '4.1.5'
 
 gem 'mysql2'
 
@@ -11,7 +11,7 @@ gem 'declarative_authorization'
 
 gem 'newrelic_rpm'
 
-gem 'sass-rails',   '~> 4.0.0'
+gem 'sass-rails',   '~> 4.0.3'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier',     '>= 1.3.0'
 gem 'haml'
