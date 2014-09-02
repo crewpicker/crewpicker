@@ -2,10 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '4.0.1'
 
-gem 'capistrano'
-gem 'capistrano-ext'
-gem 'rvm-capistrano'
-
 gem 'mysql2'
 
 gem 'paperclip', '~> 3.4.2'
