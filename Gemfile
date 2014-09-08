@@ -17,6 +17,11 @@ gem 'uglifier',     '>= 1.3.0'
 gem 'haml'
 gem 'haml-rails'
 gem 'redcarpet'
+gem 'less-rails-bootstrap'
+gem 'fullcalendar-rails'
+gem 'jquery-ui-rails'
+gem 'jquery-qtip2-rails'
+gem 'font-awesome-rails'
 
 gem 'therubyracer'
 

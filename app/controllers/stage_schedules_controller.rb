@@ -2,7 +2,7 @@
 class StageSchedulesController < ApplicationController
   layout :check_layout
 
-  def get_events
+  def show
     stage_schedules = Stage.find(params[:id]).stage_schedules
     events = []
     stage_schedules.each do |stage_schedule|
@@ -12,9 +12,10 @@ class StageSchedulesController < ApplicationController
         stage_schedule.destroy
       end
     end
-    render :text => events.to_json
+    render :json => events
   end
-  def show_schedule
+
+  def index
     bands = Band.all
     @events = []
     bands.each do |band|
@@ -30,7 +31,7 @@ class StageSchedulesController < ApplicationController
   end
   def create
     band = Band.find(params[:band_id])
-    stage = Stage.find(params[:id])
+    stage = Stage.find(params[:stage_id])
     stage_schedule = StageSchedule.new
     band.stage_schedule = stage_schedule
     stage_schedule.start = DateTime.civil(params[:year].to_i, params[:month].to_i, params[:day].to_i, params[:hour].to_i, params[:minute].to_i)
@@ -38,16 +39,18 @@ class StageSchedulesController < ApplicationController
     stage_schedule.end = stage_schedule.end.advance(:minutes => 15)
     stage.stage_schedules << stage_schedule
     stage_schedule.save
+    render nothing: true
   end
-  def move
+  def update
     band = Band.find(params[:band_id])
     stage_schedule = band.stage_schedule
     stage_schedule.start = stage_schedule.start.advance(:days => params[:day_delta].to_i, :minutes => params[:minute_delta].to_i)
     stage_schedule.end = stage_schedule.end.advance(:days => params[:day_delta].to_i, :minutes => params[:minute_delta].to_i)
     stage_schedule.save
+    render nothing: true
   end
-  def delete
-    band = Band.find(params[:event_id])
+  def destroy
+    band = Band.find(params[:id])
     stage_schedule = band.stage_schedule
     stage_schedule.destroy
     respond_to do |format|

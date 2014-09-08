@@ -3,5 +3,8 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require jquery-ui
+//= require twitter/bootstrap
 //= require holder
+//= require fullcalendar
+//= require jquery.qtip.basic.js

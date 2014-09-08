@@ -79,7 +79,9 @@ FestivalAdmin::Application.routes.draw do
     resources :location_schedules
   end
 
-  resources :stages
+  resources :stages do
+    resources :stage_schedules
+  end
 
   resources :bands do
     collection do
@@ -98,12 +100,7 @@ FestivalAdmin::Application.routes.draw do
   get "home/index"
   root :to => "home#index"
 
-  match 'program/:name' => 'stage_schedules#show_schedule', :as => :stage_schedule_program, via: :get
-  match 'stages/:id/schedule' => 'stage_schedules#show_schedule', :as => :stage_schedule_show, via: :get
-  match 'stages/:id/schedule/create' => 'stage_schedules#create', :as => :stage_schedule_create, via: :post
-  match 'stages/:id/schedule/move' => 'stage_schedules#move', :as => :stage_schedule_move, via: :post
-  match 'stages/:id/schedule/delete' => 'stage_schedules#delete', :as => :stage_schedule_delete, via: :post
-  match 'stages/:id/schedule/get_events' => 'stage_schedules#get_events', :as => :stage_schedule_get_events, via: :get
+  match 'program/:name' => 'stage_schedules#index', :as => :stage_schedule_program, via: :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
