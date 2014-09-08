@@ -43,7 +43,6 @@ module FestivalAdmin
     PDFKit.configure do |config|
       config.wkhtmltopdf = '/opt/wkhtmltox/bin/wkhtmltopdf'
     end
-    config.festival_start = Date.civil(2011,4,15)
     config.assets.version = '1.0'
   end
 end

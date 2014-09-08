@@ -1,9 +1,7 @@
 # encoding: UTF-8
 class UserSessionsController < ApplicationController
-  layout :check_layout
   def new
     @user = User.new
-    render :layout => 'public'
   end
 
   def create
