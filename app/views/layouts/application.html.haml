@@ -48,7 +48,7 @@
                   %li.divider
                   %li.dropdown-header RMR-bruker
                   %li
-                    = form_tag user_sessions_path, :method => :post, class: 'form-signin' do
+                    = form_tag user_sessions_path, :method => :post, class: 'form-signin', id: 'navbar-login' do
                       = hidden_field_tag :referer, @referer.to_s
                       = text_field_tag :username, '', :placeholder => 'Brukernavn', :required => true, :autofocus => true, class: 'form-control'
                       = password_field_tag :password, '', :placeholder => 'Passord', :required => true, class: 'form-control'

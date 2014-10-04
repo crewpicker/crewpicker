@@ -82,6 +82,9 @@ nb:
       volunteer:
         one: Crewmedlem
         other: Crewmedlemmer
+      group:
+        one: Gruppe
+        other: Grupper
     attributes:
       band:
         name: "Bandnavn"
@@ -100,3 +103,7 @@ nb:
         address: "Adresse"
         notes: "Notater"
         salesman: "Selger"
+      group:
+        name: "Navn"
+        description: "Beskrivelse"
+        internal_group: "Lukket for søknader?"
