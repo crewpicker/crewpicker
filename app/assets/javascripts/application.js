@@ -8,3 +8,4 @@
 //= require holder
 //= require fullcalendar
 //= require jquery.qtip.basic.js
+//= require Chart

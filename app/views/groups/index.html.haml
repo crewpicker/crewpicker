@@ -3,9 +3,9 @@
   %h1= t(:groups)
   %table.table.table-striped
     %tr
-      %th= t(:name)
-      %th= t(:description)
-      %th= t(:internal_group)
+      %th= Group.human_attribute_name(:name)
+      %th= Group.human_attribute_name(:description)
+      %th= Group.human_attribute_name(:internal_group)
       %th
     - @groups.each do |group|
       %tr

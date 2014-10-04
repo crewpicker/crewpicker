@@ -1,3 +1,0 @@
-h1. Linted FestivalAdmin
-
-See "stapler":https://github.com/tg90nor/stapler

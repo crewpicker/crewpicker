@@ -9,7 +9,7 @@
         %p= link_to '<i class="fa fa-facebook"></i> | Logg inn med Facebook'.html_safe, auth_at_provider_path(:provider => :facebook), class: 'btn btn-lg btn-block btn-facebook'
         %p= link_to '<i class="fa fa-twitter"></i> | Logg inn med Twitter'.html_safe, auth_at_provider_path(:provider => :twitter), class: 'btn btn-lg btn-block btn-twitter'
     .col-lg-6
-      = form_tag user_sessions_path, :method => :post, class: 'form-signin' do
+      = form_tag user_sessions_path, :method => :post, class: 'form-signin', id: 'page-login' do
         %h2.form-signin-heading 2. RMR-konto
         = hidden_field_tag :referer, @referer.to_s
         = text_field_tag :username, '', :placeholder => 'Brukernavn', :required => true, :autofocus => true, class: 'form-control'

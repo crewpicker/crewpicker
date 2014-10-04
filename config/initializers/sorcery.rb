@@ -43,6 +43,7 @@ Rails.application.config.sorcery.configure do |config|
                                                                       # i.e. '/etc/pki/tls/certs/ca-bundle.crt'
 
   if Rails.env == "development"
+    # TODO: move api keys to config file
     config.twitter.key = "***REMOVED***"
     config.twitter.secret = "***REMOVED***"
     config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
@@ -50,6 +51,7 @@ Rails.application.config.sorcery.configure do |config|
     config.facebook.secret = "***REMOVED***"
     config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
   else
+    # TODO: move api keys to config file
     config.twitter.key = "***REMOVED***"
     config.twitter.secret = "***REMOVED***"
     config.twitter.callback_url = "http://2014crew.rockmotrus.no/oauth/callback?provider=twitter"

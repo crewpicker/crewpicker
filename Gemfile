@@ -22,6 +22,7 @@ gem 'fullcalendar-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-qtip2-rails'
 gem 'font-awesome-rails'
+gem 'chart-js-rails'
 
 gem 'therubyracer'
 
@@ -31,15 +32,13 @@ gem 'holder_rails'
 
 group :test, :development do
   gem 'rspec-rails'
-end
-
-group :development do
-  gem 'sqlite3'
+  gem 'factory_girl_rails'
 end
 
 group :test do
-  gem 'factory_girl_rails'
   gem 'capybara'
-  gem 'guard-rspec'
-  gem 'rb-fsevent'
+  gem 'selenium-webdriver'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem 'launchy'
 end

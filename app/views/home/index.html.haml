@@ -19,7 +19,7 @@
   %h2 FRIVILLIG
   - if has_crew_application
     - crew_application = current_user.crew_application
-    %table.border
+    %table.table
       %tr
         %th= t(:name)
         %td= crew_application.name
@@ -50,7 +50,7 @@
     - current_user.volunteers.each do |volunteer|
       %p
         Valgt til #{volunteer.group.name}-gruppa
-      %table.border
+      %table.table.table-striped
         %tr
           %th Navn
           %th Epost

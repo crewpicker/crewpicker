@@ -1,12 +1,37 @@
-%h1 Statistikk
-%h2 Annonser
-%table.border
-  %tr
-    %th Type
-    %th Antall
-    %th Sum
-  - @ad_types.each do |ad_type|
+:javascript
+  $(document).ready(function() {
+    var data = [
+      {
+        value: #{CrewApplication.all.count + 2},
+        color: "#99b433",
+        highlight: "#a9c443",
+        label: "Søknader"
+      },
+      {
+        value: #{Volunteer.all.count},
+        color: "#2d89ef",
+        highlight: "#3d99ff",
+        label: "Frivillige"
+      }
+    ];
+    var ctx = $("#myChart").get(0).getContext("2d");
+    var myPieChart = new Chart(ctx).Pie(data);
+  });
+.container
+  %h1 Statistikk
+  %h2 Annonser
+  %table.table.table-striped
     %tr
-      %td= ad_type.name
-      %td= ad_type.ads.count
-      %td= ad_type.value * ad_type.ads.count
+      %th Type
+      %th Antall
+      %th Sum
+    - @ad_types.each do |ad_type|
+      %tr
+        %td= ad_type.name
+        %td= ad_type.ads.count
+        %td= ad_type.value * ad_type.ads.count
+  %h2 Frivillige
+  %ul
+    %li Antall søknader: #{CrewApplication.all.count}
+    %li Antall frivillige: #{Volunteer.all.count}
+  %canvas#myChart{:width => "200", :height => "200"}

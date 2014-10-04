@@ -1,4 +1,5 @@
 class VolunteerMailer < ActionMailer::Base
+  # TODO: set default from address in config file
   default from: "***REMOVED***"
   def custom_email(subject, recipients, content_markdown, content_plain)
     @content = content_markdown
