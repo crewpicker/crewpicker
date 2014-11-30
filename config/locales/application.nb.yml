@@ -73,6 +73,9 @@ nb:
       ad:
         one: Annonse
         other: Annonser
+      band_member:
+        one: Bandmedlem
+        other: Bandmedlemmer
       user:
         one: Bruker
         other: Brukere
@@ -90,6 +93,14 @@ nb:
         name: "Bandnavn"
         contact_name: "Kontaktperson"
         email: "E-post"
+      band/band_members:
+        name: "Et bandmedlems navn"
+        phone: "Et bandmedlems telefonnummer"
+        role: "Et bandmedlems rolle"
+      band_member:
+        name: "Navn"
+        phone: "Telefon"
+        role: "Rolle"
       stage:
         name: "Navn"
         from: "Fra"

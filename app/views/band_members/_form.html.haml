@@ -4,32 +4,23 @@
       #error_explanation
         %h2
           = pluralize(@band_member.errors.count, "error")
-          prohibited this band_member from being saved:
+          feil hindret bandmedlemmet fra å bli lagret:
         %ul
           - @band_member.errors.full_messages.each do |msg|
-            %li= msg
+            %li{:style => "color: red;"}= msg
     = hidden_field_tag :id, params[:id]
     = f.hidden_field :user_id, :value => current_user.id if current_user
-    = f.fields_for :person do |p|
-      .form-group
-        = p.label :name, t(:name)
-        %br/
-        = p.text_field :name, class: 'form-control'
-      .form-group
-        = p.label :address, t(:address)
-        %br/
-        = p.text_area :address, rows: '4', class: 'form-control'
-      .form-group
-        = p.label :email, t(:email)
-        %br/
-        = p.text_field :email, class: 'form-control'
-      .form-group
-        = p.label :phone, t(:phone)
-        %br/
-        = p.text_field :phone, class: 'form-control'
     .form-group
-      = f.label :role, t(:role)
+      = f.label :name
+      %br
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :phone
+      %br
+      = f.text_field :phone, class: 'form-control'
+    .form-group
+      = f.label :role
       %br/
       = f.text_field :role, class: 'form-control'
     .form-group
-      = f.submit t(:submit), class: 'btn btn-primary btn-block'
+      = f.submit nil, class: 'btn btn-primary btn-block'
