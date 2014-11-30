@@ -10,7 +10,7 @@
   - if current_user
     - current_user.bands.each do |band|
       %p
-        \&gt; #{link_to band.name, band} | #{link_to 'Slett', band_path(band), :method => :delete, confirm: 'Er du sikker på at du vil slette bandet?'}
+        \&gt; #{link_to band.name, band} | #{link_to 'Slett', band_path(band), method: :delete, data: { confirm: 'Er du sikker på at du vil slette bandet?' }}
   %p
     = link_to 'Påmelding &raquo;'.html_safe, new_band_path, class: 'btn btn-primary'
   %p Om du har trøbbel med bandpåmelding, send epost til festival@rockmotrus.no eller ring 97 95 53 50, så sørger vi for at påmeldinga blir i orden.

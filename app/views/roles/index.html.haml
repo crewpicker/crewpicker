@@ -10,6 +10,6 @@
       %td= role.name
       %td= link_to 'Show', role
       %td= link_to 'Edit', edit_role_path(role)
-      %td= link_to 'Destroy', role, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Destroy', role, method: :delete, data: { confirm: t(:confirm) }
 %br/
 = link_to 'New Role', new_role_path
