@@ -30,7 +30,6 @@ class BandMembersController < ApplicationController
   # GET /band_members/new.xml
   def new
     @band_member = BandMember.new
-    @band_member.build_person
     @band = Band.find(params[:band_id])
 
     respond_to do |format|
@@ -42,9 +41,6 @@ class BandMembersController < ApplicationController
   # GET /band_members/1/edit
   def edit
     @band_member = BandMember.find(params[:id])
-    if !@band_member.person
-      @band_member.build_person
-    end
     @band = Band.find(params[:band_id])
   end
 
@@ -54,13 +50,6 @@ class BandMembersController < ApplicationController
     @band_member = BandMember.new(band_member_params)
     @band = Band.find(params[:band_id])
     @band.band_members << @band_member
-    person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
-    if person.id != @band_member.person.id
-      person.address = @band_member.person.address
-      person.email = @band_member.person.email
-      @band_member.person.destroy
-      @band_member.person = person
-    end
 
     respond_to do |format|
       if @band_member.save
@@ -80,14 +69,6 @@ class BandMembersController < ApplicationController
 
     respond_to do |format|
       if @band_member.update_attributes(band_member_params)
-        person = Person.find(:all, :conditions => {:name => @band_member.person.name, :phone => @band_member.person.phone}).first
-        if person.id != @band_member.person.id
-          person.address = @band_member.person.address
-          person.email = @band_member.person.email
-          @band_member.person.destroy
-          @band_member.person = person
-          @band_member.save
-        end
         format.html { redirect_to(@band_member.band, :notice => 'Band member was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -113,6 +94,6 @@ class BandMembersController < ApplicationController
   private
 
   def band_member_params
-    params.require(:band_member).permit(:id, :role, :user_id, person_attributes: [:name, :address, :email, :phone])
+    params.require(:band_member).permit(:id, :name, :phone, :role, :user_id)
   end
 end

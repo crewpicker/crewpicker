@@ -1,77 +1,110 @@
-%div{:style => "max-width: 350px;"}
-  = form_for(@band, class: 'form-horizontal', :html => { :multipart => true }) do |f|
-    - if @band.errors.any?
-      #error_explanation
-        %h2.h3
-          = @band.errors.count
-          feil hindret bandet fra å bli lagret:
-        %ul
-          - @band.errors.full_messages.each do |msg|
-            %li{:style => "color: red;"}= msg
-    = f.hidden_field :user_id
-    .form-group
-      = f.label "Bandnavn"
-      %br/
-      = f.text_field :name, class: 'form-control'
-    .form-group
-      = f.label t(:contact_name)
-      %br/
-      = f.text_field :contact_name, class: 'form-control'
-    .form-group
-      = f.label t(:email)
-      %br/
-      = f.text_field :email, class: 'form-control'
-    .form-group
-      = f.label t(:phone)
-      %br/
-      = f.text_field :phone, class: 'form-control'
-    .form-group
-      = f.label t(:address)
-      %br/
-      = f.text_area :address, rows: '3', class: 'form-control'
-    .form-group.row
-      .col-sm-4
-        = f.label :postal_code, "Postnr."
+= form_for(@band, class: 'form-horizontal', :html => { :multipart => true }) do |f|
+  - if @band.errors.any?
+    #error_explanation
+      %h2.h3
+        = @band.errors.count
+        feil hindret bandet fra å bli lagret:
+      %ul
+        - @band.errors.full_messages.each do |msg|
+          %li{:style => "color: red;"}= msg
+  = f.hidden_field :user_id
+  .row
+    .col-lg-5.col-md-6.col-sm-8
+      .form-group
+        = f.label "Bandnavn"
         %br/
-        = f.text_field :postal_code, :maxlength => 4, class: 'form-control'
-      .col-sm-8
-        = f.label :city, "Sted"
+        = f.text_field :name, class: 'form-control'
+      .form-group
+        = f.label t(:contact_name)
         %br/
-        = f.text_field :city, class: 'form-control'
-    %hr/
-    %h2 Fortell om bandet
-    .form-group
-      = f.label "Beskrivelse av bandet"
-      %br/
-      = f.text_area :description, rows: '15', class: 'form-control'
-    .form-group
-      = f.label t(:image)
-      %br/
-      = f.file_field :image
-    %hr/
-    %h2 Deltakerlåt
-    %p (dere får spille flere, men det er denne som vurderes av juryen)
-    .form-group
-      = f.label t(:song_title)
-      %br/
-      = f.text_field :song_title, class: 'form-control'
-    .form-group
-      = f.label t(:song_composer)
-      %br/
-      = f.text_field :song_composer, class: 'form-control'
-    .form-group
-      = f.label t(:song_lyrics)
-      %br/
-      = f.text_area :song_lyrics, rows: '20', class: 'form-control'
-    .form-group
-      = f.label t(:playtime_wish)
-      (klokkeslett fra 00:00 til 14:00)
-      %br/
-      = f.text_field :playtime_wish, class: 'form-control'
-    .form-group
-      = f.label t(:playtime_wish_alt)
-      (klokkeslett fra 00:00 til 14:00)
-      %br/
-      = f.text_field :playtime_wish_alt, class: 'form-control'
-    .form-group
-      = f.submit t(:submit), class: 'btn btn-primary btn-block'
+        = f.text_field :contact_name, class: 'form-control'
+      .form-group
+        = f.label t(:email)
+        %br/
+        = f.text_field :email, class: 'form-control'
+      .form-group
+        = f.label t(:phone)
+        %br/
+        = f.text_field :phone, class: 'form-control'
+      .form-group
+        = f.label t(:address)
+        %br/
+        = f.text_area :address, rows: '3', class: 'form-control'
+      .form-group.row
+        .col-xs-4
+          = f.label :postal_code, "Postnr."
+          %br/
+          = f.text_field :postal_code, :maxlength => 4, class: 'form-control'
+        .col-xs-8
+          = f.label :city, "Sted"
+          %br/
+          = f.text_field :city, class: 'form-control'
+  %hr/
+  %h2 Fortell om bandet
+  %p
+    Alle bandmedlemmene må registreres for å få tilgang backstage for å komme seg på scena.
+    %br
+    Er dere flere enn det er felter til her, så kan det registreres flere medlemmer etter at bandet er registrert.
+  - (6 - @band.band_members.count).times do
+    - @band.band_members.build(user_id: @band.user_id)
+  - @band.band_members.each do |band_member|
+    = f.fields_for :band_members, band_member do |fsub|
+      = fsub.hidden_field :user_id
+      %h3 Bandmedlem:
+      .row
+        .col-lg-4.col-md-5.col-sm-6.col-xs-12
+          .form_group
+            = fsub.label :name
+            = fsub.text_field :name, class: 'form-control'
+        .col-lg-2.col-md-2.col-sm-3.col-xs-6
+          .form_group
+            = fsub.label :phone
+            = fsub.text_field :phone, class: 'form-control'
+        .col-lg-3.col-md-3.col-sm-3.col-xs-6
+          .form_group
+            = fsub.label :role
+            = fsub.text_field :role, class: 'form-control'
+  %hr
+  %p
+    Vi setter pris på om du skriver en liten beskrivelse av bandet, samt laster opp et bandbilde.
+    %br
+    Disse vil kunne bli brukt i Rock Mot Rus-avisa og andre medier.
+  .row
+    .col-lg-5.col-md-6.col-sm-8
+      .form-group
+        = f.label "Beskrivelse av bandet"
+        %br/
+        = f.text_area :description, rows: '15', class: 'form-control'
+      .form-group
+        = f.label t(:image)
+        %br/
+        = f.file_field :image
+  %hr/
+  %h2 Deltakerlåt
+  %p (dere får spille flere, men det er denne som vurderes av juryen)
+  .row
+    .col-lg-5.col-md-6.col-sm-8
+      .form-group
+        = f.label t(:song_title)
+        %br/
+        = f.text_field :song_title, class: 'form-control'
+      .form-group
+        = f.label t(:song_composer)
+        %br/
+        = f.text_field :song_composer, class: 'form-control'
+      .form-group
+        = f.label t(:song_lyrics)
+        %br/
+        = f.text_area :song_lyrics, rows: '20', class: 'form-control'
+      .form-group
+        = f.label t(:playtime_wish)
+        (klokkeslett fra 00:00 til 14:00)
+        %br/
+        = f.text_field :playtime_wish, class: 'form-control'
+      .form-group
+        = f.label t(:playtime_wish_alt)
+        (klokkeslett fra 00:00 til 14:00)
+        %br/
+        = f.text_field :playtime_wish_alt, class: 'form-control'
+      .form-group
+        = f.submit t(:submit), class: 'btn btn-primary btn-block'

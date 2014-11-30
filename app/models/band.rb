@@ -4,7 +4,8 @@ class Band < ActiveRecord::Base
   has_many :band_members, :dependent => :destroy
   has_one :stage_schedule
   belongs_to :user
-  default_scope -> { order('bands.name ASC') }
+  accepts_nested_attributes_for :band_members, :reject_if => lambda { |c| c[:name].blank? }
+  default_scope -> { order :name }
   validates :name, :presence => true
   validates :name, :uniqueness => true
   validates :contact_name, :presence => true

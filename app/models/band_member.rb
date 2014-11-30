@@ -1,8 +1,9 @@
 # encoding: UTF-8
 class BandMember < ActiveRecord::Base
   belongs_to :band
-  belongs_to :person
   belongs_to :user
-  default_scope -> { includes(:person).order("people.name") }
-  accepts_nested_attributes_for :person
+  default_scope -> { order :name }
+  validates :name, :presence => true
+  validates :phone, :presence => true
+  validates :role, :presence => true
 end
