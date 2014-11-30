@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.1.5'
+gem 'rails', '4.1.8'
 
 gem 'mysql2'
 
-gem 'paperclip', '~> 3.4.2'
+gem 'paperclip', '~> 4.2.0'
 gem 'pdfkit', :git => "https://github.com/pdfkit/pdfkit.git"
 gem 'sorcery'
 gem 'declarative_authorization'
