@@ -20,5 +20,5 @@
           |
           = link_to t(:edit), edit_access_level_path(access_level)
           |
-          = link_to t(:delete), access_level, :confirm => t(:confirm), :method => :delete
+          = link_to t(:delete), access_level, method: :delete, data: { confirm: t(:confirm) }
   %p= link_to 'Nytt crewkort', new_access_level_path

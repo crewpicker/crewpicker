@@ -26,6 +26,5 @@
         %td= nl2br(ad.notes)
         %td= ad.salesman
         %td= link_to 'Endre', edit_ad_path(ad)
-        %td= link_to 'Slett', ad, :confirm => 'Du vil sannsynligvis ikke gjøre dette.', :method => :delete
-  %br
-  = link_to 'Ny annonse', new_ad_path
+        %td= link_to 'Slett', ad, method: :delete, data: { confirm: 'Du vil sannsynligvis ikke gjøre dette.' }
+  %p= link_to 'Ny annonse', new_ad_path

@@ -35,6 +35,7 @@
       %td
         = link_to t(:show), crew_application
         |
-        \#{link_to t(:edit), edit_crew_application_path(crew_application)} |
-        \#{link_to t(:delete), crew_application, :confirm => t(:confirm), :method => :delete}
+        = link_to t(:edit), edit_crew_application_path(crew_application)
+        |
+        = link_to t(:delete), crew_application, method: :delete, data: { confirm: t(:confirm) }
 %p= link_to 'New Crew application', new_crew_application_path

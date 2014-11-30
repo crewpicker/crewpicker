@@ -17,4 +17,5 @@
         %td= if band_member.person then band_member.person.phone end
         %td
           = link_to t(:edit), edit_band_band_member_path(band, band_member)
-          | #{link_to t(:delete), [band, band_member], :confirm => t(:confirm), :method => :delete}
+          |
+          = link_to t(:delete), [band, band_member], method: :delete, data: { confirm: t(:confirm) }

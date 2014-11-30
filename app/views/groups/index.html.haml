@@ -15,5 +15,5 @@
         %td= group.internal ? t(:answer_yes) : t(:answer_no)
         %td
           = link_to t(:show), group
-          | #{link_to t(:edit), edit_group_path(group)} | #{link_to t(:delete), group, :confirm => t(:confirm), :method => :delete}
+          | #{link_to t(:edit), edit_group_path(group)} | #{link_to t(:delete), group, method: :delete, data: { confirm: t(:confirm) }}
   %p= link_to t(:new_group), new_group_path

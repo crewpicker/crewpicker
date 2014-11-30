@@ -26,9 +26,10 @@
         %td= volunteer.access_level
         %td
           = link_to t(:show), volunteer
-          | #{link_to t(:edit), edit_volunteer_path(volunteer)} | #{link_to t(:delete), volunteer, :confirm => t(:confirm), :method => :delete}
+          |
+          = link_to t(:edit), edit_volunteer_path(volunteer)
+          |
+          = link_to t(:delete), volunteer, method: :delete, data: { confirm: t(:confirm) }
     %tr
-      %th{:colspan => "9"}
-        = t(:count)
-        \: #{group.volunteers.count}
-/ <p><haml:loud> link_to t(:new_volunteer), new_volunteer_path </haml:loud></p>
+      %th{:colspan => "9"} #{t(:count)}: #{group.volunteers.count}
+%p= link_to "Nytt crewmedlem", new_volunteer_path, class: 'btn btn-sm btn-danger', data: { confirm: 'Her får bare Kristin leke!' }
