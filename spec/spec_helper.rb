@@ -42,7 +42,9 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL
   config.include Rails.application.routes.url_helpers
+  config.include Sorcery::TestHelpers::Rails::Controller, type: :controller
 
   config.filter_run focus: true
   config.run_all_when_everything_filtered = true
+  config.raise_errors_for_deprecations!
 end
