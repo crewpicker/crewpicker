@@ -35,4 +35,5 @@ FestivalAdmin::Application.configure do
   config.static_cache_control = "public, max-age=3600"
 
   config.eager_load = false
+  Rails.application.routes.default_url_options[:host] = 'test.host'
 end

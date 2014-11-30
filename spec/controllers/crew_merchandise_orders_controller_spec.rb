@@ -18,23 +18,25 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe CrewMerchandiseOrdersController do
+describe CrewMerchandiseOrdersController, type: :controller do
 
-  # This should return the minimal set of attributes required to create a valid
-  # CrewMerchandiseOrder. As you add validations to CrewMerchandiseOrder, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) { { "volunteer" => "" } }
+  let(:valid_attributes) { attributes_for(:crew_merchandise_order) }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # CrewMerchandiseOrdersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before :each do
+    @user = create(:user_with_admin_role)
+    login_user(@user)
+  end
+
   describe "GET index" do
     it "assigns all crew_merchandise_orders as @crew_merchandise_orders" do
       crew_merchandise_order = CrewMerchandiseOrder.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:crew_merchandise_orders).should eq([crew_merchandise_order])
+      expect(assigns(:crew_merchandise_orders)).to eq([crew_merchandise_order])
     end
   end
 
@@ -42,14 +44,14 @@ describe CrewMerchandiseOrdersController do
     it "assigns the requested crew_merchandise_order as @crew_merchandise_order" do
       crew_merchandise_order = CrewMerchandiseOrder.create! valid_attributes
       get :show, {:id => crew_merchandise_order.to_param}, valid_session
-      assigns(:crew_merchandise_order).should eq(crew_merchandise_order)
+      expect(assigns(:crew_merchandise_order)).to eq(crew_merchandise_order)
     end
   end
 
   describe "GET new" do
     it "assigns a new crew_merchandise_order as @crew_merchandise_order" do
       get :new, {}, valid_session
-      assigns(:crew_merchandise_order).should be_a_new(CrewMerchandiseOrder)
+      expect(assigns(:crew_merchandise_order)).to be_a_new(CrewMerchandiseOrder)
     end
   end
 
@@ -57,7 +59,7 @@ describe CrewMerchandiseOrdersController do
     it "assigns the requested crew_merchandise_order as @crew_merchandise_order" do
       crew_merchandise_order = CrewMerchandiseOrder.create! valid_attributes
       get :edit, {:id => crew_merchandise_order.to_param}, valid_session
-      assigns(:crew_merchandise_order).should eq(crew_merchandise_order)
+      expect(assigns(:crew_merchandise_order)).to eq(crew_merchandise_order)
     end
   end
 
@@ -65,35 +67,35 @@ describe CrewMerchandiseOrdersController do
     describe "with valid params" do
       it "creates a new CrewMerchandiseOrder" do
         expect {
-          post :create, {:crew_merchandise_order => valid_attributes}, valid_session
+          post :create, crew_merchandise_order: attributes_for(:crew_merchandise_order)
         }.to change(CrewMerchandiseOrder, :count).by(1)
       end
 
       it "assigns a newly created crew_merchandise_order as @crew_merchandise_order" do
-        post :create, {:crew_merchandise_order => valid_attributes}, valid_session
-        assigns(:crew_merchandise_order).should be_a(CrewMerchandiseOrder)
-        assigns(:crew_merchandise_order).should be_persisted
+        post :create, crew_merchandise_order: attributes_for(:crew_merchandise_order)
+        expect(assigns(:crew_merchandise_order)).to be_a(CrewMerchandiseOrder)
+        expect(assigns(:crew_merchandise_order)).to be_persisted
       end
 
       it "redirects to the created crew_merchandise_order" do
-        post :create, {:crew_merchandise_order => valid_attributes}, valid_session
-        response.should redirect_to(CrewMerchandiseOrder.last)
+        post :create, crew_merchandise_order: attributes_for(:crew_merchandise_order)
+        expect(response).to redirect_to(CrewMerchandiseOrder.last)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved crew_merchandise_order as @crew_merchandise_order" do
         # Trigger the behavior that occurs when invalid params are submitted
-        CrewMerchandiseOrder.any_instance.stub(:save).and_return(false)
-        post :create, {:crew_merchandise_order => { "volunteer" => "invalid value" }}, valid_session
-        assigns(:crew_merchandise_order).should be_a_new(CrewMerchandiseOrder)
+        allow_any_instance_of(CrewMerchandiseOrder).to receive(:save).and_return(false)
+        post :create, crew_merchandise_order: { "volunteer_id" => "invalid value" }
+        expect(assigns(:crew_merchandise_order)).to be_a_new(CrewMerchandiseOrder)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        CrewMerchandiseOrder.any_instance.stub(:save).and_return(false)
-        post :create, {:crew_merchandise_order => { "volunteer" => "invalid value" }}, valid_session
-        response.should render_template("new")
+        allow_any_instance_of(CrewMerchandiseOrder).to receive(:save).and_return(false)
+        post :create, crew_merchandise_order: { "volunteer_id" => "invalid value" }
+        expect(response).to render_template("new")
       end
     end
   end
@@ -106,20 +108,20 @@ describe CrewMerchandiseOrdersController do
         # specifies that the CrewMerchandiseOrder created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        CrewMerchandiseOrder.any_instance.should_receive(:update).with({ "volunteer" => "" })
-        put :update, {:id => crew_merchandise_order.to_param, :crew_merchandise_order => { "volunteer" => "" }}, valid_session
+        expect_any_instance_of(CrewMerchandiseOrder).to receive(:update).with({ "volunteer_id" => "5" })
+        put :update, {:id => crew_merchandise_order.to_param, crew_merchandise_order: attributes_for(:crew_merchandise_order, volunteer_id: 5) }, valid_session
       end
 
       it "assigns the requested crew_merchandise_order as @crew_merchandise_order" do
         crew_merchandise_order = CrewMerchandiseOrder.create! valid_attributes
         put :update, {:id => crew_merchandise_order.to_param, :crew_merchandise_order => valid_attributes}, valid_session
-        assigns(:crew_merchandise_order).should eq(crew_merchandise_order)
+        expect(assigns(:crew_merchandise_order)).to eq(crew_merchandise_order)
       end
 
       it "redirects to the crew_merchandise_order" do
         crew_merchandise_order = CrewMerchandiseOrder.create! valid_attributes
         put :update, {:id => crew_merchandise_order.to_param, :crew_merchandise_order => valid_attributes}, valid_session
-        response.should redirect_to(crew_merchandise_order)
+        expect(response).to redirect_to(crew_merchandise_order)
       end
     end
 
@@ -127,17 +129,17 @@ describe CrewMerchandiseOrdersController do
       it "assigns the crew_merchandise_order as @crew_merchandise_order" do
         crew_merchandise_order = CrewMerchandiseOrder.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        CrewMerchandiseOrder.any_instance.stub(:save).and_return(false)
-        put :update, {:id => crew_merchandise_order.to_param, :crew_merchandise_order => { "volunteer" => "invalid value" }}, valid_session
-        assigns(:crew_merchandise_order).should eq(crew_merchandise_order)
+        allow_any_instance_of(CrewMerchandiseOrder).to receive(:save).and_return(false)
+        put :update, {:id => crew_merchandise_order.to_param, :crew_merchandise_order => { "volunteer_id" => "invalid value" }}, valid_session
+        expect(assigns(:crew_merchandise_order)).to eq(crew_merchandise_order)
       end
 
       it "re-renders the 'edit' template" do
         crew_merchandise_order = CrewMerchandiseOrder.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        CrewMerchandiseOrder.any_instance.stub(:save).and_return(false)
-        put :update, {:id => crew_merchandise_order.to_param, :crew_merchandise_order => { "volunteer" => "invalid value" }}, valid_session
-        response.should render_template("edit")
+        allow_any_instance_of(CrewMerchandiseOrder).to receive(:save).and_return(false)
+        put :update, {:id => crew_merchandise_order.to_param, :crew_merchandise_order => { "volunteer_id" => "invalid value" }}, valid_session
+        expect(response).to render_template("edit")
       end
     end
   end
@@ -153,7 +155,7 @@ describe CrewMerchandiseOrdersController do
     it "redirects to the crew_merchandise_orders list" do
       crew_merchandise_order = CrewMerchandiseOrder.create! valid_attributes
       delete :destroy, {:id => crew_merchandise_order.to_param}, valid_session
-      response.should redirect_to(crew_merchandise_orders_url)
+      expect(response).to redirect_to(crew_merchandise_orders_url)
     end
   end
 

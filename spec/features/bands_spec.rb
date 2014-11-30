@@ -42,7 +42,7 @@ describe "Bands" do
 
     it "requires name" do
       click_on "Lagre"
-      page.should have_content("Bandnavn kan ikke være blank")
+      expect(page).to have_content("Bandnavn kan ikke være blank")
     end
 
     describe "with valid band" do
@@ -53,15 +53,15 @@ describe "Bands" do
       end
 
       it "says the record was created" do
-        page.should have_content("Bandet er registrert")
+        expect(page).to have_content("Bandet er registrert")
       end
 
       it "redirects to show page" do
-        current_path.should eq(band_path(Band.last))
+        expect(current_path).to eq(band_path(Band.last))
       end
 
       it "has updated title" do
-        page.should have_content("Blast from the Past")
+        expect(page).to have_content("Blast from the Past")
       end
     end
   end
@@ -76,7 +76,7 @@ describe "Bands" do
     it "displays validation errors" do
       fill_in "band_name", with: ""
       click_on "Lagre"
-      page.should have_content("Bandnavn kan ikke være blank")
+      expect(page).to have_content("Bandnavn kan ikke være blank")
     end
 
     describe "with valid episode" do
@@ -86,15 +86,15 @@ describe "Bands" do
       end
 
       it "redirects to show page" do
-        current_path.should eq(band_path(Band.last))
+        expect(current_path).to eq(band_path(Band.last))
       end
 
       it "says the record was updated" do
-        page.should have_content("Bandopplysningene er oppdatert")
+        expect(page).to have_content("Bandopplysningene er oppdatert")
       end
 
       it "has updated title" do
-        page.should have_content("Back to the Future")
+        expect(page).to have_content("Back to the Future")
       end
     end
   end
