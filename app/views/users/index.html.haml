@@ -38,7 +38,7 @@
             Nei
         %td= link_to t(:show), user
         %td= link_to t(:edit), edit_user_path(user)
-        %td= link_to t(:delete), user, :confirm => 'Are you sure?', :method => :delete
+        %td= link_to t(:delete), user, method: :delete, data: { confirm: t(:confirm) }
     %tr
       %td{:colspan => "10"}
         Antall: #{@users.count}
