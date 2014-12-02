@@ -11,4 +11,5 @@ class Band < ActiveRecord::Base
   validates :contact_name, :presence => true
   validates :email, :presence => true
   validates_format_of :email, :with => /\A.+@.+\..+\z/
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 end
