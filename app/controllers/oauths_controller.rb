@@ -21,7 +21,7 @@ class OauthsController < ApplicationController
           end
           user
         end
-        role = Role.find_or_create_by_name('user')
+        role = Role.find_or_create_by(name: 'user')
         @user.roles << role
 
         # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
