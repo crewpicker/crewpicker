@@ -45,7 +45,7 @@
             %td= crew_wish.group.name
     %p
       = link_to 'Endre crewsøknad', edit_crew_application_path(current_user.crew_application), class: 'btn btn-primary'
-      = link_to 'Slett crewsøknad', crew_application_path(current_user.crew_application), :method => :delete, class: 'btn btn-danger', confirm: 'Er du helt sikker?'
+      = link_to 'Slett crewsøknad', crew_application_path(current_user.crew_application), method: :delete, class: 'btn btn-danger', data: { confirm: 'Er du helt sikker?' }
   - elsif is_volunteer
     - current_user.volunteers.each do |volunteer|
       %p
