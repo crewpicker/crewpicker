@@ -12,4 +12,9 @@ class Band < ActiveRecord::Base
   validates :email, :presence => true
   validates_format_of :email, :with => /\A.+@.+\..+\z/
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  validate :has_band_members
+
+  def has_band_members
+    errors.add(:base, 'må ha minst ett bandmedlem') if self. band_members.blank?
+  end
 end
