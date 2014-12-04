@@ -6,6 +6,7 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require holder
+//= require moment
 //= require fullcalendar
 //= require jquery.qtip.basic.js
 //= require Chart
