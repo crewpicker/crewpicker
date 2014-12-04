@@ -62,22 +62,20 @@
         right: ''
       },
       defaultView: 'agendaWeek',
-      year: #{@stage.from.strftime("%Y")},
-      month: #{@stage.from.strftime("%m").to_i-1},
-      date: #{@stage.from.strftime("%d")},
+      defaultDate: "#{@stage.from.strftime("%Y-%m-%d")}",
       axisFormat: 'H:mm',
       timeFormat: 'H:mm',
       height: 3500,
       dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fre','Lør'],
       dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
       titleFormat: {
-        month: 'MMMM yyyy',
-        week: "d[ yyyy]{ '—'[ MMM] d MMMM yyyy}",
-        day: 'dddd, MMM d, yyyy'
+        month: 'MMMM YYYY',
+        week: "YYYY-MM-DD",
+        day: 'dddd, MMM d, YYYY'
       },
       columnFormat: {
         month: 'ddd',
-        week: 'dddd d/M',
+        week: 'dddd DD. MMM',
         day: 'dddd M/d'
       },
       disableResizing: true,
@@ -87,26 +85,25 @@
       weekends: true,
       hiddenDays: [ 1,2,3,4 ],
       allDaySlot: false,
-      slotMinutes: 15,
-      defaultEventMinutes: 15,
-      events: '#{stage_stage_schedule_path(@stage.id, 1)}',
-      drop: function(date, allDay) {
+      slotDuration: '00:15:00',
+      defaultTimedEventDuration: '00:15:00',
+      events: "#{stage_stage_schedule_path(@stage.id, 1)}",
+      drop: function(date) {
         var originalEventObject = $(this).data('eventObject');
         var copiedEventObject = $.extend({}, originalEventObject);
         copiedEventObject.start = date;
-        copiedEventObject.allDay = allDay;
         $('#calendar').fullCalendar('renderEvent', copiedEventObject, false);
         jQuery.ajax({
-          data: 'band_id=' + copiedEventObject.id + '&year=' + date.getFullYear() + '&month=' + (date.getMonth()+1) + '&day=' + date.getDate() + '&hour=' + date.getHours() + '&minute=' + date.getMinutes(),
+          data: 'band_id=' + copiedEventObject.id + '&year=' + date.year() + '&month=' + (date.months() +1) + '&day=' + date.date() + '&hour=' + date.hours() + '&minute=' + date.minutes(),
           dataType: 'script',
           type: 'post',
           url: '/stages/#{@stage.id}/stage_schedules'
         });
         $(this).remove();
       },
-      eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
+      eventDrop: function(event, delta, revertFunc) {
         jQuery.ajax({
-          data: 'band_id=' + event.id + '&day_delta=' + dayDelta + '&minute_delta=' + minuteDelta,
+          data: 'band_id=' + event.id + '&day_delta=' + delta.days() + '&minute_delta=' + delta.minutes(),
           dataType: 'script',
           type: 'put',
           url: '/stages/#{@stage.id}/stage_schedules/' + event.id
