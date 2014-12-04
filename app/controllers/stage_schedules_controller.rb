@@ -7,7 +7,7 @@ class StageSchedulesController < ApplicationController
     events = []
     stage_schedules.each do |stage_schedule|
       if band = Band.find(stage_schedule.band_id)
-        events << {:id => band.id, :title => band.name, :start => "#{stage_schedule.start.iso8601}", :end => "#{stage_schedule.end.iso8601}", :allDay => false, :recurring => false}
+        events << {:id => band.id, :title => band.name, :start => "#{stage_schedule.start.iso8601}", :end => "#{stage_schedule.end.iso8601}"}
       else
         stage_schedule.destroy
       end
@@ -57,4 +57,10 @@ class StageSchedulesController < ApplicationController
       format.js
     end
   end
+
+  private
+
+    def stage_schedule_params
+      params.require(:stage_schedule).permit(:id, :band_id, :stage_id, :start, :end)
+    end
 end
