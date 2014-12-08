@@ -30,6 +30,7 @@
   %p
     = t(:count)
     \: #{@group.volunteers.count}
+.fullwidth
   %h2 Crewsøkere
   - 4.times do |c|
     %h3
@@ -43,7 +44,6 @@
         %th Epost
         %th Telefon
         %th Relevant erfaring
-        %th Brukernavn
         - 4.times do |i|
           %th
             = i+1
@@ -58,7 +58,6 @@
             %td= crew_application.email
             %td= crew_application.phone
             %td= crew_application.experience
-            %td= crew_application.user.username if crew_application.user
             - crew_application.crew_wishes.each do |crew_wish|
               - if crew_wish.group_id
                 <td
@@ -70,6 +69,7 @@
             %td
               = link_to 'Velg', choose_group_crew_application_path(@group, crew_application)
               |
-              \#{link_to t(:edit), edit_group_crew_application_path(@group, crew_application)} |
-              \#{link_to t(:delete), crew_application, :confirm => t(:confirm), :method => :delete}
+              = link_to t(:edit), edit_group_crew_application_path(@group, crew_application)
+              |
+              = link_to t(:delete), crew_application, method: :delete, data: { confirm: t(:confirm) }
   %p= link_to t(:back), groups_path
