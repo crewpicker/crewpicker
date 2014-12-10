@@ -1,7 +1,6 @@
 - title t(:volunteers_list)
 %h1= t(:volunteers_list)
 %p#notice= notice
-/ <p><haml:loud> link_to t(:new_volunteer), new_volunteer_path </haml:loud></p>
 %table.table.table-striped
   - @groups.each do |group|
     %tr

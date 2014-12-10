@@ -1,8 +1,9 @@
+- title t(:statistics)
 :javascript
   $(document).ready(function() {
     var data = [
       {
-        value: #{CrewApplication.all.count + 2},
+        value: #{CrewApplication.all.count},
         color: "#99b433",
         highlight: "#a9c443",
         label: "Søknader"
@@ -18,8 +19,8 @@
     var myPieChart = new Chart(ctx).Pie(data);
   });
 .container
-  %h1 Statistikk
-  %h2 Annonser
+  %h1= t(:statistics)
+  %h2= t(:ads)
   %table.table.table-striped
     %tr
       %th Type

@@ -67,6 +67,7 @@ nb:
   listing: "liste over"
   new: "ny"
   roles: "roller"
+  statistics: "Statistikk"
 
   activerecord:
     models:

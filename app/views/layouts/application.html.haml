@@ -28,7 +28,7 @@
               %li{:class => "#{current_page?(volunteers_path) ? 'active' : ''}"}= link_to "Crew", volunteers_path
               %li{:class => "#{current_page?(bands_path) ? 'active' : ''}"}= link_to "Band", bands_path
               %li{:class => "#{current_page?(ads_path) ? 'active' : ''}"}= link_to t(:ads), ads_path
-              %li{:class => "#{current_page?(ad_types_path) ? 'active' : ''}"}= link_to t(:ad_types), ad_types_path
+              %li{:class => "#{current_page?(statistics_path) ? 'active' : ''}"}= link_to t(:statistics), statistics_path
               %li{:class => "#{current_page?(users_path) ? 'active' : ''}"}= link_to t(:users).capitalize, users_path
             - if current_user
               %li.dropdown
@@ -80,6 +80,11 @@
           = link_to 'Venues', stages_path
           |
           = link_to 'Send epost til alle påmeldte band', mailer_bands_path
+      - if controller_name == 'ads' || controller_name == 'ad_types'
+        %p
+          = link_to 'Annonser', ads_path
+          |
+          = link_to 'Annonsetyper', ad_types_path
       - if flash[:alert]
         %p.flash-error= flash[:alert]
       - if flash[:notice]
