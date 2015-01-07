@@ -1,4 +1,6 @@
 - title t(:statistics)
+- ad_sum = Ad.all.each.inject(0) {|sum, ad| sum + ad.ad_type.value}
+- ad_sum_percent = ((ad_sum.to_f / 100000) * 100).round
 :javascript
   $(document).ready(function() {
     var data = [
@@ -15,12 +17,30 @@
         label: "Frivillige"
       }
     ];
-    var ctx = $("#myChart").get(0).getContext("2d");
+    var ctx = $("#volunteersVSapplicants").get(0).getContext("2d");
     var myPieChart = new Chart(ctx).Pie(data);
   });
 .container
   %h1= t(:statistics)
+  %h2= t(:volunteers)
+  .row
+    .col-lg-4
+      %p
+        %strong Frivillige vs. Søknader
+      %canvas#volunteersVSapplicants{:width => "200", :height => "200"}
+      %ul
+        %li Antall søknader: #{CrewApplication.all.count}
+        %li Antall frivillige: #{Volunteer.all.count}
+    .col-lg-4
+      %p
+        %strong Grupper
+    .col-lg-4
+      %p
+        %strong Alder
   %h2= t(:ads)
+  .progress
+    %div.progress-bar{:role => "progressbar", :style => "width: #{ad_sum_percent}%;"}
+      #{ad_sum_percent}% (#{number_with_delimiter(ad_sum, delimiter: ' ')}kr) / 100 000kr
   %table.table.table-striped
     %tr
       %th Type
@@ -31,8 +51,3 @@
         %td= ad_type.name
         %td= ad_type.ads.count
         %td= ad_type.value * ad_type.ads.count
-  %h2 Frivillige
-  %ul
-    %li Antall søknader: #{CrewApplication.all.count}
-    %li Antall frivillige: #{Volunteer.all.count}
-  %canvas#myChart{:width => "200", :height => "200"}
