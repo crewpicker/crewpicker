@@ -58,3 +58,10 @@
         %td= ad_type.name
         %td= ad_type.ads.count
         %td= ad_type.value * ad_type.ads.count
+  %h2 Brukere
+  %p
+    RMR-brukere: #{User.where.not(crypted_password: nil).count}
+    %br
+    Facebook-brukere: #{Authentication.where(provider: 'facebook').count}
+    %br
+    Twitter-brukere: #{Authentication.where(provider: 'twitter').count}
