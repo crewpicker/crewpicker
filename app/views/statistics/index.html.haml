@@ -37,6 +37,13 @@
     .col-lg-4
       %p
         %strong Alder
+  %h2 Band
+  %p
+    Påmeldte band: #{Band.all.count}
+    %br
+    Totalt antall bandmedlemmer: #{BandMember.all.count}
+    %br
+    Gjennomsnittlig antall bandmedlemmer per band: #{(BandMember.all.count.to_f / Band.all.count).round}
   %h2= t(:ads)
   .progress
     %div.progress-bar{:role => "progressbar", :style => "width: #{ad_sum_percent}%;"}
