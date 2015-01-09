@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class StagesController < ApplicationController
+  filter_resource_access
   # GET /stages
   # GET /stages.xml
   def index
