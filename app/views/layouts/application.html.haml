@@ -62,7 +62,7 @@
           = link_to t(:locations), locations_path
           |
           = link_to "Events", events_path
-      - if controller_name == 'volunteers' || controller_name == 'crew_applications' || controller_name == 'groups' || controller_name == 'access_levels'
+      - if ((controller_name == 'volunteers' || controller_name == 'crew_applications' || controller_name == 'groups' || controller_name == 'access_levels') && !current_user.nil? && current_user.roles.find_by_name('admin'))
         %p
           = link_to 'Crewliste', volunteers_path
           |
@@ -73,7 +73,7 @@
           = link_to 'Crewkort', access_levels_path
           |
           = link_to 'Send epost til alle frivillige', mailer_volunteers_path
-      - if controller_name == 'bands' || controller_name == 'stages' || controller_name == 'stage_schedules'
+      - if ((controller_name == 'bands' || controller_name == 'stages' || controller_name == 'stage_schedules') && !current_user.nil? && current_user.roles.find_by_name('admin'))
         %p
           = link_to 'Band', bands_path
           |
