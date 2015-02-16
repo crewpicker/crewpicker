@@ -1,5 +1,5 @@
 - title t(:band_list)
-.container
+.container-wide
   %h1= t(:band_list)
   %p= link_to t(:new_band), new_band_path
   %table.table.table-striped
@@ -8,6 +8,7 @@
       %th= t(:contact_name)
       %th= t(:email)
       %th= t(:phone)
+      %th Sted
       %th= t(:playtime_wish)
       %th= t(:playtime_wish_alt)
       %th= t(:band_members_count)
@@ -20,6 +21,7 @@
         %td= band.contact_name
         %td= band.email
         %td= band.phone
+        %td= "#{band.postal_code} #{band.city}"
         %td= band.playtime_wish
         %td= band.playtime_wish_alt
         %td= band.band_members.count
