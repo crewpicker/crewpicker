@@ -11,3 +11,5 @@ config/config.yml
 public/system/*
 public/assets/*
 *.swp
+passwords.txt
+..bfg-report
