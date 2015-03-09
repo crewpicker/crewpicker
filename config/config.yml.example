@@ -1,0 +1,22 @@
+defaults: &DEFAULTS
+  use_google_analytics: false
+  default_from_email_address: 'festival@example.org'
+  app_secret_token: 'randomlonguniquestring'
+  app_secret_key_base: 'anotherrandomlonguniquestring'
+  facebook_api_key: ''
+  facebook_api_secret: ''
+  facebook_callback_url: 'http://0.0.0.0:3000/oauth/callback?provider=facebook'
+  twitter_api_key: ''
+  twitter_api_secret: ''
+  twitter_callback_url: 'http://0.0.0.0:3000/oauth/callback?provider=twitter'
+
+development:
+  <<: *DEFAULTS
+
+test:
+  <<: *DEFAULTS
+
+production:
+  <<: *DEFAULTS
+  use_google_analytics: true
+  google_analytics_tracking_id: 'UA-000000-01'
