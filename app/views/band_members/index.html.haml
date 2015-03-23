@@ -1,17 +1,18 @@
-- @bands.each do |band|
-  %h1= band.name
-  %table.border
-    %tr
-      %th= t(:name)
-      %th= t(:role)
-      %th= t(:phone)
-      %th
-    - band.band_members.each do |band_member|
+.container
+  - @bands.each do |band|
+    %h1= band.name
+    %table.table.table-striped
       %tr
-        %td= band_member.name
-        %td= band_member.role
-        %td= band_member.phone
-        %td
-          = link_to t(:edit), edit_band_band_member_path(band, band_member)
-          |
-          = link_to t(:delete), [band, band_member], method: :delete, data: { confirm: t(:confirm) }
+        %th= t(:name)
+        %th= t(:role)
+        %th= t(:phone)
+        %th
+      - band.band_members.each do |band_member|
+        %tr
+          %td= band_member.name
+          %td= band_member.role
+          %td= band_member.phone
+          %td
+            = link_to t(:edit), edit_band_band_member_path(band, band_member)
+            |
+            = link_to t(:delete), [band, band_member], method: :delete, data: { confirm: t(:confirm) }
