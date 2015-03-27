@@ -85,8 +85,8 @@
       weekends: true,
       hiddenDays: [ 1,2,3,4 ],
       allDaySlot: false,
-      slotDuration: '00:20:00',
-      defaultTimedEventDuration: '00:20:00',
+      slotDuration: '00:05:00',
+      defaultTimedEventDuration: '00:05:00',
       events: "#{stage_stage_schedule_path(@stage.id, 1)}",
       drop: function(date) {
         var originalEventObject = $(this).data('eventObject');
@@ -132,9 +132,9 @@
     Tidsskjema #{@stage.name}
   %p
     Forsink alle band med:
-    \#{link_to("15 min.", delay_band_orders_path(:delay => 20))}
-    | #{link_to("30 min.", delay_band_orders_path(:delay => 40))}
-    | #{link_to("-15 min.", delay_band_orders_path(:delay => -20))}
+    \#{link_to("15 min.", delay_band_orders_path(:delay => 05))}
+    | #{link_to("30 min.", delay_band_orders_path(:delay => 10))}
+    | #{link_to("-15 min.", delay_band_orders_path(:delay => -05))}
   #calendar
   #external-events
     %h4 Band uten spilletid
