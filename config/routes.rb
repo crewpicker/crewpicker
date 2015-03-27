@@ -36,6 +36,7 @@ FestivalAdmin::Application.routes.draw do
   end
 
   resources :stage_schedules do
+    get 'print', on: :collection
     get 'list', :on => :collection
     get 'update', :on => :collection
   end
