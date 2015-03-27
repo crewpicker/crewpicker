@@ -1,5 +1,5 @@
 - @stages.each do |stage|
   - stage.stage_schedules.each do |show|
-    = show.start.strftime("%a %H:%M")
+    %strong= show.start.strftime("%a %H:%M")
     = show.band.name
     %br
