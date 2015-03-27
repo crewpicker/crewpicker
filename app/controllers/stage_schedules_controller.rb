@@ -31,6 +31,9 @@ class StageSchedulesController < ApplicationController
       logger.warn("STAGE NOT FOUND")
     end
   end
+  def print
+    @stages = Stage.all
+  end
   def create
     band = Band.find(params[:band_id])
     stage = Stage.find(params[:stage_id])
