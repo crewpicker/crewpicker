@@ -83,7 +83,7 @@ class BandOrdersController < ApplicationController
   end
 
   def delay
-    stage_schedules = StageSchedule.find(:all, :conditions => ["stage_schedules.start > ?", DateTime.now.to_formatted_s(:db)])
+    stage_schedules = StageSchedule.where("stage_schedules.start > ?", DateTime.now.to_formatted_s(:db))
     stage_schedules.each do |stage_schedule|
       stage_schedule.start = stage_schedule.start.advance(:minutes => params[:delay].to_i)
       stage_schedule.end = stage_schedule.end.advance(:minutes => params[:delay].to_i)
