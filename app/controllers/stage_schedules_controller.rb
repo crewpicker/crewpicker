@@ -41,7 +41,7 @@ class StageSchedulesController < ApplicationController
     band.stage_schedule = stage_schedule
     stage_schedule.start = DateTime.civil(params[:year].to_i, params[:month].to_i, params[:day].to_i, params[:hour].to_i, params[:minute].to_i)
     stage_schedule.end = DateTime.civil(params[:year].to_i, params[:month].to_i, params[:day].to_i, params[:hour].to_i, params[:minute].to_i)
-    stage_schedule.end = stage_schedule.end.advance(:minutes => 15)
+    stage_schedule.end = stage_schedule.end.advance(:minutes => 5)
     stage.stage_schedules << stage_schedule
     stage_schedule.save
     render nothing: true
