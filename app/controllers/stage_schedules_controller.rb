@@ -49,8 +49,12 @@ class StageSchedulesController < ApplicationController
   def update
     band = Band.find(params[:band_id])
     stage_schedule = band.stage_schedule
-    stage_schedule.start = stage_schedule.start.advance(:days => params[:day_delta].to_i, :minutes => params[:minute_delta].to_i)
-    stage_schedule.end = stage_schedule.end.advance(:days => params[:day_delta].to_i, :minutes => params[:minute_delta].to_i)
+    if params[:day_delta]
+      stage_schedule.start = stage_schedule.start.advance(:days => params[:day_delta].to_i, :minutes => params[:minute_delta].to_i)
+      stage_schedule.end = stage_schedule.end.advance(:days => params[:day_delta].to_i, :minutes => params[:minute_delta].to_i)
+    else
+      stage_schedule.end = stage_schedule.end.advance(:days => params[:day_res_delta].to_i, :minutes => params[:minute_res_delta].to_i)
+    end
     stage_schedule.save
     render nothing: true
   end

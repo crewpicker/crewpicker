@@ -105,7 +105,15 @@
         jQuery.ajax({
           data: 'band_id=' + event.id + '&day_delta=' + delta.days() + '&minute_delta=' + delta.minutes(),
           dataType: 'script',
-          type: 'put',
+          type: 'patch',
+          url: '/stages/#{@stage.id}/stage_schedules/' + event.id
+        });
+      },
+      eventResize: function(event, delta, revertFunc) {
+        jQuery.ajax({
+          data: 'band_id=' + event.id + '&day_res_delta=' + delta.days() + '&minute_res_delta=' + delta.minutes(),
+          dataType: 'script',
+          type: 'patch',
           url: '/stages/#{@stage.id}/stage_schedules/' + event.id
         });
       },
