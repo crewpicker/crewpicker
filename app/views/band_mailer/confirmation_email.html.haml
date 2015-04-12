@@ -1,0 +1,24 @@
+!!!
+%html{:lang => "no"}
+  %body
+    :markdown
+      # Bekreftelse på påmelding til #{@event.name}
+      Vi bekrefter med dette at ditt band er påmeldt til #{@event.name}.
+      Vennligst se over at opplysningene under er korrekte
+
+      Bandnavn: #{@band.name}
+      Kontaktperson: #{@band.contact_name}
+      Epost: #{@band.email}
+      Telefon: #{@band.phone}
+      Addresse:
+      #{@band.address}
+      #{@band.postal_code} #{@band.city}
+
+      Bandmedlemmer:
+    - @band.band_members.each do |band_member|
+      :markdown
+        #{band_member.name}, #{band_member.role}
+    :markdown
+
+      Kontakt oss på TODO ved spørsmål
+

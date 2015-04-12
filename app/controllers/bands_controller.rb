@@ -51,6 +51,7 @@ class BandsController < ApplicationController
 
     respond_to do |format|
       if @band.save
+        BandMailer::confirmation_email(@band)
         format.html { redirect_to(@band, :notice => 'Bandet er registrert.') }
         format.xml  { render :xml => @band, :status => :created, :location => @band }
       else
