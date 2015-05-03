@@ -1,6 +1,6 @@
-- title t(:groups)
+- title Group.model_name.human(count: 2)
 .container
-  %h1= t(:groups)
+  %h1= Group.model_name.human(count: 2)
   %table.table.table-striped
     %tr
       %th= Group.human_attribute_name(:name)
@@ -16,4 +16,4 @@
         %td
           = link_to t(:show), group
           | #{link_to t(:edit), edit_group_path(group)} | #{link_to t(:delete), group, method: :delete, data: { confirm: t(:confirm) }}
-  %p= link_to t(:new_group), new_group_path
+  %p= link_to "#{t(:create)} #{Group.model_name.human.downcase}", new_group_path, class: "btn btn-primary"

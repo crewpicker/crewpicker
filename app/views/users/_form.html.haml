@@ -1,4 +1,4 @@
-%div{:style => "max-width: 350px;"}
+.col-lg-5
   = form_for(@user) do |f|
     - if @user.errors.any?
       #error_explanation
@@ -9,32 +9,31 @@
           - @user.errors.full_messages.each do |msg|
             %li= msg
     .form-group
-      = f.label t(:name)
+      = f.label :name
       %br/
       = f.text_field :name, class: 'form-control'
     .form-group
-      = f.label t(:username)
+      = f.label :username
       %br/
       = f.text_field :username, class: 'form-control'
     .form-group
-      = f.label t(:email)
+      = f.label :email
       %br/
       = f.text_field :email, class: 'form-control'
     .form-group
-      = f.label t(:password)
+      = f.label :password
       %br/
       = f.password_field :password, class: 'form-control'
     .form-group
-      = f.label t(:password_confirmation)
+      = f.label :password_confirmation
       %br/
       = f.password_field :password_confirmation, class: 'form-control'
     - permitted_to? :manage, :roles do
-      .form-group
-        = f.label t(:roles).capitalize
-        %br/
-        - for role in Role.all
-          = check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role)
-          = h role.name
-          %br/
+      %strong= t(:roles).capitalize
+      - for role in Role.all
+        .checkbox
+          %label
+            = check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role)
+            = role.name
     .actions
       = f.submit class: 'btn btn-primary btn-block'

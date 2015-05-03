@@ -1,7 +1,7 @@
-nb:
+en:
   image: "Bilde"
   back: "Tilbake"
-  new_band: "Nytt band"
+  new_band: "Band sign up form"
   name: "Navn"
   contact_name: "Kontaktperson"
   email: "E-post"
@@ -17,9 +17,9 @@ nb:
   song_lyrics: "Sangtekst"
   playtime_wish: "Ønsket spilletid"
   playtime_wish_alt: "Alternativ spilletid"
-  edit: "Endre"
-  show: "Vis"
-  delete: "Slett"
+  edit: "Edit"
+  show: "Show"
+  delete: "Delete"
   confirm: "Er du sikker?"
   band: "Band"
   band_members: "Bandmedlemmer"
@@ -41,74 +41,68 @@ nb:
   new_location: "Nytt overnattinssted"
   have_playtime: "Har spilletid?"
   internal_group: "Intern gruppe?"
-  answer_yes: "Ja"
-  answer_no: "Nei"
-  groups: "Grupper"
-  group: "Gruppe"
-  new_group: "Ny gruppe"
-  volunteers_list: "Crewliste"
+  answer_yes: "Yes"
+  answer_no: "No"
+  volunteers_list: "Crew list"
   new_volunteer: "Nytt crewmedlem"
   count: "Antall"
   birthday: "Fødselsdato"
   access_level: "Crewkort"
   front_page: "Forside"
-  ads: "Annonser"
+  ads: "Ads"
   ad_types: "Annonsetyper"
   relevant_experience: "Relevant erfaring"
   submit_application: "Send inn søknad"
   crew_application: "Crewsøknad"
-  option: "valg"
-  username: "Brukernavn"
-  password: "Passord"
+  option: "choice"
+  username: "Username"
+  password: "Password"
   password_confirmation: "Bekreft passord"
   crew_applications: "Crewsøknader"
-  users: "brukere"
-  user: "bruker"
+  users: "users"
+  user: "user"
   listing: "liste over"
   new: "ny"
-  roles: "roller"
-  statistics: "Statistikk"
-  volunteers: "Frivillige"
+  roles: "Roles"
+  statistics: "Statistics"
+  volunteers: "Volunteers"
+  volunteer: "Volunteer"
   band_signup_confirmation: "Bekreftelse på påmelding"
-  home_contact_info_text: "Om du har trøbbel med bandpåmelding, send epost til festival@rockmotrus.no så sørger vi for at påmeldinga blir i orden."
+  home_contact_info_text: "If you have trouble signing up, send us an email at %{contact_email}, and we will assist you."
+  login: "Login"
+  apply_for_volunteer_job: "Apply for volunteer job"
+  create: "Create"
+  register_user_account: "Register user account"
+  tell_us_about_your_band: "Tell us about your band"
 
   activerecord:
     models:
       ad:
-        one: Annonse
-        other: Annonser
-      band_member:
-        one: Bandmedlem
-        other: Bandmedlemmer
-      user:
-        one: Bruker
-        other: Brukere
+        one: "Ad"
+        other: "Ads"
       stage:
-        one: Venue
-        other: Venues
-      volunteer:
-        one: Crewmedlem
-        other: Crewmedlemmer
+        one: "Venue"
+        other: "Venues"
+      band:
+        one: "Band"
+        other: "Bands"
       group:
-        one: Gruppe
-        other: Grupper
+        one: "Group"
+        other: "Groups"
+      user:
+        one: "User"
+        other: "Users"
+      volunteer:
+        one: "Crew member"
+        other: "Crew members"
     attributes:
       band:
-        name: "Bandnavn"
-        contact_name: "Kontaktperson"
-        email: "E-post"
+        name: "Band name"
+        contact_name: "Contact person"
       band/band_members:
         name: "Et bandmedlems navn"
         phone: "Et bandmedlems telefonnummer"
         role: "Et bandmedlems rolle"
-      band_member:
-        name: "Navn"
-        phone: "Telefon"
-        role: "Rolle"
-      stage:
-        name: "Navn"
-        from: "Fra"
-        to: "Til"
       ad:
         name: "Annonsør"
         contact: "Kontaktperson"
@@ -119,6 +113,16 @@ nb:
         notes: "Notater"
         salesman: "Selger"
       group:
-        name: "Navn"
-        description: "Beskrivelse"
-        internal_group: "Lukket for søknader?"
+        internal_group: "Non-volunteer group?"
+
+  helpers:
+    submit:
+      volunteer:
+        create: "Add volunteer"
+        update: "Update volunteer info"
+      crew_application:
+        create: "Submit application"
+        update: "Update application"
+      user:
+        create: "Register user account"
+        update: "Update user details"

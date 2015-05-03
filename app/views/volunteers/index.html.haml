@@ -31,4 +31,4 @@
           = link_to t(:delete), volunteer, method: :delete, data: { confirm: t(:confirm) }
     %tr
       %th{:colspan => "9"} #{t(:count)}: #{group.volunteers.count}
-%p= link_to "Nytt crewmedlem", new_volunteer_path, class: 'btn btn-sm btn-danger', data: { confirm: 'Her får bare Kristin leke!' }
+%p= link_to t(:add_volunteer), new_volunteer_path, class: 'btn btn-sm btn-danger', data: { confirm: 'Her får bare Kristin leke!' }

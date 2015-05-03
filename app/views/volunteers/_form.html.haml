@@ -8,36 +8,36 @@
         - @volunteer.errors.full_messages.each do |msg|
           %li= msg
   .field
-    = f.label t(:name)
+    = f.label :name
     %br/
     = f.text_field :name
   .field
-    = f.label t(:address)
+    = f.label :address
     %br/
     = f.text_area :address, :size => '30x4'
   .field
-    = f.label t(:birthday)
+    = f.label :birthday
     %br/
     = f.date_select :birthday, :include_blank => true, :start_year => 1900, :end_year => Time.now.year
   .field
-    = f.label t(:email)
+    = f.label :email
     %br/
     = f.text_field :email
   .field
-    = f.label t(:phone)
+    = f.label :phone
     %br/
     = f.text_field :phone
   .field
-    = f.label t(:group)
+    = f.label :group
     %br/
     = f.collection_select :group_id, Group.all, :id, :name
   .field
-    = f.label t(:access_level)
+    = f.label :access_level
     %br/
     = f.collection_select :access_level, AccessLevel.all, :name, :name
   .field
-    = f.label 'Bruker'
+    = f.label :user
     %br/
     = f.collection_select :user_id, User.all, :id, :username, {:include_blank => 'Ingen'}
   .actions
-    = f.submit t(:submit)
+    = f.submit
