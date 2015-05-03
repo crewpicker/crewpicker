@@ -7,17 +7,17 @@
       %ul
         - @group.errors.full_messages.each do |msg|
           %li= msg
-  .field
+  .form-group
     = f.label :name
     %br/
-    = f.text_field :name
-  .field
+    = f.text_field :name, class: "form-control"
+  .form-group
     = f.label :description
     %br/
-    = f.text_area :description, :size => "50x10"
-  .field
-    = f.label :internal_group
-    %br/
-    = f.check_box :internal
-  .actions
-    = f.submit
+    = f.text_area :description, rows: 10, class: "form-control"
+  .checkbox
+    %label
+      = f.check_box :internal
+      %strong= Group.human_attribute_name(:internal_group)
+  .form-group
+    = f.submit class: "form-control btn btn-primary"

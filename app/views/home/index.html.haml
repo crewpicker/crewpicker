@@ -10,13 +10,13 @@
   - if current_user
     - current_user.bands.each do |band|
       %p
-        \&gt; #{link_to band.name, band} | #{link_to 'Slett', band_path(band), method: :delete, data: { confirm: 'Er du sikker på at du vil slette bandet?' }}
+        \&gt; #{link_to band.name, band} | #{link_to t(:delete), band_path(band), method: :delete, data: { confirm: 'Er du sikker på at du vil slette bandet?' }}
   %p
-    = link_to 'Påmelding &raquo;'.html_safe, new_band_path, class: 'btn btn-primary'
-  %p Om du har trøbbel med bandpåmelding, send epost til festival@rockmotrus.no så sørger vi for at påmeldinga blir i orden.
+    = link_to "#{t(:sign_up)} &raquo;".html_safe, new_band_path, class: 'btn btn-primary'
+  %p= t(:home_contact_info_text, contact_email: APP_CONFIG[:contact_email])
 %hr/
 .container
-  %h2 FRIVILLIG
+  %h2= t(:volunteer).upcase
   - if has_crew_application
     - crew_application = current_user.crew_application
     %table.table
@@ -64,4 +64,4 @@
             %td= group_volunteer.access_level
   - else
     %p
-      = link_to 'Søknadsskjema &raquo;'.html_safe, new_crew_application_path, class: 'btn btn-primary'
+      = link_to "#{t(:application_form)} &raquo;".html_safe, new_crew_application_path, class: 'btn btn-primary'

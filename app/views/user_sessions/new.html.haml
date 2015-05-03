@@ -1,18 +1,18 @@
-- title 'Innlogging'
+- title t(:login)
 .container
   .row
-    %h1.text-center INNLOGGING
+    %h1.text-center= t(:login).upcase
   .row
     .col-lg-6
       .form-signin
         %h2.form-signin-heading 1. Facebook / Twitter
-        %p= link_to '<i class="fa fa-facebook"></i> | Logg inn med Facebook'.html_safe, auth_at_provider_path(:provider => :facebook), class: 'btn btn-lg btn-block btn-facebook'
-        %p= link_to '<i class="fa fa-twitter"></i> | Logg inn med Twitter'.html_safe, auth_at_provider_path(:provider => :twitter), class: 'btn btn-lg btn-block btn-twitter'
+        %p= link_to "<i class=\"fa fa-facebook\"></i> | #{t(:login_with_facebook)}".html_safe, auth_at_provider_path(:provider => :facebook), class: 'btn btn-lg btn-block btn-facebook'
+        %p= link_to "<i class=\"fa fa-twitter\"></i> | #{t(:login_with_twitter)}".html_safe, auth_at_provider_path(:provider => :twitter), class: 'btn btn-lg btn-block btn-twitter'
     .col-lg-6
       = form_tag user_sessions_path, :method => :post, class: 'form-signin', id: 'page-login' do
-        %h2.form-signin-heading 2. RMR-konto
+        %h2.form-signin-heading 2. #{t(:local_user)}
         = hidden_field_tag :referer, @referer.to_s
-        = text_field_tag :username, '', :placeholder => 'Brukernavn', :required => true, :autofocus => true, class: 'form-control'
-        = password_field_tag :password, '', :placeholder => 'Passord', :required => true, class: 'form-control'
-        = submit_tag 'Logg inn', class: 'btn btn-lg btn-primary btn-block'
-        = link_to "Ny konto", new_user_path
+        = text_field_tag :username, '', placeholder: t(:username), :required => true, :autofocus => true, class: 'form-control'
+        = password_field_tag :password, '', placeholder: t(:password), :required => true, class: 'form-control'
+        = submit_tag t(:login), class: 'btn btn-lg btn-primary btn-block'
+        = link_to t(:create_account), new_user_path

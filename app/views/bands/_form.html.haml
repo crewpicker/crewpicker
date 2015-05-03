@@ -11,36 +11,36 @@
   .row
     .col-lg-5.col-md-6.col-sm-8
       .form-group
-        = f.label "Bandnavn"
+        = f.label :name
         %br/
         = f.text_field :name, class: 'form-control'
       .form-group
-        = f.label t(:contact_name)
+        = f.label :contact_name
         %br/
         = f.text_field :contact_name, class: 'form-control'
       .form-group
-        = f.label t(:email)
+        = f.label :email
         %br/
         = f.text_field :email, class: 'form-control'
       .form-group
-        = f.label t(:phone)
+        = f.label :phone
         %br/
         = f.text_field :phone, class: 'form-control'
       .form-group
-        = f.label t(:address)
+        = f.label :address
         %br/
         = f.text_area :address, rows: '3', class: 'form-control'
       .form-group.row
         .col-xs-4
-          = f.label :postal_code, "Postnr."
+          = f.label :postal_code
           %br/
           = f.text_field :postal_code, :maxlength => 4, class: 'form-control'
         .col-xs-8
-          = f.label :city, "Sted"
+          = f.label :city
           %br/
           = f.text_field :city, class: 'form-control'
   %hr/
-  %h2 Fortell om bandet
+  %h2= t(:tell_us_about_your_band)
   %p
     Alle bandmedlemmene må registreres for å få tilgang backstage for å komme seg på scena.
     %br
@@ -50,7 +50,7 @@
   - @band.band_members.each do |band_member|
     = f.fields_for :band_members, band_member do |fsub|
       = fsub.hidden_field :user_id
-      %h3 Bandmedlem:
+      %h3 #{BandMember.model_name.human}:
       .row
         .col-lg-4.col-md-5.col-sm-6.col-xs-12
           .form_group
@@ -72,11 +72,11 @@
   .row
     .col-lg-5.col-md-6.col-sm-8
       .form-group
-        = f.label "Beskrivelse av bandet"
+        = f.label :description
         %br/
         = f.text_area :description, rows: '15', class: 'form-control'
       .form-group
-        = f.label t(:image)
+        = f.label :image
         %br/
         = f.file_field :image
   %hr/
@@ -85,26 +85,26 @@
   .row
     .col-lg-5.col-md-6.col-sm-8
       .form-group
-        = f.label t(:song_title)
+        = f.label :song_title
         %br/
         = f.text_field :song_title, class: 'form-control'
       .form-group
-        = f.label t(:song_composer)
+        = f.label :song_composer
         %br/
         = f.text_field :song_composer, class: 'form-control'
       .form-group
-        = f.label t(:song_lyrics)
+        = f.label :song_lyrics
         %br/
         = f.text_area :song_lyrics, rows: '20', class: 'form-control'
       .form-group
-        = f.label t(:playtime_wish)
+        = f.label :playtime_wish
         (klokkeslett fra 00:00 til 14:00)
         %br/
         = f.text_field :playtime_wish, class: 'form-control'
       .form-group
-        = f.label t(:playtime_wish_alt)
+        = f.label :playtime_wish_alt
         (klokkeslett fra 00:00 til 14:00)
         %br/
         = f.text_field :playtime_wish_alt, class: 'form-control'
       .form-group
-        = f.submit t(:submit), class: 'btn btn-primary btn-block'
+        = f.submit class: 'btn btn-primary btn-block'

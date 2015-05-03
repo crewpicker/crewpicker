@@ -25,7 +25,7 @@
         %td= band.playtime_wish
         %td= band.playtime_wish_alt
         %td= band.band_members.count
-        %td= link_to image_tag(band.image.url(:thumb)), band.image.url
+        %td= link_to image_tag(band.image.url(:thumb), height: "50px"), image_path(band.image.url)
         %td= band.stage_schedule ? 'Ja' : 'Nei'
         %td
           = link_to t(:show), band

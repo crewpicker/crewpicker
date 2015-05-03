@@ -1,17 +1,15 @@
-- title t(:listing).capitalize + ' ' + t(:users)
+- title User.model_name.human(count: 2)
 .container
-  %h1= t(:listing).capitalize + ' ' + t(:users)
+  %h1= User.model_name.human(count: 2)
   %table.table.table-striped
     %tr
-      %th= t(:username)
-      %th= t(:name)
-      %th= t(:email)
-      %th= t(:roles).capitalize
-      %th Type
+      %th= User.human_attribute_name(:username)
+      %th= User.human_attribute_name(:name)
+      %th= User.human_attribute_name(:email)
+      %th= User.human_attribute_name(:roles)
+      %th= User.human_attribute_name(:type)
       %th{:title => "Crewsøknad?"} CS?
-      %th{:title => "Bandsøknad?"} BS?
-      %th
-      %th
+      %th= Band.model_name.human
       %th
     - @users.each do |user|
       %tr
@@ -23,23 +21,26 @@
           - if user.authentications.count > 0
             = user.authentications.map(&:provider).to_sentence.capitalize
           - else
-            RMR-bruker
+            = t(:local_user)
         %td
           - if crew_application = CrewApplication.find_by_user_id(user.id)
-            = link_to 'Ja', crew_application
+            = link_to t(:answer_yes), crew_application
           - elsif user.volunteers.count > 0
-            Valgt
+            = link_to "Crew", user.volunteers.first
           - else
-            Nei
+            = t(:answer_no)
         %td
           - if band = Band.find_by_user_id(user.id)
-            = link_to 'Ja', band
+            = link_to t(:answer_yes), band
           - else
-            Nei
-        %td= link_to t(:show), user
-        %td= link_to t(:edit), edit_user_path(user)
-        %td= link_to t(:delete), user, method: :delete, data: { confirm: t(:confirm) }
+            = t(:answer_no)
+        %td
+          = link_to t(:show), user
+          |
+          = link_to t(:edit), edit_user_path(user)
+          |
+          = link_to t(:delete), user, method: :delete, data: { confirm: t(:confirm) }
     %tr
-      %td{:colspan => "10"}
-        Antall: #{@users.count}
-  %p= link_to t(:new).capitalize + ' ' + t(:user), new_user_path
+      %td{:colspan => "8"}
+        #{t(:count)}: #{@users.count}
+  %p= link_to "#{t(:create)} #{User.model_name.human.downcase}", new_user_path

@@ -1,9 +1,5 @@
 - title t(:new_band)
 .container
   %h1= t(:new_band)
-  - if not current_user
-    %p{:style => "font-weight:bold"}
-      %span{:style => "color:red"} Advarsel: Du er ikke innlogget, og kan derfor ikke endre disse opplysningene i ettertid.
-      = link_to 'Logg inn', login_path
   = render 'form'
   %p= link_to t(:back), root_path
