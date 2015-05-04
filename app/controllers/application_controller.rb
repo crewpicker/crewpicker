@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
     params[resource] &&= send(method) if respond_to?(method, true)
   end
 
+  before_filter :set_locale
+
+  def set_locale
+    I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
+  end
+
   def permission_denied
     if !current_user
       redirect_to login_url
