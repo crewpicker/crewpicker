@@ -91,6 +91,7 @@ GEM
     hike (1.2.3)
     holder_rails (2.4.1)
       railties (>= 3.1.0)
+    http_accept_language (2.0.5)
     i18n (0.6.11)
     jquery-qtip2-rails (0.5.0)
       railties (>= 3.1.0)
@@ -239,6 +240,7 @@ DEPENDENCIES
   haml
   haml-rails
   holder_rails
+  http_accept_language
   jquery-qtip2-rails
   jquery-rails
   jquery-ui-rails

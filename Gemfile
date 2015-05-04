@@ -8,6 +8,7 @@ gem 'paperclip', '~> 4.2.0'
 gem 'pdfkit', :git => "https://github.com/pdfkit/pdfkit.git"
 gem 'sorcery'
 gem 'declarative_authorization'
+gem 'http_accept_language'
 
 gem 'newrelic_rpm'
 
