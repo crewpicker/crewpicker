@@ -1,0 +1,8 @@
+.container
+  %h1 Active event
+  - if @active_event
+    %p= link_to @active_event.event.name, @active_event.event
+    %p= link_to 'Edit', edit_active_event_path(@active_event)
+  - else
+    %p No active event
+    %p= link_to "Set active event", new_active_event_path, class: "btn btn-primary"

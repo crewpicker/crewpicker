@@ -16,7 +16,7 @@ module ApplicationHelper
    date.year - dob.year - (month_diff < 0 ? 1 : 0)
   end
   def festival_title
-    event = Event.first
+    event = Event.active.first
     if event
       return event.name
     else
