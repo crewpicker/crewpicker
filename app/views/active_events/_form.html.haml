@@ -1,0 +1,15 @@
+= form_for @active_event, url: active_event_path do |f|
+  - if @active_event.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@active_event.errors.count, "error")} prohibited this active_event from being saved:"
+      %ul
+        - @active_event.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group.row
+    = f.label :event, class: "col-sm-2"
+    .col-sm-10
+      = f.collection_select :event_id, Event.all, :id, :name, {include_blank: t(:not_chosen)}, class: "form-control"
+  .form-group.row
+    .col-sm-offset-2.col-sm-10
+      = f.submit class: "btn btn-primary"

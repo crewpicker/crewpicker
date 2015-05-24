@@ -1,0 +1,20 @@
+- title @active_events.model_name.human(:count => 2)
+.container
+  %h1= @active_events.model_name.human(:count => 2)
+  %table.table.table-striped
+    %thead
+      %tr
+            %th= @active_events.human_attribute_name(:event)
+            %th
+    %tbody
+      - @active_events.each do |active_event|
+        %tr
+              %td= active_event.event
+              %td
+            = link_to t(:show), active_event
+            |
+            = link_to t(:edit), edit_active_event_path(active_event)
+            |
+            = link_to t(:delete), active_event, method: :delete, data: { confirm: t(:confirm) }
+  %p
+    = link_to "#{t(:new).camelize} #{@active_events.model_name.human.downcase}", new_active_event_path
