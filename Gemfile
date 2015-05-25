@@ -37,6 +37,10 @@ group :test, :development do
   gem 'factory_girl_rails'
 end
 
+group :development do
+  gem 'guard-livereload'
+end
+
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
@@ -44,3 +48,4 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
 end
+
