@@ -2,5 +2,5 @@
 class LocationSchedule < ActiveRecord::Base
   belongs_to :location
   belongs_to :fireguard
-  default_scope { order :from }
+  default_scope -> { order :from }
 end
