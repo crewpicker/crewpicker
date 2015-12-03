@@ -13,3 +13,4 @@ public/assets/*
 *.swp
 passwords.txt
 ..bfg-report
+vendor/bundle/
