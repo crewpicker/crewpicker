@@ -71,6 +71,16 @@ nb:
   volunteers: "Frivillige"
   band_signup_confirmation: "Bekreftelse på påmelding"
   home_contact_info_text: "Om du har trøbbel med bandpåmelding, send epost til festival@rockmotrus.no så sørger vi for at påmeldinga blir i orden."
+  login: "Logg inn"
+  login_with_facebook: "Logg inn med Facebook"
+  login_with_twitter: "Logg inn med Twitter"
+  local_user: "Lokal bruker"
+  create_account: "Opprett brukerkonto"
+  sign_up: "Påmelding"
+  volunteer: "Frivillig"
+  application_form: "Søk om jobb som frivillig"
+  logout: "Logg ut"
+  not_chosen: "Ikke valgt"
 
   activerecord:
     models:
@@ -122,3 +132,10 @@ nb:
         name: "Navn"
         description: "Beskrivelse"
         internal_group: "Lukket for søknader?"
+      crew_application:
+        name: "Navn"
+        address: "Adresse"
+        birthday: "Fødselsdag"
+        email: "Epost"
+        phone: "Telefon"
+        relevant_experience: "Relevant erfaring"
