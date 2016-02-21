@@ -15,10 +15,12 @@ module ApplicationHelper
    month_diff = date.month - dob.month - (day_diff < 0 ? 1 : 0)
    date.year - dob.year - (month_diff < 0 ? 1 : 0)
   end
+  def active_event
+    ActiveEvent.first.event
+  end
   def festival_title
-    event = Event.active.first
-    if event
-      return event.name
+    if active_event
+      return active_event.name
     else
       return "FestivalAdmin"
     end
