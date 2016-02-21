@@ -1,10 +1,6 @@
 - title festival_title
-- has_crew_application = FALSE
-- if current_user && current_user.crew_application && !(current_user.crew_application.volunteer_id)
-  - has_crew_application = TRUE
-- is_volunteer = FALSE
-- if current_user && current_user.volunteers.count > 0
-  - is_volunteer = TRUE
+- has_crew_application = (current_user && current_user.crew_application && !(current_user.crew_application.volunteer_id))
+- is_volunteer = (current_user && current_user.volunteers.count > 0)
 .container
   %h2 ROCKEMØNSTRING
   - if current_user
