@@ -19,7 +19,7 @@
         %td= volunteer.name
         %td= nl2br(volunteer.address)
         %td
-          - if volunteer.birthday then concat(age_at(Event.first.from, volunteer.birthday)) end
+          - if volunteer.birthday then concat(age_at(active_event.from, volunteer.birthday)) end
         %td= volunteer.email
         %td= volunteer.phone
         %td= volunteer.access_level
