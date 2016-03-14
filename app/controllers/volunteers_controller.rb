@@ -112,7 +112,7 @@ class VolunteersController < ApplicationController
   end
   filter_access_to :compact, :require => :index
   def compact
-    @groups = Group.all.joins(:volunteers).where("volunteers.id IS NOT NULL").order("volunteers.name")
+    @groups = Group.all.joins("LEFT JOIN volunteers ON volunteers.group_id=groups.id").where("volunteers.id IS NOT NULL").order("volunteers.name")
 
     respond_to do |format|
       format.html # index.html.erb
