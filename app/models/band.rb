@@ -4,8 +4,9 @@ class Band < ActiveRecord::Base
   has_many :band_members, :dependent => :destroy
   has_one :stage_schedule
   belongs_to :user
+  belongs_to :event
   accepts_nested_attributes_for :band_members, :reject_if => lambda { |c| c[:name].blank? }
-  default_scope -> { order :name }
+  default_scope { where(event_id: ActiveEvent.first.event_id) }
   validates :name, :presence => true
   validates :name, :uniqueness => true
   validates :contact_name, :presence => true

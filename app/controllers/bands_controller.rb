@@ -48,6 +48,9 @@ class BandsController < ApplicationController
   # POST /bands.xml
   def create
     @band = Band.new(band_params)
+    if ActiveEvent.first
+      @band.event = ActiveEvent.first.event
+    end
 
     respond_to do |format|
       if @band.save
@@ -126,6 +129,7 @@ class BandsController < ApplicationController
     params.require(:band).permit(
       :id, :name, :contact_name, :email, :phone, :address, :postal_code, :city,
       :description, :song_title, :song_composer, :song_lyrics, :playtime_wish,
-      :playtime_wish_alt, :image, :user_id, band_members_attributes: [:id, :name, :phone, :role, :user_id])
+      :playtime_wish_alt, :image, :user_id, :event_id,
+      band_members_attributes: [:id, :name, :phone, :role, :user_id])
   end
 end
