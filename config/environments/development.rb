@@ -11,28 +11,17 @@ FestivalAdmin::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.altibox.no",
-    :port                 => 25,
-    #:domain               => 'rockmotrus.no',
-    #:user_name            => 'festival@rockmotrus.no',
-    #:password             => '***REMOVED***',
-    #:authentication       => 'plain',
-    :enable_starttls_auto => false
-  }
  
   # Expands the lines which load the assets
   config.assets.debug = false
 
   config.eager_load = false
-
-  Paperclip.options[:command_path] = "/opt/local/bin/"
 
   Cocaine::CommandLine.runner = Cocaine::CommandLine::BackticksRunner.new
 
