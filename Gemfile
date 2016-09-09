@@ -51,3 +51,4 @@ group :test do
   gem 'launchy'
 end
 
+gem 'sqlite3'
