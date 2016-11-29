@@ -1,0 +1,6 @@
+.container
+  %h1 Get started with Crewpicker
+  - if Event.count == 0
+    %p= link_to 'Create event', new_event_path, class: 'btn btn-lg btn-success'
+  - else
+    %p= link_to 'Set active event', active_event_path, class: 'btn btn-lg btn-success'
