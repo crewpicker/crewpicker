@@ -1,13 +1,13 @@
 class ActiveEventsController < ApplicationController
-  before_action :set_active_event, only: [:show, :edit, :update, :destroy]
+  filter_access_to :all
 
-  # GET /active_events
-  def index
-    @active_events = ActiveEvent.all
-  end
+  before_action :set_active_event, only: [:show, :edit, :update, :destroy]
 
   # GET /active_events/1
   def show
+    if ActiveEvent.count == 0
+      redirect_to new_active_event_path
+    end
   end
 
   # GET /active_events/new
@@ -24,7 +24,7 @@ class ActiveEventsController < ApplicationController
     @active_event = ActiveEvent.new(active_event_params)
 
     if @active_event.save
-      redirect_to @active_event, notice: 'Active event was successfully created.'
+      redirect_to @active_event, notice: 'Active event has been set.'
     else
       render :new
     end
