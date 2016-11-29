@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909185139) do
+ActiveRecord::Schema.define(version: 20161211032514) do
 
   create_table "access_levels", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -37,17 +37,21 @@ ActiveRecord::Schema.define(version: 20160909185139) do
   end
 
   create_table "ads", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "contact",    limit: 255
-    t.string   "phone",      limit: 255
-    t.string   "email",      limit: 255
+    t.string   "name",         limit: 255
+    t.string   "contact",      limit: 255
+    t.string   "phone",        limit: 255
+    t.string   "email",        limit: 255
     t.integer  "ad_type_id"
     t.text     "address"
     t.text     "notes"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "salesman",   limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "salesman",     limit: 255
+    t.integer  "event_id"
+    t.integer  "parent_ad_id"
   end
+
+  add_index "ads", ["event_id"], name: "index_ads_on_event_id"
 
   create_table "authentications", force: :cascade do |t|
     t.integer  "user_id",                null: false
