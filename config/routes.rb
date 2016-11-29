@@ -102,6 +102,7 @@ FestivalAdmin::Application.routes.draw do
 
   get "home/index"
   root :to => "home#index"
+  match 'setup' => 'home#setup', as: :setup_wizard, via: :get
 
   match 'program/:name' => 'stage_schedules#index', :as => :stage_schedule_program, via: :get
 
