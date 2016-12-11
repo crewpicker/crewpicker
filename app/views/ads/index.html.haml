@@ -1,5 +1,5 @@
 - title "Annonser"
-- ad_sum = Ad.all.each.inject(0) {|sum, ad| sum + ad.ad_type.value}
+- ad_sum = Ad.where(event_id: active_event.id).each.inject(0) {|sum, ad| sum + ad.ad_type.value}
 .container
   %h1 Annonser
   %p Status: #{number_with_delimiter(ad_sum, delimiter: ' ')}kr / 100 000kr

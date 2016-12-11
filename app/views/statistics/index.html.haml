@@ -1,5 +1,5 @@
 - title t(:statistics)
-- ad_sum = Ad.all.each.inject(0) {|sum, ad| sum + ad.ad_type.value}
+- ad_sum = Ad.where(event_id: active_event.id).each.inject(0) {|sum, ad| sum + ad.ad_type.value}
 - ad_sum_percent = ((ad_sum.to_f / 100000) * 100).round
 :javascript
   $(document).ready(function() {
