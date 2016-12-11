@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211032514) do
+ActiveRecord::Schema.define(version: 20161211043511) do
 
   create_table "access_levels", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -267,6 +267,9 @@ ActiveRecord::Schema.define(version: 20161211032514) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "user_id"
+    t.integer  "event_id"
   end
+
+  add_index "volunteers", ["event_id"], name: "index_volunteers_on_event_id"
 
 end

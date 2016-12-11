@@ -1,10 +1,11 @@
 # encoding: UTF-8
 class VolunteersController < ApplicationController
-  filter_resource_access
-  layout :check_layout
+  filter_access_to :all
+
+  include ApplicationHelper
 
   def index
-    @groups = Group.includes(:volunteers).where.not(volunteers: { id: nil }).order('volunteers.name ASC')
+    @groups = Group.includes(:volunteers).where(volunteers: { event_id: active_event.id}).where.not(volunteers: { id: nil }).order('volunteers.name ASC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,6 +45,7 @@ class VolunteersController < ApplicationController
   # POST /volunteers.xml
   def create
     @volunteer = Volunteer.new(volunteer_params)
+    @volunteer.event_id = active_event.id
 
     respond_to do |format|
       if @volunteer.save
@@ -163,6 +165,6 @@ class VolunteersController < ApplicationController
   private
 
   def volunteer_params
-    params.require(:volunteer).permit(:id, :name, :address, :birthday, :email, :phone, :group_id, :access_level, :user_id)
+    params.require(:volunteer).permit(:id, :name, :address, :birthday, :email, :phone, :group_id, :access_level, :user_id, :event_id)
   end
 end
