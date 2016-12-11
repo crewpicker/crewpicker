@@ -2,5 +2,5 @@
 class Volunteer < ActiveRecord::Base
   belongs_to :group
   belongs_to :user
-  default_scope -> { order("volunteers.name") }
+  default_scope -> { where(event_id: ActiveEvent.first.event_id).order("volunteers.name") }
 end

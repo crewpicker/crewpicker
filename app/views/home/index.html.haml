@@ -58,3 +58,6 @@
             %td= group_volunteer.email
             %td= group_volunteer.phone
             %td= group_volunteer.access_level
+  - else
+    %p
+      = link_to "#{t(:application_form)} &raquo;".html_safe, new_crew_application_path, class: 'btn btn-primary'
