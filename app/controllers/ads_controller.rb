@@ -30,6 +30,7 @@ class AdsController < ApplicationController
   # GET /ads/new.xml
   def new
     @ad = Ad.new
+    @ad.salesman = current_user.name
 
     respond_to do |format|
       format.html # new.html.erb
