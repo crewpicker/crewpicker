@@ -39,11 +39,13 @@ FestivalAdmin::Application.routes.draw do
 
   resources :stage_schedules do
     get 'print', on: :collection
-    get 'list', :on => :collection
-    get 'update', :on => :collection
+    get 'list', on: :collection
+    get 'update', on: :collection
   end
 
-  resources :ads
+  resources :ads do
+    post 'copy_ads_from_event', on: :collection
+  end
 
   resources :ad_types
 
