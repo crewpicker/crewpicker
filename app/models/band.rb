@@ -8,7 +8,7 @@ class Band < ActiveRecord::Base
   accepts_nested_attributes_for :band_members, :reject_if => lambda { |c| c[:name].blank? }
   default_scope { where(event_id: ActiveEvent.first.event_id) }
   validates :name, :presence => true
-  validates :name, :uniqueness => true
+  validates :name, uniqueness: { scope: :event_id }
   validates :contact_name, :presence => true
   validates :email, :presence => true
   validates_format_of :email, :with => /\A.+@.+\..+\z/
