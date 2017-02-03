@@ -1,6 +1,6 @@
 - title t(:statistics)
 - ad_sum = Ad.where(event_id: active_event.id).each.inject(0) {|sum, ad| sum + ad.ad_type.value}
-- ad_sum_percent = ((ad_sum.to_f / 100000) * 100).round
+- ad_sum_percent = ((ad_sum.to_f / 250000) * 100).round
 :javascript
   $(document).ready(function() {
     var data = [
@@ -47,7 +47,7 @@
   %h2= t(:ads)
   .progress
     %div.progress-bar{:role => "progressbar", :style => "width: #{ad_sum_percent}%;"}
-      #{ad_sum_percent}% (#{number_with_delimiter(ad_sum, delimiter: ' ')}kr) / 100 000kr
+      #{ad_sum_percent}% (#{number_with_delimiter(ad_sum, delimiter: ' ')}kr) / 250 000kr
   %table.table.table-striped
     %tr
       %th Type
