@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211043511) do
+ActiveRecord::Schema.define(version: 20170222225850) do
 
   create_table "access_levels", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20161211043511) do
     t.string   "salesman",     limit: 255
     t.integer  "event_id"
     t.integer  "parent_ad_id"
+    t.boolean  "completed"
   end
 
   add_index "ads", ["event_id"], name: "index_ads_on_event_id"

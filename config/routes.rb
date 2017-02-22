@@ -45,6 +45,7 @@ FestivalAdmin::Application.routes.draw do
 
   resources :ads do
     post 'copy_ads_from_event', on: :collection
+    get 'toggle_completed', on: :member
   end
 
   resources :ad_types

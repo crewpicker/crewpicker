@@ -14,6 +14,8 @@
       %th Notater
       %th Selger
       %th Type from last event
+      %th{title: 'Has the ad been produced?'} Completed?
+      %th
       %th
       %th
     - @ads.each do |ad|
@@ -27,8 +29,10 @@
         %td= nl2br(ad.notes)
         %td= ad.salesman
         %td= ad.parent_ad_id ? ad.parent_ad.ad_type.name : ''
+        %td= ad.completed ? 'Yes' : 'No'
         %td= link_to 'Endre', edit_ad_path(ad)
         %td= link_to 'Slett', ad, method: :delete, data: { confirm: 'Du vil sannsynligvis ikke gjøre dette.' }
+        %td= link_to(ad.completed ? 'Mark as not completed' : 'Mark as completed', toggle_completed_ad_path(ad))
   %p= link_to 'Ny annonse', new_ad_path
   %hr
   %h2 Copy ads from previous event
