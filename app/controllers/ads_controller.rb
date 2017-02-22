@@ -121,6 +121,14 @@ class AdsController < ApplicationController
     end
   end
 
+  def toggle_completed
+    ad = Ad.find params[:id]
+    ad.completed = !ad.completed
+    ad.save
+    notice_status = ad.completed ? 'completed' : 'not completed'
+    redirect_to :ads, notice: "Ad #{ad.name} marked as #{notice_status}"
+  end
+
   private
 
   def ad_params

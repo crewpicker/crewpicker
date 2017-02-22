@@ -40,6 +40,6 @@ authorization do
 end
 privileges do
   privilege :manage do
-    includes :new, :create, :show, :index, :list, :edit, :update, :destroy, :choose, :mail, :setup, :copy_ads_from_event
+    includes :new, :create, :show, :index, :list, :edit, :update, :destroy, :choose, :mail, :setup, :copy_ads_from_event, :toggle_completed
   end
 end
