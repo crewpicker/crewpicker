@@ -54,6 +54,8 @@
                       = password_field_tag :password, '', placeholder: t(:password), :required => true, class: 'form-control'
                       = submit_tag t(:login), class: 'btn btn-primary btn-block'
                       = link_to t(:create_account), new_user_path
+            %li
+              %a{:href => "/privacy"}= "Privacy Policy"
     .container
       - if current_user && current_user.id == 1
         %p
