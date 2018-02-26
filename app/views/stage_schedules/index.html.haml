@@ -68,10 +68,16 @@
       height: 3500,
       dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fre','Lør'],
       dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
-      titleFormat: {
-        month: 'MMMM YYYY',
-        week: "YYYY-MM-DD",
-        day: 'dddd, MMM d, YYYY'
+      views: {
+        month: {
+          titleFormat: 'MMMM YYYY'
+        },
+        week: {
+          titleFormat: 'YYYY-MM-DD'
+        },
+        day: {
+          titleFormat: 'dddd, MMM d, YYYY'
+        }
       },
       columnFormat: {
         month: 'ddd',
