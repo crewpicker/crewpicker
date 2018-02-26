@@ -3,7 +3,7 @@ class StageSchedulesController < ApplicationController
   layout :check_layout
 
   def show
-    stage_schedules = Stage.find(params[:id]).stage_schedules
+    stage_schedules = Stage.find(params[:stage_id]).stage_schedules
     events = []
     stage_schedules.each do |stage_schedule|
       if band = Band.find(stage_schedule.band_id)
