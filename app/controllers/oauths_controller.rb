@@ -10,7 +10,13 @@ class OauthsController < ApplicationController
 
   def callback
     provider = params[:provider]
-    if @user = login_from(provider)
+    begin
+      @user = login_from(provider)
+    rescue OAuth2::Error => oerr
+      logger.error "OAuth2 Error: " + oerr.inspect
+      logger.error oerr.backtrace
+    end
+    if @user
       redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
     else
       begin
