@@ -51,6 +51,7 @@ Rails.application.config.sorcery.configure do |config|
   config.facebook.secret = APP_CONFIG[:facebook_api_secret]
   config.facebook.callback_url = APP_CONFIG[:facebook_callback_url]
   config.facebook.user_info_mapping = {:username => "email", :name => "name", :email => "email"}
+  config.facebook.api_version = "v2.6"
   #
   # config.github.key = ""
   # config.github.secret = ""
