@@ -40,9 +40,6 @@ module FestivalAdmin
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     config.middleware.use "PDFKit::Middleware"
-    PDFKit.configure do |config|
-      config.wkhtmltopdf = '/opt/wkhtmltox/bin/wkhtmltopdf'
-    end
     config.assets.version = '1.0'
     config.generators do |g|
       g.test_framework :rspec,
