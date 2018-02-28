@@ -34,38 +34,39 @@
         font-family: Impact, sans-serif;
       }
       .al {
-        font-size: 70px;
-        color: #231f20;
+        font-size: 52px;
+        color: #ffffff;
       }
       .name {
-        font-size: 52px;
-        color: #231f20;
+        font-size: 40px;
+        color: #ffffff;
       }
       .page {
-        height: 1935px;
+        height: 1862px;
         width: 100%;
         background-image: url(<%= Rails.root.join('public', ActionController::Base.helpers.asset_path(background_image).gsub!(/^\//, '')) %>);
         //background-color: red;
+        background-size: 2750px;
         background-repeat: no-repeat;
         background-position: center;
       }
       .spacer {
-        height: 73px;
+        height: 51px;
       }
       .card {
-        height: 440px;
+        height: 442px;
         vertical-align: top;
         //background-color: rgba(0,255,0,0.5);
       }
       .card div {
-        padding-top: 10px;
+        padding-top: 250px;
         padding-right: 28px;
         padding-left: 28px;
         //background-color: rgba(255,0,0,0.5);
       }
       .artist {
         font-size: 26px;
-        color: #231f20;
+        color: #ffffff;
       }
       @font-face {
         font-family: Impact;
@@ -97,8 +98,6 @@ people.each do |person|
     card_title = person.band.name.mb_chars.upcase
     #person.name = person.person.name
     person.name = ''
-  elsif @access_level.name == "Lydteamet"
-    card_title = ''
   else
     card_title = @access_level.name.mb_chars.upcase
   end
