@@ -32,7 +32,7 @@ class StageSchedulesController < ApplicationController
     end
   end
   def print
-    @stages = Stage.all
+    @stage = Stage.find_by(name: params[:name].capitalize)
   end
   def create
     band = Band.find(params[:band_id])

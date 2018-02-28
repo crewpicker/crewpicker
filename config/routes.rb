@@ -38,7 +38,6 @@ FestivalAdmin::Application.routes.draw do
   end
 
   resources :stage_schedules do
-    get 'print', on: :collection
     get 'list', on: :collection
     get 'update', on: :collection
   end
@@ -108,6 +107,7 @@ FestivalAdmin::Application.routes.draw do
   match 'setup' => 'home#setup', as: :setup_wizard, via: :get
 
   match 'program/:name' => 'stage_schedules#index', :as => :stage_schedule_program, via: :get
+  match 'program/:name/print' => 'stage_schedules#print', :as => :stage_schedule_program_print, via: :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
