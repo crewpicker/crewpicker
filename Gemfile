@@ -4,7 +4,7 @@ gem 'rails', '4.2.7'
 
 gem 'mysql2'
 
-gem 'paperclip', '~> 4.3.2'
+gem 'paperclip', '~> 5.2.0'
 gem 'pdfkit', :git => "https://github.com/pdfkit/pdfkit.git"
 gem 'sorcery'
 gem 'declarative_authorization'
