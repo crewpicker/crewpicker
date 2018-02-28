@@ -1,7 +1,6 @@
-- @stages.each do |stage|
-  %h3= stage.name
-  - if stage.stage_schedules
-    - stage.stage_schedules.each do |show|
-      %strong= show.start.strftime("%a %H:%M")
-      = show.band ? show.band.name : '???'
-      %br
+%h3= @stage.name
+- if @stage.stage_schedules
+  - @stage.stage_schedules.each do |show|
+    %strong= show.start.strftime("%a %H:%M")
+    = show.band ? show.band.name : '???'
+    %br
