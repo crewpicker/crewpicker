@@ -6,4 +6,8 @@ class BandMember < ActiveRecord::Base
   validates :name, :presence => true
   validates :phone, :presence => true
   validates :role, :presence => true
+
+  def short_name
+    band.name
+  end
 end
