@@ -4,22 +4,21 @@
 - band_members_count = Band.all.each.inject(0) {|count, band| count + band.band_members.count}
 :javascript
   $(document).ready(function() {
-    var data = [
-      {
-        value: #{CrewApplication.all.count},
-        color: "#99b433",
-        highlight: "#a9c443",
-        label: "Søknader"
-      },
-      {
-        value: #{Volunteer.all.count},
-        color: "#2d89ef",
-        highlight: "#3d99ff",
-        label: "Frivillige"
-      }
-    ];
+    var data = {
+      labels: ['Søknader', 'Frivillige'],
+      datasets: [{
+        data: [#{CrewApplication.all.count}, #{Volunteer.all.count}],
+        backgroundColor: [
+          'rgba(153, 180, 51, 1)',
+          'rgba(45, 137, 239, 1)',
+        ],
+      }]
+    };
     var ctx = $("#volunteersVSapplicants").get(0).getContext("2d");
-    var myPieChart = new Chart(ctx).Pie(data);
+    var myPieChart = new Chart(ctx,{
+      type: 'pie',
+      data: data
+    });
   });
 .container
   %h1= t(:statistics)

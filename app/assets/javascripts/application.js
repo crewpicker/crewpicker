@@ -9,4 +9,4 @@
 //= require moment
 //= require fullcalendar
 //= require jquery.qtip.basic.js
-//= require Chart
+//= require Chart.min
