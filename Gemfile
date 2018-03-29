@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '4.2.10'
 
-gem 'mysql2'
+gem 'mysql2', '~> 0.4.0'
 
 gem 'paperclip', '~> 5.2.0'
 gem 'pdfkit', :git => "https://github.com/pdfkit/pdfkit.git"
