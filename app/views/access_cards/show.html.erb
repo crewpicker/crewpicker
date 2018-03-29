@@ -95,11 +95,13 @@ else
 end
 people.each do |person|
   if @access_level.name == "Band"
-    card_title = person.band.name.mb_chars.upcase
-    #person.name = person.person.name
-    person.name = ''
-  else
     card_title = @access_level.name.mb_chars.upcase
+  else
+    if @access_level.name == person.group.name
+      card_title = @access_level.name.mb_chars.upcase
+    else
+      card_title = "#{@access_level.name.mb_chars.upcase}<br>#{person.group.name}".html_safe
+    end
   end
   if ccounter == 4
     rcounter += 1
@@ -132,7 +134,7 @@ people.each do |person|
           <td class="card">
             <div>
               <span class="al"><%= card_title %></span>
-              <br><span class="name"><%= person.name %></span>
+              <br><span class="name"><%= person.short_name %></span>
             </div>
           </td>
 <%
