@@ -1,46 +1,54 @@
 - title(t(:schedule) + ' ' + @stage.name)
+- duration = (@stage.to.to_date - @stage.from.to_date).to_i + 1
 - content_for :headerextra do
   :css
-    	#external-events {
-    		float: left;
-    		width: 150px;
+      #flow-container {
+        position: relative;
+        width: 160px;
+        float: left;
+      }
+
+      #external-events {
+        width: 150px;
         padding: 0 10px;
         margin-left: 10px;
-    		border: 1px solid #ccc;
-    		background: #eee;
-    		text-align: left;
-    		}
+        border: 1px solid #ccc;
+        background: #eee;
+        text-align: left;
+        position: fixed;
+        top: 70px;
+      }
     
-    	#external-events h4 {
-    		font-size: 16px;
-    		margin-top: 0;
-    		padding-top: 1em;
-    		}
+      #external-events h4 {
+        font-size: 16px;
+        margin-top: 0;
+        padding-top: 1em;
+      }
     
-    	.external-event { /* try to mimick the look of a real event */
-    		margin: 10px 0;
-    		padding: 2px 4px;
-    		background: #3366CC;
-    		color: #fff;
-    		font-size: .85em;
-    		cursor: pointer;
-    		}
+      .external-event { /* try to mimick the look of a real event */
+        margin: 10px 0;
+        padding: 2px 4px;
+        background: #3366CC;
+        color: #fff;
+        font-size: .85em;
+        cursor: pointer;
+      }
     
-    	#external-events p {
-    		margin: 1.5em 0;
-    		font-size: 11px;
-    		color: #666;
-    		}
+      #external-events p {
+        margin: 1.5em 0;
+        font-size: 11px;
+        color: #666;
+      }
     
-    	#external-events p input {
-    		margin: 0;
-    		vertical-align: middle;
-    		}
+      #external-events p input {
+        margin: 0;
+        vertical-align: middle;
+      }
     
-    	#calendar {
-    		float: left;
-    		width: 500px;
-    		}
+      #calendar {
+        float: left;
+        width: #{50 + duration*150}px;
+      }
 :javascript
   $(document).ready(function() {
     $('#external-events div.external-event').each(function() {
@@ -61,35 +69,18 @@
         center: 'title',
         right: ''
       },
-      defaultView: 'agendaWeek',
-      defaultDate: "#{@stage.from.strftime("%Y-%m-%d")}",
-      axisFormat: 'H:mm',
-      timeFormat: 'H:mm',
-      height: 3500,
-      dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fre','Lør'],
-      dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
       views: {
-        month: {
-          titleFormat: 'MMMM YYYY'
-        },
-        week: {
-          titleFormat: 'YYYY-MM-DD'
-        },
-        day: {
-          titleFormat: 'dddd, MMM d, YYYY'
+        agendaSchedule: {
+          type: 'agenda',
+          duration: { days: #{duration} }
         }
       },
-      columnFormat: {
-        month: 'ddd',
-        week: 'dddd DD. MMM',
-        day: 'dddd M/d'
-      },
+      defaultView: 'agendaSchedule',
+      defaultDate: "#{@stage.from.strftime("%Y-%m-%d")}",
+      height: 6410,
       disableResizing: true,
       editable: true,
       droppable: true,
-      firstDay: 5,
-      weekends: true,
-      hiddenDays: [ 1,2,3,4 ],
       allDaySlot: false,
       slotDuration: '00:05:00',
       defaultTimedEventDuration: '00:05:00',
@@ -146,13 +137,14 @@
     Tidsskjema #{@stage.name}
   %p
     Forsink alle band med:
-    \#{link_to("15 min.", delay_band_orders_path(:delay => 05))}
-    | #{link_to("30 min.", delay_band_orders_path(:delay => 10))}
-    | #{link_to("-15 min.", delay_band_orders_path(:delay => -05))}
+    \#{link_to("5 min.", delay_band_orders_path(:delay => 05))}
+    | #{link_to("10 min.", delay_band_orders_path(:delay => 10))}
+    | #{link_to("-5 min.", delay_band_orders_path(:delay => -05))}
   #calendar
-  #external-events
-    %h4 Band uten spilletid
-    %p Dra dem dit du vil ha dem på kalenderen
-    - @events.each do |event|
-      .external-event{:id => event.id}= event.name
+  #flow-container
+    #external-events
+      %h4 Band uten spilletid
+      %p Dra dem dit du vil ha dem på kalenderen
+      - @events.each do |event|
+        .external-event{:id => event.id}= event.name
   %div{:style => "clear:both"}
