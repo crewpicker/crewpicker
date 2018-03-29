@@ -11,7 +11,7 @@
         %td= access_level.name
         - if access_level.name == "Band"
           %td= Person.all.count
-        - elsif
+        - else
           %td= access_level.volunteers.count
         %td
           = link_to 'Generer crewkort', access_card_path(access_level.id, :format => 'pdf')
