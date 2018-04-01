@@ -1,4 +1,3 @@
-<% background_image = @access_level.background %>
 <html>
   <head>
     <title>Crewkort</title>
@@ -44,7 +43,7 @@
       .page {
         height: 1862px;
         width: 100%;
-        background-image: url(<%= Rails.root.join('public', ActionController::Base.helpers.asset_path(background_image).gsub!(/^\//, '')) %>);
+        background-image: url(<%= "#{request.protocol}#{request.host_with_port}/custom/#{@access_level.background}" %>);
         //background-color: red;
         background-size: 2750px;
         background-repeat: no-repeat;
