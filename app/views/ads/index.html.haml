@@ -28,7 +28,8 @@
         %td= nl2br(ad.address)
         %td= nl2br(ad.notes)
         %td= ad.salesman
-        %td= ad.parent_ad_id ? ad.parent_ad.ad_type.name : ''
+        - if ad.parent_ad_id
+          %td= ad.parent_ad.ad_type ? ad.parent_ad.ad_type.name : ''
         %td= ad.completed ? 'Yes' : 'No'
         %td= link_to 'Endre', edit_ad_path(ad)
         %td= link_to 'Slett', ad, method: :delete, data: { confirm: 'Du vil sannsynligvis ikke gjøre dette.' }
