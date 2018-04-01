@@ -85,6 +85,7 @@
       slotDuration: '00:05:00',
       defaultTimedEventDuration: '00:05:00',
       events: "#{stage_stage_schedule_path(@stage.id, 1)}",
+      locale: "#{I18n.locale}",
       drop: function(date) {
         var originalEventObject = $(this).data('eventObject');
         var copiedEventObject = $.extend({}, originalEventObject);

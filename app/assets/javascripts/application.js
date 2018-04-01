@@ -8,5 +8,6 @@
 //= require holder
 //= require moment
 //= require fullcalendar
+//= require fullcalendar/locale-all
 //= require jquery.qtip.basic.js
 //= require Chart.min
