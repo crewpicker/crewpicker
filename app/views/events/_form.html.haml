@@ -21,5 +21,18 @@
         = f.label :to
         %br
         = f.datetime_select :to, class: 'form-control'
+      .form-group
+        = f.label :band_deadline
+        %br
+        = f.datetime_select :band_deadline, class: 'form-control'
+      .form-group
+        = f.label :volunteer_deadline
+        %br
+        = f.datetime_select :volunteer_deadline, class: 'form-control'
+      .checkbox
+        %label
+          = f.check_box :set_as_active_event
+          %strong
+            Set as active event
       .actions
         = f.submit(nil, class: 'btn btn-primary btn-block')

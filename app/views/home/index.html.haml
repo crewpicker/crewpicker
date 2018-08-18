@@ -7,8 +7,9 @@
     - current_user.bands.each do |band|
       %p
         \&gt; #{link_to band.name, band} | #{link_to t(:delete), band_path(band), method: :delete, data: { confirm: 'Er du sikker på at du vil slette bandet?' }}
-  %p
-    = link_to "#{t(:sign_up)} &raquo;".html_safe, new_band_path, class: 'btn btn-primary'
+  - if active_event.band_deadline.future?
+    %p
+      = link_to "#{t(:sign_up)} &raquo;".html_safe, new_band_path, class: 'btn btn-primary'
   %p= t(:home_contact_info_text, contact_email: APP_CONFIG[:contact_email])
 %hr/
 .container
@@ -58,6 +59,6 @@
             %td= group_volunteer.email
             %td= group_volunteer.phone
             %td= group_volunteer.access_level
-  - else
+  - elsif active_event.volunteer_deadline.future?
     %p
       = link_to "#{t(:application_form)} &raquo;".html_safe, new_crew_application_path, class: 'btn btn-primary'

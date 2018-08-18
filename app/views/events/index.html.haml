@@ -6,14 +6,18 @@
       %th= t(:name)
       %th= t(:from)
       %th= t(:to)
+      %th= t(:band_deadline)
+      %th= t(:volunteer_deadline)
       %th
       %th
       %th
     - @events.each do |event|
-      %tr
+      %tr{:class => (event.active? ? 'success' : '')}
         %td= event.name
         %td= event.from
         %td= event.to
+        %td= event.band_deadline
+        %td= event.volunteer_deadline
         %td= link_to 'Show', event
         %td= link_to 'Edit', edit_event_path(event)
         %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }

@@ -26,7 +26,12 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      redirect_to @event, notice: 'Event was successfully created.'
+      if event_params[:set_as_active_event]
+        active_event = ActiveEvent.first
+        active_event.event = @event
+        active_event.save
+      end
+      redirect_to events_path, notice: 'Event was successfully created.'
     else
       render action: 'new'
     end
@@ -35,7 +40,12 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   def update
     if @event.update(event_params)
-      redirect_to @event, notice: 'Event was successfully updated.'
+      if event_params[:set_as_active_event]
+        active_event = ActiveEvent.first
+        active_event.event = @event
+        active_event.save
+      end
+      redirect_to events_path, notice: 'Event was successfully updated.'
     else
       render action: 'edit'
     end
@@ -55,6 +65,6 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:name,:from,:to)
+      params.require(:event).permit(:name,:from,:to,:band_deadline,:volunteer_deadline,:set_as_active_event)
     end
 end
