@@ -37,7 +37,7 @@
       - @crew_application.crew_wishes.each.with_index do |crew_wish,index|
         = f.fields_for :crew_wishes, crew_wish do |fsub|
           .form-group
-            = fsub.label :group_id, "Preferred group no. #{(index+1).to_s}"
+            = fsub.label :group_id, "#{t(:preferred_group_number)} #{(index+1).to_s}"
             %br/
             = fsub.collection_select :group_id, Group.where(:internal => false), :id, :name, {include_blank: t(:not_chosen)}, class: 'form-control'
             = fsub.hidden_field :priority, :value => (index + 1)
