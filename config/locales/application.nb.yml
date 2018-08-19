@@ -81,6 +81,10 @@ nb:
   application_form: "Søk om jobb som frivillig"
   logout: "Logg ut"
   not_chosen: "Ikke valgt"
+  consent_to_communication: "Tillat at vi sender deg informasjon om fremtidige arrangementer"
+  communication_consent: "Samtykke til kommunikasjon"
+  communication_consent_info: "Vi ønsker å sende deg epost om fremtidige arrangementer, og vi trenger ditt samtykke til dette."
+  we_need_your_email_address: "Vi trenger epostadressen din for å kunne sende praktisk info om din deltakelse på"
 
   activerecord:
     models:

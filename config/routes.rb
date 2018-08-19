@@ -23,7 +23,9 @@ FestivalAdmin::Application.routes.draw do
   match 'crewskjema' => 'crew_applications#new', via: :get
 
   resources :user_sessions
-  resources :users
+  resources :users do
+    get 'communication_consent', on: :member
+  end
 
   match 'login' => 'user_sessions#new', :as => :login, via: :get
   match 'logout' => 'user_sessions#destroy', :as => :logout, via: :get

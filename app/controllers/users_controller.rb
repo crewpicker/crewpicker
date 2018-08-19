@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class UsersController < ApplicationController
-  filter_resource_access
+  filter_access_to :all
+  filter_access_to :communication_consent, :require => :edit
   layout :check_layout
 
   # GET /users
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
+    @user.communication_consent = true
 
     respond_to do |format|
       format.html
@@ -69,8 +71,12 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(user_params)
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
-        format.xml  { head :ok }
+        if params[:to_home_page]
+          format.html { redirect_to(:root, :notice => 'User was successfully updated.') }
+        else
+          format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+          format.xml  { head :ok }
+        end
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
@@ -90,9 +96,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def communication_consent
+    @user = User.find(params[:id])
+    @user.communication_consent = true
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :username, :email, :password, :password_confirmation, :role_ids => [])
+    params.require(:user).permit(:name, :username, :email, :password, :password_confirmation, :communication_consent, :role_ids => [])
   end
 end
