@@ -90,6 +90,7 @@ nb:
   playtime_wish_info: "Her kan du legge inn ønsket klokkeslett for opptreden. Vi prøver å imøtekomme ønsker, men kan bli nødt til å gjøre justeringer for å få programmet til å gå opp."
   apply_for_volunteer_job: "Søk om jobb som frivillig"
   preferred_group_number: "Ønsket gruppe nr."
+  new_event: "Nytt arrangement"
 
   activerecord:
     models:
@@ -111,6 +112,9 @@ nb:
       group:
         one: Gruppe
         other: Grupper
+      event:
+        one: Arrangement
+        other: Arrangementer
     attributes:
       band:
         name: "Bandnavn"
