@@ -23,15 +23,15 @@
           - else
             = t(:local_user)
         %td
-          - if crew_application = CrewApplication.find_by_user_id(user.id)
-            = link_to t(:answer_yes), crew_application
+          - if user.crew_application
+            = link_to t(:answer_yes), user.crew_application
           - elsif user.volunteers.count > 0
             = link_to "Crew", user.volunteers.first
           - else
             = t(:answer_no)
         %td
-          - if band = Band.find_by_user_id(user.id)
-            = link_to t(:answer_yes), band
+          - if user.bands.count > 0
+            = link_to t(:answer_yes), user.bands.first
           - else
             = t(:answer_no)
         %td
