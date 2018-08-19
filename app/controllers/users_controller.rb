@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.includes(:volunteers, :bands, :crew_application, :roles, :authentications)
+    @users = User.joins(:volunteers, :bands, :crew_application, :roles, :authentications)
 
     respond_to do |format|
       format.html # index.html.erb
