@@ -91,6 +91,7 @@ nb:
   apply_for_volunteer_job: "Søk om jobb som frivillig"
   preferred_group_number: "Ønsket gruppe nr."
   new_event: "Nytt arrangement"
+  account_settings: "Kontoinnstillinger"
 
   activerecord:
     models:
