@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180819122701) do
+ActiveRecord::Schema.define(version: 20180819174033) do
 
   create_table "access_levels", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20180819122701) do
     t.datetime "updated_at",             null: false
   end
 
+  add_index "authentications", ["user_id"], name: "index_authentications_on_user_id"
+
   create_table "band_members", force: :cascade do |t|
     t.string   "band_id",    limit: 36
     t.string   "name",       limit: 255
@@ -98,6 +100,7 @@ ActiveRecord::Schema.define(version: 20180819122701) do
   end
 
   add_index "bands", ["event_id"], name: "index_bands_on_event_id"
+  add_index "bands", ["user_id"], name: "index_bands_on_user_id"
 
   create_table "crew_applications", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -112,6 +115,8 @@ ActiveRecord::Schema.define(version: 20180819122701) do
     t.datetime "updated_at",               null: false
     t.boolean  "chosen"
   end
+
+  add_index "crew_applications", ["user_id"], name: "index_crew_applications_on_user_id"
 
   create_table "crew_merchandise_order_lines", force: :cascade do |t|
     t.integer  "crew_merchandise_order_id"
@@ -241,6 +246,8 @@ ActiveRecord::Schema.define(version: 20180819122701) do
     t.integer "role_id"
   end
 
+  add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "username",                        limit: 255, null: false
     t.string   "email",                           limit: 255
@@ -275,5 +282,6 @@ ActiveRecord::Schema.define(version: 20180819122701) do
   end
 
   add_index "volunteers", ["event_id"], name: "index_volunteers_on_event_id"
+  add_index "volunteers", ["user_id"], name: "index_volunteers_on_user_id"
 
 end
