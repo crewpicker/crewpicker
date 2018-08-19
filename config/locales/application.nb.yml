@@ -143,3 +143,8 @@ nb:
         email: "Epost"
         phone: "Telefon"
         relevant_experience: "Relevant erfaring"
+      user:
+        name: "Navn"
+        email: "E-post"
+        password: "Passord"
+        password_confirmation: "Bekreft passord"

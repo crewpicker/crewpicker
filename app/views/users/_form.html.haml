@@ -12,10 +12,11 @@
       = f.label :name
       %br/
       = f.text_field :name, class: 'form-control'
-    .form-group
-      = f.label :username
-      %br/
-      = f.text_field :username, class: 'form-control'
+    - permitted_to? :manage, :users do 
+      .form-group
+        = f.label :username
+        %br/
+        = f.text_field :username, class: 'form-control'
     .form-group
       = f.label :email
       %br/

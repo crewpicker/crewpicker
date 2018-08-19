@@ -49,6 +49,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     role = Role.find_or_create_by(name: 'user')
     @user.roles << role
+    if @user.username == nil
+      @user.username = @user.email
+    end
 
     respond_to do |format|
       if @user.save
