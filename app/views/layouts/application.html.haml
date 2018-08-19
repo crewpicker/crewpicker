@@ -28,6 +28,7 @@
               %li{:class => "#{current_page?(volunteers_path) ? 'active' : ''}"}= link_to Volunteer.model_name.human(count: 2), volunteers_path
               %li{:class => "#{current_page?(bands_path) ? 'active' : ''}"}= link_to Band.model_name.human(count: 2), bands_path
               %li{:class => "#{current_page?(ads_path) ? 'active' : ''}"}= link_to Ad.model_name.human(count: 2), ads_path
+              %li{:class => "#{current_page?(events_path) ? 'active' : ''}"}= link_to Event.model_name.human(count: 2), events_path
               %li{:class => "#{current_page?(statistics_path) ? 'active' : ''}"}= link_to t(:statistics), statistics_path
               %li{:class => "#{current_page?(users_path) ? 'active' : ''}"}= link_to User.model_name.human(count: 2), users_path
             - if current_user
@@ -62,8 +63,6 @@
           = link_to t(:fireguards), fireguards_path
           |
           = link_to t(:locations), locations_path
-          |
-          = link_to "Events", events_path
       - if ((controller_name == 'volunteers' || controller_name == 'crew_applications' || controller_name == 'groups' || controller_name == 'access_levels') && !current_user.nil? && current_user.roles.find_by_name('admin'))
         %p
           = link_to 'Crewliste', volunteers_path

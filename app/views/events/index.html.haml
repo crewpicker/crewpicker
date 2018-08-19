@@ -1,6 +1,6 @@
 - title 'Events'
 .container
-  %h1 Listing events
+  %h1= Event.model_name.human count: 2
   %table.table.table-striped
     %tr
       %th= t(:name)
@@ -22,4 +22,4 @@
         %td= link_to 'Edit', edit_event_path(event)
         %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
   %br/
-  = link_to 'New Event', new_event_path
+  = link_to t(:new_event), new_event_path
