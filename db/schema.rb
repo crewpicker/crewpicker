@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180818162255) do
+ActiveRecord::Schema.define(version: 20180819122701) do
 
   create_table "access_levels", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -254,6 +254,7 @@ ActiveRecord::Schema.define(version: 20180818162255) do
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
     t.string   "name",                            limit: 255
+    t.boolean  "communication_consent"
   end
 
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"

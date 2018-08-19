@@ -7,11 +7,13 @@ class UserSessionsController < ApplicationController
   def create
     respond_to do |format|
       if @user = login(params[:username],params[:password])
-        format.html { redirect_to :root }
-        format.xml { render :xml => @user, :status => :created, :location => @user }
+        if @user.communication_consent == nil
+          format.html { redirect_to communication_consent_user_path(@user) }
+        else
+          format.html { redirect_to :root }
+        end
       else
         format.html { redirect_to(:login, :alert => "Feil brukernavn/passord!" ) }
-        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
   end

@@ -17,7 +17,11 @@ class OauthsController < ApplicationController
       logger.error oerr.backtrace
     end
     if @user
-      redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
+      if @user.communication_consent == nil
+        redirect_to communication_consent_user_path(@user)
+      else
+        redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
+      end
     else
       begin
         # FIXME passing block here is dirty filthy terrible hack to allow facebook login without email.
@@ -34,7 +38,7 @@ class OauthsController < ApplicationController
 
         reset_session # protect from session fixation attack
         auto_login(@user)
-        redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
+        redirect_to communication_consent_user_path(@user)
       rescue
         redirect_to root_path, :alert => "Failed to login from #{provider.titleize}!"
       end

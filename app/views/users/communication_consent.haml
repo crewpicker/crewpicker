@@ -1,0 +1,30 @@
+- title t(:communication_consent)
+.container
+  .col-lg-5
+    = form_for(@user) do |f|
+      - if @user.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@user.errors.count, "error")
+            prohibited this user from being saved:
+          %ul
+            - @user.errors.full_messages.each do |msg|
+              %li= msg
+      - if @user.email == nil
+        %p
+          %strong= "#{t(:we_need_your_email_address)} #{active_event.name}"
+        .form-group
+          = f.label :email
+          %br/
+          = f.text_field :email, class: 'form-control'
+        %hr/
+      %br/
+      %p
+        %strong= t(:communication_consent_info)
+      .checkbox
+        %label
+          = f.check_box :communication_consent
+          %strong= t(:consent_to_communication)
+      .hidden= hidden_field_tag :to_home_page, true
+      .actions
+        = f.submit t(:submit), class: 'btn btn-primary'

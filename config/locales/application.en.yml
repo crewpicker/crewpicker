@@ -74,6 +74,9 @@ en:
   create: "Create"
   register_user_account: "Register user account"
   tell_us_about_your_band: "Tell us about your band"
+  consent_to_communication: "Allow us to send you information about future events"
+  communication_consent: "Communication consent"
+  communication_consent_info: "We would like to send you emails about future events, and we need your permission to be able to do so."
 
   activerecord:
     models:
