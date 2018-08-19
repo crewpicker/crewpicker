@@ -85,6 +85,11 @@ nb:
   communication_consent: "Samtykke til kommunikasjon"
   communication_consent_info: "Vi ønsker å sende deg epost om fremtidige arrangementer, og vi trenger ditt samtykke til dette."
   we_need_your_email_address: "Vi trenger epostadressen din for å kunne sende praktisk info om din deltakelse på"
+  register_user_account: "Registrer brukerkonto"
+  tell_us_about_your_band: "Fortell oss om bandet"
+  playtime_wish_info: "Her kan du legge inn ønsket klokkeslett for opptreden. Vi prøver å imøtekomme ønsker, men kan bli nødt til å gjøre justeringer for å få programmet til å gå opp."
+  apply_for_volunteer_job: "Søk om jobb som frivillig"
+  preferred_group_number: "Ønsket gruppe nr."
 
   activerecord:
     models:
@@ -111,6 +116,17 @@ nb:
         name: "Bandnavn"
         contact_name: "Kontaktperson"
         email: "E-post"
+        phone: "Telefon"
+        address: "Adresse"
+        postal_code: "Postnummer"
+        city: "Sted"
+        description: "Beskrivelse av bandet"
+        image: "Bilde (hopp over om du får problemer med å laste opp bilde)"
+        song_title: "Sangtittel"
+        song_composer: "Komponist(er)"
+        song_lyrics: "Sangtekst"
+        playtime_wish: "Ønsket spilletid"
+        playtime_wish_alt: "Alternativ spilletid"
       band/band_members:
         name: "Et bandmedlems navn"
         phone: "Et bandmedlems telefonnummer"
@@ -140,7 +156,7 @@ nb:
         name: "Navn"
         address: "Adresse"
         birthday: "Fødselsdag"
-        email: "Epost"
+        email: "E-post"
         phone: "Telefon"
         relevant_experience: "Relevant erfaring"
       user:
