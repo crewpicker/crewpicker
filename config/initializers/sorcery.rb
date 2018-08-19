@@ -45,12 +45,13 @@ Rails.application.config.sorcery.configure do |config|
   config.twitter.key = APP_CONFIG[:twitter_api_key]
   config.twitter.secret = APP_CONFIG[:twitter_api_secret]
   config.twitter.callback_url = APP_CONFIG[:twitter_callback_url]
-  config.twitter.user_info_mapping = {:username => "screen_name", :name => "name", :email => "email"}
+  config.twitter.user_info_mapping = {:username => "name", :name => "name", :email => "email"}
 
   config.facebook.key = APP_CONFIG[:facebook_api_key]
   config.facebook.secret = APP_CONFIG[:facebook_api_secret]
   config.facebook.callback_url = APP_CONFIG[:facebook_callback_url]
-  config.facebook.user_info_mapping = {:username => "email", :name => "name", :email => "email"}
+  config.facebook.user_info_mapping = {:username => "name", :name => "name", :email => "email"}
+  config.facebook.scope = "email"
   config.facebook.api_version = "v2.11"
   #
   # config.github.key = ""
