@@ -49,4 +49,4 @@ group :test do
   gem 'launchy'
 end
 
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.6'
