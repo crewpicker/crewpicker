@@ -92,6 +92,8 @@ nb:
   preferred_group_number: "Ønsket gruppe nr."
   new_event: "Nytt arrangement"
   account_settings: "Kontoinnstillinger"
+  mark_as_completed: "Marker som fullført"
+  mark_as_not_completed: "Marker som ikke fullført"
 
   activerecord:
     models:
@@ -153,6 +155,8 @@ nb:
         address: "Adresse"
         notes: "Notater"
         salesman: "Selger"
+        completed: "Fullført"
+        type_from_previous_event: "Type fra tidligere festival"
       group:
         name: "Navn"
         description: "Beskrivelse"
