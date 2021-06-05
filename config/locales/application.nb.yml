@@ -70,7 +70,7 @@ nb:
   statistics: "Statistikk"
   volunteers: "Frivillige"
   band_signup_confirmation: "Bekreftelse på påmelding"
-  home_contact_info_text: "Om du har trøbbel med bandpåmelding, send epost til festival@rockmotrus.no så sørger vi for at påmeldinga blir i orden."
+  home_contact_info_text: "Om du har trøbbel med bandpåmelding, send epost til %{contact_email} så sørger vi for at påmeldinga blir i orden."
   login: "Logg inn"
   login_with_facebook: "Logg inn med Facebook"
   login_with_twitter: "Logg inn med Twitter"
