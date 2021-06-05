@@ -1,20 +1,20 @@
 - title "Annonser"
 - ad_sum = Ad.where(event_id: active_event.id).each.inject(0) {|sum, ad| sum + ad.ad_type.value}
 .container
-  %h1 Annonser
+  %h1= Ad.model_name.human(count: 2)
   %p Status: #{number_with_delimiter(ad_sum, delimiter: ' ')}kr / 250 000kr
   %table.table.table-striped
     %tr
-      %th Navn
-      %th Kontaktperson
-      %th Telefon
-      %th Epost
-      %th Annonsetype
-      %th Adresse
-      %th Notater
-      %th Selger
-      %th Type from last event
-      %th{title: 'Has the ad been produced?'} Completed?
+      %th= Ad.human_attribute_name(:name)
+      %th= Ad.human_attribute_name(:contact)
+      %th= Ad.human_attribute_name(:phone)
+      %th= Ad.human_attribute_name(:email)
+      %th= Ad.human_attribute_name(:type)
+      %th= Ad.human_attribute_name(:address)
+      %th= Ad.human_attribute_name(:notes)
+      %th= Ad.human_attribute_name(:salesman)
+      %th= Ad.human_attribute_name(:type_from_previous_event)
+      %th{title: 'Has the ad been produced?'} #{Ad.human_attribute_name(:completed)}?
       %th
       %th
       %th
@@ -30,10 +30,17 @@
         %td= ad.salesman
         - if ad.parent_ad_id
           %td= ad.parent_ad.ad_type ? ad.parent_ad.ad_type.name : ''
-        %td= ad.completed ? 'Yes' : 'No'
-        %td= link_to 'Endre', edit_ad_path(ad)
-        %td= link_to 'Slett', ad, method: :delete, data: { confirm: 'Du vil sannsynligvis ikke gjøre dette.' }
-        %td= link_to(ad.completed ? 'Mark as not completed' : 'Mark as completed', toggle_completed_ad_path(ad))
+        - else
+          %td
+        %td
+          - if ad.completed
+            = t(:answer_yes)
+            %span{title: "#{t(:mark_as_not_completed)}"}= link_to('❌', toggle_completed_ad_path(ad))
+          - else
+            = t(:answer_no)
+            %span{title: "#{t(:mark_as_completed)}"}= link_to('✅', toggle_completed_ad_path(ad))
+        %td= link_to t(:edit), edit_ad_path(ad)
+        %td= link_to t(:delete), ad, method: :delete, data: { confirm: 'Du vil sannsynligvis ikke gjøre dette.' }
   %p= link_to 'Ny annonse', new_ad_path
   %hr
   %h2 Copy all ads from previous event
