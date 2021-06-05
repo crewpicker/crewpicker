@@ -19,7 +19,7 @@
       %th
       %th
     - @ads.each do |ad|
-      %tr{:style => "#{ad.ad_type.name == "Nei" ? 'color: #999999' : ''}"}
+      %tr{:style => "#{ad.ad_type.name == "Nei" ? 'color: #999999' : ''}", class: "#{ad.completed == true ? 'success' : ''}"}
         %td= ad.name
         %td= ad.contact
         %td= ad.phone
