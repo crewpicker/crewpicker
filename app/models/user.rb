@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   end
 
   has_many :authentications, :dependent => :destroy
-  has_many :user_roles
+  has_many :user_roles, dependent: :destroy
   has_many :roles, :through => :user_roles
   has_one :crew_application
   has_many :volunteers
