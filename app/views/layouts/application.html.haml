@@ -45,7 +45,7 @@
                   = t(:login)
                   %b.caret
                 %ul.dropdown-menu
-                  %li= link_to "<i class=\"fa fa-fw fa-facebook\"></i> | #{t(:login_with_facebook)}".html_safe, auth_at_provider_path(:provider => :facebook)
+                  /li= link_to "<i class=\"fa fa-fw fa-facebook\"></i> | #{t(:login_with_facebook)}".html_safe, auth_at_provider_path(:provider => :facebook)
                   %li= link_to "<i class=\"fa fa-fw fa-twitter\"></i> | #{t(:login_with_twitter)}".html_safe, auth_at_provider_path(:provider => :twitter)
                   %li.divider
                   %li.dropdown-header= t(:local_user)
