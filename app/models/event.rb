@@ -1,4 +1,4 @@
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   scope :active, -> { joins(:active_event) }
   has_one :active_event
 

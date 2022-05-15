@@ -11,7 +11,7 @@ class FlightscreensController < ApplicationController
     else
       bandname = "I have no idea who is next"
     end
-    render :text => bandname, :content_type => Mime::TEXT
+    render plain: bandname
   end
   def next
     stage_schedule = StageSchedule.find(:all, :conditions => ["stage_schedules.end > ?", DateTime.now.to_formatted_s(:db)], :limit => 2, :order => "`id` DESC").last
@@ -20,7 +20,7 @@ class FlightscreensController < ApplicationController
     else
       bandname = "I have no idea who is next"
     end
-    render :text => bandname, :content_type => Mime::TEXT
+    render plain: bandname
   end
   def later
     stage_schedule = StageSchedule.find(:all, :conditions => ["stage_schedules.end > ?", DateTime.now.to_formatted_s(:db)], :limit => 3, :order => "`id` DESC").last
@@ -29,6 +29,6 @@ class FlightscreensController < ApplicationController
     else
       bandname = "I have no idea who is next"
     end
-    render :text => bandname, :content_type => Mime::TEXT
+    render plain: bandname
   end
 end

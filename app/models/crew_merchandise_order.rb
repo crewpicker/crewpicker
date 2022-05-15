@@ -1,3 +1,3 @@
-class CrewMerchandiseOrder < ActiveRecord::Base
+class CrewMerchandiseOrder < ApplicationRecord
   belongs_to :volunteer
 end

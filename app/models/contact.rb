@@ -1,3 +1,3 @@
 # encoding: UTF-8
-class Contact < ActiveRecord::Base
+class Contact < ApplicationRecord
 end

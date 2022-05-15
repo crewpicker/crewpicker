@@ -23,8 +23,6 @@ FestivalAdmin::Application.configure do
 
   config.eager_load = false
 
-  Cocaine::CommandLine.runner = Cocaine::CommandLine::BackticksRunner.new
-
   config.assets.logger = nil
 end
 

@@ -1,4 +1,4 @@
 # encoding: UTF-8
-class Role < ActiveRecord::Base
+class Role < ApplicationRecord
   belongs_to :user
 end

@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   authenticates_with_sorcery!
   #attr_accessible :email, :password, :password_confirmation, :authentications_attributes
   authenticates_with_sorcery! do |config|

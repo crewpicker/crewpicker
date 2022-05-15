@@ -5,7 +5,7 @@ class VolunteerMailer < ActionMailer::Base
     @content = content_markdown
     mail(to: APP_CONFIG[:default_from_email_address], bcc: recipients, subject: subject) do |format|
       format.html
-      format.text { render text: content_plain }
+      format.text { render plain: content_plain }
     end
   end
 end

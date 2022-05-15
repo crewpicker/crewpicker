@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class AdType < ActiveRecord::Base
+class AdType < ApplicationRecord
   has_many :ads
   default_scope -> { order :name }
 end

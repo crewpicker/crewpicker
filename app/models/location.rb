@@ -1,4 +1,4 @@
 # encoding: UTF-8
-class Location < ActiveRecord::Base
+class Location < ApplicationRecord
   has_many :location_schedules
 end

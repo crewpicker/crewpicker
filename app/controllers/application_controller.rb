@@ -2,14 +2,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter do |c|
+  before_action do |c|
     Authorization.current_user = c.current_user
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end
 
-  before_filter :set_locale
+  before_action :set_locale
 
   def set_locale
     I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)

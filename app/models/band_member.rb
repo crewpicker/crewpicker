@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class BandMember < ActiveRecord::Base
+class BandMember < ApplicationRecord
   belongs_to :band
   belongs_to :user
   default_scope -> { order :name }
