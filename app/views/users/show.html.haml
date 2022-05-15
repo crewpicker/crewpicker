@@ -1,6 +1,6 @@
 - title t(:user).capitalize + ': ' + @user.username
 %h1= t(:user).capitalize + ': ' + @user.username
-%table.border
+%table.table.table-striped
   %tr
     %th
       = t(:username)
@@ -21,7 +21,62 @@
       = t(:roles).capitalize
       \:
     %td= @user.roles.map(&:name).to_sentence.capitalize
+  %tr
+    %th
+      Sist endret:
+    %td= @user.updated_at.year
 %p
   = link_to t(:edit), edit_user_path(@user)
   |
   \#{link_to t(:back), users_path}
+%h2
+  Frivillig
+%table.table.table-striped
+  %tr
+    %th= t(:event)
+    %th= t(:year)
+    %th
+  - @user.volunteers.unscoped.each do |volunteer|
+    %tr
+      %td= volunteer.event.name
+      %td= volunteer.event.from.year
+      %td
+        = link_to t(:show), volunteer
+        |
+        = link_to t(:edit), edit_volunteer_path(volunteer)
+        |
+        = link_to t(:delete), volunteer, method: :delete, data: { confirm: t(:confirm) }
+%h2
+  Crewsøknader
+%table.table.table-striped
+  %tr
+    %th= t(:event)
+    %th= t(:year)
+    %th
+  - @user.crew_applications.unscoped.each do |crew_application|
+    %tr
+      %td= crew_application.event.name
+      %td= crew_application.event.from.year
+      %td
+        = link_to t(:show), crew_application
+        |
+        = link_to t(:edit), edit_crew_application_path(crew_application)
+        |
+        = link_to t(:delete), crew_application, method: :delete, data: { confirm: t(:confirm) }
+%h2
+  Band
+%table.table.table-striped
+  %tr
+    %th= t(:event)
+    %th= t(:year)
+    %th
+  - @user.bands.unscoped.each do |band|
+    %tr
+      %td= band.event.name
+      %td= band.event.from.year
+      %td
+        = link_to t(:show), band
+        |
+        = link_to t(:edit), edit_band_path(band)
+        |
+        = link_to t(:delete), band, method: :delete, data: { confirm: t(:confirm) }
