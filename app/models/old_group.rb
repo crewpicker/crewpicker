@@ -1,2 +1,2 @@
-class OldGroup < ActiveRecord::Base
+class OldGroup < ApplicationRecord
 end

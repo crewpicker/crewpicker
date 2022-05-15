@@ -1,2 +1,2 @@
-class MerchandiseArticle < ActiveRecord::Base
+class MerchandiseArticle < ApplicationRecord
 end

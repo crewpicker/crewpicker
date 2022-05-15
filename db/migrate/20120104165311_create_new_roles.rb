@@ -1,7 +1,7 @@
 class CreateNewRoles < ActiveRecord::Migration
-  class UserRole < ActiveRecord::Base
+  class UserRole < ApplicationRecord
   end
-  class Role < ActiveRecord::Base
+  class Role < ApplicationRecord
   end
   def self.up
     create_table :roles do |t|

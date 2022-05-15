@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class CrewApplication < ActiveRecord::Base
+class CrewApplication < ApplicationRecord
   has_many :crew_wishes
   belongs_to :user
   belongs_to :volunteer

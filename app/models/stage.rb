@@ -1,4 +1,4 @@
 # encoding: UTF-8
-class Stage < ActiveRecord::Base
+class Stage < ApplicationRecord
   has_many :stage_schedules
 end

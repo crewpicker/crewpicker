@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class Volunteer < ActiveRecord::Base
+class Volunteer < ApplicationRecord
   belongs_to :group
   belongs_to :user
   default_scope -> { where(event_id: ActiveEvent.first.event_id).order("volunteers.name") }

@@ -9,20 +9,18 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require twitter/bootstrap
  *= require social-buttons-3
  *= require fullcalendar
- *= require jquery-ui
- *= require jquery.qtip.basic.css
  *= require font-awesome
  */
+@import "bootstrap";
 
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-top: 50px;
+  padding-top: 60px;
   padding-bottom: 40px;
 }
 
