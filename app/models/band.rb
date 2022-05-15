@@ -6,7 +6,7 @@ class Band < ApplicationRecord
   belongs_to :user
   belongs_to :event
   accepts_nested_attributes_for :band_members, :reject_if => lambda { |c| c[:name].blank? }
-  default_scope { where(event_id: ActiveEvent.first.event_id) }
+  default_scope -> { where event_id: active_event_id }
   validates :name, :presence => true
   validates :name, uniqueness: { scope: :event_id }
   validates :contact_name, :presence => true

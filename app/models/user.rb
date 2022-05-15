@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :authentications, :dependent => :destroy
   has_many :user_roles, dependent: :destroy
   has_many :roles, :through => :user_roles
-  has_one :crew_application
+  has_many :crew_applications
   has_many :volunteers
   has_many :bands
   has_many :band_members
@@ -25,5 +25,9 @@ class User < ApplicationRecord
   validates_uniqueness_of :username
   def role_symbols
     (roles || []).map {|r| r.name.to_sym}
+  end
+
+  def crew_application
+    self.crew_applications.first
   end
 end
