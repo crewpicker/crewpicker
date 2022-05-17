@@ -11,9 +11,9 @@
  *= require_self
  *= require social-buttons-3
  *= require fullcalendar
- *= require font-awesome
  */
-@import "bootstrap";
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-social';
 
 /* GLOBAL STYLES
 -------------------------------------------------- */

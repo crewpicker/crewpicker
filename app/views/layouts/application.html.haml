@@ -2,16 +2,11 @@
 %html{:lang => "no"}
   %head
     %title= yield(:title)
-    = stylesheet_link_tag 'application'
-    = javascript_include_tag 'application'
-    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"
-    = csrf_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+    = csrf_meta_tags
+    = csp_meta_tag
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-    / WARNING: Respond.js doesn't work if you view the page via file://
-    /[if lt IE 9]
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     = yield(:headerextra)
   %body
     %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
@@ -22,12 +17,12 @@
         .navbar-collapse.collapse
           %ul.navbar-nav.me-auto.mb-2.mb-lg-0
             - if !current_user.nil? and current_user.roles.find_by_name('admin')
-              %li{:class => "#{current_page?(volunteers_path) ? 'active' : ''}"}= link_to Volunteer.model_name.human(count: 2), volunteers_path
-              %li{:class => "#{current_page?(bands_path) ? 'active' : ''}"}= link_to Band.model_name.human(count: 2), bands_path
-              %li{:class => "#{current_page?(ads_path) ? 'active' : ''}"}= link_to Ad.model_name.human(count: 2), ads_path
-              %li{:class => "#{current_page?(events_path) ? 'active' : ''}"}= link_to Event.model_name.human(count: 2), events_path
-              %li{:class => "#{current_page?(statistics_path) ? 'active' : ''}"}= link_to t(:statistics), statistics_path
-              %li{:class => "#{current_page?(users_path) ? 'active' : ''}"}= link_to User.model_name.human(count: 2), users_path
+              %li= link_to Volunteer.model_name.human(count: 2), volunteers_path, class: "nav-link#{current_page?(volunteers_path) ? ' active' : ''}"
+              %li= link_to Band.model_name.human(count: 2), bands_path, class: "nav-link#{current_page?(bands_path) ? ' active' : ''}"
+              %li= link_to Ad.model_name.human(count: 2), ads_path, class: "nav-link#{current_page?(ads_path) ? ' active' : ''}"
+              %li= link_to Event.model_name.human(count: 2), events_path, class: "nav-link#{current_page?(events_path) ? ' active' : ''}"
+              %li= link_to t(:statistics), statistics_path, class: "nav-link#{current_page?(statistics_path) ? ' active' : ''}"
+              %li= link_to User.model_name.human(count: 2), users_path, class: "nav-link#{current_page?(users_path) ? ' active' : ''}"
             - if current_user
               %li.nav-item.dropdown
                 %a.nav-link.dropdown-toggle{"data-bs-toggle" => "dropdown", :href => "#", "aria-expanded" => "false"}
@@ -43,7 +38,7 @@
                   %b.caret
                 %ul.dropdown-menu
                   /li= link_to "<i class=\"fa fa-fw fa-facebook\"></i> | #{t(:login_with_facebook)}".html_safe, auth_at_provider_path(:provider => :facebook)
-                  %li= link_to "<i class=\"fa fa-fw fa-twitter\"></i> | #{t(:login_with_twitter)}".html_safe, auth_at_provider_path(:provider => :twitter), class: "dropdown-item"
+                  %li= link_to "<i class=\"fa-brands fa-twitter\"></i> | #{t(:login_with_twitter)}".html_safe, auth_at_provider_path(:provider => :twitter), class: "dropdown-item"
                   %li
                     %hr.divider
                   %li
