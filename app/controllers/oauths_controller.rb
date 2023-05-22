@@ -1,7 +1,5 @@
 # encoding: UTF-8
 class OauthsController < ApplicationController
-  skip_before_filter :require_login
-
   # sends the user on a trip to the provider,
   # and after authorizing there back to the callback url.
   def oauth

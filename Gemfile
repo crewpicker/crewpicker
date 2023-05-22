@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 ruby '3.2.1'
 
-gem 'rails', '7.0.3'
-gem 'railties', '7.0.3'
+gem 'rails', '7.0.4.3'
+gem 'railties', '7.0.4.3'
 
 # Rails defaults
 gem 'puma', '~> 5.0'
@@ -43,12 +43,12 @@ gem 'fullcalendar-rails', '~> 3.9.0'
 gem 'chart-js-rails'
 gem 'holder_rails', '~> 2.9.3' # Provides Holder.js to render image placeholders entirely on the client side
 group :test, :development do
-  gem 'rspec-rails'
   gem 'sqlite3', '~> 1.4.0'
+  gem 'rspec-rails'
 end
 group :development do
   gem 'solargraph'
 end
 group :production do
-  gem 'mysql2', '~> 0.5.0'
+  gem 'activerecord-cockroachdb-adapter', '~> 7.0.0'
 end
