@@ -3,10 +3,10 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main
+      - cicd-container-gha
 
 env:
-  container_image: europe-north1-docker.pkg.dev/crewpicker/crewpicker:latest
+  container_image: europe-north1-docker.pkg.dev/crewpicker/crewpicker
 
 jobs:
   build-and-push:
@@ -39,3 +39,8 @@ jobs:
             ${{ env.container_image }}:latest
       - id: output-tag
         run: echo ::set-output tag=${{ env.container_image }}:${{ github.sha }}
+  deploy:
+    needs: build-and-push
+    uses: crewpicker/crewpicker-infra/.github/workflows/crewpicker-pro.yaml@main
+    with:
+      container_image: ${{ needs.build-and-push.outputs.tag }}
