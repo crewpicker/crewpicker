@@ -21,7 +21,7 @@ jobs:
       - id: gcloud-auth
         uses: google-github-actions/auth@v1
         with:
-          workload_identity_provider: projects/${{ secrets.GCP_PROJECT }}/locations/global/workloadIdentityPools/crewpicker-gha
+          workload_identity_provider: projects/${{ secrets.GCP_PROJECT }}/locations/global/workloadIdentityPools/crewpicker-gha/providers/crewpicker-gha-provider
           service_account: gha-deployer@crewpicker.iam.gserviceaccount.com
           token_format: access_token
           access_token_lifetime: 300s
