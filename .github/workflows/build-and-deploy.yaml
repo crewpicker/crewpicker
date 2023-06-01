@@ -33,7 +33,7 @@ jobs:
           registry: europe-north1-docker.pkg.dev
           username: oauth2accesstoken
           password: ${{ steps.gcloud-auth.outputs.access_token }}
-      - run: echo "${{ secrets.NPMRC }}" > .npmrc
+      - run: echo "${{ secrets.NPMRC }}" > .npmrc; mv config/database.yml.example config/database.yml
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
