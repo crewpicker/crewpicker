@@ -48,7 +48,7 @@ jobs:
             ${{ env.container_image }}:${{ github.sha }}
             ${{ env.container_image }}:latest
       - id: output-tag
-        run: echo ::set-output tag=${{ env.container_image }}:${{ github.sha }}
+        run: echo "tag=${{ env.container_image }}:${{ github.sha }}" >> $GITHUB_OUTPUT
   deploy:
     needs: build-and-push
     secrets: inherit
