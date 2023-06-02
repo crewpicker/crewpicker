@@ -6,7 +6,7 @@ on:
       - cicd-container-gha
 
 env:
-  container_image: europe-north1-docker.pkg.dev/crewpicker/crewpicker
+  container_image: europe-north1-docker.pkg.dev/crewpicker/crewpicker/crewpicker
 
 jobs:
   build-and-push:
