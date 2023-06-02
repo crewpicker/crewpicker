@@ -17,7 +17,7 @@ jobs:
     outputs:
       tag: ${{ steps.output-tag.outputs.tag }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - id: gcloud-auth
         uses: google-github-actions/auth@v1
         with:
