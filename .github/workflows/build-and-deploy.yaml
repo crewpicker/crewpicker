@@ -51,6 +51,7 @@ jobs:
         run: echo ::set-output tag=${{ env.container_image }}:${{ github.sha }}
   deploy:
     needs: build-and-push
+    secrets: inherit
     uses: crewpicker/crewpicker-infra/.github/workflows/crewpicker-pro.yaml@main
     with:
       container_image: ${{ needs.build-and-push.outputs.tag }}
