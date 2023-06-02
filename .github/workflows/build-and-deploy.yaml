@@ -35,6 +35,7 @@ jobs:
           password: ${{ steps.gcloud-auth.outputs.access_token }}
       - run: |
           echo "${{ secrets.NPMRC }}" > .npmrc
+          echo "${{ secrets.RAILS_MASTER_KEY }}" > config/master.key
           cp config/database.yml.example config/database.yml
           cp config/config.yml.example config/config.yml
 
