@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+export RAILS_ENV=production
+
+if ! command -v foreman &> /dev/null
+then
+  echo "Installing foreman..."
+  gem install foreman
+fi
+
+bundle exec rails assets:precompile
+foreman start -f Procfile.prod "$@"

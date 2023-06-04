@@ -16,7 +16,9 @@ module ApplicationHelper
    date.year - dob.year - (month_diff < 0 ? 1 : 0)
   end
   def active_event
-    if ActiveEvent.first
+    if params[:event_id]
+      Event.find(params[:event_id])
+    elsif ActiveEvent.first
       ActiveEvent.first.event
     end
   end
@@ -24,7 +26,7 @@ module ApplicationHelper
     if active_event
       return active_event.name
     else
-      return "FestivalAdmin"
+      return "Crewpicker"
     end
   end
 end

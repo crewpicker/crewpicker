@@ -3,7 +3,8 @@ class Volunteer < ApplicationRecord
   belongs_to :group
   belongs_to :user
   belongs_to :event
-  default_scope -> { where(event_id: active_event_id).order("volunteers.name") }
+  default_scope -> { where(event_id: active_event_id).order(:name) }
+  scope :at_event, ->(event_id) { where(event_id: event_id).order(:name) }
 
   def short_name
     arr = name.split
