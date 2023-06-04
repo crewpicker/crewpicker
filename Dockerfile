@@ -6,7 +6,7 @@ RUN bundle config set --global without 'test development'
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 
 RUN apt-get update \
-    && apt-get install -y libmariadb3 nodejs wkhtmltopdf \
+    && apt-get install -y libmariadb3 nodejs wkhtmltopdf libpq5 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN npm install --global yarn
