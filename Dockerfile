@@ -1,4 +1,4 @@
-FROM ruby:latest AS builder
+FROM ruby:3.2.1 AS builder
 
 RUN bundle config set --global deployment 1
 RUN bundle config set --global without 'test development'
@@ -6,7 +6,7 @@ RUN bundle config set --global without 'test development'
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 
 RUN apt-get update \
-    && apt-get install -y libmariadb3 nodejs \
+    && apt-get install -y libmariadb3 nodejs wkhtmltopdf libpq5 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN npm install --global yarn
@@ -28,19 +28,20 @@ RUN bin/rails assets:precompile
 
 RUN rm -rf node_modules
 
-FROM ruby:slim
+FROM ruby:3.2.1-slim
 
 RUN bundle config set --global deployment 1
 RUN bundle config set --global without 'test development'
 
 RUN apt-get update \
-    && apt-get install -y libmariadb3 \
+    && apt-get install -y libmariadb3 shared-mime-info \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/crewpicker
 
 ENV RAILS_ENV production
 ENV RAILS_SERVE_STATIC_FILES true
+ENV RAILS_LOG_TO_STDOUT 1
 ENV LANG C.UTF-8
 
 COPY --from=builder /usr/src/crewpicker/ ./
