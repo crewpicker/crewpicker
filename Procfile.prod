@@ -1,2 +1,2 @@
-web: puma
+web: bundle exec puma
 nginx: nginx -c $PWD/config/nginx.conf

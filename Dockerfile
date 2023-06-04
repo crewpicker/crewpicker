@@ -34,7 +34,7 @@ RUN bundle config set --global deployment 1
 RUN bundle config set --global without 'test development'
 
 RUN apt-get update \
-    && apt-get install -y shared-mime-info wkhtmltopdf libpq5 \
+    && apt-get install -y shared-mime-info wkhtmltopdf libpq5 nginx-light \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/crewpicker
