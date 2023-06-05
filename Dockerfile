@@ -37,6 +37,8 @@ RUN apt-get update \
     && apt-get install -y shared-mime-info wkhtmltopdf libpq5 nginx-light \
     && rm -rf /var/lib/apt/lists/*
 
+RUN curl --create-dirs -o $HOME/.postgresql/root.crt 'https://cockroachlabs.cloud/clusters/4d8dfab6-b1dd-473b-bc52-9969faac6110/cert'
+
 WORKDIR /usr/src/crewpicker
 
 ENV RAILS_ENV production
