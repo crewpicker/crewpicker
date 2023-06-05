@@ -34,7 +34,7 @@ RUN bundle config set --global deployment 1
 RUN bundle config set --global without 'test development'
 
 RUN apt-get update \
-    && apt-get install -y shared-mime-info wkhtmltopdf libpq5 nginx-light \
+    && apt-get install -y shared-mime-info wkhtmltopdf libpq5 nginx-light curl \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl --create-dirs -o $HOME/.postgresql/root.crt 'https://cockroachlabs.cloud/clusters/4d8dfab6-b1dd-473b-bc52-9969faac6110/cert'
