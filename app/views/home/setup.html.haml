@@ -1,6 +1,10 @@
 .container
   %h1 Get started with Crewpicker
-  - if Event.count == 0
+  - if User.count == 0
+    %p= link_to 'Create user', new_user_path, class: 'btn btn-lg btn-primary'
+  - elsif !current_user
+    %p= link_to 'Login', login_path, class: 'btn btn-lg btn-primary'
+  - elsif Event.count == 0
     %p= link_to 'Create event', new_event_path, class: 'btn btn-lg btn-success'
   - else
     %p= link_to 'Set active event', active_event_path, class: 'btn btn-lg btn-success'
