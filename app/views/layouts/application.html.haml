@@ -30,7 +30,7 @@
                   %b.caret
                 %ul.dropdown-menu
                   %li.dropdown-item= link_to t(:account_settings), edit_user_path(current_user)
-                  %li.dropdown-item= link_to t(:logout), logout_path
+                  %li.dropdown-item= link_to t(:logout), logout_path, data: {turbo: 'false'}
             - else
               %li.nav-item.dropdown
                 %a.nav-link.dropdown-toggle{"data-bs-toggle" => "dropdown", :href => "#"}
@@ -44,7 +44,7 @@
                   %li
                     %h6.dropdown-header= t(:local_user)
                   %li
-                    = form_tag user_sessions_path, :method => :post, class: 'form-signin', id: 'navbar-login' do
+                    = form_tag user_sessions_path, :method => :post, class: 'form-signin', id: 'navbar-login', data: {turbo: 'false'} do
                       = hidden_field_tag :referer, @referer.to_s
                       = text_field_tag :username, '', placeholder: t(:username), :required => true, :autofocus => true, class: 'form-control'
                       = password_field_tag :password, '', placeholder: t(:password), :required => true, class: 'form-control'
