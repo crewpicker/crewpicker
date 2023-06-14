@@ -101,7 +101,6 @@ class UsersController < ApplicationController
 
   def communication_consent
     @user = User.find(params[:id])
-    @user.communication_consent = true
   end
 
   private
