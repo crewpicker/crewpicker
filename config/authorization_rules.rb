@@ -28,12 +28,12 @@ authorization do
     has_permission_on :users, :to => [:edit, :update, :show] do
       if_attribute :id => is { user.id }
     end
-    has_permission_on :home, :to => :index
+    has_permission_on :home, :to => [:index, :setup]
     has_permission_on :volunteers, :to => :info
   end
 
   role :guest do
-    has_permission_on :home, :to => :index
+    has_permission_on :home, :to => [:index, :setup]
     has_permission_on :users, :to => [:new, :create]
     has_permission_on :location_schedules, :to => [:create]
   end
