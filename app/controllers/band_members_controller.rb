@@ -68,7 +68,7 @@ class BandMembersController < ApplicationController
     @band_member = BandMember.find(params[:id])
 
     respond_to do |format|
-      if @band_member.update_attributes(band_member_params)
+      if @band_member.update(band_member_params)
         format.html { redirect_to(@band_member.band, :notice => 'Band member was successfully updated.') }
         format.xml  { head :ok }
       else

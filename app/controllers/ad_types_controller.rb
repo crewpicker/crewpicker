@@ -63,7 +63,7 @@ class AdTypesController < ApplicationController
     @ad_type = AdType.find(params[:id])
 
     respond_to do |format|
-      if @ad_type.update_attributes(ad_type_params)
+      if @ad_type.update(ad_type_params)
         format.html { redirect_to(@ad_type, :notice => 'Ad type was successfully updated.') }
         format.xml  { head :ok }
       else

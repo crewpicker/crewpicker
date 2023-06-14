@@ -61,7 +61,7 @@ class StagesController < ApplicationController
     @stage = Stage.find(params[:id])
 
     respond_to do |format|
-      if @stage.update_attributes(stage_params)
+      if @stage.update(stage_params)
         format.html { redirect_to(@stage, :notice => 'Stage was successfully updated.') }
         format.xml  { head :ok }
       else

@@ -63,7 +63,7 @@ class AccessLevelsController < ApplicationController
     @access_level = AccessLevel.find(params[:id])
 
     respond_to do |format|
-      if @access_level.update_attributes(access_level_params)
+      if @access_level.update(access_level_params)
         format.html { redirect_to(@access_level, :notice => 'Access level was successfully updated.') }
         format.xml  { head :ok }
       else

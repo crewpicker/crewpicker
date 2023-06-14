@@ -63,7 +63,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
 
     respond_to do |format|
-      if @group.update_attributes(group_params)
+      if @group.update(group_params)
         format.html { redirect_to(@group, :notice => 'Group was successfully updated.') }
         format.xml  { head :ok }
       else

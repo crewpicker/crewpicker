@@ -66,7 +66,7 @@ class CrewApplicationsController < ApplicationController
     @crew_application = CrewApplication.find(params[:id])
 
     respond_to do |format|
-      if @crew_application.update_attributes(crew_application_params)
+      if @crew_application.update(crew_application_params)
         format.html { redirect_to(@crew_application, :notice => 'Crew application was successfully updated.') }
         format.xml  { head :ok }
       else
