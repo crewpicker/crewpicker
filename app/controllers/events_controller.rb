@@ -27,7 +27,7 @@ class EventsController < ApplicationController
 
     if @event.save
       if event_params[:set_as_active_event]
-        active_event = ActiveEvent.first
+        active_event = ActiveEvent.first_or_create
         active_event.event = @event
         active_event.save
       end
@@ -41,7 +41,7 @@ class EventsController < ApplicationController
   def update
     if @event.update(event_params)
       if event_params[:set_as_active_event]
-        active_event = ActiveEvent.first
+        active_event = ActiveEvent.first_or_create
         active_event.event = @event
         active_event.save
       end
