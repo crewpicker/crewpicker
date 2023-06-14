@@ -64,7 +64,7 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.find(params[:id])
 
     respond_to do |format|
-      if @volunteer.update_attributes(volunteer_params)
+      if @volunteer.update(volunteer_params)
         format.html { redirect_to(volunteers_path, :notice => "#{@volunteer.name} ble oppdatert.") }
         format.xml  { head :ok }
       else

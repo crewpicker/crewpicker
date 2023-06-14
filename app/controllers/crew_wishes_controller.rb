@@ -63,7 +63,7 @@ class CrewWishesController < ApplicationController
     @crew_wish = CrewWish.find(params[:id])
 
     respond_to do |format|
-      if @crew_wish.update_attributes(params[:crew_wish])
+      if @crew_wish.update(params[:crew_wish])
         format.html { redirect_to(@crew_wish, :notice => 'Crew wish was successfully updated.') }
         format.xml  { head :ok }
       else

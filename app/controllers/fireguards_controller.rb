@@ -63,7 +63,7 @@ class FireguardsController < ApplicationController
     @fireguard = Fireguard.find(params[:id])
 
     respond_to do |format|
-      if @fireguard.update_attributes(params[:fireguard])
+      if @fireguard.update(params[:fireguard])
         format.html { redirect_to(@fireguard, :notice => 'Fireguard was successfully updated.') }
         format.xml  { head :ok }
       else

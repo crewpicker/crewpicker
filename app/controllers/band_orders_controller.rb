@@ -60,7 +60,7 @@ class BandOrdersController < ApplicationController
     @band_order = StageSchedule.find(params[:id])
 
     respond_to do |format|
-      if @band_order.update_attributes(params[:stage_schedule])
+      if @band_order.update(params[:stage_schedule])
         format.html { redirect_to(band_orders_url, :notice => 'Band order was successfully updated.') }
         format.xml  { head :ok }
       else

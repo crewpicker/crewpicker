@@ -70,7 +70,7 @@ class BandsController < ApplicationController
     @band = Band.find(params[:id])
 
     respond_to do |format|
-      if @band.update_attributes(band_params)
+      if @band.update(band_params)
         format.html { redirect_to(@band, :notice => 'Bandopplysningene er oppdatert.') }
         format.xml  { head :ok }
       else
