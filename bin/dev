@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export RAILS_ENV=development
+
 if ! command -v foreman &> /dev/null
 then
   echo "Installing foreman..."
