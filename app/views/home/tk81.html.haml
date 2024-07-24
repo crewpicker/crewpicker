@@ -1,3 +1,40 @@
+- title festival_title
 .container
-  %p= link_to 'Påmelding skuespiller', 'https://forms.gle/R9vhB6HiW9oMAMof8', target: '_blank', class: 'btn btn-primary btn-lg', style: 'margin-top: 10px;'
-  %p= link_to 'Påmelding tekniker', 'https://forms.gle/a611xPzodrfaCKny9', target: '_blank', class: 'btn btn-primary btn-lg', style: 'margin-top: 10px;'
+  - if active_event.volunteer_deadline.future?
+    %p= link_to 'Påmelding skuespiller', new_tk81_skuespiller_path, class: 'btn btn-primary btn-lg', style: 'margin-top: 10px;'
+  - if current_user && current_user.tk81_skuespillere.count > 0
+    %h2 Påmeldinger skuespiller
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Navn
+          %th
+      %tbody
+        - current_user.tk81_skuespillere.each do |skuespiller|
+          %tr
+            %td= skuespiller.tk81_pamelding.navn
+            %td
+              = link_to t(:show), tk81_skuespiller_path(skuespiller)
+              |
+              = link_to t(:edit), edit_tk81_skuespiller_path(skuespiller)
+              |
+              = link_to t(:delete), tk81_skuespiller_path(skuespiller), data: { turbo_method: :delete, turbo_confirm: 'Er du sikker?' }
+  - if active_event.volunteer_deadline.future?
+    %p= link_to 'Påmelding tekniker', new_tk81_tekniker_path, class: 'btn btn-primary btn-lg', style: 'margin-top: 10px;'
+  - if current_user && current_user.tk81_teknikere.count > 0
+    %h2 Påmeldinger tekniker
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Navn
+          %th
+      %tbody
+        - current_user.tk81_teknikere.each do |tekniker|
+          %tr
+            %td= tekniker.tk81_pamelding.navn
+            %td
+              = link_to t(:show), tk81_tekniker_path(tekniker)
+              |
+              = link_to t(:edit), edit_tk81_tekniker_path(tekniker)
+              |
+              = link_to t(:delete), tk81_tekniker_path(tekniker), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Er du sikker?' }
