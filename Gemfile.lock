@@ -116,6 +116,7 @@ GEM
       logger
     faraday-net_http (3.1.0)
       net-http
+    foreman (0.88.1)
     fullcalendar-rails (3.9.0.0)
       jquery-rails (>= 4.0.5, < 5.0.0)
       jquery-ui-rails (>= 5.0.2)
@@ -422,6 +423,7 @@ DEPENDENCIES
   capybara
   chart-js-rails
   dartsass-rails (~> 0.3.0)
+  foreman
   fullcalendar-rails (~> 3.9.0)
   haml-rails (~> 2.0.1)
   holder_rails (~> 2.9.3)
@@ -456,4 +458,4 @@ RUBY VERSION
    ruby 3.2.1p31
 
 BUNDLED WITH
-   2.4.8
+   2.5.16
