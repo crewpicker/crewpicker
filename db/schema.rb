@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_09_213123) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_28_011755) do
   create_table "access_levels", force: :cascade do |t|
     t.string "name", limit: 255
     t.datetime "created_at", precision: nil, null: false
@@ -167,6 +167,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_09_213123) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.text "description"
+    t.string "tag"
   end
 
   create_table "location_schedules", force: :cascade do |t|
@@ -232,6 +233,51 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_09_213123) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
+  create_table "tk81_pameldinger", force: :cascade do |t|
+    t.string "navn"
+    t.date "fodselsdato"
+    t.string "skole"
+    t.string "telefon"
+    t.string "navn_foresatte"
+    t.string "epost_foresatte"
+    t.string "telefon_foresatte"
+    t.integer "foresatte_bidrag_id"
+    t.integer "event_id", null: false
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_tk81_pameldinger_on_event_id"
+    t.index ["foresatte_bidrag_id"], name: "index_tk81_pameldinger_on_foresatte_bidrag_id"
+    t.index ["user_id"], name: "index_tk81_pameldinger_on_user_id"
+  end
+
+  create_table "tk81_skuespillere", force: :cascade do |t|
+    t.integer "tk81_pamelding_id", null: false
+    t.boolean "samme_rolle"
+    t.boolean "vil_danse"
+    t.string "klesstorrelse"
+    t.string "skostorrelse"
+    t.boolean "samtykke"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tk81_pamelding_id"], name: "index_tk81_skuespillere_on_tk81_pamelding_id"
+  end
+
+  create_table "tk81_teknikere", force: :cascade do |t|
+    t.integer "tk81_pamelding_id", null: false
+    t.integer "1valg_id"
+    t.integer "2valg_id"
+    t.integer "3valg_id"
+    t.integer "valgt_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["1valg_id"], name: "index_tk81_teknikere_on_1valg_id"
+    t.index ["2valg_id"], name: "index_tk81_teknikere_on_2valg_id"
+    t.index ["3valg_id"], name: "index_tk81_teknikere_on_3valg_id"
+    t.index ["tk81_pamelding_id"], name: "index_tk81_teknikere_on_tk81_pamelding_id"
+    t.index ["valgt_id"], name: "index_tk81_teknikere_on_valgt_id"
+  end
+
   create_table "user_roles", force: :cascade do |t|
     t.string "title", limit: 255
     t.bigint "user_id"
@@ -273,4 +319,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_09_213123) do
     t.index ["user_id"], name: "index_volunteers_on_user_id"
   end
 
+  add_foreign_key "tk81_pameldinger", "events"
+  add_foreign_key "tk81_pameldinger", "groups", column: "foresatte_bidrag_id"
+  add_foreign_key "tk81_pameldinger", "users"
+  add_foreign_key "tk81_skuespillere", "tk81_pameldinger"
+  add_foreign_key "tk81_teknikere", "groups", column: "1valg_id"
+  add_foreign_key "tk81_teknikere", "groups", column: "2valg_id"
+  add_foreign_key "tk81_teknikere", "groups", column: "3valg_id"
+  add_foreign_key "tk81_teknikere", "groups", column: "valgt_id"
+  add_foreign_key "tk81_teknikere", "tk81_pameldinger"
 end

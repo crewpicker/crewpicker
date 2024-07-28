@@ -37,12 +37,6 @@
                   = t(:login)
                   %b.caret
                 %ul.dropdown-menu
-                  /li= link_to "<i class=\"fa fa-fw fa-facebook\"></i> | #{t(:login_with_facebook)}".html_safe, auth_at_provider_path(:provider => :facebook)
-                  %li= link_to "<i class=\"fa-brands fa-twitter\"></i> | #{t(:login_with_twitter)}".html_safe, auth_at_provider_path(:provider => :twitter), class: "dropdown-item"
-                  %li
-                    %hr.divider
-                  %li
-                    %h6.dropdown-header= t(:local_user)
                   %li
                     = form_tag user_sessions_path, :method => :post, class: 'form-signin', id: 'navbar-login', data: {turbo: 'false'} do
                       = hidden_field_tag :referer, @referer.to_s
@@ -51,7 +45,7 @@
                       = submit_tag t(:login), class: 'btn btn-primary'
                   %li= link_to t(:create_account), new_user_path, class: "dropdown-item"
             %li
-              %a.nav-link{:href => "/privacy"}= "Privacy Policy"
+              = link_to t(:privacy_policy), privacy_policy_path, class: "nav-link#{current_page?(privacy_policy_path) ? ' active' : ''}"
     .container
       - if current_user && current_user.id == 1
         %p
@@ -82,9 +76,9 @@
           |
           = link_to 'Annonsetyper', ad_types_path
       - if flash[:alert]
-        %p.flash-error= flash[:alert]
+        .d-inline.card.p-2.text-bg-danger= flash[:alert]
       - if flash[:notice]
-        %p.flash-notice= flash[:notice]
+        .d-inline.card.p-2.text-bg-info= flash[:notice]
     = yield
     - if APP_CONFIG[:use_google_analytics] == true
       :javascript

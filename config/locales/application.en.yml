@@ -33,6 +33,7 @@ en:
   communication_consent: "Communication consent"
   communication_consent_info: "We would like to send you emails about future events, and we need your permission to be able to do so."
   submit: "Save"
+  new: "new"
 
   activerecord:
     models:

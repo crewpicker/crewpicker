@@ -12,7 +12,5 @@ class HomeController < ApplicationController
     end
   end
 
-  def setup
-  end
-
+  def setup; end
 end

@@ -43,8 +43,10 @@ gem 'fullcalendar-rails', '~> 3.9.0'
 gem 'chart-js-rails'
 gem 'holder_rails', '~> 2.9.3' # Provides Holder.js to render image placeholders entirely on the client side
 group :test, :development do
-  gem 'sqlite3', '~> 1.4.0'
+  gem 'sqlite3', '~> 1.7.0'
   gem 'rspec-rails'
+  gem 'ruby-lsp'
+  gem 'foreman'
 end
 group :development do
   gem 'solargraph'

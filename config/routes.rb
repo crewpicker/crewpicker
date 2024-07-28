@@ -1,20 +1,15 @@
 FestivalAdmin::Application.routes.draw do
+  get 'privacy_policy', to: 'privacy_policy#index'
+  resources :tk81_skuespillere
+  resources :tk81_teknikere
   resource :active_event
-
   resources :crew_merchandise_order_lines
-
   resources :crew_merchandise_orders
-
   resources :merchandise_article_variants
-
   resources :merchandise_articles
-
   resources :events
-
   resources :roles
-
   resources :crew_wishes
-
   resources :crew_applications do
     get 'hidden', :on => :collection
     get 'unhide', :on => :member

@@ -1,6 +1,8 @@
 authorization do
   role :admin do
-    has_permission_on [:users, :crew_applications, :volunteers, :groups, :roles, :bands, :band_members, :access_levels, :access_cards, :fireguards, :locations, :location_schedules, :stages, :stage_schedules, :ads, :ad_types, :events, :statistics, :home, :active_events], :to => [:manage]
+    has_permission_on %i[users crew_applications volunteers groups roles bands band_members access_levels access_cards
+                         fireguards locations location_schedules stages stage_schedules ads ad_types events statistics
+                         home active_events tk81_skuespillere tk81_teknikere], :to => [:manage]
   end
 
   role :groupleader do
@@ -30,6 +32,14 @@ authorization do
     end
     has_permission_on :home, :to => [:index, :setup]
     has_permission_on :volunteers, :to => :info
+    has_permission_on :tk81_skuespillere, :to => [:new, :create]
+    has_permission_on :tk81_skuespillere, :to => [:edit, :update, :show, :destroy] do
+      if_attribute :user_id => is { user.id }
+    end
+    has_permission_on :tk81_teknikere, :to => [:new, :create]
+    has_permission_on :tk81_teknikere, :to => [:edit, :update, :show, :destroy] do
+      if_attribute :user_id => is { user.id }
+    end
   end
 
   role :guest do

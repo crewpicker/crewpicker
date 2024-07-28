@@ -1,0 +1,71 @@
+.row
+  .col-lg-5
+    = form_for @tk81_skuespiller do |f|
+      - if @tk81_skuespiller.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@tk81_skuespiller.errors.count, "error")} prohibited this tk81_skuespiller from being saved:"
+          %ul
+            - @tk81_skuespiller.errors.full_messages.each do |msg|
+              %li= msg
+      = f.fields_for :tk81_pamelding do |fs|
+        .form-group
+          = fs.label :navn, 'Navn*'
+          = fs.text_field :navn, class: 'form-control'
+        .form-group
+          = fs.label :fodselsdato, 'Fødselsdato*'
+          = fs.date_field :fodselsdato, class: 'form-control'
+        .form-group
+          = fs.label :skole
+          = fs.text_field :skole, class: 'form-control'
+        .form-group
+          = fs.label :telefon
+          = fs.text_field :telefon, class: 'form-control'
+      %br
+      .form-group
+        = f.label :klesstorrelse, 'Klesstørrelse*'
+        = f.text_field :klesstorrelse, class: 'form-control'
+      .form-group
+        = f.label :skostorrelse, 'Skostørrelse*'
+        = f.text_field :skostorrelse, class: 'form-control'
+      %br
+      .checkbox
+        Kryss av hvis du vil danse i forestillingen
+        %br
+        %label
+          = f.check_box :vil_danse
+          Jeg vil danse
+      %br
+      .radio
+        Hvis du var med på juleforestillingen i fjor, vil du helst spille samme rolle eller vil du spille noe nytt? Vi kan ikke love at det blir som du svarer, men vi vil gjerne vite hva du ønsker
+        %br
+        %label
+          = f.radio_button :samme_rolle, "true"
+          Samme rolle
+        %br
+        %label
+          = f.radio_button :samme_rolle, "false"
+          Ny rolle
+      %br
+      .checkbox
+        %label
+          = f.check_box :samtykke
+          Jeg samtykker i at det tas bilder/video/lydopptak, og at dette materialet kan brukes av Teaterklubb’81 i interne og eksterne kanaler*
+      %br
+      = f.fields_for :tk81_pamelding do |fs|
+        .form-group
+          = fs.label :navn_foresatte, 'Navn foresatte*'
+          = fs.text_field :navn_foresatte, class: 'form-control'
+        .form-group
+          = fs.label :epost_foresatte, 'Epost foresatte*'
+          = fs.text_field :epost_foresatte, class: 'form-control'
+        .form-group
+          = fs.label :telefon_foresatte, 'Telefon foresatte*'
+          = fs.text_field :telefon_foresatte, class: 'form-control'
+        .form-group
+          = fs.label :foresatte_bidrag_id, 'Hva kan foresatte bidra med?*'
+          = fs.collection_select :foresatte_bidrag_id, Group.where(tag: 'Foresatte'), :id, :name, {include_blank: t(:not_chosen)}, class: 'form-control'
+        = fs.hidden_field :user_id
+        = fs.hidden_field :event_id
+      %br
+      .actions
+        = f.submit t(:submit), class: 'btn btn-primary'
