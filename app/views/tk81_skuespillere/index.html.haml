@@ -1,0 +1,22 @@
+- title @tk81_skuespillere.model_name.human(:count => 2)
+.container
+  %h1= @tk81_skuespillere.model_name.human(:count => 2)
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Navn
+        %th= @tk81_skuespillere.human_attribute_name(:samme_rolle)
+        %th
+    %tbody
+      - @tk81_skuespillere.each do |tk81_skuespiller|
+        %tr
+          %td= tk81_skuespiller.tk81_pamelding.navn
+          %td= tk81_skuespiller.samme_rolle
+          %td
+            = link_to t(:show), tk81_skuespiller
+            |
+            = link_to t(:edit), edit_tk81_skuespiller_path(tk81_skuespiller)
+            |
+            = link_to t(:delete), tk81_skuespiller, method: :delete, data: { confirm: t(:confirm) }
+  %p
+    = link_to "#{t(:new).camelize} #{@tk81_skuespillere.model_name.human.downcase}", new_tk81_skuespiller_path

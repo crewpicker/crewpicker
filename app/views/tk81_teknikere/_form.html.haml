@@ -1,0 +1,58 @@
+.row
+  .col-lg-5
+    = form_for @tk81_tekniker do |f|
+      - if @tk81_tekniker.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@tk81_tekniker.errors.count, "error")} prohibited this tk81_tekniker from being saved:"
+          %ul
+            - @tk81_tekniker.errors.full_messages.each do |msg|
+              %li= msg
+      = f.fields_for :tk81_pamelding do |fs|
+        .form-group
+          = fs.label :navn, 'Navn*'
+          = fs.text_field :navn, class: 'form-control'
+        .form-group
+          = fs.label :fodselsdato, 'Fødselsdato*'
+          = fs.date_field :fodselsdato, class: 'form-control'
+        .form-group
+          = fs.label :skole
+          = fs.text_field :skole, class: 'form-control'
+        .form-group
+          = fs.label :telefon
+          = fs.text_field :telefon, class: 'form-control'
+      %br
+      Hva vil du gjøre? (velg minst ett alternativ)
+      .form-group
+        = f.label :'1valg_id', '1. valg'
+        = f.collection_select :'1valg_id', Group.where(tag: 'Tekniker'), :id, :name, {include_blank: t(:not_chosen)}, class: 'form-control'
+      .form-group
+        = f.label :'2valg_id', '2. valg'
+        = f.collection_select :'2valg_id', Group.where(tag: 'Tekniker'), :id, :name, {include_blank: t(:not_chosen)}, class: 'form-control'
+      .form-group
+        = f.label :'3valg_id', '3. valg'
+        = f.collection_select :'3valg_id', Group.where(tag: 'Tekniker'), :id, :name, {include_blank: t(:not_chosen)}, class: 'form-control'
+      %br
+      = f.fields_for :tk81_pamelding do |fs|
+        .form-group
+          = fs.label :navn_foresatte, 'Navn foresatte*'
+          = fs.text_field :navn_foresatte, class: 'form-control'
+        .form-group
+          = fs.label :epost_foresatte, 'Epost foresatte*'
+          = fs.text_field :epost_foresatte, class: 'form-control'
+        .form-group
+          = fs.label :telefon_foresatte, 'Telefon foresatte*'
+          = fs.text_field :telefon_foresatte, class: 'form-control'
+        .form-group
+          = fs.label :foresatte_bidrag_id, 'Hva kan foresatte bidra med?*'
+          = fs.collection_select :foresatte_bidrag_id, Group.where(tag: 'Foresatte'), :id, :name, {include_blank: t(:not_chosen)}, class: 'form-control'
+        = fs.hidden_field :user_id
+        = fs.hidden_field :event_id
+      %br
+      .actions
+        = f.submit t(:submit), class: 'btn btn-primary'
+  .col-lg-5.col-lg-offset-1
+    %h2.h3= Group.model_name.human(count: 2)
+    %dl.dl-horizontal
+      - Group.where(tag: 'Tekniker').each do |group|
+        %dt= group.name
+        %dd= group.description.lines.first

@@ -1,0 +1,45 @@
+- title 'Påmelding skuespiller'
+.container
+  %h1 Påmelding skuespiller
+  %p
+    %strong Navn:
+    = @tk81_skuespiller.tk81_pamelding.navn
+  %p
+    %strong Fødselsdato:
+    = @tk81_skuespiller.tk81_pamelding.fodselsdato
+  %p
+    %strong Skole:
+    = @tk81_skuespiller.tk81_pamelding.skole
+  %p
+    %strong Telefon:
+    = @tk81_skuespiller.tk81_pamelding.telefon
+  %p
+    %strong Klesstørrelse:
+    = @tk81_skuespiller.klesstorrelse
+  %p
+    %strong Skostørrelse:
+    = @tk81_skuespiller.skostorrelse
+  %p
+    %strong Vil danse:
+    = @tk81_skuespiller.vil_danse
+  %p
+    %strong Samme rolle som i fjor:
+    = @tk81_skuespiller.samme_rolle
+  %p
+    %strong Samtykke til bilder/video/lydopptak:
+    = @tk81_skuespiller.samtykke
+  %p
+    %strong Navn foresatte:
+    = @tk81_skuespiller.tk81_pamelding.navn_foresatte
+  %p
+    %strong Epost foresatte:
+    = @tk81_skuespiller.tk81_pamelding.epost_foresatte
+  %p
+    %strong Telefon foresatte:
+    = @tk81_skuespiller.tk81_pamelding.telefon_foresatte
+  %p
+    %strong Hva kan foresatte bidra med:
+    = @tk81_skuespiller.tk81_pamelding.foresatte_bidrag ? @tk81_skuespiller.tk81_pamelding.foresatte_bidrag.name : 'Ikke valgt'
+  = link_to t(:back), tk81_skuespillere_path
+  |
+  = link_to t(:edit), edit_tk81_skuespiller_path(@tk81_skuespiller)
