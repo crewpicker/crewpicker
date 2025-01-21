@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby '3.2.1'
+ruby '3.3.6'
 
-gem 'rails', '7.0.4.3'
-gem 'railties', '7.0.4.3'
+gem 'rails', '7.0.8.7'
+gem 'railties', '7.0.8.7'
 
 # Rails defaults
 gem 'puma', '~> 5.6'
