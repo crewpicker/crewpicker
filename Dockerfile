@@ -28,7 +28,7 @@ RUN bin/rails assets:precompile
 
 RUN rm -rf node_modules
 
-FROM ruby:3.2.1-slim
+FROM ruby:3.3.6-slim
 
 RUN bundle config set --global deployment 1
 RUN bundle config set --global without 'test development'
