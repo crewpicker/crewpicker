@@ -5,7 +5,7 @@ gem 'rails', '7.0.4.3'
 gem 'railties', '7.0.4.3'
 
 # Rails defaults
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 5.6'
 gem 'importmap-rails', '~> 1.0.3'
 gem 'jsbundling-rails', '~> 1.0.2'
 gem 'dartsass-rails', '~> 0.3.0'
