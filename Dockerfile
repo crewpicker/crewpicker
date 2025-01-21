@@ -1,4 +1,4 @@
-FROM ruby:3.2.1 AS builder
+FROM ruby:3.3.6 AS builder
 
 RUN bundle config set --global deployment 1
 RUN bundle config set --global without 'test development'
