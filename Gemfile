@@ -15,6 +15,8 @@ gem 'stimulus-rails', '~> 1.0.4' # Hotwire's modest JavaScript framework [https:
 gem 'jbuilder', '~> 2.11.5'
 gem 'bootsnap', '>= 1.11.0', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'concurrent-ruby', '1.3.4' # pinned because rails 7.0 depends on concurrent-ruby requiring logger, which it doesn't do anymore
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
