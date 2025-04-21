@@ -4,35 +4,35 @@ class AccessLevelsController < ApplicationController
   layout :check_layout
 
   # GET /access_levels
-  # GET /access_levels.xml
+  # GET /access_levels.json
   def index
     @access_levels = AccessLevel.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @access_levels }
+      format.json { render json: @access_levels }
     end
   end
 
   # GET /access_levels/1
-  # GET /access_levels/1.xml
+  # GET /access_levels/1.json
   def show
     @access_level = AccessLevel.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @access_level }
+      format.json { render json: @access_level, include: {volunteers: {only: ["name", "phone"], methods: :group_name}} }
     end
   end
 
   # GET /access_levels/new
-  # GET /access_levels/new.xml
+  # GET /access_levels/new.json
   def new
     @access_level = AccessLevel.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @access_level }
+      format.json { render json: @access_level }
     end
   end
 
@@ -42,46 +42,46 @@ class AccessLevelsController < ApplicationController
   end
 
   # POST /access_levels
-  # POST /access_levels.xml
+  # POST /access_levels.json
   def create
     @access_level = AccessLevel.new(access_level_params)
 
     respond_to do |format|
       if @access_level.save
         format.html { redirect_to(@access_level, :notice => 'Access level was successfully created.') }
-        format.xml  { render :xml => @access_level, :status => :created, :location => @access_level }
+        format.json { render json: @access_level, :status => :created, :location => @access_level }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @access_level.errors, :status => :unprocessable_entity }
+        format.json { render json: @access_level.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # PUT /access_levels/1
-  # PUT /access_levels/1.xml
+  # PUT /access_levels/1.json
   def update
     @access_level = AccessLevel.find(params[:id])
 
     respond_to do |format|
       if @access_level.update(access_level_params)
         format.html { redirect_to(@access_level, :notice => 'Access level was successfully updated.') }
-        format.xml  { head :ok }
+        format.json { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @access_level.errors, :status => :unprocessable_entity }
+        format.json { render json: @access_level.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # DELETE /access_levels/1
-  # DELETE /access_levels/1.xml
+  # DELETE /access_levels/1.json
   def destroy
     @access_level = AccessLevel.find(params[:id])
     @access_level.destroy
 
     respond_to do |format|
       format.html { redirect_to(access_levels_url) }
-      format.xml  { head :ok }
+      format.json { head :ok }
     end
   end
 
