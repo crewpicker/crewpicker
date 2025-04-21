@@ -3,7 +3,7 @@ FROM ruby:3.3.6 AS builder
 RUN bundle config set --global deployment 1
 RUN bundle config set --global without 'test development'
 
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 
 RUN apt-get update \
     && apt-get install -y nodejs libpq5 \
