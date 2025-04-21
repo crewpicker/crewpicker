@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :tk81_pameldinger
   has_many :tk81_skuespillere, through: :tk81_pameldinger
   has_many :tk81_teknikere, through: :tk81_pameldinger
+  has_many :api_keys, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
   validates_length_of :password, :minimum => 5, :on => :create

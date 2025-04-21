@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_28_011755) do
+ActiveRecord::Schema[7.0].define(version: 2025_04_19_125541) do
   create_table "access_levels", force: :cascade do |t|
     t.string "name", limit: 255
     t.datetime "created_at", precision: nil, null: false
@@ -48,6 +48,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_011755) do
     t.bigint "parent_ad_id"
     t.boolean "completed"
     t.index ["event_id"], name: "index_ads_on_event_id"
+  end
+
+  create_table "api_keys", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "token"
+    t.string "key_digest"
+    t.string "description"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["token"], name: "index_api_keys_on_token", unique: true
+    t.index ["user_id"], name: "index_api_keys_on_user_id"
   end
 
   create_table "authentications", force: :cascade do |t|
@@ -319,6 +331,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_011755) do
     t.index ["user_id"], name: "index_volunteers_on_user_id"
   end
 
+  add_foreign_key "api_keys", "users"
   add_foreign_key "tk81_pameldinger", "events"
   add_foreign_key "tk81_pameldinger", "groups", column: "foresatte_bidrag_id"
   add_foreign_key "tk81_pameldinger", "users"

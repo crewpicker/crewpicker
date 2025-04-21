@@ -1,5 +1,8 @@
 # encoding: UTF-8
 class AccessLevelsController < ApplicationController
+  include ApiAuthenticatable
+  before_action :attempt_api_key_authentication
+
   filter_resource_access
   layout :check_layout
 
