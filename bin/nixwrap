@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+command=${0##*/} # $0 with the path stripped, so /usr/bin/zsh becomes zsh for instance
+nix develop --command $command "$@"
