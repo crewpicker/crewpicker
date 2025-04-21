@@ -196,6 +196,7 @@ GEM
     msgpack (1.7.5-java)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
+    mutex_m (0.3.0)
     net-http (0.6.0)
       uri
     net-imap (0.5.5)
@@ -419,6 +420,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  arm64-darwin-24
   java
   x86_64-linux
 
@@ -441,6 +443,7 @@ DEPENDENCIES
   jquery-rails
   jsbundling-rails (~> 1.0.2)
   momentjs-rails (~> 2.29.1)
+  mutex_m
   oauth2
   paperclip (~> 6.1.0)
   pdfkit
