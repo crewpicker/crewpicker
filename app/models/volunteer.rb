@@ -20,4 +20,8 @@ class Volunteer < ApplicationRecord
       res.join(' ')
     end
   end
+
+  def group_name
+    group.name
+  end
 end
