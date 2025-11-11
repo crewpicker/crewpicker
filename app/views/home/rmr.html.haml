@@ -1,0 +1,64 @@
+- title festival_title
+- has_crew_application = (current_user && current_user.crew_application && !(current_user.crew_application.volunteer_id))
+- is_volunteer = (current_user && current_user.volunteers.count > 0)
+.container
+  %h2 ROCKEMØNSTRING
+  - if current_user
+    - current_user.bands.each do |band|
+      %p
+        \&gt; #{link_to band.name, band} | #{link_to t(:delete), band_path(band), method: :delete, data: { confirm: 'Er du sikker på at du vil slette bandet?' }}
+  - if active_event.band_deadline.future?
+    %p
+      = link_to "#{t(:sign_up)} &raquo;".html_safe, new_band_path, class: 'btn btn-primary'
+  %p= t(:home_contact_info_text, contact_email: APP_CONFIG[:contact_email])
+%hr/
+.container
+  %h2= t(:volunteer).upcase
+  - if has_crew_application
+    - crew_application = current_user.crew_application
+    %table.table
+      %tr
+        %th= t(:name)
+        %td= crew_application.name
+      %tr
+        %th= t(:address)
+        %td= nl2br(crew_application.address)
+      %tr
+        %th= t(:birthday)
+        %td= crew_application.birthday
+      %tr
+        %th= t(:email)
+        %td= crew_application.email
+      %tr
+        %th= t(:phone)
+        %td= crew_application.phone
+      %tr
+        %th= t(:relevant_experience)
+        %td= nl2br(crew_application.experience)
+      - crew_application.crew_wishes.each do |crew_wish|
+        - if crew_wish.group_id
+          %tr
+            %th= crew_wish.priority.to_s + '. ' + t(:option)
+            %td= crew_wish.group.name
+    %p
+      = link_to 'Endre crewsøknad', edit_crew_application_path(current_user.crew_application), class: 'btn btn-primary'
+      = link_to 'Slett crewsøknad', crew_application_path(current_user.crew_application), method: :delete, class: 'btn btn-danger', data: { confirm: 'Er du helt sikker?' }
+  - elsif is_volunteer
+    - current_user.volunteers.each do |volunteer|
+      %p
+        Valgt til #{volunteer.group.name}-gruppa
+      %table.table.table-striped
+        %tr
+          %th Navn
+          %th Epost
+          %th Telefon
+          %th Crewkort
+        - volunteer.group.volunteers.each do |group_volunteer|
+          %tr
+            %td= group_volunteer.name
+            %td= group_volunteer.email
+            %td= group_volunteer.phone
+            %td= group_volunteer.access_level
+  - elsif active_event.volunteer_deadline.future?
+    %p
+      = link_to "#{t(:application_form)} &raquo;".html_safe, new_crew_application_path, class: 'btn btn-primary'
