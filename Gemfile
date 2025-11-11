@@ -32,7 +32,7 @@ group :test do
 end
 
 # crewpicker
-gem 'paperclip', '~> 6.1.0'
+gem 'kt-paperclip', '~> 7.2.2' # fork of paperclip with Rails 7 support
 gem 'pdfkit'
 gem 'sorcery'
 gem 'oauth2'

@@ -1,6 +1,7 @@
 - title t(:statistics)
 - ad_sum = Ad.where(event_id: active_event.id).each.inject(0) {|sum, ad| sum + ad.ad_type.value}
 - ad_sum_percent = ((ad_sum.to_f / 250000) * 100).round
+- bands_count = Band.all.count
 - band_members_count = Band.all.each.inject(0) {|count, band| count + band.band_members.count}
 :javascript
   $(document).ready(function() {
@@ -39,11 +40,12 @@
         %strong Alder
   %h2 Band
   %p
-    Påmeldte band: #{Band.all.count}
+    Påmeldte band: #{bands_count}
     %br
     Totalt antall bandmedlemmer: #{band_members_count}
     %br
-    Gjennomsnittlig antall bandmedlemmer per band: #{(band_members_count.to_f / Band.all.count).round}
+    - average_members = bands_count > 0 ? (band_members_count.to_f / bands_count).round : 0
+    Gjennomsnittlig antall bandmedlemmer per band: #{average_members}
   %h2= t(:ads)
   .progress
     %div.progress-bar{:role => "progressbar", :style => "width: #{ad_sum_percent}%;"}

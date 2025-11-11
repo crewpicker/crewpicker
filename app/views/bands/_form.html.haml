@@ -78,7 +78,7 @@
       .form-group
         = f.label :image
         %br/
-        = f.file_field :image
+        = f.file_field :image, accept: "image/*", class: 'form-control'
   %hr/
   %h2 Deltakerlåt
   %p (dere får spille flere, men det er denne som vurderes av juryen)

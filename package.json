@@ -7,6 +7,7 @@
     "@hotwired/turbo-rails": "^7.1.1",
     "@popperjs/core": "^2.10.2",
     "bootstrap": "^5.3.3",
+    "browser-image-compression": "^2.0.2",
     "esbuild": "^0.25.0"
   },
   "devDependencies": {
@@ -18,5 +19,6 @@
     "failure:js": "rm ./app/assets/builds/*.js && rm ./app/assets/builds/*.js.map",
     "build:css": "dartsass ./app/assets/stylesheets:./app/assets/builds --no-source-map --load-path=node_modules",
     "watch:js": "tsc-watch --noClear -p tsconfig.json --onSuccess \"yarn build\" --onFailure \"yarn failure:js\""
-  }
+  },
+  "version": "0.0.0"
 }
