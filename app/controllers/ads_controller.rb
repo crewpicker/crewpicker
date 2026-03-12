@@ -103,7 +103,7 @@ class AdsController < ApplicationController
       new_ad.address = old_ad.address
       new_ad.ad_type_id = params[:ad_type_id]
       new_ad.parent_ad_id = old_ad.id
-      new_ad.event_id = active_event.id
+      new_ad.event_id = ActiveEvent.first.event_id
       if new_ad.save
         created_ads += 1
       else

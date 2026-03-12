@@ -10,7 +10,11 @@
   - if active_event.band_deadline.future?
     %p
       = link_to "#{t(:sign_up)} &raquo;".html_safe, new_band_path, class: 'btn btn-primary'
-  %p= t(:home_contact_info_text, contact_email: APP_CONFIG[:contact_email])
+  %p
+    Rockemønstringa er en amatørband/artistkonkurranse for ungdom opp til 26 år, der du kan vinne 20 000,-.
+    For å være med i konkurransen må du/dere ha en egenskrevet låt.
+    Det er mulig å melde seg på uten egen låt, men da er dere ikke med i konkurransen.
+    %br Hvis du har problemer med innlogging, ta kontakt på rockmotrus@gmail.com.
 %hr/
 .container
   %h2= t(:volunteer).upcase

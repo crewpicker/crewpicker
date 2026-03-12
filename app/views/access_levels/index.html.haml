@@ -5,6 +5,7 @@
     %tr
       %th= t(:name)
       %th= t(:count)
+      %th= t(:background)
       %th
     - @access_levels.each do |access_level|
       %tr
@@ -13,6 +14,7 @@
           %td= Person.all.count
         - else
           %td= access_level.volunteers.count
+        %td= access_level.background
         %td
           = link_to 'Generer crewkort', access_card_path(access_level.id, :format => 'pdf')
           |

@@ -5,4 +5,5 @@ PDFKit.configure do |config|
     :disable_smart_shrinking => true,
     :encoding=>"UTF-8"
   }
+  config.verbose = true
 end
