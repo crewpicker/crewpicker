@@ -15,7 +15,7 @@
     "typescript": "^4.6.3"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.js --bundle --sourcemap --outdir=app/assets/builds",
+    "build": "esbuild app/javascript/*.{js,ts} --bundle --sourcemap --outdir=app/assets/builds",
     "failure:js": "rm ./app/assets/builds/*.js && rm ./app/assets/builds/*.js.map",
     "build:css": "dartsass ./app/assets/stylesheets:./app/assets/builds --no-source-map --load-path=node_modules",
     "watch:js": "tsc-watch --noClear -p tsconfig.json --onSuccess \"yarn build\" --onFailure \"yarn failure:js\""

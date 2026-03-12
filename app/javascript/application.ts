@@ -1,6 +1,6 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
-import "bootstrap/dist/js/bootstrap.esm.js"
+import "bootstrap"
 import "@fortawesome/fontawesome-pro/js/all"
 import { ImageResizer } from "./image-resizer"
 
