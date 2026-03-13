@@ -2,6 +2,15 @@
 
 export RAILS_ENV=production
 
+echo "Checking for pending migrations..."
+if bundle exec rails db:migrate:status | grep -q "^\s*down"
+then
+  echo "Running pending migrations..."
+  bundle exec rails db:migrate
+else
+  echo "No pending migrations."
+fi
+
 if ! command -v foreman &> /dev/null
 then
   echo "Installing foreman..."

@@ -76,56 +76,31 @@ card_dims = @access_level.calculated_card_dimensions
     </style>
   </head>
   <body>
+<%
+cards_per_page = config[:columns] * config[:rows]
+total_cards = cards_per_page * 2 # Generate 2 pages of blank cards
+cards = Array.new(total_cards) { |i| i } # Create array [0, 1, 2, ...]
+
+cards.each_slice(cards_per_page) do |page_cards|
+%>
     <div class="page">
       <table>
         <tr><td class="spacer" colspan="<%= config[:columns] %>"></td></tr>
         <tr><td class="card" colspan="<%= config[:columns] %>"></td></tr>
-        <tr>
 <%
-rcounter = 0
-ccounter = 0
-cards_per_page = config[:columns] * config[:rows]
-total_cards = cards_per_page * 2 # Generate 2 pages of blank cards
-
-total_cards.times do |i|
-  # Determine card title
-  if @access_level.name == "Band"
-    card_title = "Band"
-  elsif @access_level.name == "Lydteamet"
-    card_title = ''
-  else
-    card_title = @access_level.name.mb_chars.upcase
-  end
-  
-  # Start new row when we reach column limit
-  if ccounter == config[:columns]
-    rcounter += 1
-%>
-        </tr>
-<%
-    # Start new page when we reach row limit
-    if rcounter == config[:rows]
+  page_cards.each_slice(config[:columns]) do |row_cards|
 %>
         <tr>
-          <td class="spacer" colspan="<%= config[:columns] %>"></td>
-        </tr>
-      </table>
-    </div>
-    <div class="page">
-      <table>
-        <tr>
-          <td class="spacer" colspan="<%= config[:columns] %>"></td>
-        </tr>
 <%
-      rcounter = 0
-    else
-%>
-        <tr><td class="card" colspan="<%= config[:columns] %>"></td></tr>
-        <tr>
-<%
-    end
-    ccounter = 0
-  end
+    row_cards.each do |card_index|
+      # Determine card title
+      if @access_level.name == "Band"
+        card_title = "Band"
+      elsif @access_level.name == "Lydteamet"
+        card_title = ''
+      else
+        card_title = @access_level.name.mb_chars.upcase
+      end
 %>
           <td class="card">
             <div>
@@ -134,30 +109,53 @@ total_cards.times do |i|
             </div>
           </td>
 <%
-  ccounter += 1
-end
-
-# Fill remaining cells in last row
-while ccounter != 0 && ccounter < config[:columns]
+    end
+    
+    # Fill empty cells if row not full
+    (config[:columns] - row_cards.size).times do
 %>
           <td></td>
 <%
-  ccounter += 1
-end
-
-# Add closing row tags if needed
-if rcounter != config[:rows] - 1
+    end
 %>
         </tr>
+<%
+    # Add spacer row between card rows (except after last row)
+    unless row_cards.last == page_cards.last
+%>
+        <tr><td class="card" colspan="<%= config[:columns] %>"></td></tr>
+<%
+    end
+  end
+  
+  # Fill empty rows if page not full
+  full_rows = (page_cards.size.to_f / config[:columns]).ceil
+  (config[:rows] - full_rows).times do |row_idx|
+%>
         <tr>
 <%
-end
+    config[:columns].times do
+%>
+          <td></td>
+<%
+    end
 %>
         </tr>
+<%
+    unless row_idx == config[:rows] - full_rows - 1
+%>
+        <tr><td class="card" colspan="<%= config[:columns] %>"></td></tr>
+<%
+    end
+  end
+%>
         <tr>
           <td class="spacer" colspan="<%= config[:columns] %>"></td>
         </tr>
       </table>
     </div>
+<%
+end
+%>
   </body>
 </html>

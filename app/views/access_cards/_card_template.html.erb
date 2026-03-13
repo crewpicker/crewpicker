@@ -74,9 +74,6 @@ card_dims = @access_level.calculated_card_dimensions
     </style>
   </head>
   <body>
-    <div class="page">
-      <table>
-        <tr>
 <%
 # Collect people based on access level type
 people = Array.new
@@ -90,45 +87,30 @@ else
   people = @access_level.volunteers
 end
 
-rcounter = 0
-ccounter = 0
-people_per_page = config[:columns] * config[:rows]
+cards_per_page = config[:columns] * config[:rows]
+page_count = 0
 
-people.each do |person|
-  # Determine card title
-  if @access_level.name == "Band"
-    card_title = @access_level.name.mb_chars.upcase
-  else
-    if @access_level.name.mb_chars.upcase == person.group.name.mb_chars.upcase
-      card_title = @access_level.name.mb_chars.upcase
-    else
-      card_title = "#{@access_level.name.mb_chars.upcase}<br>#{person.group.name}".html_safe
-    end
-  end
-  
-  # Start new row when we reach column limit
-  if ccounter == config[:columns]
-    rcounter += 1
+people.each_slice(cards_per_page) do |page_people|
+  page_count += 1
 %>
-        </tr>
-<%
-    # Start new page when we reach row limit
-    if rcounter == config[:rows]
-%>
-      </table>
-    </div>
     <div class="page">
       <table>
-        <tr>
 <%
-      rcounter = 0
-    else
+  page_people.each_slice(config[:columns]) do |row_people|
 %>
         <tr>
 <%
-    end
-    ccounter = 0
-  end
+    row_people.each do |person|
+      # Determine card title
+      if @access_level.name == "Band"
+        card_title = @access_level.name.mb_chars.upcase
+      else
+        if @access_level.name.mb_chars.upcase == person.group.name.mb_chars.upcase
+          card_title = @access_level.name.mb_chars.upcase
+        else
+          card_title = "#{@access_level.name.mb_chars.upcase}<br>#{person.group.name}".html_safe
+        end
+      end
 %>
           <td class="card">
             <div>
@@ -137,27 +119,39 @@ people.each do |person|
             </div>
           </td>
 <%
-  ccounter += 1
-end
-
-# Fill remaining cells in last row
-while ccounter != 0 && ccounter < config[:columns]
+    end
+    
+    # Fill empty cells if row not full
+    (config[:columns] - row_people.size).times do
 %>
           <td></td>
 <%
-  ccounter += 1
-end
-
-# Add closing row tags if needed
-if rcounter != config[:rows] - 1
+    end
 %>
         </tr>
+<%
+  end
+  
+  # Fill empty rows if page not full
+  full_rows = (page_people.size.to_f / config[:columns]).ceil
+  (config[:rows] - full_rows).times do
+%>
         <tr>
+<%
+    config[:columns].times do
+%>
+          <td></td>
+<%
+    end
+%>
+        </tr>
+<%
+  end
+%>
+      </table>
+    </div>
 <%
 end
 %>
-        </tr>
-      </table>
-    </div>
   </body>
 </html>
