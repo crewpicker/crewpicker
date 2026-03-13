@@ -63,5 +63,5 @@
         %td
           = link_to t(:edit), edit_band_band_member_path(@band, band_member)
           |
-          = link_to t(:delete), [@band, band_member], method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
+          = link_to t(:delete), [@band, band_member], data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
   %p= link_to t(:new_band_member), new_band_band_member_path(@band)

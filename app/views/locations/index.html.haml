@@ -12,5 +12,5 @@
         |
         = link_to t(:edit), edit_location_path(location)
         |
-        = link_to t(:delete), location, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
+        = link_to t(:delete), location, data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
 %p= link_to t(:new_location), new_location_path

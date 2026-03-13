@@ -17,6 +17,6 @@
           |
           = link_to t(:edit), edit_ad_type_path(ad_type)
           |
-          = link_to t(:delete), ad_type, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
+          = link_to t(:delete), ad_type, data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
   %br/
   = link_to 'New Ad type', new_ad_type_path

@@ -19,6 +19,6 @@
             |
             = link_to t(:edit), edit_stage_path(stage)
             |
-            = link_to t(:delete), stage, data: { turbo_data: { turbo_method: :delete, confirm: 'Er du sikker?'}, :method => :delete data: { turbo_method: :delete }
+            = link_to t(:delete), stage, data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
   %p
     = link_to "#{t(:new).camelize} #{@stages.model_name.human.downcase}", new_stage_path

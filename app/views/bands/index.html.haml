@@ -32,5 +32,5 @@
           |
           = link_to t(:edit), edit_band_path(band)
           |
-          = link_to t(:delete), band, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
+          = link_to t(:delete), band, data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
   %p= link_to t(:new_band), new_band_path

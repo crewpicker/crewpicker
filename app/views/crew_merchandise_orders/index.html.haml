@@ -14,5 +14,5 @@
             |
             = link_to t(:edit), edit_crew_merchandise_order_path(crew_merchandise_order)
             |
-            = link_to t(:delete), crew_merchandise_order, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
+            = link_to t(:delete), crew_merchandise_order, data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
   %p= link_to 'New Crew merchandise order', new_crew_merchandise_order_path

@@ -39,8 +39,8 @@
           - else
             = t(:answer_no)
             %span{title: "#{t(:mark_as_completed)}"}= link_to('✅', toggle_completed_ad_path(ad))
-        %td= link_to t(:edit), edit_ad_path(ad) data: { turbo_method: :delete }
-        %td= link_to t(:delete), ad, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: 'Du vil sannsynligvis ikke gjøre dette.' }}
+        %td= link_to t(:edit), edit_ad_path(ad)
+        %td= link_to t(:delete), ad, data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
   %p= link_to 'Ny annonse', new_ad_path
   %hr
   %h2 Copy all ads from previous event

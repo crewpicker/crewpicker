@@ -24,7 +24,7 @@
           |
           = link_to t(:edit), edit_volunteer_path(volunteer)
           |
-          = link_to t(:delete), volunteer, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
+          = link_to t(:delete), volunteer, data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
   - if @group.internal == true
     %p= link_to 'Nytt crewmedlem', new_group_volunteer_path(@group)
   %p
@@ -71,5 +71,5 @@
               |
               = link_to t(:edit), edit_group_crew_application_path(@group, crew_application)
               |
-              = link_to t(:delete), crew_application, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
+              = link_to t(:delete), crew_application, data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
   %p= link_to t(:back), groups_path

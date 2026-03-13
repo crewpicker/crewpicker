@@ -15,6 +15,6 @@
             |
             = link_to t(:edit), edit_tk81_tekniker_path(tk81_tekniker)
             |
-            = link_to t(:delete), tk81_tekniker, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
+            = link_to t(:delete), tk81_tekniker, data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
   %p
     = link_to "#{t(:new).camelize} #{@tk81_teknikere.model_name.human.downcase}", new_tk81_tekniker_path

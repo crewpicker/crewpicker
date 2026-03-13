@@ -45,7 +45,7 @@
         |
         = link_to t(:edit), edit_volunteer_path(volunteer)
         |
-        = link_to t(:delete), volunteer, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
+        = link_to t(:delete), volunteer, data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
 %h2
   Crewsøknader
 %table.table.table-striped
@@ -62,7 +62,7 @@
         |
         = link_to t(:edit), edit_crew_application_path(crew_application)
         |
-        = link_to t(:delete), crew_application, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
+        = link_to t(:delete), crew_application, data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
 %h2
   Band
 %table.table.table-striped
@@ -79,4 +79,4 @@
         |
         = link_to t(:edit), edit_band_path(band)
         |
-        = link_to t(:delete), band, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
+        = link_to t(:delete), band, data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
