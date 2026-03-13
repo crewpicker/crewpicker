@@ -37,9 +37,9 @@
         %td
           = link_to t(:show), user
           |
-          = link_to t(:edit), edit_user_path(user)
-          |
-          = link_to t(:delete), user, method: :delete, data: { confirm: t(:confirm) }
+          = link_to t(:edit), edit_user_path(user) data: { turbo_method: :delete }
+          | data: { turbo_method: :delete }
+          = link_to t(:delete), user, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
     %tr
       %td{:colspan => "8"}
         #{t(:count)}: #{@users.count}

@@ -18,6 +18,6 @@
       %td= band_order.end
       %td= link_to 'Show', band_order
       %td= link_to 'Edit', edit_band_order_path(band_order)
-      %td= link_to 'Destroy', band_order, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Destroy', band_order, data: { turbo_data: { turbo_method: :delete, confirm: 'Are you sure?'}, :method => :delete data: { turbo_method: :delete }
 %br/
 = link_to 'New Band order', new_band_order_path

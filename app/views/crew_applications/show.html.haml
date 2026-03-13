@@ -28,5 +28,6 @@
   %p
     = link_to 'Endre', edit_crew_application_path(@crew_application)
     |
-    \#{link_to 'Slett', @crew_application, :method => :delete} |
-    \#{link_to 'Tilbake til forsiden', :root}
+    = link_to 'Slett', @crew_application, data: { turbo_method: :delete }
+    |
+    = link_to 'Tilbake til forsiden', :root

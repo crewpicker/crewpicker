@@ -20,4 +20,9 @@
     %br/
     = f.text_field :tag, class: "form-control"
   .form-group
+    .checkbox
+      = f.label :internal do
+        = f.check_box :internal
+        Internal (not shown on crew application forms)
+  .form-group
     = f.submit class: "form-control btn btn-primary"

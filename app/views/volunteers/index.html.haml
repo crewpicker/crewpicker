@@ -28,7 +28,7 @@
           |
           = link_to t(:edit), edit_volunteer_path(volunteer)
           |
-          = link_to t(:delete), volunteer, method: :delete, data: { confirm: t(:confirm) }
+          = link_to t(:delete), volunteer, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
     %tr
       %th{:colspan => "9"} #{t(:count)}: #{group.volunteers.count}
-%p= link_to t(:add_volunteer), new_volunteer_path, class: 'btn btn-sm btn-danger', data: { confirm: 'Her får bare Kristin leke!' }
+%p= link_to t(:add_volunteer), new_volunteer_path, class: 'btn btn-sm btn-danger', data: { turbo_data: { turbo_method: :delete, confirm: 'Her får bare Kristin leke!' }}

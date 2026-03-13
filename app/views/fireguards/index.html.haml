@@ -24,5 +24,5 @@
         |
         = link_to t(:edit), edit_fireguard_path(fireguard)
         |
-        = link_to t(:delete), fireguard, :confirm => t(:confirm), :method => :delete
+        = link_to t(:delete), fireguard, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}), :method => :delete data: { turbo_method: :delete }
 %p= link_to t(:new_fireguard), new_fireguard_path

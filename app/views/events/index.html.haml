@@ -20,6 +20,6 @@
         %td= event.volunteer_deadline
         %td= link_to 'Show', event
         %td= link_to 'Edit', edit_event_path(event)
-        %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Destroy', event, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: 'Are you sure?' }}
   %br/
   = link_to t(:new_event), new_event_path

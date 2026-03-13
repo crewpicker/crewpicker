@@ -15,6 +15,6 @@
             |
             = link_to t(:edit), edit_active_event_path(active_event)
             |
-            = link_to t(:delete), active_event, method: :delete, data: { confirm: t(:confirm) }
+            = link_to t(:delete), active_event, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
   %p
     = link_to "#{t(:new).camelize} #{@active_events.model_name.human.downcase}", new_active_event_path

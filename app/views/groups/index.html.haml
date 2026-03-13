@@ -14,6 +14,6 @@
           = nl2br(group.description) if group.description
         %td= group.internal ? t(:answer_yes) : t(:answer_no)
         %td
-          = link_to t(:show), group
-          | #{link_to t(:edit), edit_group_path(group)} | #{link_to t(:delete), group, method: :delete, data: { confirm: t(:confirm) }}
+          = link_to t(:show), group data: { turbo_method: :delete }
+          | #{link_to t(:edit), edit_group_path(group)} | #{link_to t(:delete), group, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }}
   %p= link_to "#{t(:create)} #{Group.model_name.human.downcase}", new_group_path, class: "btn btn-primary"

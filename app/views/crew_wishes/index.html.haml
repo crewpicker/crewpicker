@@ -14,6 +14,6 @@
       %td= crew_wish.priority
       %td= link_to 'Show', crew_wish
       %td= link_to 'Edit', edit_crew_wish_path(crew_wish)
-      %td= link_to 'Destroy', crew_wish, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Destroy', crew_wish, data: { turbo_data: { turbo_method: :delete, confirm: 'Are you sure?'}, :method => :delete data: { turbo_method: :delete }
 %br/
 = link_to 'New Crew wish', new_crew_wish_path

@@ -20,7 +20,7 @@
           |
           = link_to 'Generer blanke crewkort', blank_access_card_path(access_level.id, :format => 'pdf')
           |
-          = link_to t(:edit), edit_access_level_path(access_level)
-          |
-          = link_to t(:delete), access_level, method: :delete, data: { confirm: t(:confirm) }
+          = link_to t(:edit), edit_access_level_path(access_level) data: { turbo_method: :delete }
+          | data: { turbo_method: :delete }
+          = link_to t(:delete), access_level, method: :delete data: { turbo_method: :delete }, data: { turbo_data: { turbo_method: :delete, confirm: t(:confirm}) }
   %p= link_to 'Nytt crewkort', new_access_level_path
