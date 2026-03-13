@@ -1,0 +1,163 @@
+<%
+# This partial generates blank ID cards based on configurable parameters
+config = @access_level.card_config
+page_dims = @access_level.page_dimensions
+card_dims = @access_level.calculated_card_dimensions
+%>
+<html>
+  <head>
+    <title>Crewkort</title>
+    <meta name="pdfkit-page_size" content="<%= config[:page_size] %>">
+    <meta name="pdfkit-orientation" content="<%= config[:page_orientation] %>">
+    <meta name="pdfkit-margin_top" content="<%= config[:margin_top] %>">
+    <meta name="pdfkit-margin_bottom" content="<%= config[:margin_bottom] %>">
+    <meta name="pdfkit-margin_right" content="<%= config[:margin_right] %>">
+    <meta name="pdfkit-margin_left" content="<%= config[:margin_left] %>">
+    <meta name="pdfkit-dpi" content="<%= config[:dpi] %>">
+    <% if config[:zoom] != 1.0 %>
+    <meta name="pdfkit-zoom" content="<%= config[:zoom] %>">
+    <% end %>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      html {
+        padding: 0;
+        margin: 0;
+      }
+      table {
+        padding: 0;
+        margin: 0 auto;
+        width: <%= card_dims[:width] * config[:columns] %>px;
+        text-align: center;
+        color: red;
+      }
+      td {
+        padding: 0;
+        margin: 0;
+        width: <%= card_dims[:width] %>px;
+        font-family: Impact, sans-serif;
+        vertical-align: top;
+      }
+      .al {
+        font-size: <%= config[:font_size] %>px;
+        color: <%= config[:font_color] %>;
+      }
+      .name {
+        font-size: <%= (config[:font_size] * 0.833).to_i %>px;
+        color: <%= config[:font_color] %>;
+      }
+      .page {
+        height: <%= page_dims[:height] %>px;
+        width: <%= page_dims[:width] %>px;
+        background-image: url(<%= "https://files.crewpicker.io/#{ENV['CREWPICKER_INSTANCE']}/#{@access_level.background}" %>);
+        background-size: <%= (card_dims[:width] * config[:columns] * 1.1).to_i %>px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .card {
+        height: <%= card_dims[:height] %>px;
+        /* Uncomment for debugging: background-color: rgba(0,255,0,0.1); */
+      }
+      .card div {
+        padding-top: <%= @access_level.calculated_text_top %>px;
+        padding-left: <%= config[:text_left] %>px;
+        padding-right: <%= config[:text_right] %>px;
+        /* Uncomment for debugging: background-color: rgba(255,0,0,0.1); */
+      }
+      .spacer {
+        height: <%= (card_dims[:height] * 0.1).to_i %>px; /* 10% of card height */
+      }
+      @font-face {
+        font-family: Impact;
+        src: url(<%= "#{request.protocol}#{request.host_with_port}#{ActionController::Base.helpers.asset_path('impact.ttf')}" %>);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <table>
+        <tr><td class="spacer" colspan="<%= config[:columns] %>"></td></tr>
+        <tr><td class="card" colspan="<%= config[:columns] %>"></td></tr>
+        <tr>
+<%
+rcounter = 0
+ccounter = 0
+cards_per_page = config[:columns] * config[:rows]
+total_cards = cards_per_page * 2 # Generate 2 pages of blank cards
+
+total_cards.times do |i|
+  # Determine card title
+  if @access_level.name == "Band"
+    card_title = "Band"
+  elsif @access_level.name == "Lydteamet"
+    card_title = ''
+  else
+    card_title = @access_level.name.mb_chars.upcase
+  end
+  
+  # Start new row when we reach column limit
+  if ccounter == config[:columns]
+    rcounter += 1
+%>
+        </tr>
+<%
+    # Start new page when we reach row limit
+    if rcounter == config[:rows]
+%>
+        <tr>
+          <td class="spacer" colspan="<%= config[:columns] %>"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="page">
+      <table>
+        <tr>
+          <td class="spacer" colspan="<%= config[:columns] %>"></td>
+        </tr>
+<%
+      rcounter = 0
+    else
+%>
+        <tr><td class="card" colspan="<%= config[:columns] %>"></td></tr>
+        <tr>
+<%
+    end
+    ccounter = 0
+  end
+%>
+          <td class="card">
+            <div>
+              <span class="al"><%= card_title %></span>
+              <br><span class="name"></span>
+            </div>
+          </td>
+<%
+  ccounter += 1
+end
+
+# Fill remaining cells in last row
+while ccounter != 0 && ccounter < config[:columns]
+%>
+          <td></td>
+<%
+  ccounter += 1
+end
+
+# Add closing row tags if needed
+if rcounter != config[:rows] - 1
+%>
+        </tr>
+        <tr>
+<%
+end
+%>
+        </tr>
+        <tr>
+          <td class="spacer" colspan="<%= config[:columns] %>"></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

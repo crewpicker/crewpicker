@@ -10,10 +10,96 @@
   .field
     = f.label :name
     %br/
-    = f.text_field :name
-  .form-group
-    = f.label :backgroud
-    %br
-    = f.text_field :background
+    = f.text_field :name, class: "form-control"
+  .field
+    = f.label :background
+    %br/
+    = f.text_field :background, class: "form-control"
+    %small.form-text.text-muted
+      Upload to https://files.crewpicker.io/#{ENV['CREWPICKER_INSTANCE']}/
+  
+  %fieldset
+    %legend Card Configuration
+    
+    .row
+      .col-md-6
+        .field
+          = f.label :page_size, "Page Size"
+          = f.select :page_size, ["A4", "Letter", "A3", "A5"], {}, class: "form-control"
+      .col-md-6
+        .field
+          = f.label :page_orientation, "Page Orientation"
+          = f.select :page_orientation, [["Portrait", "portrait"], ["Landscape", "landscape"]], {}, class: "form-control"
+    
+    .row
+      .col-md-3
+        .field
+          = f.label :margin_top, "Margin Top (px)"
+          = f.number_field :margin_top, class: "form-control"
+      .col-md-3
+        .field
+          = f.label :margin_bottom, "Margin Bottom (px)"
+          = f.number_field :margin_bottom, class: "form-control"
+      .col-md-3
+        .field
+          = f.label :margin_left, "Margin Left (px)"
+          = f.number_field :margin_left, class: "form-control"
+      .col-md-3
+        .field
+          = f.label :margin_right, "Margin Right (px)"
+          = f.number_field :margin_right, class: "form-control"
+    
+    .row
+      .col-md-3
+        .field
+          = f.label :dpi, "DPI"
+          = f.number_field :dpi, class: "form-control"
+      .col-md-3
+        .field
+          = f.label :zoom, "Zoom"
+          = f.text_field :zoom, class: "form-control", placeholder: "1.0"
+      .col-md-3
+        .field
+          = f.label :columns, "Columns per page"
+          = f.number_field :columns, class: "form-control"
+      .col-md-3
+        .field
+          = f.label :rows, "Rows per page"
+          = f.number_field :rows, class: "form-control"
+    
+    .row
+      .col-md-6
+        .field
+          = f.label :card_width, "Card Width (px) - auto if blank"
+          = f.number_field :card_width, class: "form-control"
+      .col-md-6
+        .field
+          = f.label :card_height, "Card Height (px) - auto if blank"
+          = f.number_field :card_height, class: "form-control"
+    
+    .row
+      .col-md-4
+        .field
+          = f.label :text_top, "Text Top Padding (px)"
+          = f.number_field :text_top, class: "form-control"
+      .col-md-4
+        .field
+          = f.label :text_left, "Text Left Padding (px)"
+          = f.number_field :text_left, class: "form-control"
+      .col-md-4
+        .field
+          = f.label :text_right, "Text Right Padding (px)"
+          = f.number_field :text_right, class: "form-control"
+    
+    .row
+      .col-md-6
+        .field
+          = f.label :font_size, "Font Size (px)"
+          = f.number_field :font_size, class: "form-control"
+      .col-md-6
+        .field
+          = f.label :font_color, "Font Color"
+          = f.text_field :font_color, class: "form-control", placeholder: "#000000"
+  
   .actions
-    = f.submit
+    = f.submit class: "btn btn-primary"

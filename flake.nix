@@ -13,7 +13,7 @@
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ ruby nodejs yarn postgresql shared-mime-info mariadb cockroachdb corepack dart-sass rubyPackages.mysql2 rubyPackages.redcarpet ];
+          packages = with pkgs; [ ruby nodejs yarn postgresql shared-mime-info mariadb cockroachdb corepack dart-sass rubyPackages.mysql2 rubyPackages.redcarpet wkhtmltopdf ];
           shellHook = ''
             export FREEDESKTOP_MIME_TYPES_PATH="${pkgs.shared-mime-info}/share/mime/packages/freedesktop.org.xml"
             export IN_NIXSHELL=yes

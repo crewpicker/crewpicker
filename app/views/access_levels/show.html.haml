@@ -1,7 +1,73 @@
 %p#notice= notice
+
 %p
   %b Name:
   = @access_level.name
+
+%p
+  %b Background Image:
+  = @access_level.background
+
+%fieldset
+  %legend Card Configuration
+  
+  .row
+    .col-md-4
+      %p
+        %b Page Size:
+        = @access_level.page_size || "A4 (default)"
+    .col-md-4
+      %p
+        %b Orientation:
+        = @access_level.page_orientation || "portrait (default)"
+    .col-md-4
+      %p
+        %b DPI:
+        = @access_level.dpi || "96 (default)"
+  
+  .row
+    .col-md-3
+      %p
+        %b Columns:
+        = @access_level.columns || "3 (default)"
+    .col-md-3
+      %p
+        %b Rows:
+        = @access_level.rows || "2 (default)"
+    .col-md-3
+      %p
+        %b Font Size:
+        = @access_level.font_size || "24 (default)"
+    .col-md-3
+      %p
+        %b Font Color:
+        = @access_level.font_color || "#000000 (default)"
+  
+  .row
+    .col-md-4
+      %p
+        %b Margins:
+        = "Top: #{@access_level.margin_top || 0}, Bottom: #{@access_level.margin_bottom || 0}, Left: #{@access_level.margin_left || 0}, Right: #{@access_level.margin_right || 0}"
+    .col-md-4
+      %p
+        %b Text Padding:
+        = "Top: #{@access_level.text_top || 'auto'}, Left: #{@access_level.text_left || 28}, Right: #{@access_level.text_right || 28}"
+    .col-md-4
+      %p
+        %b Zoom:
+        = @access_level.zoom || "1.0 (default)"
+  
+  - if @access_level.card_width || @access_level.card_height
+    .row
+      .col-md-6
+        %p
+          %b Card Width:
+          = @access_level.card_width || "auto"
+      .col-md-6
+        %p
+          %b Card Height:
+          = @access_level.card_height || "auto"
+
 = link_to 'Edit', edit_access_level_path(@access_level)
 |
 \#{link_to 'Back', access_levels_path}

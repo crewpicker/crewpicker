@@ -10,12 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_04_19_125541) do
+ActiveRecord::Schema[7.0].define(version: 2026_03_13_104509) do
   create_table "access_levels", force: :cascade do |t|
     t.string "name", limit: 255
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "background", limit: 255
+    t.string "page_size", default: "A4"
+    t.string "page_orientation", default: "portrait"
+    t.integer "margin_top", default: 0
+    t.integer "margin_bottom", default: 0
+    t.integer "margin_left", default: 0
+    t.integer "margin_right", default: 0
+    t.integer "dpi", default: 96
+    t.decimal "zoom", precision: 5, scale: 4, default: "1.0"
+    t.integer "card_width"
+    t.integer "card_height"
+    t.integer "columns", default: 3
+    t.integer "rows", default: 2
+    t.integer "text_top"
+    t.integer "text_left", default: 28
+    t.integer "text_right", default: 28
+    t.integer "font_size", default: 24
+    t.string "font_color", default: "#000000"
   end
 
   create_table "active_events", force: :cascade do |t|
