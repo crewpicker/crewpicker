@@ -1,5 +1,4 @@
 <%
-# This partial generates blank ID cards based on configurable parameters
 config = @access_level.card_config
 page_dims = @access_level.page_dimensions
 card_dims = @access_level.calculated_card_dimensions
@@ -18,56 +17,41 @@ card_dims = @access_level.calculated_card_dimensions
     <meta name="pdfkit-zoom" content="<%= config[:zoom] %>">
     <% end %>
     <style>
-      body {
-        padding: 0;
-        margin: 0;
-      }
-      html {
-        padding: 0;
-        margin: 0;
-      }
-      table {
-        padding: 0;
-        margin: 0 auto;
-        width: <%= card_dims[:width] * config[:columns] %>px;
-        text-align: center;
-        color: red;
-      }
-      td {
-        padding: 0;
-        margin: 0;
-        width: <%= card_dims[:width] %>px;
-        font-family: Impact, sans-serif;
-        vertical-align: top;
-      }
-      .al {
-        font-size: <%= config[:font_size] %>px;
-        color: <%= config[:font_color] %>;
-      }
-      .name {
-        font-size: <%= (config[:font_size] * 0.833).to_i %>px;
-        color: <%= config[:font_color] %>;
-      }
+      body, html { padding: 0; margin: 0; }
       .page {
         height: <%= page_dims[:height] %>px;
         width: <%= page_dims[:width] %>px;
         background-image: url(<%= "https://files.crewpicker.io/#{ENV['CREWPICKER_INSTANCE']}/#{@access_level.background}" %>);
-        background-size: <%= (card_dims[:width] * config[:columns] * 1.1).to_i %>px;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
       }
-      .card {
-        height: <%= card_dims[:height] %>px;
-        /* Uncomment for debugging: background-color: rgba(0,255,0,0.1); */
+      table {
+        width: 100%;
+        height: 100%;
+        border-collapse: collapse;
       }
-      .card div {
-        padding-top: <%= @access_level.calculated_text_top %>px;
+      td {
+        width: <%= 100.0 / config[:columns] %>%;
+        height: <%= 100.0 / config[:rows] %>%;
+        text-align: center;
+        vertical-align: middle;
+        font-family: Impact, sans-serif;
+      }
+      .card-content {
+        padding-top: <%= (@access_level.calculated_text_top.to_f / card_dims[:height] * 100).to_i %>%;
         padding-left: <%= config[:text_left] %>px;
         padding-right: <%= config[:text_right] %>px;
-        /* Uncomment for debugging: background-color: rgba(255,0,0,0.1); */
       }
-      .spacer {
-        height: <%= (card_dims[:height] * 0.1).to_i %>px; /* 10% of card height */
+      .card-title {
+        font-size: <%= config[:font_size] %>px;
+        color: <%= config[:font_color] %>;
+        display: block;
+      }
+      .card-name {
+        font-size: <%= (config[:font_size] * 0.833).to_i %>px;
+        color: <%= config[:font_color] %>;
+        display: block;
       }
       @font-face {
         font-family: Impact;
@@ -76,86 +60,27 @@ card_dims = @access_level.calculated_card_dimensions
     </style>
   </head>
   <body>
-<%
-cards_per_page = config[:columns] * config[:rows]
-total_cards = cards_per_page * 2 # Generate 2 pages of blank cards
-cards = Array.new(total_cards) { |i| i } # Create array [0, 1, 2, ...]
-
-cards.each_slice(cards_per_page) do |page_cards|
-%>
     <div class="page">
       <table>
-        <tr><td class="spacer" colspan="<%= config[:columns] %>"></td></tr>
-        <tr><td class="card" colspan="<%= config[:columns] %>"></td></tr>
-<%
-  page_cards.each_slice(config[:columns]) do |row_cards|
-%>
-        <tr>
-<%
-    row_cards.each do |card_index|
-      # Determine card title
-      if @access_level.name == "Band"
-        card_title = "Band"
-      elsif @access_level.name == "Lydteamet"
-        card_title = ''
-      else
-        card_title = @access_level.name.mb_chars.upcase
-      end
-%>
-          <td class="card">
-            <div>
-              <span class="al"><%= card_title %></span>
-              <br><span class="name"></span>
-            </div>
-          </td>
-<%
-    end
-    
-    # Fill empty cells if row not full
-    (config[:columns] - row_cards.size).times do
-%>
-          <td></td>
-<%
-    end
-%>
-        </tr>
-<%
-    # Add spacer row between card rows (except after last row)
-    unless row_cards.last == page_cards.last
-%>
-        <tr><td class="card" colspan="<%= config[:columns] %>"></td></tr>
-<%
-    end
-  end
-  
-  # Fill empty rows if page not full
-  full_rows = (page_cards.size.to_f / config[:columns]).ceil
-  (config[:rows] - full_rows).times do |row_idx|
-%>
-        <tr>
-<%
-    config[:columns].times do
-%>
-          <td></td>
-<%
-    end
-%>
-        </tr>
-<%
-    unless row_idx == config[:rows] - full_rows - 1
-%>
-        <tr><td class="card" colspan="<%= config[:columns] %>"></td></tr>
-<%
-    end
-  end
-%>
-        <tr>
-          <td class="spacer" colspan="<%= config[:columns] %>"></td>
-        </tr>
+        <% config[:rows].times do |row| %>
+          <tr>
+            <% config[:columns].times do |col| %>
+              <td>
+                <div class="card-content">
+                  <% if @access_level.name == "Band" %>
+                    <span class="card-title">BAND</span>
+                  <% elsif @access_level.name == "Lydteamet" %>
+                    <!-- Empty for Lydteamet -->
+                  <% else %>
+                    <span class="card-title"><%= @access_level.name.mb_chars.upcase %></span>
+                  <% end %>
+                  <span class="card-name"></span>
+                </div>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
       </table>
     </div>
-<%
-end
-%>
   </body>
 </html>

@@ -1,6 +1,4 @@
 <%
-# This partial generates ID cards based on configurable parameters
-# Available variables: @access_level, @bands (if applicable), people array
 config = @access_level.card_config
 page_dims = @access_level.page_dimensions
 card_dims = @access_level.calculated_card_dimensions
@@ -19,53 +17,43 @@ card_dims = @access_level.calculated_card_dimensions
     <meta name="pdfkit-zoom" content="<%= config[:zoom] %>">
     <% end %>
     <style>
-      body {
-        padding: 0;
-        margin: 0;
-      }
-      html {
-        padding: 0;
-        margin: 0;
-      }
-      table {
-        padding: 0;
-        margin: 0 auto;
-        width: <%= card_dims[:width] * config[:columns] %>px;
-        text-align: center;
-        color: red;
-      }
-      td {
-        padding: 0;
-        margin: 0;
-        width: <%= card_dims[:width] %>px;
-        font-family: Impact, sans-serif;
-        vertical-align: top;
-      }
-      .al {
-        font-size: <%= config[:font_size] %>px;
-        color: <%= config[:font_color] %>;
-      }
-      .name {
-        font-size: <%= (config[:font_size] * 0.833).to_i %>px; /* 20px when font_size is 24px */
-        color: <%= config[:font_color] %>;
-      }
+      body, html { padding: 0; margin: 0; }
       .page {
         height: <%= page_dims[:height] %>px;
         width: <%= page_dims[:width] %>px;
         background-image: url(<%= "https://files.crewpicker.io/#{ENV['CREWPICKER_INSTANCE']}/#{@access_level.background}" %>);
-        background-size: 100%;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
       }
-      .card {
-        height: <%= card_dims[:height] %>px;
-        /* Uncomment for debugging: background-color: rgba(0,255,0,0.1); */
+      table {
+        width: 100%;
+        height: 100%;
+        border-collapse: collapse;
       }
-      .card div {
-        padding-top: <%= @access_level.calculated_text_top %>px; /* Default to ~54% from top */
+      td {
+        width: <%= 100.0 / config[:columns] %>%;
+        height: <%= 100.0 / config[:rows] %>%;
+        text-align: center;
+        vertical-align: top;
+        font-family: Impact, sans-serif;
+      }
+      .card-content {
+        padding-top: <%= (@access_level.calculated_text_top.to_f / card_dims[:height] * 100).to_i %>%;
         padding-left: <%= config[:text_left] %>px;
         padding-right: <%= config[:text_right] %>px;
-        /* Uncomment for debugging: background-color: rgba(0,0,255,0.1); */
+        height: 100%;
+        box-sizing: border-box;
+      }
+      .card-title {
+        font-size: <%= config[:font_size] %>px;
+        color: <%= config[:font_color] %>;
+        display: block;
+      }
+      .card-name {
+        font-size: <%= (config[:font_size] * 0.833).to_i %>px;
+        color: <%= config[:font_color] %>;
+        display: block;
       }
       @font-face {
         font-family: Impact;
@@ -76,7 +64,7 @@ card_dims = @access_level.calculated_card_dimensions
   <body>
 <%
 # Collect people based on access level type
-people = Array.new
+people = []
 if @access_level.name == "Band"
   @bands.each do |band|
     band.band_members.each do |band_member|
@@ -88,66 +76,40 @@ else
 end
 
 cards_per_page = config[:columns] * config[:rows]
-page_count = 0
 
 people.each_slice(cards_per_page) do |page_people|
-  page_count += 1
 %>
     <div class="page">
       <table>
-<%
-  page_people.each_slice(config[:columns]) do |row_people|
-%>
-        <tr>
-<%
-    row_people.each do |person|
-      # Determine card title
-      if @access_level.name == "Band"
-        card_title = @access_level.name.mb_chars.upcase
-      else
-        if @access_level.name.mb_chars.upcase == person.group.name.mb_chars.upcase
-          card_title = @access_level.name.mb_chars.upcase
-        else
-          card_title = "#{@access_level.name.mb_chars.upcase}<br>#{person.group.name}".html_safe
-        end
-      end
-%>
-          <td class="card">
-            <div>
-              <span class="al"><%= card_title %></span>
-              <br><span class="name"><%= person.short_name %></span>
-            </div>
-          </td>
-<%
-    end
-    
-    # Fill empty cells if row not full
-    (config[:columns] - row_people.size).times do
-%>
-          <td></td>
-<%
-    end
-%>
-        </tr>
-<%
-  end
-  
-  # Fill empty rows if page not full
-  full_rows = (page_people.size.to_f / config[:columns]).ceil
-  (config[:rows] - full_rows).times do
-%>
-        <tr>
-<%
-    config[:columns].times do
-%>
-          <td></td>
-<%
-    end
-%>
-        </tr>
-<%
-  end
-%>
+        <% config[:rows].times do |row| %>
+          <tr>
+            <% config[:columns].times do |col| %>
+              <%
+              card_index = row * config[:columns] + col
+              person = page_people[card_index] if card_index < page_people.length
+              %>
+              <td>
+                <% if person %>
+                  <div class="card-content">
+                    <% if @access_level.name == "Band" %>
+                      <span class="card-title"><%= @access_level.name.mb_chars.upcase %></span>
+                    <% else %>
+                      <% if @access_level.name.mb_chars.upcase == person.group.name.mb_chars.upcase %>
+                        <span class="card-title"><%= @access_level.name.mb_chars.upcase %></span>
+                      <% else %>
+                        <span class="card-title"><%= @access_level.name.mb_chars.upcase %><br><%= person.group.name %></span>
+                      <% end %>
+                    <% end %>
+                    <span class="card-name"><%= person.short_name %></span>
+                  </div>
+                <% else %>
+                  <!-- Empty cell -->
+                  <div class="card-content"></div>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
       </table>
     </div>
 <%
