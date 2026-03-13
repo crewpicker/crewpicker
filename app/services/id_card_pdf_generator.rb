@@ -43,18 +43,57 @@ class IdCardPdfGenerator
       # Draw background image if available
       draw_background_image
 
-      # Calculate card dimensions
+      # Calculate card dimensions accounting for margins and gutters
       page_width = @document.bounds.width
       page_height = @document.bounds.height
-      card_width = page_width / @config[:columns]
-      card_height = page_height / @config[:rows]
+
+      # Account for page margins (15px) and inter-card margins (5px)
+      page_margin_left_px = 15
+      page_margin_right_px = 15
+      page_margin_top_px = 15
+      page_margin_bottom_px = 15
+      card_gutter_h_px = 5  # horizontal gutter between columns
+      card_gutter_v_px = 5  # vertical gutter between rows
+
+      # Convert to PDF points
+      page_margin_left = page_margin_left_px * 0.75
+      page_margin_right = page_margin_right_px * 0.75
+      page_margin_top = page_margin_top_px * 0.75
+      page_margin_bottom = page_margin_bottom_px * 0.75
+      card_gutter_h = card_gutter_h_px * 0.75
+      card_gutter_v = card_gutter_v_px * 0.75
+
+      # Calculate available space for cards (excluding margins)
+      available_width = page_width - page_margin_left - page_margin_right
+      available_height = page_height - page_margin_top - page_margin_bottom
+
+      # Calculate card dimensions (excluding gutters)
+      total_horizontal_gutter = card_gutter_h * (@config[:columns] - 1)
+      total_vertical_gutter = card_gutter_v * (@config[:rows] - 1)
+
+      card_width = (available_width - total_horizontal_gutter) / @config[:columns]
+      card_height = (available_height - total_vertical_gutter) / @config[:rows]
 
       page_items.each_with_index do |item, index|
         row = index / @config[:columns]
         col = index % @config[:columns]
 
-        x = col * card_width
-        y = page_height - ((row + 1) * card_height) # PDF coordinates start from bottom
+        # Account for page margins (15px) and inter-card margins (5px)
+        # Convert margins to PDF points: 1px = 0.75 points
+        page_margin_top = 15 * 0.75
+        page_margin_left = 15 * 0.75
+        card_gutter_h = 5 * 0.75  # horizontal gutter between columns
+        card_gutter_v = 5 * 0.75  # vertical gutter between rows
+
+        # Calculate x position with margins
+        # Left column starts at: page_margin_left
+        # Each subsequent column adds: card_width + card_gutter_h
+        x = page_margin_left + (col * (card_width + card_gutter_h))
+
+        # Calculate y position with margins
+        # Top row starts at: page_height - page_margin_top - card_height
+        # Each subsequent row adds: card_height + card_gutter_v
+        y = page_height - page_margin_top - ((row + 1) * card_height) - (row * card_gutter_v)
 
         draw_card(x, y, card_width, card_height, item, blank)
       end
