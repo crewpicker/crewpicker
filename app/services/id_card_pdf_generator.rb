@@ -48,18 +48,15 @@ class IdCardPdfGenerator
       page_height = @document.bounds.height
 
       # Account for page margins (15px) and inter-card margins (5px)
-      page_margin_left_px = 15
-      page_margin_right_px = 15
-      page_margin_top_px = 15
-      page_margin_bottom_px = 15
-      card_gutter_h_px = 5  # horizontal gutter between columns
-      card_gutter_v_px = 5  # vertical gutter between rows
+      page_margin_px = 15
+      card_gutter_h_px = 10  # horizontal gutter between columns
+      card_gutter_v_px = 10  # vertical gutter between rows
 
       # Convert to PDF points
-      page_margin_left = page_margin_left_px * 0.75
-      page_margin_right = page_margin_right_px * 0.75
-      page_margin_top = page_margin_top_px * 0.75
-      page_margin_bottom = page_margin_bottom_px * 0.75
+      page_margin_left = page_margin_px * 0.75
+      page_margin_right = page_margin_px * 0.75
+      page_margin_top = page_margin_px * 0.75
+      page_margin_bottom = page_margin_px * 0.75
       card_gutter_h = card_gutter_h_px * 0.75
       card_gutter_v = card_gutter_v_px * 0.75
 
@@ -241,7 +238,7 @@ class IdCardPdfGenerator
     @document.font_size(name_font_size)
 
     # Position name below title with some spacing
-    name_y = y - title_height - (name_font_size * 0.5)
+    name_y = y - title_height - 2
 
     @document.text_box(person.short_name, at: [x, name_y], width: width, align: :center)
   end
