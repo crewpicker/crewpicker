@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require File.expand_path('boot', __dir__)
 
 require 'rails/all'
 
@@ -10,17 +10,16 @@ module FestivalAdmin
     config.time_zone = 'UTC'
     config.i18n.enforce_available_locales = true
     config.i18n.default_locale = :en
-    config.encoding = "utf-8"
-    config.middleware.use PDFKit::Middleware
+    config.encoding = 'utf-8'
     config.generators do |g|
       g.test_framework :rspec,
-        fixtures: true,
-        view_specs: false,
-        helper_specs: false,
-        routing_specs: false,
-        controller_specs: true,
-        request_specs: false
-      g.fixture_replacement :factory_girl, dir: "spec/factories"
+                       fixtures: true,
+                       view_specs: false,
+                       helper_specs: false,
+                       routing_specs: false,
+                       controller_specs: true,
+                       request_specs: false
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
   end
 end

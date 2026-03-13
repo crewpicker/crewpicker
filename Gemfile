@@ -33,7 +33,8 @@ end
 
 # crewpicker
 gem 'kt-paperclip', '~> 7.2.2' # fork of paperclip with Rails 7 support
-gem 'pdfkit'
+gem 'prawn'
+gem 'prawn-table'
 gem 'sorcery'
 gem 'oauth2'
 gem 'ae_declarative_authorization', '~> 1.0.0', require: 'declarative_authorization'

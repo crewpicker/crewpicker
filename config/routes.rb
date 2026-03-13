@@ -11,8 +11,8 @@ FestivalAdmin::Application.routes.draw do
   resources :roles
   resources :crew_wishes
   resources :crew_applications do
-    get 'hidden', :on => :collection
-    get 'unhide', :on => :member
+    get 'hidden', on: :collection
+    get 'unhide', on: :member
   end
 
   match 'crewskjema' => 'crew_applications#new', via: :get
@@ -25,8 +25,8 @@ FestivalAdmin::Application.routes.draw do
   match 'login' => 'user_sessions#new', :as => :login, via: :get
   match 'logout' => 'user_sessions#destroy', :as => :logout, via: :get
 
-  match "oauth/callback" => "oauths#callback", via: :get
-  match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider, via: :get
+  match 'oauth/callback' => 'oauths#callback', via: :get
+  match 'oauth/:provider' => 'oauths#oauth', :as => :auth_at_provider, via: :get
 
   resource :flightscreen do
     get 'now'
@@ -49,7 +49,9 @@ FestivalAdmin::Application.routes.draw do
   resources :statistics
 
   resources :access_cards do
-    get 'blank', :on => :member
+    get 'blank', on: :member
+    get 'pdf', on: :member
+    get 'blank_pdf', on: :member
   end
 
   match 'access_levels/:id/access_cards' => 'access_levels#access_cards', :as => :access_level_cards, via: :get
@@ -69,7 +71,7 @@ FestivalAdmin::Application.routes.draw do
   resources :groups do
     resources :volunteers
     resources :crew_applications do
-      get 'choose', :on => :member
+      get 'choose', on: :member
     end
   end
 
@@ -96,11 +98,11 @@ FestivalAdmin::Application.routes.draw do
 
   resources :band_members
   resources :band_orders do
-    get 'delay', :on => :collection
+    get 'delay', on: :collection
   end
 
-  get "home/index"
-  root :to => "home#index"
+  get 'home/index'
+  root to: 'home#index'
   match 'setup' => 'home#setup', as: :setup_wizard, via: :get
 
   match 'program/:name' => 'stage_schedules#index', :as => :stage_schedule_program, via: :get
