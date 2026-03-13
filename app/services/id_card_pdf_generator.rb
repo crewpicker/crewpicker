@@ -37,8 +37,8 @@ class IdCardPdfGenerator
 
     cards_per_page = @config[:columns] * @config[:rows]
 
-    items.each_slice(cards_per_page) do |page_items|
-      @document.start_new_page unless @document.page_number == 1
+    items.each_slice(cards_per_page).with_index do |page_items, page_index|
+      @document.start_new_page if page_index > 0
 
       # Draw background image if available
       draw_background_image
@@ -88,13 +88,11 @@ class IdCardPdfGenerator
     instance = ENV['CREWPICKER_INSTANCE'].presence || 'rmr'
     background_url = "https://files.crewpicker.io/#{instance}/#{@access_level.background}"
 
-    Rails.logger.info "Loading background image from: #{background_url}"
-
     begin
       uri = URI.parse(background_url)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = (uri.scheme == 'https')
-      http.read_timeout = 10 # 10 second timeout
+      http.read_timeout = 10
 
       # Disable SSL verification for development/testing
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE if http.use_ssl?
@@ -105,20 +103,14 @@ class IdCardPdfGenerator
       if response.code == '200'
         @background_image_data = response.body
         @background_image_type = File.extname(@access_level.background).downcase.delete('.')
-        Rails.logger.info "Successfully loaded background image: #{@background_image_data.length} bytes"
-      else
-        Rails.logger.warn "Failed to load background image: HTTP #{response.code}"
       end
     rescue StandardError => e
       Rails.logger.warn "Failed to load background image from #{background_url}: #{e.message}"
-      Rails.logger.warn "Error backtrace: #{e.backtrace.first(5).join(', ')}"
     end
   end
 
   def draw_background_image
     return unless @background_image_data && @background_image_type
-
-    Rails.logger.info "Drawing background image on page #{@document.page_number}"
 
     begin
       # Create a temp file with the image data
@@ -132,10 +124,6 @@ class IdCardPdfGenerator
                       at: [0, @document.bounds.height],
                       width: @document.bounds.width,
                       height: @document.bounds.height)
-
-      Rails.logger.info 'Background image drawn successfully'
-    rescue StandardError => e
-      Rails.logger.error "Failed to draw background image: #{e.message}"
     ensure
       temp_file&.unlink
     end
@@ -153,8 +141,6 @@ class IdCardPdfGenerator
     pdf_text_right = text_right * 0.75
 
     # Text positioning within card
-    # y is bottom of card, so y + height is top of card
-    # text_y is measured from bottom of page
     text_x = x + pdf_text_left
     text_y = y + height - pdf_text_top
 
@@ -168,7 +154,11 @@ class IdCardPdfGenerator
   def draw_blank_card_text(x, y, width)
     @document.font('Impact')
     @document.font_size(@config[:font_size] * 0.75)
-    @document.fill_color(@config[:font_color].gsub('#', ''))
+
+    font_color = @config[:font_color].to_s.gsub('#', '')
+    font_color = '000000' if font_color.empty?
+
+    @document.fill_color(font_color)
 
     if @access_level.name == 'Band'
       @document.text_box('BAND', at: [x, y], width: width, align: :center)
@@ -181,7 +171,11 @@ class IdCardPdfGenerator
 
   def draw_person_card_text(x, y, width, person)
     @document.font('Impact')
-    @document.fill_color(@config[:font_color].gsub('#', ''))
+
+    font_color = @config[:font_color].to_s.gsub('#', '')
+    font_color = '000000' if font_color.empty?
+
+    @document.fill_color(font_color)
 
     # Determine card title
     card_title = if @access_level.name == 'Band'
