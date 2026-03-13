@@ -43,7 +43,7 @@
       .page {
         height: 1862px;
         width: 100%;
-        background-image: url(<%= "#{request.protocol}#{request.host_with_port}/custom/#{@access_level.background}" %>);
+        background-image: url(<%= "https://files.crewpicker.io/#{ENV['CREWPICKER_INSTANCE']}/#{@access_level.background}" %>);
         //background-color: red;
         background-size: 2750px;
         background-repeat: no-repeat;
