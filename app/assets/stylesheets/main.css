@@ -51,3 +51,6 @@ p {
 .highlight {
   background-color: #ffffcc;
 }
+.pagination .page {
+  margin-right: 8px;
+}

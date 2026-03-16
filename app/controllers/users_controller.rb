@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def index
     @users = User.includes(:volunteers, :bands, :crew_applications, :roles, :authentications)
     @users = @users.search(params[:q]) if params[:q].present?
-    @users = @users.page(params[:page]).per(10)
+    @users = @users.page(params[:page]).per(20)
 
     respond_to do |format|
       format.html # index.html.erb
