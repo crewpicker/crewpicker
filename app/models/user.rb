@@ -34,4 +34,8 @@ class User < ApplicationRecord
   def crew_application
     self.crew_applications.first
   end
+
+  def self.search(query)
+    where("username LIKE :q OR name LIKE :q OR email LIKE :q", q: "%#{query}%")
+  end
 end

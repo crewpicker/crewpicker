@@ -5,8 +5,8 @@ export RAILS_ENV=production
 echo "Checking for pending migrations..."
 if bundle exec rails db:migrate:status | grep -q "^\s*down"
 then
-  echo "Running pending migrations..."
-  bundle exec rails db:migrate
+  echo "ERROR: There are unapplied database migrations. Please apply migrations before starting."
+  exit 1
 else
   echo "No pending migrations."
 fi

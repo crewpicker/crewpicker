@@ -1,6 +1,12 @@
 - title User.model_name.human(count: 2)
 .container
   %h1= User.model_name.human(count: 2)
+  %form.form-inline.mb-3{action: users_path, method: :get}
+    .input-group
+      %input.form-control{type: :search, name: :q, placeholder: "Søk...", value: params[:q]}
+      %button.btn.btn-primary{type: :submit} Søk
+      - if params[:q].present?
+        %a.btn.btn-secondary{href: users_path} Nullstill
   %table.table.table-striped
     %tr
       %th= User.human_attribute_name(:username)
@@ -42,5 +48,6 @@
           = link_to t(:delete), user, data: { turbo_method: :delete, turbo_confirm: t(:confirm) }
     %tr
       %td{:colspan => "8"}
-        #{t(:count)}: #{@users.count}
+        #{t(:count)}: #{@users.total_count}
+  = paginate @users
   %p= link_to "#{t(:create)} #{User.model_name.human.downcase}", new_user_path

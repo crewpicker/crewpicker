@@ -7,7 +7,9 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.includes(:volunteers, :bands, :crew_applications, :roles, :authentications).all
+    @users = User.includes(:volunteers, :bands, :crew_applications, :roles, :authentications)
+    @users = @users.search(params[:q]) if params[:q].present?
+    @users = @users.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

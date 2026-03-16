@@ -46,6 +46,7 @@ gem 'momentjs-rails', '~> 2.29.1'
 gem 'fullcalendar-rails', '~> 3.9.0'
 gem 'chart-js-rails'
 gem 'holder_rails', '~> 2.9.3' # Provides Holder.js to render image placeholders entirely on the client side
+gem 'kaminari'
 group :test, :development do
   gem 'sqlite3', '~> 1.7.0'
   gem 'rspec-rails'
