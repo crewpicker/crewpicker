@@ -1,4 +1,3 @@
-# encoding: UTF-8
 class BandsController < ApplicationController
   filter_resource_access
   layout :check_layout
@@ -10,7 +9,7 @@ class BandsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @bands }
+      format.xml  { render xml: @bands }
     end
   end
 
@@ -21,7 +20,7 @@ class BandsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @band }
+      format.xml  { render xml: @band }
     end
   end
 
@@ -35,7 +34,7 @@ class BandsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @band }
+      format.xml  { render xml: @band }
     end
   end
 
@@ -48,18 +47,19 @@ class BandsController < ApplicationController
   # POST /bands.xml
   def create
     @band = Band.new(band_params)
-    if ActiveEvent.first
-      @band.event = ActiveEvent.first.event
-    end
+    @band.event = ActiveEvent.first.event if ActiveEvent.first
 
     respond_to do |format|
       if @band.save
-        BandMailer::confirmation_email(@band)
-        format.html { redirect_to(@band, :notice => 'Bandet er registrert.') }
-        format.xml  { render :xml => @band, :status => :created, :location => @band }
+        BandMailer.confirmation_email(@band)
+        format.html { redirect_to(@band, notice: 'Bandet er registrert.') }
+        format.xml  { render xml: @band, status: :created, location: @band }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @band.errors, :status => :unprocessable_entity }
+        format.html { render action: 'new' }
+        format.turbo_stream do
+          render html: render_to_string('new'), status: :unprocessable_entity
+        end
+        format.xml  { render xml: @band.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -71,11 +71,14 @@ class BandsController < ApplicationController
 
     respond_to do |format|
       if @band.update(band_params)
-        format.html { redirect_to(@band, :notice => 'Bandopplysningene er oppdatert.') }
+        format.html { redirect_to(@band, notice: 'Bandopplysningene er oppdatert.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @band.errors, :status => :unprocessable_entity }
+        format.html { render action: 'edit' }
+        format.turbo_stream do
+          render html: render_to_string('edit'), status: :unprocessable_entity
+        end
+        format.xml  { render xml: @band.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -93,12 +96,10 @@ class BandsController < ApplicationController
   end
 
   filter_access_to :info
-  def info
-  end
+  def info; end
 
-  filter_access_to :mailer, :require => :mail
-  def mailer
-  end
+  filter_access_to :mailer, require: :mail
+  def mailer; end
 
   filter_access_to :mail
   def mail
@@ -107,18 +108,18 @@ class BandsController < ApplicationController
     content_plain = params[:content_plain]
     if params[:send_testmail] == '1'
       recipients = current_user.email
-      BandMailer::custom_email(subject, recipients, content_markdown, content_plain).deliver
+      BandMailer.custom_email(subject, recipients, content_markdown, content_plain).deliver
       respond_to do |format|
-        format.html {
-          flash[:notice] = "Testmail sendt"
-          render :action => "mailer"
-        }
+        format.html do
+          flash[:notice] = 'Testmail sendt'
+          render action: 'mailer'
+        end
       end
     else
       recipients = Band.pluck(:email)
-      BandMailer::custom_email(subject, recipients, content_markdown, content_plain).deliver
+      BandMailer.custom_email(subject, recipients, content_markdown, content_plain).deliver
       respond_to do |format|
-        format.html { redirect_to(bands_url, :notice => "Epost sendt")}
+        format.html { redirect_to(bands_url, notice: 'Epost sendt') }
       end
     end
   end
@@ -130,6 +131,7 @@ class BandsController < ApplicationController
       :id, :name, :contact_name, :email, :phone, :address, :postal_code, :city,
       :description, :song_title, :song_composer, :song_lyrics, :playtime_wish,
       :playtime_wish_alt, :image, :user_id, :event_id,
-      band_members_attributes: [:id, :name, :phone, :role, :user_id])
+      band_members_attributes: %i[id name phone role user_id]
+    )
   end
 end
