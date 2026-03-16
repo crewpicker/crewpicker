@@ -1,4 +1,6 @@
 FestivalAdmin::Application.routes.draw do
+  get 'health/liveness', to: 'health#liveness'
+  get 'health/readiness', to: 'health#readiness'
   get 'privacy_policy', to: 'privacy_policy#index'
   resources :tk81_skuespillere
   resources :tk81_teknikere
