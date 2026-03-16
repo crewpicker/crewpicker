@@ -57,7 +57,7 @@ class BandsController < ApplicationController
       else
         format.html { render action: 'new' }
         format.turbo_stream do
-          render html: render_to_string('new'), status: :unprocessable_entity
+          render html: render_to_string(action: 'new', formats: :html), status: :unprocessable_entity
         end
         format.xml  { render xml: @band.errors, status: :unprocessable_entity }
       end
@@ -76,7 +76,7 @@ class BandsController < ApplicationController
       else
         format.html { render action: 'edit' }
         format.turbo_stream do
-          render html: render_to_string('edit'), status: :unprocessable_entity
+          render html: render_to_string(action: 'edit', formats: :html), status: :unprocessable_entity
         end
         format.xml  { render xml: @band.errors, status: :unprocessable_entity }
       end
